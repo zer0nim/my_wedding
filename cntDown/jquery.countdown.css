@@ -1,0 +1,26 @@
+
+ul#wedding {
+  list-style: none;
+  padding: 50px 0;
+  display: block;
+  text-align: center;
+}
+
+ul#wedding li { display: inline-block; }
+
+ul#wedding li span {
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 80px;
+}
+
+ul#wedding li.seperator {
+  font-size: 80px;
+  line-height: 70px;
+  vertical-align: top;
+}
+
+ul#wedding li p {
+  color: white;
+  font-size: 25px;
+}
