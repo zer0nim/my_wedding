@@ -9,6 +9,9 @@
   <title>My Wedding Planner</title>
   <meta name="description" content="Le site de planification de mariage">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
   <link rel="stylesheet" href="index.css" type="text/css" />
@@ -19,20 +22,31 @@
 
 </head>
 <body class="container-fluid">
-
   <header>
-    <div class="navbar navbar-default">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">My Wedding Planner</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">My wedding Planner</a>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Accueil</a></li>
-        <li><a href="#">Paramètres de l'événement</a></li>
-        <li><a href="#">Page Publique</a></li>
-        <li><a href="#">Mon compte</a></li>
-      </ul>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Accueil</a></li>
+          <li><a href="#">Paramètres de l'événement</a></li>
+          <li><a href="#">Page Publique</a></li>
+          <li><a href="#">Mon compte</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
+</header>
 
   	<ul id="wedding">
   	  <li><span class="days">00</span><p class="days_text">Jours</p></li>
