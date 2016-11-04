@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Accueil</a></li>
-          <li><a href="#">Paramètres de l'événement</a></li>
+          <li><a href="creation.php">Paramètres de l'événement</a></li>
           <li><a href="#">Page Publique</a></li>
           <li><a href="#">Mon compte</a></li>
         </ul>
