@@ -12,7 +12,7 @@
 
   <!--  jQuery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  
+
   <!-- Bootstrap Date-Picker Plugin -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js"></script>
@@ -39,30 +39,31 @@
 
 
 
-  <form class="col-lg-6">
+  <form class="col-xs-12">
     <legend>Création de l'événement</legend>
 
     <!-- -v- Name input -v- -->
-    <div class="form-group">
+    <div class="form-group col-xs-12  col-sm-6">
       <label class="control-label">Mariage de</label><br>
     Nom : <input type="text" class="form-control">
     Prenom : <input type="text" class="form-control">
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-xs-12  col-sm-6">
+    <label class="control-label">et</label><br>
     Nom : <input type="text" class="form-control">
     Prenom : <input type="text" class="form-control">
   </div>
   <!-- -^- Name input -^- -->
 
   <!-- -v- Description input -v- -->
-  <div class="form-group">
+  <div class="form-group col-xs-12">
     Description : <textarea id="textarea" class="form-control"></textarea>
   </div>
   <!-- -^- Description input -^- -->
 
 <!-- -v- Date input -v- -->
-  <div class="form-group">
+  <div class="form-group col-xs-12">
       Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text"/>
   </div>
   <script>
@@ -83,7 +84,7 @@
 <!-- -^- Date input -^- -->
 
 <!-- -v- Adress input -v- -->
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       Adresse: <input id="user_input_autocomplete_address" placeholder="Votre adresse..." class="form-control">
     </div>
     <script type="text/javascript">
@@ -103,7 +104,7 @@
 <!-- -^- Adress input -^- -->
 
 <!-- -v- Button -v- -->
-    <div class="form-group">
+    <div class="form-group  col-xs-12">
         <button id="singlebutton" name="singlebutton" class="btn btn-primary">Créer l'événement</button>
     </div>
 <!-- -^- Button -^- -->
