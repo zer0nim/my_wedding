@@ -81,31 +81,31 @@
 
 
   <nav class="text-center">
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="planning.view.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Invités</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i><br>Invitations</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-th fa-2x" aria-hidden="true"></i><br>Plan de table</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><br>Repas</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-truck fa-2x" aria-hidden="true"></i><br>Fournisseurs</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
     </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
+    <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
     </div>
   </nav>
