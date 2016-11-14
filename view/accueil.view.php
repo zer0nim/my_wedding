@@ -82,7 +82,7 @@
 
   <nav class="text-center">
     <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
+      <a href="planning.view.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Invités</a>
@@ -103,7 +103,7 @@
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste de mariage</a>
+      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-6 col-lg-3">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
