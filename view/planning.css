@@ -22,27 +22,49 @@ body {
 @media (min-width: 992px) {
 }
 
-.col-sm-6, .col-lg-4{
-  padding: 5px;
-}
-.btn-primary {
-  color: #125566;
-  background-color: #dae8ef;
-  border: 3px solid #c0dee5;
-}
-.btn-primary:hover{
-  color: #dae8ef;
-  background-color: #125566;
-  border: 3px solid #f4f4f5;
-}
-.btn-primary:focus{
-  color: #dae8ef;
-  background-color: #125566;
-  border: 3px solid #f4f4f5;
-}
 .navbar-default .navbar-nav > .active > a {
   background-color: #dae8ef;
 }
 nav {
   margin: 5px;
+}
+
+th {
+  background-color: white;
+  text-align: center;
+}
+
+table a {
+  width: 100%;
+}
+
+th:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid #23527c;
+}
+
+tr .active{
+  background-color: #dae8ef;
+}
+
+tr .active:hover {
+  background-color: rgba(218, 232, 239, 0.5);
+  border-bottom: 2px solid #23527c;
+}
+
+.test-center {
+  background-color: white;
+  text-align: center;
+}
+
+.test-center a {
+  width: 18%;
+  display: inline-block;
+}
+/* Styles pour les tablettes */
+@media (min-width: 768px) {
+  .test-center a {
+    width: 10%;
+    display: inline-block;
+  }
 }

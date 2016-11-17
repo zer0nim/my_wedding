@@ -35,7 +35,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Planning</a></li>
+          <li class="active"><a href="accueil.view.php">Accueil</a></li>
           <li><a href="creation.view.php">Paramètres de l'événement</a></li>
           <li><a href="#">Page Publique</a></li>
           <li><a href="#">Mon compte</a></li>
@@ -48,35 +48,17 @@
   </nav>
 </header>
 
-  <nav class="text-center">
-    <div class="col-btn col-lg-offset-1 col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Invités</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i><br>Invitations</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-th fa-2x" aria-hidden="true"></i><br>Plan de table</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><br>Repas</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-truck fa-2x" aria-hidden="true"></i><br>Fournisseurs</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
-    </div>
-    <div class="col-btn col-xs-12 col-sm-6 col-lg-1">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
-    </div>
-  </nav>
+<div class="test-center">
+<a href="planning.view.php" class="btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-truck fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-gift fa-2x" aria-hidden="true"></i></a>
+<a href="#" class="btn btn-link btn-sm"><i class="fa fa-eur fa-2x" aria-hidden="true"></i></a>
+</div>
 
   <footer>
 
