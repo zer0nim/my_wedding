@@ -16,9 +16,9 @@
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
   <link rel="stylesheet" href="../view/css/accueil.css" type="text/css" />
 
-  <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
+  <link type="text/css" href="../model/cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="../cntDown/jquery.countdown.min.js?v=1.0.0.0"></script>
+  <script type="text/javascript" src="../model/cntDown/jquery.countdown.min.js?v=1.0.0.0"></script>
 
 </head>
 <body class="container-fluid">
