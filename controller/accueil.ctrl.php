@@ -1,3 +1,3 @@
 <?php
-  include('../view/accueil.view.php');
+  include_once('../view/accueil.view.php');
 ?>

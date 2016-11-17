@@ -1,3 +1,3 @@
 <?php
-  include('../view/planning.view.php');
+  include_once('../view/planning.view.php');
 ?>

@@ -14,7 +14,7 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
-  <link rel="stylesheet" href="../view/accueil.css" type="text/css" />
+  <link rel="stylesheet" href="../view/css/accueil.css" type="text/css" />
 
   <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -74,39 +74,33 @@
   		});
   	</script>
 
-
-
-
-
-
-
   <nav class="text-center">
     <div class="col-btn col-xs-12 col-sm-4">
       <a href="planning.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Invités</a>
+      <a href="contacts.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Contacts</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i><br>Invitations</a>
+      <a href="invitations.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i><br>Invitations</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-th fa-2x" aria-hidden="true"></i><br>Plan de table</a>
+      <a href="plandetable.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-th fa-2x" aria-hidden="true"></i><br>Plan de table</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><br>Repas</a>
+      <a href="repas.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><br>Repas</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-truck fa-2x" aria-hidden="true"></i><br>Fournisseurs</a>
+      <a href="fournisseurs.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-truck fa-2x" aria-hidden="true"></i><br>Fournisseurs</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
+      <a href="inspiration.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
+      <a href="liste.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
+      <a href="budget.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
     </div>
   </nav>
 

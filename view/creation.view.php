@@ -20,7 +20,7 @@
 
   <!-- For GOOGLE autocomplete -->
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
-  <link rel="stylesheet" href="../view/creation.css" type="text/css" />
+  <link rel="stylesheet" href="../view/css/creation.css" type="text/css" />
 
 </head>
 <body class="container-fluid">
