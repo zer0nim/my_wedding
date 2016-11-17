@@ -65,10 +65,3 @@
 --><a href="liste.ctrl.php" class="liste btn btn-link btn-sm"><i class="fa fa-gift fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="budget.ctrl.php" class="budget btn btn-link btn-sm"><i class="fa fa-eur fa-2x" aria-hidden="true"></i></a>
 </nav>
-
-  <footer>
-
-  </footer>
-</body>
-
-</html>
