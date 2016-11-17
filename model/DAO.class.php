@@ -6,7 +6,7 @@ class DAO {
   // Ouverture de la base de donnée
   function __construct() {
     try {
-      $this->db = new PDO('mysql:host=164.132.34.157;dbname=base', 'iut2info', 'projetweb');
+      $this->db = new PDO('mysql:host=164.132.34.157;dbname=base;charset=utf8', 'iut2info', 'projetweb');
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
