@@ -35,7 +35,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="accueil.view.php">Accueil</a></li>
+          <li><a href="accueil.view.php">Accueil</a></li>
           <li><a href="creation.view.php">Paramètres de l'événement</a></li>
           <li><a href="#">Page Publique</a></li>
           <li><a href="#">Mon compte</a></li>
@@ -49,7 +49,7 @@
 </header>
 
 <div class="test-center">
-<a href="planning.view.php" class="btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a>
+<a href="planning.view.php" class="active btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a>
 <a href="#" class="btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a>
 <a href="#" class="btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
 <a href="#" class="btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a>
