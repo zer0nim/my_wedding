@@ -15,6 +15,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
   <link rel="stylesheet" href="../view/planning.css" type="text/css" />
+  <link rel="stylesheet" href="../view/navFnct.css" type="text/css" />
 
   <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
