@@ -49,15 +49,15 @@
 </header>
 
 <div class="test-center">
-<a href="planning.view.php" class="active btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-truck fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-gift fa-2x" aria-hidden="true"></i></a>
-<a href="#" class="btn btn-link btn-sm"><i class="fa fa-eur fa-2x" aria-hidden="true"></i></a>
+<a href="planning.view.php" class="active btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-truck fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-gift fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+--><a href="#" class="btn btn-link btn-sm"><i class="fa fa-eur fa-2x" aria-hidden="true"></i></a>
 </div>
 
   <footer>
