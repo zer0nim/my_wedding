@@ -7,6 +7,13 @@ nav {
   margin: 5px;
 }
 
+
+select[multiple], select[size] {
+    height: 600px;
+}
+
+
+
 /* v---navBar---v*/
 
 .test-center .contacts{

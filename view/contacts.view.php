@@ -1,46 +1,46 @@
-<link rel="stylesheet" href="../view/css/contacts.css" type="text/css" />
 <?php
   require_once '../view/baseMenuFnct.php';
 ?>
+<link rel="stylesheet" href="../view/css/contacts.css" type="text/css" />
 
 <form>
-  <div class="form-group">
-    <label>Mutiple select list (hold shift to select more than one):</label>
-    <select multiple class="form-control">
-      <option>Baptiste Des Meaux</option>
-      <option>Valentine Bonnet</option>
-      <option>Bertrand Bellefeuille</option>
-      <option>Camille Garceau</option>
-      <option>Vincent Karel</option>
-      <option>Marguerite Frappier</option>
-      <option>Florence Dodier</option>
-      <option>Christine Frappier</option>
-      <option>Aurélie Masson</option>
-      <option>Stéphane Tachel</option>
-      <option>Xavier Lacroix</option>
-      <option>Eugène Meunier</option>
-      <option>Céline Tachel</option>
-      <option>Stéphanie Lazure</option>
-      <option>Christien Charette</option>
-      <option>Oliver Charette</option>
-      <option>Didier Charette</option>
-      <option>Chloe Masson</option>
-      <option>Roger Perez</option>
-      <option>Nicolas Delaunay</option>
-      <option>Jules Masson</option>
-      <option>Claudette Masson</option>
-      <option>Catherine Lemonnier</option>
-      <option>Thibault Garceau</option>
-      <option>Eugène Georges</option>
-      <option>Claire Leblanc</option>
-      <option>Alfred Marchal</option>
-      <option>Jeannine Boucher</option>
-      <option>Jeannine Boucher</option>
-      <option>Jeannine Boucher</option>
-      <option>Yves Petitjean</option>
-      <option>lisa Petitjean</option>
-      <option>Sylvie Guilbert</option>
-    </select>
+  <div class="form-group row">
+    <div class="col-xs-2">
+      <label>Mutiple select list (hold shift to select more than one):</label>
+      <select multiple class="form-control">
+        <option>Bellefeuille Bertrand</option>
+        <option>Bonnet Valentine</option>
+        <option>Charette Christien</option>
+        <option>Charette Didier</option>
+        <option>Charette Oliver</option>
+        <option>Delaunay Nicolas</option>
+        <option>Des Meaux Baptiste</option>
+        <option>Dodier Florence</option>
+        <option>Frappier Christine</option>
+        <option>Frappier Marguerite</option>
+        <option>Garceau Camille</option>
+        <option>Garceau Jeannine</option>
+        <option>Garceau Thibault</option>
+        <option>Georges Eugène</option>
+        <option>Guilbon Sylvie</option>
+        <option>Karel Vincent</option>
+        <option>Lacroix Stéphane</option>
+        <option>Lacroix Xavier</option>
+        <option>Lazure Stéphanie</option>
+        <option>Leblanc Claire</option>
+        <option>Lemonnier Catherine</option>
+        <option>Marchal Alfred</option>
+        <option>Masson Aurélie</option>
+        <option>Masson Chloe</option>
+        <option>Masson Claudette</option>
+        <option>Masson Jules</option>
+        <option>Meunier Céline</option>
+        <option>Meunier Eugène</option>
+        <option>Perez Roger</option>
+        <option>Petitjean lisa</option>
+        <option>Petitjean Yves</option>
+      </select>
+    </div>
   </div>
 </form>
 
