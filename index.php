@@ -1,6 +1,5 @@
 <?php
 
-    header('Location: view/accueil.view.php');
+    header('Location: controller/accueil.ctrl.php');
 
 ?>
-

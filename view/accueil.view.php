@@ -14,7 +14,7 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
-  <link rel="stylesheet" href="accueil.css" type="text/css" />
+  <link rel="stylesheet" href="../view/accueil.css" type="text/css" />
 
   <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Accueil</a></li>
-          <li><a href="creation.view.php">Paramètres de l'événement</a></li>
+          <li><a href="creation.ctrl.php">Paramètres de l'événement</a></li>
           <li><a href="#">Page Publique</a></li>
           <li><a href="#">Mon compte</a></li>
         </ul>
@@ -82,7 +82,7 @@
 
   <nav class="text-center">
     <div class="col-btn col-xs-12 col-sm-4">
-      <a href="planning.view.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
+      <a href="planning.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
     </div>
     <div class="col-btn col-xs-12 col-sm-4">
       <a href="#" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Invités</a>

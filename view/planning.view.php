@@ -14,7 +14,7 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
-  <link rel="stylesheet" href="planning.css" type="text/css" />
+  <link rel="stylesheet" href="../view/planning.css" type="text/css" />
 
   <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -35,8 +35,8 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="accueil.view.php">Accueil</a></li>
-          <li><a href="creation.view.php">Paramètres de l'événement</a></li>
+          <li><a href="accueil.ctrl.php">Accueil</a></li>
+          <li><a href="creation.ctrl.php">Paramètres de l'événement</a></li>
           <li><a href="#">Page Publique</a></li>
           <li><a href="#">Mon compte</a></li>
         </ul>
@@ -48,8 +48,8 @@
   </nav>
 </header>
 
-<div class="test-center">
-<a href="planning.view.php" class="active btn btn-link btn-sm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a><!-- @whitespace
+<div class="test-center"><!-- @whitespace
+--><a href="planning.view.php" class="active btn btn-link btnsm"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="#" class="btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="#" class="btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="#" class="btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a><!-- @whitespace
