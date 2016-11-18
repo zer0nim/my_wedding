@@ -28,7 +28,7 @@
   <header>
     <div class="navbar navbar-default">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">My Wedding Planner</a>
+        <a class="navbar-brand" href="#">My Wedding</a>
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Création de l'événement</a></li>
