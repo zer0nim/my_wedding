@@ -31,7 +31,7 @@
         <a class="navbar-brand" href="#">My Wedding</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Création de l'événement</a></li>
+        <li class="active"><a href="#">Paramètres mariage</a></li>
         <li><a href="#">Mon compte</a></li>
       </ul>
     </div>
