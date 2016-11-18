@@ -7,12 +7,14 @@ nav {
   margin: 5px;
 }
 
-
 select[multiple], select[size] {
-    height: 600px;
+    height: 70vh;
 }
-
-
+@media (max-width: 768px) {
+  select[multiple], select[size] {
+      height: 60vh;
+  }
+}
 
 /* v---navBar---v*/
 

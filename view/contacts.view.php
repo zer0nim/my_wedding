@@ -5,8 +5,8 @@
 
 <form>
   <div class="form-group row">
-    <div class="col-xs-2">
-      <label>Mutiple select list (hold shift to select more than one):</label>
+    <div class="col-xs-12 col-sm-5 col-lg-3">
+      <label>Liste des contacts:</label>
       <select multiple class="form-control">
         <option>Bellefeuille Bertrand</option>
         <option>Bonnet Valentine</option>
