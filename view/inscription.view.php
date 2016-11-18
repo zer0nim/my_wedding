@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Connexion / Inscription</title>
+    <title>MyWedding</title>
     <meta name="description" content="Le site de planification de mariage">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -15,11 +15,11 @@
   <body>
     <header>
       <div class="form-signin-heading col-xs-12">
-        <center><h1>Connectez vous ou inscrivez vous</h1><center/>
+        <center><h1>Bienvenue sur MyWedding</h1><center/>
       </div>
 
     </header>
-    <div class="container1 col-xs-12 col-sm-5" >
+    <div class="container col-xs-12 col-sm-6" >
       <form class="form-signin" action="connecter.ctrl.php" method="get">
         <h2 class="form-signin-heading">Connectez-vous</h2>
 
@@ -38,11 +38,8 @@
       </form>
     </div> <!-- /container -->
 
-    <div class="form-signin col-xs-12 col-sm-2">
-        <center><h2>OU</h2><center/>
-    </div>
 
-    <div class="container2 col-xs-12 col-sm-5">
+    <div class="container col-xs-12 col-sm-6">
       <form class="form-signin" action="inscrire.ctrl.php" method="get">
         <h2 class="form-signin-heading">Inscrivez-vous</h2>
 
