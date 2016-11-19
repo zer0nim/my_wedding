@@ -3,8 +3,6 @@
 <?php
 require_once '../view/baseMenuFnct.php';
 ?>
-<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!--a suppr !-->
-
 <link rel="stylesheet" href="../view/css/contacts.css" type="text/css" />
 
 <form>
@@ -74,13 +72,13 @@ require_once '../view/baseMenuFnct.php';
       </div>
     </div>
     <div class="nopadding form-group col-xs-12">
-      <div class="margin-b-form col-xs-12 col-lg-7">
+      <div class="margin-b-form col-xs-12 col-lg-6">
         <div class="input-group">
           <span class="input-group-addon">Mail</span>
           <input id="prependedtext" name="prependedtext" class="form-control" placeholder="" required="" type="text">
         </div>
       </div>
-      <div class="col-xs-12 col-lg-5">
+      <div class="col-xs-12 col-lg-6">
         <div class="input-group">
           <span class="input-group-addon">Télephone</span>
           <input id="prependedtext" name="prependedtext" class="form-control" placeholder="" type="text">
@@ -130,7 +128,7 @@ require_once '../view/baseMenuFnct.php';
     <div class="nopadding form-group col-xs-12">
       <div class="col-xs-4">
 
-        <div class="panel panel-default">
+        <div class="no-marg-bot panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Bonne entante</h3>
           </div>
@@ -143,7 +141,7 @@ require_once '../view/baseMenuFnct.php';
       </div>
       <div class="col-xs-4">
 
-        <div class="panel panel-default">
+        <div class="no-marg-bot panel panel-default">
           <div class="control-btn panel-heading">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
               <div class="btn-group" role="group">
@@ -195,7 +193,7 @@ require_once '../view/baseMenuFnct.php';
       </div>
       <div class="col-xs-4">
 
-        <div class="panel panel-default">
+        <div class="no-marg-bot panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Mauvaise entante</h3>
           </div>

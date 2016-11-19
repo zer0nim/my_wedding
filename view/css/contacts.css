@@ -9,7 +9,7 @@ nav {
 
 
 select[multiple], select[size] {
-    height: 70vh;
+    height: 71vh;
 }
 @media (max-width: 768px) {
   select[multiple], select[size] {
@@ -17,15 +17,8 @@ select[multiple], select[size] {
   }
 }
 
-@media (max-width: 1200px) {
-  .margin-b-form {
-      margin-bottom: 15px;
-  }
-}
-
-.control-btn {
-  padding-bottom: 6px;
-  padding-bottom: 6px;  
+.panel-title {
+  font-size: 1em;
 }
 
 #afinite {
@@ -37,6 +30,23 @@ select[multiple], select[size] {
   }
 }
 
+@media (max-width: 1200px) {
+  .margin-b-form {
+      margin-bottom: 15px;
+  }
+  #afinite {
+      height: 30vh;
+  }
+}
+
+.control-btn {
+  padding-bottom: 6px;
+  padding-bottom: 6px;
+}
+
+.no-marg-bot {
+  margin-bottom: 0;
+}
 
 .nopadding {
   padding: 0;
