@@ -7,6 +7,10 @@ nav {
   margin: 5px;
 }
 
+.no-marg-bot {
+  margin-bottom: 0;
+}
+
 /* v---navBar---v*/
 
 .test-center .fournisseurs{
