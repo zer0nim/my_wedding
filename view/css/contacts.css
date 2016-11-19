@@ -22,7 +22,7 @@ select[multiple], select[size] {
 }
 
 #afinite {
-    height: 38vh;
+    height: 42.5vh;
 }
 @media (max-width: 768px) {
   #afinite {
@@ -35,13 +35,13 @@ select[multiple], select[size] {
       margin-bottom: 15px;
   }
   #afinite {
-      height: 30vh;
+      height: 35vh;
   }
 }
 
 .control-btn {
-  padding-bottom: 6px;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
+  padding-bottom: 4px;
 }
 
 .no-marg-bot {

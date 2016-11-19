@@ -125,21 +125,19 @@ require_once '../view/baseMenuFnct.php';
     </div>
 
     <!-- -v- Liste affinités -v- -->
-    <div class="nopadding form-group col-xs-12">
-      <div class="col-xs-4">
+    <div class="form-group col-xs-12">
+      <div class="nopadding col-xs-4">
 
         <div class="no-marg-bot panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Bonne entante</h3>
+            <h3 class="panel-title">Entente</h3>
           </div>
-          <div class="panel-body">
             <select multiple id="afinite" class="form-control">
             </select>
-          </div>
         </div>
 
       </div>
-      <div class="col-xs-4">
+      <div class="nopadding col-xs-4">
 
         <div class="no-marg-bot panel panel-default">
           <div class="control-btn panel-heading">
@@ -152,8 +150,6 @@ require_once '../view/baseMenuFnct.php';
               </div>
             </div>
           </div>
-          <div class="panel-body">
-
             <select multiple id="afinite" class="form-control">
               <option>Bellefeuille Bertrand</option>
               <option>Bonnet Valentine</option>
@@ -187,20 +183,16 @@ require_once '../view/baseMenuFnct.php';
               <option>Petitjean lisa</option>
               <option>Petitjean Yves</option>
             </select>
-
-          </div>
         </div>
       </div>
-      <div class="col-xs-4">
+      <div class="nopadding col-xs-4">
 
         <div class="no-marg-bot panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Mauvaise entante</h3>
+            <h3 class="panel-title">Mésentente</h3>
           </div>
-          <div class="panel-body">
             <select multiple id="afinite" class="form-control">
             </select>
-          </div>
         </div>
 
       </div>
