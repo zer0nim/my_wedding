@@ -36,7 +36,7 @@
           Site Internet : www.salledespectacles.com
         </address>
         <blockquote>
-          <p>Aller chercher les clés de la salle lundi dans la matinée</p>
+          <p>Aller chercher les clés de la salle lundi dans la matinée </p>
         </blockquote>
         <p><a href="#" class="btn btn-danger" role="button">Supprimer</a></p>
       </div>
