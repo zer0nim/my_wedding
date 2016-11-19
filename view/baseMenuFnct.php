@@ -15,9 +15,9 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://use.fontawesome.com/f332948f4d.js"></script>
 
-  <link type="text/css" href="../cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
+  <link type="text/css" href="../model/cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="../cntDown/jquery.countdown.min.js?v=1.0.0.0"></script>
+  <script type="text/javascript" src="../model/cntDown/jquery.countdown.min.js?v=1.0.0.0"></script>
 
 </head>
 <body class="container-fluid">

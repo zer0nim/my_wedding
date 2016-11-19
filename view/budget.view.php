@@ -3,73 +3,133 @@
 ?>
 <link rel="stylesheet" href="../view/css/budget.css" type="text/css" />
 
-    <!--<div class="col-xs-12">
-	
-	<div class="col-xs-12 col-sm-3 col-sm-push-1"> <!-- div principale de chaque budget -->
-	   <!--<div class="form-group col-sm-12">
-		<p>Budget nourriture : 1500 €</p>
-	    </div>
-	    
-	    ---------------
-	    
-	    <form action="">
-	    First name: <input type="text" id="txt1" onkeyup="showHint(this.value)">
-	    </form>
+    
+    <div class="text-center">
+        
+        <div id="divprincipal" class="row col-sm-4 col-sm-offset-4">
+            <button class="btn btn-primary" onClick="ajouter()">Ajouter un budget</button>
+        </div>
+        
+        <?php
+            foreach ($tabbudget as $idbudget => $budget) {
+        ?>
+            <div id="<?= $idbudget ?>" class="budget col-sm-4 col-sm-offset-1 col-sm-push-1">
+                <div class="row col-sm-12">
+                    <p><?= $budget['description'] ?> : <?= $budget['value'] ?> €</p>
+                </div>
+                <table class="row scroll form-control">
+                    <tr class="row"><th class="col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
+                    <?php
+                        foreach ($budget['tabdepense'] as $depense) {
+                    ?>
+                            <tr class="row"><td><?= $depense['depdescription'] ?></td><td class="text-right"><?= $depense['depvalue'] ?> €</td></tr>
+                    <?php
+                            }
+                    ?>
+                </table>
+                <table class="row">
+                    <tr><td class="col-sm-12 text-center">Total dépensé</td><td class="col-sm-12 text-right"><?= $budget['totaldepense'] ?> €</td></tr>
+                    <tr><td class="col-sm-12 text-center">Budget restant</td><td class="col-sm-12 text-right"><?= $budget['totalrest'] ?> €</td></tr>
+                </table>
+                <div class="row">
+                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onClick="confirmation(<?= $idbudget ?>)">Supprimer</button>
+                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onclick="afficheModif(<?= $idbudget ?>)">Modifier</button>
+                </div>
+            </div>
+        <?php
+            }
+        ?> 
+        
+    </div>
 
-	    <p>Suggestions: <span id="txtHint"></span></p>
 
-	    <script>
-	    function showHint(str) {
-	      var xhttp;
-	      if (str.length == 0) {
-		document.getElementById("txtHint").innerHTML = "";
-		return;
-	      }
-	      xhttp = new XMLHttpRequest();
-	      xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-		  document.getElementById("txtHint").innerHTML = this.responseText;
-		}
-	      };
-	      xhttp.open("GET", "gethint.php?q="+str, true);
-	      xhttp.send();
-	    }
-	    </script>
+    <!-- script java -->
+    <script type="text/javascript">
+        
+        // fonction pour confirmation de suppression d'un budget (cree une popup)
+        function confirmation(idbudget) {
+            var msg = "Êtes-vous sur de vouloir supprimer ce budget ?";
+            if (confirm(msg)){ // onenvoie un formulaire avec idbudget en post
+                var xhttp0;
+                xhttp0 = new XMLHttpRequest();
+                xhttp0.onreadystatechange = function() {
+                    if(xhttp0.readyState === XMLHttpRequest.DONE && xhttp0.status === 200) {
+                        document.getElementById(idbudget).remove();
+                    }
+                };
+                xhttp0.open("GET", "budget-modifie.php?idbudget="+idbudget+"&action=supprimer", true);
+                xhttp0.send();
+            }
+        }    
 
-	    -------------------------------
-	    
-	    <table class="form-group col-sm-12">
-		<tr><td>Boisson</td><td>500 €</td></tr>
-		<tr><td>Viande</td><td>1000 €</td></tr>
-		<tr><td>Gateau</td><td>70 €</td></tr>
-		<tr><td>Total</td><td>1570 €</td></tr>
-	    </table>
-	    
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popup1">Modifier</button>
-	    <div id="popup1" class="modal fade" role="dialog">
-	      <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal">&times;</button>
-		    <h4 class="modal-title">Budget nourriture</h4>
-		  </div>
-		  <div class="modal-body">
-		      <!-- body -->
-		      <!--<form method="get" action="accueil.ctrl.php">
-			  <input type="text" value="test" name="testtext">
-			  <button type="button" class="btn btn-default" data-dismiss="modal">Valider</button>
-		      </form>
-		      <form>			  
-			  <button type="button" class="btn" data-dismiss="modal">Annuler</button>
-		      </form>
-		  </div>
-		</div>
-
-	      </div>
-	    </div>
-	</div>
-	
-    </div>-->
+        // fonction pour afficher les champs quand l'utilisateur veut modifier un budget
+        function afficheModif(idbudget) {
+            var xhttp1;
+            xhttp1 = new XMLHttpRequest();
+            xhttp1.onreadystatechange = function() {
+                if(xhttp1.readyState === XMLHttpRequest.DONE && xhttp1.status === 200) {
+                    document.getElementById(idbudget).innerHTML = this.responseText;
+                }
+            };
+            xhttp1.open("GET", "budget-modifie.php?idbudget="+idbudget+"&action=modifier", true);
+            xhttp1.send();
+        }
+        
+        // fonction pour ajouter un budget
+        var nom = 0;
+        function ajouter() {
+            var xhttp2;
+            xhttp2 = new XMLHttpRequest();
+            xhttp2.onreadystatechange = function() {
+                if(xhttp2.readyState === XMLHttpRequest.DONE && xhttp2.status === 200) { 
+                    var reponse = this.responseText;
+                    $("#divprincipal").after(reponse);
+                }
+            };
+            xhttp2.open("GET", "budget-modifie.php?action=ajouter&idbudget=13"+nom, true);
+            nom++;this.responseText
+            xhttp2.send();
+        }
+    
+        // fonction pour supprimer une dépense
+        function supp(iddepense) {
+            document.getElementById(iddepense).remove();
+        }
+    
+        // fonction pour ajouter un champ dépense
+        var i = 0;
+        function add(idbudget) {
+            var iddepense = "12"+i; // doit etre tout le temps different
+            i++;
+            $("#idadd"+idbudget).append('<tr id='+iddepense+' class="row"><td><p class="btn btn-danger" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input name="'+iddepense+'depdescription" type="text" value=""></td><td class="text-right"><input name="'+iddepense+'depvalue" type="number" min="0" value="0 €"></td></tr>');
+        }
+        
+        // fonction pour annuler les modifications
+        function annuler(idbudget) {
+            var xhttp3;
+            xhttp3 = new XMLHttpRequest();
+            xhttp3.onreadystatechange = function() {
+                if(xhttp3.readyState === XMLHttpRequest.DONE && xhttp3.status === 200) {
+                    document.getElementById(idbudget).innerHTML = this.responseText;
+                }
+            };
+            xhttp3.open("GET", "budget-modifie.php?idbudget="+idbudget+"&action=annuler", true);
+            xhttp3.send();
+        }
+        
+        // fonction pour valider les modifications
+        function valider(idbudget) {
+            var xhttp4;
+            xhttp4 = new XMLHttpRequest();
+            xhttp4.onreadystatechange = function() {
+                if(xhttp4.readyState === XMLHttpRequest.DONE && xhttp4.status === 200) {
+                    document.getElementById(idbudget).innerHTML = this.responseText;
+                }
+            };
+            xhttp4.open(document.getElementById("form"+idbudget).method, document.getElementById("form"+idbudget).action, true);
+            xhttp4.send(new FormData(document.getElementById("form"+idbudget)));
+        }
+    </script>
 
 </body>
 </html>
