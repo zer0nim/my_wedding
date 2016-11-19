@@ -7,13 +7,45 @@ nav {
   margin: 5px;
 }
 
+
 select[multiple], select[size] {
-    height: 70vh;
+    height: 71vh;
 }
 @media (max-width: 768px) {
   select[multiple], select[size] {
       height: 35vh;
   }
+}
+
+.panel-title {
+  font-size: 1em;
+}
+
+#afinite {
+    height: 42.5vh;
+}
+@media (max-width: 768px) {
+  #afinite {
+      height: 25vh;
+  }
+}
+
+@media (max-width: 1200px) {
+  .margin-b-form {
+      margin-bottom: 15px;
+  }
+  #afinite {
+      height: 35vh;
+  }
+}
+
+.control-btn {
+  padding-bottom: 4px;
+  padding-bottom: 4px;
+}
+
+.no-marg-bot {
+  margin-bottom: 0;
 }
 
 .nopadding {

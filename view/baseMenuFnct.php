@@ -23,8 +23,14 @@
 <body class="container-fluid">
 
 <style>
+.navbar-default {
+  margin-bottom: 0;
+}
 .navbar-default .navbar-nav > .active > a {
   background-color: #dae8ef;
+}
+.test-center {
+  margin-bottom: 15px;
 }
 </style>
 
