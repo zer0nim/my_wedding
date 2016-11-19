@@ -11,5 +11,34 @@ class DAO {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
   }
+  
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité budget
+    //----------------------------------------------------------------------------------------
+
+    // recupere tout les budgets et depense d'un mariage
+    function getBudgets($idmariage){
+
+    }
+
+    // recupere un budget et ces depenses en fonction de son id
+    function getBudget($idbudget){
+
+    }
+
+    // supprime un budget et ces depenses en fonction de son id
+    function supBudget($idbudget){
+
+    }
+
+    // met à jour ou cree un objet budget dans la bd
+    // met à jour ou cree des objets depense dans la bd
+    function updateBudget($budget){
+
+    }
+
+    //----------------------------------------------------------------------------------------
+  
 }
+
 ?>

@@ -6,14 +6,14 @@
     
     <div class="text-center">
         
-        <div id="divprincipal" class="row col-sm-4 col-sm-offset-4">
+        <div id="divboutonajouter" class="row row-margin col-sm-4 col-sm-offset-4">
             <button class="btn btn-primary" onClick="ajouter()">Ajouter un budget</button>
         </div>
         
         <?php
             foreach ($tabbudget as $idbudget => $budget) {
         ?>
-            <div id="<?= $idbudget ?>" class="budget col-sm-4 col-sm-offset-1 col-sm-push-1">
+            <div id="<?= $idbudget ?>" class="row-margin budget col-sm-4 col-sm-offset-1 col-sm-push-1">
                 <div class="row col-sm-12">
                     <p><?= $budget['description'] ?> : <?= $budget['value'] ?> €</p>
                 </div>
@@ -27,9 +27,9 @@
                             }
                     ?>
                 </table>
-                <table class="row">
-                    <tr><td class="col-sm-12 text-center">Total dépensé</td><td class="col-sm-12 text-right"><?= $budget['totaldepense'] ?> €</td></tr>
-                    <tr><td class="col-sm-12 text-center">Budget restant</td><td class="col-sm-12 text-right"><?= $budget['totalrest'] ?> €</td></tr>
+                <table class="row table-margin col-sm-10">
+                    <tr class="row"><td class="text-center">Total dépensé</td><td class="text-right"><?= $budget['totaldepense'] ?> €</td><td></td></tr>
+                    <tr class="row"><td class="text-center">Budget restant</td><td class="text-right"><?= $budget['totalrest'] ?> €</td><td></td></tr>
                 </table>
                 <div class="row">
                     <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onClick="confirmation(<?= $idbudget ?>)">Supprimer</button>
@@ -49,7 +49,7 @@
         // fonction pour confirmation de suppression d'un budget (cree une popup)
         function confirmation(idbudget) {
             var msg = "Êtes-vous sur de vouloir supprimer ce budget ?";
-            if (confirm(msg)){ // onenvoie un formulaire avec idbudget en post
+            if (confirm(msg)){
                 var xhttp0;
                 xhttp0 = new XMLHttpRequest();
                 xhttp0.onreadystatechange = function() {
@@ -83,7 +83,7 @@
             xhttp2.onreadystatechange = function() {
                 if(xhttp2.readyState === XMLHttpRequest.DONE && xhttp2.status === 200) { 
                     var reponse = this.responseText;
-                    $("#divprincipal").after(reponse);
+                    $("#divboutonajouter").after(reponse);
                 }
             };
             xhttp2.open("GET", "budget-modifie.php?action=ajouter&idbudget=13"+nom, true);
@@ -101,7 +101,7 @@
         function add(idbudget) {
             var iddepense = "12"+i; // doit etre tout le temps different
             i++;
-            $("#idadd"+idbudget).append('<tr id='+iddepense+' class="row"><td><p class="btn btn-danger" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input name="'+iddepense+'depdescription" type="text" value=""></td><td class="text-right"><input name="'+iddepense+'depvalue" type="number" min="0" value="0 €"></td></tr>');
+            $("#idadd"+idbudget).before('<tr id='+iddepense+' class="row"><td><p class="btn btn-danger" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input name="'+iddepense+'depdescription" type="text" value=""></td><td class="text-right"><input name="'+iddepense+'depvalue" type="number" min="0" value="0 €"></td></tr>');
         }
         
         // fonction pour annuler les modifications

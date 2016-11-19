@@ -47,3 +47,20 @@ nav {
     overflow:scroll;
     height:200px;
 }
+
+.row-margin{
+    margin-top: 30px;
+}
+
+.budget{
+    /*background-color: #dcdcdc;*/
+}
+
+.table-margin{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.bouton-margin{
+    margin-top: 10px;
+}
