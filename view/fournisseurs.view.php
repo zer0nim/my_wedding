@@ -4,10 +4,12 @@
 <link rel="stylesheet" href="../view/css/fournisseurs.css" type="text/css" />
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+
 
 <div class="row">
 
-  <div class="col-sm-6 col-md-4">
+  <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <address>
@@ -25,7 +27,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6 col-md-4">
+  <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <address>
@@ -43,7 +45,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6 col-md-4">
+  <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <address>
@@ -62,7 +64,7 @@
   </div>
 
   <!-- Tableau d'ajout de fournisseur -->
-  <div class="col-sm-6 col-md-4">
+  <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <p><a href="#" class="btn btn-primary" role="button">Ajouter</a></p>
@@ -95,6 +97,12 @@
       </div>
     </div>
   </div>
+
+<script>
+  $(function() {
+      $('.box').matchHeight();
+  });
+</script>
 
 
 </div>
