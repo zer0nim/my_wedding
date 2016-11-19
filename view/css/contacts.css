@@ -7,6 +7,7 @@ nav {
   margin: 5px;
 }
 
+
 select[multiple], select[size] {
     height: 70vh;
 }
@@ -15,6 +16,27 @@ select[multiple], select[size] {
       height: 35vh;
   }
 }
+
+@media (max-width: 1200px) {
+  .margin-b-form {
+      margin-bottom: 15px;
+  }
+}
+
+.control-btn {
+  padding-bottom: 6px;
+  padding-bottom: 6px;  
+}
+
+#afinite {
+    height: 38vh;
+}
+@media (max-width: 768px) {
+  #afinite {
+      height: 25vh;
+  }
+}
+
 
 .nopadding {
   padding: 0;
