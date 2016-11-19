@@ -46,18 +46,16 @@
   </div>
 
   <div class="col-sm-6 col-md-4">
+
     <div class="thumbnail">
       <div class="caption">
-        <h3>Ajouter Fournisseurs :</h3>
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Titre</span>
-          <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+        <h3>Ajouter Fournisseurs</h3>
+      </div>
+      <div class="no-marg-bot panel panel-default">
+        <div class="panel-heading">
+          <input type="text" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
         </div>
-        <div class="input-group">
-          <span class="input-group-addon id="basic-addon1"></span>
-          <textarea class="form-control" rows="3"></textarea>
-        </div>
-        <p><a href="#" class="btn btn-primary" role="button">Ajouter</a></p>
+        <textarea class="form-control" id="" name="">Description</textarea>
       </div>
     </div>
   </div>
