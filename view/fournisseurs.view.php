@@ -63,6 +63,8 @@
     </div>
   </div>
 
+
+
   <!-- Tableau d'ajout de fournisseur -->
   <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
@@ -98,6 +100,7 @@
     </div>
   </div>
 
+<!-- Script pour géré les différente hauteur des éléments dans la grille-->
 <script>
   $(function() {
       $('.box').matchHeight();
