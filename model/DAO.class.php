@@ -11,7 +11,7 @@ class DAO {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
   }
-  
+
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------
@@ -38,7 +38,16 @@ class DAO {
     }
 
     //----------------------------------------------------------------------------------------
-  
+    // fonction pour la fonctionnalité fournisseurs
+    //----------------------------------------------------------------------------------------
+
+    // recupere tout les fournisseurs d'un mariage
+    function getFournisseurs($idM) {
+      $req = $this->db->prepare('SELECT * FROM Fournisseurs WHERE four_idM = :id');
+      $req->execute(array(':id' => $idM,));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "fournisseurs");
+      return $donnee;
+    }
 }
 
 ?>
