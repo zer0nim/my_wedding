@@ -7,6 +7,14 @@ nav {
   margin: 5px;
 }
 
+table {
+  background-color: white;
+}
+
+#singlebutton {
+  margin-bottom: 5px;
+}
+
 /* v---navBar---v*/
 
 .test-center .plandetable{
