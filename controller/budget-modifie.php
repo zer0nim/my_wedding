@@ -1,13 +1,17 @@
 <?php 
 
+    require_once '../model/DAO.class.php';
+
     $budget = null; 
     if (isset($_GET['idbudget'])){
         
-        if(isset($_GET['action']) && $_GET['action'] != "ajouter"){
+        if(isset($_GET['action']) && $_GET['action'] != "ajouter" && $_GET['action'] != "supprimer"){
             // initialisation de $budget avec la base de donnée
-            $budget['idbudget'] = $_GET['idbudget'];
+            
+            $budget = $dao->getbudget($_GET['idbudget']);
 
             // pour un exemple car on a pas de bd pour le moment
+            $budget['idbudget'] = $_GET['idbudget'];
             $budget['description'] = "une description";
             $budget['value'] = 1500;
             $budget['totaldepense'] = 1000;
@@ -30,7 +34,7 @@
         // -----------------------------------------------------------------------------------------------------------------
         if ($_GET['action'] == "supprimer"){
             // suppression dans la base de donnée de idbudget a faire
-
+            $dao->suppbudget($_GET['idbudget']);
             
         // -----------------------------------------------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------------
@@ -51,9 +55,9 @@
                 $depense['depdescription'] = "description";
                 $depense['depvalue'] = 0;
 
-                $budget['tabdepense'][$_GET['idbudget']+'1100'] = $depense;
+                $budget['tabdepense'][$_GET['idbudget']] = $depense;
                 
-                ?> <div id="<?= $budget['idbudget'] ?>" class="budget col-sm-4 col-sm-offset-1 col-sm-push-1">
+                ?> <div id="<?= $budget['idbudget'] ?>" class="row-margin budget col-sm-4 col-sm-offset-1 col-sm-push-1">
             <?php } ?>
             
 
@@ -64,16 +68,15 @@
                     <p><input name="description" type="text" value="<?= $budget['description'] ?>"> : <input name="value" type="number" min="0" value="<?= $budget['value'] ?>"> €</p>
                 </div>
 
-                <p><tr class="row"><td></td><td></td><td class="text-right"><p class="btn btn-primary" onclick="add('<?= $budget['idbudget'] ?>')">Ajouté</p></td></tr></p>
-
-                <table id="idadd<?= $budget['idbudget'] ?>" class="row scroll form-control">
-                    <tr class="row"><th class="col-sm-12"></th><th class="col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
+                <table class="row scroll form-control">
+                    <tr class="row"><th class="col-sm-12"></th><th class="col-sm-12 text-center">Description</th><th class="col-sm-12 text-right">Prix</th></tr>
                     <?php foreach ($budget['tabdepense'] as $iddepense => $depense) { ?>
-                    <tr id="<?= $iddepense ?>" class="row"><td><p class="btn btn-danger" onclick="supp('<?= $iddepense ?>')"> X </p></td><td><input name="<?= $iddepense ?>depdescription" type="text" value="<?= $depense['depdescription'] ?>"></td><td class="text-right"><input name="<?= $iddepense ?>depvalue" type="number" min="0" value="<?= $depense['depvalue'] ?>"></td></tr>
+                    <tr id="<?= $iddepense ?>" class="row"><td><p class="btn btn-danger" onclick="supp('<?= $iddepense ?>')"> X </p></td><td><input name="<?= $iddepense ?>depdescription" type="text" value="<?= $depense['depdescription'] ?>"></td><td><input name="<?= $iddepense ?>depvalue" type="number" min="0" value="<?= $depense['depvalue'] ?>"></td></tr>
                     <?php } ?>
+                    <tr id="idadd<?= $budget['idbudget'] ?>" class="row"></td><td><td><p class="col-sm-5 col-sm-offset-3 btn btn-success" onclick="add('<?= $budget['idbudget'] ?>')">new</p></td><td></td></tr>
                 </table>
-
-                <div class="row">
+                
+                <div class="row bouton-margin">
                     <p onclick="annuler('<?= $budget['idbudget'] ?>')" name="action" value="annuler" class="col-sm-4 col-sm-offset-1 btn btn-primary">Annuler</p>
                     <p onclick="valider('<?= $budget['idbudget'] ?>')" name="action" value="valider" class="col-sm-4 col-sm-offset-1 btn btn-primary">Valider</p>
                 </div>
@@ -90,6 +93,7 @@
         // -----------------------------------------------------------------------------------------------------------------
         }else if ($_GET['action'] == "annuler" || $_GET['action'] == "valider"){
             // modification de l'affichage pour empcher la modification
+            
             if ($_GET['action'] == "valider"){
             // enregistrement dans la base de donnée des modifications
             // si idbudget n'existe pas dans la base, il faut creer un nouveau budget dans la base
@@ -111,6 +115,9 @@
                         $budget['totaldepense'] = $budget['totaldepense'] + $value;
                     }
                 }
+                
+                // mise à jour de la base de donnée
+                $dao->updateBudget($budget);
                                 
             }
             
@@ -131,9 +138,9 @@
                             }
                     ?>
                 </table>
-                <table class="row">
-                    <tr><td class="col-sm-12 text-center">Total dépensé</td><td class="col-sm-12 text-right"><?= $budget['totaldepense'] ?> €</td></tr>
-                    <tr><td class="col-sm-12 text-center">Budget restant</td><td class="col-sm-12 text-right"><?= $budget['totalrest'] ?> €</td></tr>
+                <table class="row table-margin col-sm-10">
+                    <tr class="row"><td class="text-center">Total dépensé</td><td class="text-right"><?= $budget['totaldepense'] ?> €</td></tr>
+                    <tr class="row"><td class="text-center">Budget restant</td><td class="text-right"><?= $budget['totalrest'] ?> €</td></tr>
                 </table>
                 <div class="row">                    
                     <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onClick="confirmation(<?= $budget['idbudget'] ?>)">Supprimer</button>

@@ -1,8 +1,11 @@
 <?php
 
-    // ! l'id doit etre un nombre qui commence par 1 !
+    require_once '../model/DAO.class.php';
+
+    // ! l'id doit etre un nombre qui ne commence pas par 0 !
     // recuperation des budgets
-    $tabbudget;
+    $idmariage = 0;
+    $tabbudget = $dao->getBudgets($idmariage);
     
     // pour un exemple
     $budget['description'] = "une description";
