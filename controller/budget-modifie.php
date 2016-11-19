@@ -3,7 +3,7 @@
     $budget = null; 
     if (isset($_GET['idbudget'])){
         
-        if(isset($_GET['action']) && $_GET['action'] != "ajouter" && $_GET['action'] != "annuler"){  // "!= annuler" a supprimer pour la bd
+        if(isset($_GET['action']) && $_GET['action'] != "ajouter"){
             // initialisation de $budget avec la base de donnée
             $budget['idbudget'] = $_GET['idbudget'];
 
