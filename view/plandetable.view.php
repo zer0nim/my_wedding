@@ -120,7 +120,7 @@ Bouton Impression du plan de table
             <p>Delaunay Nicolas<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p>
             <p>Des Meaux Baptiste<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p>
             <p><div class="input-group">
-                <select class="form-control">
+                <select class="form-control" disabled>
                   <option>-</option>
                   <option>Dodier Florence</option>
                   <option>Frappier Christine</option>
