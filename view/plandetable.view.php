@@ -21,6 +21,20 @@ Affichage graphique modifiable des invités sur les tables
 
 Bouton Impression du plan de table
 -->
+
+<!-- -v- Génerer -v- -->
+<div class="nopadding col-xs-12 col-lg-6">
+  <div class="nopadding form-group">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
+  </div>
+  <div class="alert alert-info alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> La génération du plan de table utilise l'âge ainsi que l'entente de chaque invité modifiable dans la fonction contact.
+  </div>
+</div>
+<!-- -^- Génerer -^- -->
+
+
 <button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouvelle</button>
 <table class="table table-bordered table-striped table-hover table-condensed table-responsive">
 	<thead>
@@ -52,47 +66,45 @@ Bouton Impression du plan de table
         </select>
       </td>
 			<td>
-          <div class="thumbnail">
-            <table class="table table-bordered table-striped table-hover table-responsive">
-            	<tbody>
-                <tr><td><p>Leblanc Claire<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Lemonnier Catherine<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Marchal Alfred<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Masson Aurélie<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Masson Chloe<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Masson Claudette<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td>
-                  <p><div class="input-group">
-                      <select class="form-control">
-                        <option>-</option>
-                        <option>Dodier Florence</option>
-                        <option>Frappier Christine</option>
-                        <option>Frappier Marguerite</option>
-                        <option>Garceau Camille</option>
-                        <option>Garceau Jeannine</option>
-                        <option>Garceau Thibault</option>
-                        <option>Georges Eugène</option>
-                        <option>Guilbon Sylvie</option>
-                        <option>Karel Vincent</option>
-                        <option>Lacroix Stéphane</option>
-                        <option>Lacroix Xavier</option>
-                        <option>Lazure Stéphanie</option>
-                        <option>Masson Jules</option>
-                        <option>Meunier Céline</option>
-                        <option>Meunier Eugène</option>
-                        <option>Perez Roger</option>
-                        <option>Petitjean lisa</option>
-                        <option>Petitjean Yves</option>
-                      </select>
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Ajouter</button>
-                      </span>
-                    </div>
-                  </p>
-                </td></tr>
-              </tbody>
-            </table>
-          </div>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+        	<tbody>
+            <tr><td><p>Leblanc Claire<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Lemonnier Catherine<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Marchal Alfred<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Masson Aurélie<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Masson Chloe<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Masson Claudette<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td>
+              <p><div class="input-group">
+                  <select class="form-control">
+                    <option>-</option>
+                    <option>Dodier Florence</option>
+                    <option>Frappier Christine</option>
+                    <option>Frappier Marguerite</option>
+                    <option>Garceau Camille</option>
+                    <option>Garceau Jeannine</option>
+                    <option>Garceau Thibault</option>
+                    <option>Georges Eugène</option>
+                    <option>Guilbon Sylvie</option>
+                    <option>Karel Vincent</option>
+                    <option>Lacroix Stéphane</option>
+                    <option>Lacroix Xavier</option>
+                    <option>Lazure Stéphanie</option>
+                    <option>Masson Jules</option>
+                    <option>Meunier Céline</option>
+                    <option>Meunier Eugène</option>
+                    <option>Perez Roger</option>
+                    <option>Petitjean lisa</option>
+                    <option>Petitjean Yves</option>
+                  </select>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Ajouter</button>
+                  </span>
+                </div>
+              </p>
+            </td></tr>
+          </tbody>
+        </table>
       </td>
 		</tr>
     <tr>
@@ -117,68 +129,53 @@ Bouton Impression du plan de table
 
       </td>
 			<td>
-          <div class="thumbnail">
-            <table class="table table-bordered table-striped table-hover table-responsive">
-              <tbody>
-                <tr><td><p>Bellefeuille Bertrand<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Bonnet Valentine<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Charette Christien<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Charette Didier<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Charette Oliver<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Delaunay Nicolas<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td><p>Des Meaux Baptiste<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-                <tr><td>
-                  <p><div class="input-group">
-                      <select class="form-control" disabled>
-                        <option>-</option>
-                        <option>Dodier Florence</option>
-                        <option>Frappier Christine</option>
-                        <option>Frappier Marguerite</option>
-                        <option>Garceau Camille</option>
-                        <option>Garceau Jeannine</option>
-                        <option>Garceau Thibault</option>
-                        <option>Georges Eugène</option>
-                        <option>Guilbon Sylvie</option>
-                        <option>Karel Vincent</option>
-                        <option>Lacroix Stéphane</option>
-                        <option>Lacroix Xavier</option>
-                        <option>Lazure Stéphanie</option>
-                        <option>Masson Jules</option>
-                        <option>Meunier Céline</option>
-                        <option>Meunier Eugène</option>
-                        <option>Perez Roger</option>
-                        <option>Petitjean lisa</option>
-                        <option>Petitjean Yves</option>
-                      </select>
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Ajouter</button>
-                      </span>
-                    </div>
-                  </p>
-                </td></tr>
-              </tbody>
-            </table>
-          </div>
+        <table class="table table-bordered table-striped table-hover table-responsive">
+          <tbody>
+            <tr><td><p>Bellefeuille Bertrand<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Bonnet Valentine<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Charette Christien<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Charette Didier<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Charette Oliver<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Delaunay Nicolas<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td><p>Des Meaux Baptiste<a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+            <tr><td>
+              <p><div class="input-group">
+                  <select class="form-control" disabled>
+                    <option>-</option>
+                    <option>Dodier Florence</option>
+                    <option>Frappier Christine</option>
+                    <option>Frappier Marguerite</option>
+                    <option>Garceau Camille</option>
+                    <option>Garceau Jeannine</option>
+                    <option>Garceau Thibault</option>
+                    <option>Georges Eugène</option>
+                    <option>Guilbon Sylvie</option>
+                    <option>Karel Vincent</option>
+                    <option>Lacroix Stéphane</option>
+                    <option>Lacroix Xavier</option>
+                    <option>Lazure Stéphanie</option>
+                    <option>Masson Jules</option>
+                    <option>Meunier Céline</option>
+                    <option>Meunier Eugène</option>
+                    <option>Perez Roger</option>
+                    <option>Petitjean lisa</option>
+                    <option>Petitjean Yves</option>
+                  </select>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Ajouter</button>
+                  </span>
+                </div>
+              </p>
+            </td></tr>
+          </tbody>
+        </table>
       </td>
 		</tr>
 	</tbody>
 </table>
 
-<div class="alert alert-info alert-dismissable fade in">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Info!</strong> La génération du plan de table utilise l'âge ainsi que l'entente de chaque invité modifiable dans la fonction contact.
-</div>
-
 <!-- -v- Button -v- -->
-<div class="form-group  col-xs-12">
-  <button id="singlebutton" name="singlebutton" class="btn btn-primary">enregistrer</button>
-</div>
-<!-- -^- Button -^- -->
-
-<!-- -v- Button -v- -->
-<div class="form-group  col-xs-12">
-  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Générer</button>
-</div>
+<button id="singlebutton" name="singlebutton" class="btn btn-primary btn-block">enregistrer</button>
 <!-- -^- Button -^- -->
 </body>
 </html>

@@ -19,6 +19,10 @@ table {
   float: right;
 }
 
+.nopadding {
+  padding: 0;
+}
+
 /* v---navBar---v*/
 
 .test-center .plandetable{
