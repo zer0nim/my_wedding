@@ -43,6 +43,8 @@ nav {
   }
 }
 
+/* ^---navBar---^ */
+
 .scroll{
     overflow:scroll;
     height:200px;
@@ -53,7 +55,15 @@ nav {
 }
 
 .budget{
-    /*background-color: #dcdcdc;*/
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
 }
 
 .table-margin{

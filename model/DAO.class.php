@@ -3,6 +3,7 @@
 require_once '../model/budget.class.php';
 require_once '../model/depense.class.php';
 
+require_once('fournisseurs.class.php');
 $dao = new DAO();
 
 class DAO {
@@ -257,6 +258,68 @@ class DAO {
       $donnee = $req->fetchAll(PDO::FETCH_CLASS, "fournisseurs");
       return $donnee;
     }
+
+    // retourne 1 si le couple idS et idM existe, sinon 0
+    function estCouplePresentFournisseur($idS, $idM) {
+      $req = $this->db->prepare('SELECT count(*) FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
+      $req->execute(array(':idM' => $idM, ':idS' => $idS,));
+      $donnee = $req->fetch();
+      return $donnee;
+    }
+
+    // suprimme le fournisseur de id = $idS et de idM = $idM
+    function delFournisseur($idS, $idM) {
+      $req = $this->db->prepare('DELETE FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
+      $req->execute(array(':idM' => $idM, ':idS' => $idS,));
+    }
+
+    // ajoute un fournisseur
+    function addFournisseur($idM, $titre, $adresse, $tel, $mail, $site, $description) {
+      $req = $this->db->prepare('INSERT INTO Fournisseurs(four_idM, four_titre, four_adresse, four_tel, four_mail, four_site, four_description) VALUES(:idM, :titre, :adresse, :tel, :mail, :site, :description) ');
+      $req->execute(array(':idM' => $idM,
+                          ':titre' => $titre,
+                          ':adresse' => $adresse,
+                          ':tel' => $tel,
+                          ':mail' => $mail,
+                          ':site' => $site,
+                          ':description' => $description, ));
+    }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité Liste de souhait
+    //----------------------------------------------------------------------------------------
+
+    // recupere tout la liste d'un mariage
+    function getListeSouhait($idM) {
+      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idMariage = :id ORDER BY ListSouh_preference');
+      $req->execute(array(':id' => $idM,));
+      while ($donnee = $req->fetch()) {
+        $data[] = array('nom' => $donnee['ListSouh_nom'], 'preference' => $donnee['ListSouh_preference'],);
+      }
+      return $data;
+    }
+
+    // supprime les souhait d'un mariage
+    function delListeSouhaitMariage($idM) {
+      $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idMariage = :idM');
+      $req->execute(array(':idM' => $idM,));
+    }
+
+    // écris la liste de souhait d'un mariage
+    function setListeSouhait($idM, $liste) {
+      $preference = 1;
+      foreach ($liste as $key => $value) {
+        echo "test";
+        var_dump($liste);
+        $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
+        $req->execute(array(':idM' => $idM,
+                            ':nom' => $value,
+                            ':preference' => $preference,));
+        $preference++;
+      }
+    }
+
+    //----------------------------------------------------------------------------------------
 }
 
 ?>

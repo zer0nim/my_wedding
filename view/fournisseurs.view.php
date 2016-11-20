@@ -9,7 +9,7 @@
 
 <div class="row">
 
-  <div class="box col-sm-6 col-md-4">
+  <!--<div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <address>
@@ -61,44 +61,44 @@
         <p><a href="#" class="btn btn-danger" role="button">Supprimer</a></p>
       </div>
     </div>
-  </div>
-
+  </div>-->
+  <?php
+    foreach ($data['fournisseurs'] as $key => $value) {
+      $value->afficherFournisseur();
+    }
+  ?>
 
 
   <!-- Tableau d'ajout de fournisseur -->
   <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
-      <div class="caption">
-        <p><a href="#" class="btn btn-primary" role="button">Ajouter</a></p>
-      </div>
-      <div class="no-marg-bot panel panel-default">
-        <div class="panel-heading">
-          <input type="text" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
+      <!--Début formulaire-->
+      <form action="fournisseurs.ctrl.php?add=1" method="post">
 
-          <script type="text/javascript">
-          // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
-          function initializeAutocomplete(id) {
-            var element = document.getElementById(id);
-            if (element) {
-              var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-              google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-            }
-          }
-          // Initialisation du champs autocomplete
-          google.maps.event.addDomListener(window, 'load', function() {
-            initializeAutocomplete('user_input_autocomplete_address');
-          });
-          </script>
-
+        <!-- Bouton d'ajout -->
+        <div class="caption">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
         </div>
-        <textarea class="form-control" id="" placeholder="Description" name=""></textarea>
-      </div>
+
+        <!-- Tous les champs input -->
+        <div class="no-marg-bot panel panel-default">
+
+          <div class="panel-heading">
+            <input type="text"name="titre" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
+            <input type="text"name="adresse" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
+            <input type="text"name="tel" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
+            <input type="text"name="mail" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
+            <input type="text"name="site" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
+          </div>
+
+          <textarea class="form-control" name="description" id="" placeholder="Description" name=""></textarea>
+
+        </div><!-- Fin champs input -->
+      </form><!-- Fin formulaire -->
+
     </div>
-  </div>
+  </div><!-- Fin tableu ajout de fournisseur -->
+</div>
 
 <!-- Script pour géré les différente hauteur des éléments dans la grille-->
 <script>
@@ -107,7 +107,19 @@
   });
 </script>
 
-
-</div>
+<script type="text/javascript">
+  // Lis le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
+  function initializeAutocomplete(id) {
+    var element = document.getElementById(id);
+    if (element) {
+      var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+      google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    }
+  }
+  // Initialisation du champs autocomplete
+  google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('user_input_autocomplete_address');
+  });
+</script>
 </body>
 </html>
