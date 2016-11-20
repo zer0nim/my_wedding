@@ -18,12 +18,9 @@
       $description = $_POST['description'];
 
       if (isset($_POST['adresse'])) {$adresse = $_POST['adresse'];} else {$adresse = NULL;}
-
       if (isset($_POST['tel'])) {$tel = $_POST['tel'];} else {$tel = NULL;}
-
-      if (isset($_POST['mail'])) {$titre = $_POST['mail'];} else {$titre = NULL;}
-
-      if (isset($_POST['site'])) {$titre = $_POST['site'];} else {$titre = NULL;}
+      if (isset($_POST['mail'])) {$mail = $_POST['mail'];} else {$mail = NULL;}
+      if (isset($_POST['site'])) {$site = $_POST['site'];} else {$site = NULL;}
     }
   }
   $dao->addFournisseur($idM, $titre, $adresse, $tel, $mail, $site, $description);
