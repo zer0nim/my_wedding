@@ -19,6 +19,5 @@
 
 
   $data = $dao->getListeSouhait($idM);
-  var_dump($data);
   include_once('../view/liste.view.php');
 ?>

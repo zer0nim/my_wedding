@@ -100,9 +100,11 @@ class DAO {
     function setListeSouhait($idM, $liste) {
       $preference = 1;
       foreach ($liste as $key => $value) {
+        echo "test";
+        var_dump($liste);
         $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
         $req->execute(array(':idM' => $idM,
-                            ':nom' => $value['nom'],
+                            ':nom' => $value,
                             ':preference' => $preference,));
         $preference++;
       }

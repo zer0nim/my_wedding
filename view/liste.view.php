@@ -2,14 +2,14 @@
   require_once '../view/baseMenuFnct.php';
 ?>
 <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="../view/css/liste.css" type="text/css" />
 
   <div class="demo">
     <ul id="sortable">
       <?php // Affichage de la liste
-        foreach ($data as $key => $value) { echo '<li id="list_' . $value['nom'] . '" class="ui-state-default">' . $value['nom'] . '</li>'
+        foreach ($data as $key => $value) { echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default" type="button">' . $value['nom'] . '</li>'
           ;  }
       ?>
     </ul>
