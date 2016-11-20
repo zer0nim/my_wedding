@@ -19,7 +19,7 @@
 
 		<main>
 			<div id="container">
-				<form class="form-signin" action="connecter.ctrl.php" method="get">
+				<form class="form-signin" action="connecter.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Connectez-vous</h2>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
@@ -37,7 +37,7 @@
 				</form>
 
 
-				<form class="form-signin" action="inscrire.ctrl.php" method="get">
+				<form class="form-signin" action="inscrire.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Inscrivez-vous</h2>
 
 					<label for="inputNom" class="sr-only">Nom</label>
