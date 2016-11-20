@@ -90,6 +90,23 @@ class DAO {
       return $data;
     }
 
+    // supprime les souhait d'un mariage
+    function delSouhaitMariage($idM) {
+      $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idMariage = :idM');
+      $req->execute(array(':idM' => $idM,));
+    }
+
+    // écris la liste de souhait d'un mariage
+    function setListeSouhait($idM, $liste) {
+      $preference = 1;
+      foreach ($liste as $key => $value) {
+        $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
+        $req->execute(array(':idM' => $idM,
+                            ':nom' => $value['nom'],
+                            ':preference' => $preference,));
+        $preference++;
+      }
+    }
 
     //----------------------------------------------------------------------------------------
 }

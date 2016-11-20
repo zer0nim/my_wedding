@@ -30,4 +30,5 @@
   </script>
 
 </body>
-</html>
+</html><!--
+$.post('liste-modifie.php',order, function(reponse) {alert(reponse); });-->
