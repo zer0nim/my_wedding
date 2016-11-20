@@ -73,7 +73,7 @@
   <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <!--Début formulaire-->
-      <form action="fournisseurs.ctrl.php" method="post">
+      <form action="fournisseurs.ctrl.php?add=1" method="post">
 
         <!-- Bouton d'ajout -->
         <div class="caption">
