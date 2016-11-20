@@ -25,7 +25,7 @@ function afficherFournisseur() {
     echo '<br>' . $this->four_site;
   }
   echo '</address><blockquote><p>' . $this->four_description . '</p></blockquote>';
-  echo '<p><a href="fournisseurs.ctrl.php?id=' . $this->four_id . '" class="btn btn-danger" role="button">Supprimer</a></p></div></div></div>';
+  echo '<p><a href="fournisseurs.ctrl.php?idS=' . $this->four_id . '&idM=' . $this->four_idM . '" class="btn btn-danger" role="button">Supprimer</a></p></div></div></div>';
 }
 }
 ?>

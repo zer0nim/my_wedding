@@ -49,6 +49,20 @@ class DAO {
       $donnee = $req->fetchAll(PDO::FETCH_CLASS, "fournisseurs");
       return $donnee;
     }
+
+    // retourne 1 si le couple idS et idM sinon 0
+    function estCouplePresentFournisseur($idS, $idM) {
+      $req = $this->db->prepare('SELECT count(*) FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
+      $req->execute(array(':idM' => $idM, ':idS' => $idS,));
+      $donnee = $req->fetch();
+      return $donnee;
+    }
+
+    // suprimme le fournisseur de id = $idS et de idM = $idM
+    function delFournisseur($idS, $idM) {
+      $req = $this->db->prepare('DELETE FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
+      $req->execute(array(':idM' => $idM, ':idS' => $idS,));
+    }
 }
 
 ?>

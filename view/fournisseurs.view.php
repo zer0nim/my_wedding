@@ -76,33 +76,22 @@
         <p><a href="#" class="btn btn-primary" role="button">Ajouter</a></p>
       </div>
       <div class="no-marg-bot panel panel-default">
-        <div class="panel-heading">
-          <input type="text" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
-          <input type="text" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
 
-          <script type="text/javascript">
-          // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
-          function initializeAutocomplete(id) {
-            var element = document.getElementById(id);
-            if (element) {
-              var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-              google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-            }
-          }
-          // Initialisation du champs autocomplete
-          google.maps.event.addDomListener(window, 'load', function() {
-            initializeAutocomplete('user_input_autocomplete_address');
-          });
-          </script>
+        <form action="fournisseurs.ctrl.php" method="post">
+          <div class="panel-heading">
+            <input type="text" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
 
-        </div>
-        <textarea class="form-control" id="" placeholder="Description" name=""></textarea>
+          </div>
+          <textarea class="form-control" id="" placeholder="Description" name=""></textarea>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 <!-- Script pour géré les différente hauteur des éléments dans la grille-->
 <script>
@@ -111,7 +100,19 @@
   });
 </script>
 
-
-</div>
+<script type="text/javascript">
+  // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
+  function initializeAutocomplete(id) {
+    var element = document.getElementById(id);
+    if (element) {
+      var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+      google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    }
+  }
+  // Initialisation du champs autocomplete
+  google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('user_input_autocomplete_address');
+  });
+</script>
 </body>
 </html>
