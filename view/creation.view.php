@@ -26,15 +26,30 @@
 <body class="container-fluid">
 
   <header>
-    <div class="navbar navbar-default">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">My Wedding</a>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Paramètres mariage</a></li>
+            <li><a href="#">Mon compte</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="inscription.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
+          </ul>
+        </div>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Paramètres mariage</a></li>
-        <li><a href="#">Mon compte</a></li>
-      </ul>
-    </div>
+    </nav>
+
   </header>
 
 
