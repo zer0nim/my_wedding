@@ -50,7 +50,7 @@ class DAO {
       return $donnee;
     }
 
-    // retourne 1 si le couple idS et idM sinon 0
+    // retourne 1 si le couple idS et idM existe, sinon 0
     function estCouplePresentFournisseur($idS, $idM) {
       $req = $this->db->prepare('SELECT count(*) FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
       $req->execute(array(':idM' => $idM, ':idS' => $idS,));
@@ -62,6 +62,18 @@ class DAO {
     function delFournisseur($idS, $idM) {
       $req = $this->db->prepare('DELETE FROM Fournisseurs WHERE four_idM = :idM AND four_id = :idS');
       $req->execute(array(':idM' => $idM, ':idS' => $idS,));
+    }
+
+    // ajoute un fournisseur
+    function addFournisseur($idM, $titre, $adresse, $tel, $mail, $site, $description) {
+      $req = $this->db->prepare('INSERT INTO Fournisseurs(four_idM, four_titre, four_adresse, four_tel, four_mail, four_site, four_description) VALUES(:idM, :titre, :adresse, :tel, :mail, :site, :description) ');
+      $req->execute(array(':idM' => $idM,
+                          ':titre' => $titre,
+                          ':adresse' => $adresse,
+                          ':tel' => $tel,
+                          ':mail' => $mail,
+                          ':site' => $site,
+                          ':description' => $description, ));
     }
 }
 

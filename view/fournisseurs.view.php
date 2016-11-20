@@ -72,25 +72,32 @@
   <!-- Tableau d'ajout de fournisseur -->
   <div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
-      <div class="caption">
-        <p><a href="#" class="btn btn-primary" role="button">Ajouter</a></p>
-      </div>
-      <div class="no-marg-bot panel panel-default">
+      <!--Début formulaire-->
+      <form action="fournisseurs.ctrl.php" method="post">
 
-        <form action="fournisseurs.ctrl.php" method="post">
+        <!-- Bouton d'ajout -->
+        <div class="caption">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+
+        <!-- Tous les champs input -->
+        <div class="no-marg-bot panel panel-default">
+
           <div class="panel-heading">
-            <input type="text" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
-            <input type="text" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
-            <input type="text" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
-            <input type="text" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
-            <input type="text" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
-
+            <input type="text"name="titre" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
+            <input type="text"name="adresse" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
+            <input type="text"name="tel" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
+            <input type="text"name="mail" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
+            <input type="text"name="site" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
           </div>
-          <textarea class="form-control" id="" placeholder="Description" name=""></textarea>
-        </form>
-      </div>
+
+          <textarea class="form-control" name="description" id="" placeholder="Description" name=""></textarea>
+
+        </div><!-- Fin champs input -->
+      </form><!-- Fin formulaire -->
+
     </div>
-  </div>
+  </div><!-- Fin tableu ajout de fournisseur -->
 </div>
 
 <!-- Script pour géré les différente hauteur des éléments dans la grille-->
@@ -101,7 +108,7 @@
 </script>
 
 <script type="text/javascript">
-  // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
+  // Lis le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
   function initializeAutocomplete(id) {
     var element = document.getElementById(id);
     if (element) {
