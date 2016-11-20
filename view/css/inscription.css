@@ -7,7 +7,7 @@ body {
 	max-width: 330px;
 	padding: 15px;
 	font-size: 16px;
-	color: #2e6da4;
+	color: #ffffff;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -49,6 +49,7 @@ header h1 {
 	font-size: 4em;
 	margin: 0;
 	padding: 0.5em 0;
+	color: #ffffff;
 }
 
 main #container {
