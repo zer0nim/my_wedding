@@ -64,7 +64,7 @@
   </div>-->
   <?php
     foreach ($data['fournisseurs'] as $key => $value) {
-      $value.afficherFournisseur();
+      $value->afficherFournisseur();
     }
   ?>
 

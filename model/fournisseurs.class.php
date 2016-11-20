@@ -1,30 +1,31 @@
 <?php
 class fournisseurs {
-  private $id;
-  private $idM;
-  private $titre;
-  private $adresse;
-  private $tel;
-  private $mail;
-  private $site;
-  private $description;
-}
+  private $four_id;
+  private $four_idM;
+  private $four_titre;
+  private $four_adresse;
+  private $four_tel;
+  private $four_mail;
+  private $four_site;
+  private $four_description;
+
 
 function afficherFournisseur() {
-  echo '<div class="box col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><address><strong>' . $titre . '</strong>';
-  if (isset($adresse)) {
-    echo '<br>' . $adresse;
+  echo '<div class="box col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><address><strong>' . $this->four_titre . '</strong>';
+  if (isset($this->four_adresse)) {
+    echo '<br>' . $this->four_adresse;
   }
-  if (isset($tel)) {
-    echo '<br>' . $tel;
+  if (isset($this->four_tel)) {
+    echo '<br>' . $this->four_tel;
   }
-  if (isset($mail)) {
-    echo '<br>' . $mail;
+  if (isset($this->four_mail)) {
+    echo '<br>' . $this->four_mail;
   }
-  if (isset($site)) {
-    echo '<br>' . $site;
+  if (isset($this->four_site)) {
+    echo '<br>' . $this->four_site;
   }
-  echo '</address><blockquote><p>' . $description . '</p></blockquote>';
-  echo '<p><a href="fournisseurs.ctrl.php?id=' . $id . '" class="btn btn-danger" role="button">Supprimer</a></p></div></div></div>';
+  echo '</address><blockquote><p>' . $this->four_description . '</p></blockquote>';
+  echo '<p><a href="fournisseurs.ctrl.php?id=' . $this->four_id . '" class="btn btn-danger" role="button">Supprimer</a></p></div></div></div>';
+}
 }
 ?>
