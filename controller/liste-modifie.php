@@ -5,6 +5,6 @@
   var_dump($_POST['list']);
   echo $_POST['list'][0]['nom'];
   //var_dump($liste);
-  $dao->delSouhaitMariage($idM);
+  $dao->delListeSouhaitMariage($idM);
   $dao->setListeSouhait($idM, $_POST['list']);
 ?>

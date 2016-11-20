@@ -91,7 +91,7 @@ class DAO {
     }
 
     // supprime les souhait d'un mariage
-    function delSouhaitMariage($idM) {
+    function delListeSouhaitMariage($idM) {
       $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idMariage = :idM');
       $req->execute(array(':idM' => $idM,));
     }
