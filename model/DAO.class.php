@@ -75,6 +75,23 @@ class DAO {
                           ':site' => $site,
                           ':description' => $description, ));
     }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité Liste de souhait
+    //----------------------------------------------------------------------------------------
+
+    // recupere tout la liste d'un mariage
+    function getListeSouhait($idM) {
+      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idMariage = :id ORDER BY ListSouh_preference');
+      $req->execute(array(':id' => $idM,));
+      while ($donnee = $req->fetch()) {
+        $data[] = array('nom' => $donnee['ListSouh_nom'], 'preference' => $donnee['ListSouh_preference'],);
+      }
+      return $data;
+    }
+
+
+    //----------------------------------------------------------------------------------------
 }
 
 ?>
