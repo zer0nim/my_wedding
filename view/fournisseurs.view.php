@@ -9,7 +9,7 @@
 
 <div class="row">
 
-  <div class="box col-sm-6 col-md-4">
+  <!--<div class="box col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <address>
@@ -61,8 +61,12 @@
         <p><a href="#" class="btn btn-danger" role="button">Supprimer</a></p>
       </div>
     </div>
-  </div>
-
+  </div>-->
+  <?php
+    foreach ($data['fournisseurs'] as $key => $value) {
+      $value.afficherFournisseur();
+    }
+  ?>
 
 
   <!-- Tableau d'ajout de fournisseur -->

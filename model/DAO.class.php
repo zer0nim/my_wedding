@@ -1,4 +1,5 @@
 <?php
+require_once('fournisseurs.class.php');
 $dao = new DAO();
 class DAO {
   private $db; // L'objet de la base de donnée
