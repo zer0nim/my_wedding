@@ -46,31 +46,60 @@ nav {
 /* ^---navBar---^ */
 
 .scroll{
-    overflow:scroll;
+    overflow-y:scroll;
     height:200px;
+}
+
+.form-control{
+    margin: 0px;
+}
+
+.scroll2{
+    overflow-y:scroll;
+    height:230px;
 }
 
 .row-margin{
     margin-top: 30px;
 }
 
-.budget{
-  padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: border .2s ease-in-out;
-  -o-transition: border .2s ease-in-out;
-  transition: border .2s ease-in-out;
+.div-budget{
+    margin-left: 4%;
+    margin-right: 4%;
+    height: 350px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
 }
 
 .table-margin{
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 .bouton-margin{
     margin-top: 10px;
+}
+
+.btn-d{
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.champ-description{
+    width: 65%;
+}
+
+.champ-value{
+    width: 100px;
+}
+
+.champ-description-depense{
+    width: 100%;
+    min-width: 100px;
 }
