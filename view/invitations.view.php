@@ -5,7 +5,7 @@
 
 <div class="col-sm-12">
   <form class="" action="" method="post">
-    <textarea name="texteInvit" wrap="soft" ></textarea>
+    <textarea name="texteInvit" wrap="soft" ><?=$texte?></textarea>
     <div class="row">
         <button class="col-sm-2 col-sm-offset-2 btn btn-primary" >Enregistrer</button>
         <button class="col-sm-2 col-sm-offset-1 btn btn-primary" >Envoyer par mail</button>

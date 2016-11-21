@@ -61,14 +61,16 @@ class DAO {
             }
             $tabdepense = null;
             $tabdepense = $req->fetchAll(PDO::FETCH_CLASS, "depense");
-
-            /*// creation des objets depense (sans fetch_class)
+            
+            // creation des objets depense (sans fetch_class)
             $tabdepense = null;
+
             if ($depenses != null){
                 foreach ($depenses as $depense) {
-                    $tabdepense[$depense['dep_id']] = new depense($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
+                    $obj = new depense(); $obj->setAll($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
+                    $tabdepense[$depense['dep_id']] = $obj;
                 }
-            }*/
+            }
 
             return new budget($idbudget, $budget['bud_idMariage'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
 
@@ -304,7 +306,23 @@ class DAO {
         $preference++;
       }
     }
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité invitation
+    //----------------------------------------------------------------------------------------
+    function setInvitation($idM,$texte){ //fonction pour enregistrer le texte dans la bd
+      $req = $this->db->prepare('INSERT INTO Invitation VALUES(:idM, :texte)');
+      $req->execute(array(':idM' => $idM,
+                          ':texte' => $texte,));
+    }
 
+    function getInvitation($idM){//fonction pour recuperer le texte de la bd
+      $req = $this->db->prepare('SELECT inv_invite FROM Invitation WHERE inv_idM=:idM');
+      $req->execute(array(':idM' => $idM,));
+      $data=fetchAll();
+      var_dump($data);
+      $data=$data[0][0];
+      return $data;
+    }
     //----------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------
@@ -353,7 +371,6 @@ class DAO {
                               ':cont_mail' => $value['cont_mail'],
                               ':cont_age' => $value['cont_age'],
                               ':cont_tel' => $value['cont_tel']));
-        $preference++;
       }
     }
     //----------------------------------------------------------------------------------------

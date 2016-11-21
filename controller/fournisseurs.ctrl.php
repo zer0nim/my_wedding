@@ -12,17 +12,14 @@
   // Fin suppression d'un fournisseurs
 
   // Pour ajout d'un fournisseur
-  if (isset($_GET['add'])) {
-    if ($_GET['add'] == 1) {
-      $titre = $_POST['titre'];
-      $description = $_POST['description'];
+  $titre = isset($_POST['titre']) ? $_POST['titre'] : NULL;
+  $description = isset($_POST['description']) ? $_POST['description'] : NULL;
 
-      if (isset($_POST['adresse'])) {$adresse = $_POST['adresse'];} else {$adresse = NULL;}
-      if (isset($_POST['tel'])) {$tel = $_POST['tel'];} else {$tel = NULL;}
-      if (isset($_POST['mail'])) {$mail = $_POST['mail'];} else {$mail = NULL;}
-      if (isset($_POST['site'])) {$site = $_POST['site'];} else {$site = NULL;}
-    }
-  }
+  $addresse = isset($_POST['adresse']) ? $_POST['adresse'] : NULL;
+  $tel = isset($_POST['tel']) ? $_POST['tel'] : NULL;
+  $mail = isset($_POST['mail']) ? $_POST['mail'] : NULL;
+  $site = isset($_POST['site']) ? $_POST['site'] : NULL;
+
   $dao->addFournisseur($idM, $titre, $adresse, $tel, $mail, $site, $description);
   // Fin ajout d'un fournisseurs
 
