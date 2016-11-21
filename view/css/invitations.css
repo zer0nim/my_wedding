@@ -7,6 +7,14 @@ nav {
   margin: 5px;
 }
 
+div{
+  text-align: center;
+}
+textarea{
+  resize: none;
+  height: 80vh;
+  width: 100vh;
+}
 /* v---navBar---v*/
 
 .test-center .invitations{
