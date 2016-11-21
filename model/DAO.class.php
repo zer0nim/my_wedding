@@ -58,9 +58,12 @@ class DAO {
             }catch (PDOException $e){
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());
             }
-            $tabdepense = null;
-            $tabdepense = $req->fetchAll(PDO::FETCH_CLASS, "depense");
-
+            
+            $depenses = null;
+ -          $depenses = $req->fetchAll(PDO::FETCH_ASSOC /*PDO::FETCH_CLASS, "depense"*/);
+ -                        
+ -          // creation des objets depense (sans fetch_class car il fait ****)
+ -          $tabdepense = null; 
             if ($depenses != null){
                 foreach ($depenses as $depense) {
                     $obj = new depense(); $obj->setAll($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
