@@ -6,11 +6,22 @@ class depense {
     private $description;
     private $value;
 
-    function __construct($id, $idbudget, $description, $value) {
-        $this->id = $id;
-        $this->idbudget = $idbudget;
+    function __construct() {
+    }
+    
+    function setAll($id, $idbudget, $description, $value){
+        $this->setId($id);
+        $this->setIdbudget($idbudget);
         $this->description = $description;
         $this->value = $value;
+    }
+    
+    function setId($id) {
+        $this->id = $id;;
+    }
+    
+    function setIdbudget($idbudget) {
+        $this->idbudget = $idbudget;
     }
 
     function getId() {

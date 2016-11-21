@@ -16,6 +16,14 @@ class budget {
         $this->tabdepense = $tabdepense;
     }
 
+    function setId($id) {
+        $this->id = $id;
+        foreach ($this->tabdepense as $depense) {
+            // modifie l'attribut idbudget des dépenses
+            $depense->setIdbudget($id);
+        }
+    }
+    
     function getId() {
         return $this->id;
     }

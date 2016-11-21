@@ -22,64 +22,53 @@ class DAO {
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------
-
-    // recupere la depenses
-    function getDepense($iddepense){
-        try{
-            $req = $this->db->prepare('select * from Depense where dep_id = :iddepense');
-            $req->execute(array(':iddepense' => $iddepense));
-        }catch (PDOException $e){
-            print("Erreur de req sql getDepense");
-        }
-        $depense = $req->fetchAll(PDO::FETCH_ASSOC)[0];
-        
-        if ($depense != null){
-            return new depense($iddepense, $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
-            
-        }else{
-            return null;
-        }
-    }
     
-    // recupere le dernier budget ajouté à la bd
-    function getLastBudget($idmariage){
+    // recupere le dernier id de budget ajouté à la bd
+    function getLastId($idmariage){
         try{
             $req = $this->db->prepare('select max(bud_id) from Budget where bud_idMariage = :idmariage');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
-            print("Erreur de req sql getBudget");
+            exit("Erreur de req sql getBudget : ".$e->getMessage());
         }
-        return $this->getBudget($req->fetch()[0]);
+        return $req->fetch()[0];
     }
   
     // recupere un budget et ces depenses en fonction de son id
     function getBudget($idbudget){
+        
+        // recuperation des données du budget
         try{
             $req = $this->db->prepare('select * from Budget where bud_id = :idbudget');
             $req->execute(array(':idbudget' => $idbudget));
         }catch (PDOException $e){
-            print("Erreur de req sql getBudget");
+            exit("Erreur de req sql getBudget : ".$e->getMessage());
         }
         $budget = $req->fetchAll(PDO::FETCH_ASSOC);
         
+        // si le budget exist on continue sinon on renvoie null
         if ($budget != null){
-            // recuperation des depenses
-            $budget = $budget[0];
             
+            $budget = $budget[0]; // à cause du fetchAll()
+            
+            // recuperation des depenses
             try{
-                $req = $this->db->prepare('select dep_id from Depense where dep_idbudget = :idbudget');
+                $req = $this->db->prepare('select * from Depense where dep_idbudget = :idbudget');
                 $req->execute(array(':idbudget' => $idbudget));
             }catch (PDOException $e){
-                print("Erreur de req sql getBudget getdepense");
+                exit("Erreur de req sql getDepenses : ".$e->getMessage());
             }
-            $iddepenses = $req->fetchAll();
-
             $tabdepense = null;
-            if ($iddepenses != null){
-                foreach ($iddepenses as $iddepense) {
-                    $tabdepense[$iddepense[0]] = $this->getDepense($iddepense[0]);
+            $tabdepense = $req->fetchAll(PDO::FETCH_CLASS, "depense");
+            
+            /*// creation des objets depense (sans fetch_class)
+            $tabdepense = null; 
+            if ($depenses != null){
+                foreach ($depenses as $depense) {
+                    $tabdepense[$depense['dep_id']] = new depense($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
                 }
-            }            
+            }*/
+
             return new budget($idbudget, $budget['bud_idMariage'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
             
         }else{
@@ -90,20 +79,22 @@ class DAO {
     // recupere tout les budgets et depense d'un mariage
     function getBudgets($idmariage){
         $tabbudget = null;
+        
+        // recuperation de tout les id
         try{
             $req = $this->db->prepare('select bud_id from Budget where bud_idMariage = :idmariage order by bud_id desc');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
-            print("Erreur de req sql getBudgets");
+            exit("Erreur de req sql getBudgets : ".$e->getMessage());
         }
         $resultats = $req->fetchAll();
         
-        // creation des obgets
+        // creation des obgets budget
         if ($resultats != null){
             foreach ($resultats as $idbudget) {
-                $budgetobj = $this->getBudget($idbudget[0]);
-                $tabbudget[$idbudget[0]] = $budgetobj;
+                $tabbudget[$idbudget[0]] = $this->getBudget($idbudget[0]);
             }
+            
             return $tabbudget;
         }else{
             return null;
@@ -112,13 +103,11 @@ class DAO {
     
     // supprime une depense en fonction de son id
     function supDepense($iddepense){
-                
-        // suppression de la depenses
         try{
             $req = $this->db->prepare('delete from Depense where dep_id = :iddepense');
             $req->execute(array(':iddepense' => $iddepense));
         }catch (PDOException $e){
-            print("Erreur de req sql supp depense");
+            exit("Erreur de req sql supp depense : ".$e->getMessage());
         }
     }
 
@@ -130,7 +119,7 @@ class DAO {
             $req = $this->db->prepare('delete from Depense where dep_idbudget = :idbudget');
             $req->execute(array(':idbudget' => $idbudget));
         }catch (PDOException $e){
-            print("Erreur de req sql supp depenses");
+            exit("Erreur de req sql supp depenses : ".$e->getMessage());
         }
         
         // suppression du budget
@@ -138,37 +127,38 @@ class DAO {
             $req = $this->db->prepare('delete from Budget where bud_id = :idbudget');
             $req->execute(array(':idbudget' => $idbudget));
         }catch (PDOException $e){
-            print("Erreur de req sql supp budget");
+            exit("Erreur de req sql supp budget : ".$e->getMessage());
         }
     }
     
     // met à jour ou cree des objets depense dans la bd
     function updateDepense($depense){
         
+        // recupearation de la depense
         try{
             $req = $this->db->prepare('select dep_id from Depense where dep_id = :iddepense');
             $req->execute(array(':iddepense' => $depense->getId()));
         }catch (PDOException $e){
-            print("Erreur de req sql getiddepense");
+            exit("Erreur de req sql getiddepense : ".$e->getMessage());
         }
         
-        // si la depense existe on la modifie sinon on la cree
+        // si la depense existe dans la bd on la modifie sinon on la cree
         if ($req->fetch() != null){
             //update depenses
             try{
                 $req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
                 $req->execute(array(':description' => $depense->getDescription(), ':valeur' => $depense->getValue(), ':idbdepense' => $depense->getId()));
             }catch (PDOException $e){
-                print("Erreur de req sql update depense");
+                exit("Erreur de req sql update depense : ".$e->getMessage());
             }
                 
         }else{
             //insert depenses
             try{
-                $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)');
+                $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)'); // id à null car auto-incrementation
                 $req->execute(array(':idbudget' => $depense->getIdbudget(), ':description' => $depense->getDescription(), ':valeur' => $depense->getValue()));
             }catch (PDOException $e){
-                print("Erreur de req sql insert depense");
+                exit("Erreur de req sql insert depense : ".$e->getMessage());
             }
         }
         
@@ -177,11 +167,12 @@ class DAO {
     // met à jour ou cree un objet budget et ces depenses dans la bd
     function updateBudget($budget){
         
+        // recuperation du budget
         try{
             $req = $this->db->prepare('select bud_id from Budget where bud_id = :idbudget');
             $req->execute(array(':idbudget' => $budget->getId()));
         }catch (PDOException $e){
-            print("Erreur de req sql getidbudget");
+            exit("Erreur de req sql getidbudget : ".$e->getMessage());
         }
         
         // si le budget existe dans la bd on le modifie sinon on le cree
@@ -191,7 +182,7 @@ class DAO {
                 $req = $this->db->prepare('update Budget set bud_description=:description , bud_valeur=:valeur where bud_id = :idbudget');
                 $req->execute(array(':description' => $budget->getDescription(), ':valeur' => $budget->getValue(), ':idbudget' => $budget->getId()));
             }catch (PDOException $e){
-                print("Erreur de req sql update budget");
+                exit("Erreur de req sql update budget : ".$e->getMessage());
             }
             
         }else{
@@ -200,48 +191,42 @@ class DAO {
                 $req = $this->db->prepare('insert into Budget values(NULL, :idmariage, :description, :valeur)');
                 $req->execute(array(':idmariage' => $budget->getIdMariage(), ':description' => $budget->getDescription(), ':valeur' => $budget->getValue()));
             }catch (PDOException $e){
-                print("Erreur de req sql insert budget");
+                exit("Erreur de req sql insert budget : ".$e->getMessage());
             }
             
-            // modification de l'id de l'objet avec selui attribué pas la bd
-            $newId = $this->getLastBudget($budget->getIdMariage())->getId();
-            $tab0 = $budget->getTabdepense();
-            $tab = null;
-            foreach ($tab0 as $depense) {
-                $tab[$depense->getId()] = new depense($depense->getId(), $newId, $depense->getDescription(), $depense->getValue());
-            } 
-            $budget = new budget($newId, $budget->getIdMariage(), $budget->getDescription(), $budget->getValue(), $tab);
+            // modification de l'id du budget et des dépenses avec selui attribué pas la bd            
+            $newId = $this->getLastId($budget->getIdMariage());
+            $budget->setId($newId);
         }
         
         // update depenses
-        
         $tabdepense = $budget->getTabdepense();
+        $tabdepenseinit = $this->getBudget($budget->getId())->getTabdepense();
         
-        $budgetinit = $this->getBudget($budget->getId());
-        $tabdepenseinit = null;
-        if ($budgetinit != null){
-            $tabdepenseinit = $budgetinit->getTabdepense();
-            
-            // supprime les depenses qui ont été supprimées
-            if ($tabdepenseinit != null){
-                if ($tabdepense != null){
-                    foreach ($tabdepenseinit as $depense) {
-                        if (!array_key_exists($depense->getId(), $tabdepense)){
-                            $this->supDepense($depense->getId());
-                        }
-                    }
-                }else{
-                    foreach ($tabdepenseinit as $depense) {
-                        $this->supDepense($depense->getId());
-                    }
-                }
+        if ($tabdepense != null){
+            // met à jour ou cree les depenses
+            foreach ($tabdepense as $depense) {
+                $this->updateDepense($depense);
             }
         }
         
-        // met à jour ou cree les depenses
-        if ($tabdepense != null){
-            foreach ($tabdepense as $depense) {
-                $this->updateDepense($depense);
+        // supprime les depenses de la BD qui ont été supprimées par l'utilisateur
+        if ($tabdepenseinit != null){
+            if ($tabdepense != null){
+                foreach ($tabdepenseinit as $depense) {
+                    if (!array_key_exists($depense->getId(), $tabdepense)){
+                        // si la dépense n'est plus dans la nouvelle table on la supprime
+                        $this->supDepense($depense->getId());
+                    }
+                }
+            }else{
+                // si il n'y a aucune dépense dans la nouvelle table, on supprime toutes les dépenses
+                try{
+                    $req = $this->db->prepare('delete from Depense where dep_idbudget = :idbudget');
+                    $req->execute(array(':idbudget' => $budget->getId()));
+                }catch (PDOException $e){
+                    exit("Erreur de req sql supp depenses : ".$e->getMessage());
+                }
             }
         }
 
