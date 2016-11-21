@@ -47,11 +47,12 @@
             if ($action == "ajouter"){
                 
                 // creation d'un budget avec des valeurs par defaut
-                $depenseobj = new depense($_GET['iddepense'], $idbudget, "description", 0);
+                $depenseobj = new depense();
+                $depenseobj->setAll($_GET['iddepense'], $idbudget, "description", 0);
                 $tabdepense[$_GET['iddepense']] = $depenseobj;
                 $budget = new budget($idbudget, $idmariage, "description", 0, $tabdepense)
                 
-                ?> <div id="<?= $idbudget ?>" class="row-margin budget col-sm-4 col-sm-offset-1 col-sm-push-1">
+                ?> <div id="<?= $idbudget ?>" class="row-margin div-budget col-sm-5">
             <?php } ?>
             
 
@@ -59,24 +60,24 @@
             <form id="form<?= $budget->getId() ?>" method="post" action="budget-modifie.php?idbudget=<?= $idbudget ?>&action=valider">
 
                 <div class="row col-sm-12">
-                    <p><input name="description" type="text" value="<?= $budget->getDescription() ?>"> : <input name="value" type="number" min="0" value="<?= $budget->getValue() ?>"> €</p>
+                    <p><input class="champ-description" name="description" type="text" maxlength="35" value="<?= $budget->getDescription() ?>"> : <input class="champ-value" name="value" type="number" min="0" max="2000000000" value="<?= $budget->getValue() ?>"> €</p>
                 </div>
 
-                <table class="row scroll form-control">
-                    <tr class="row"><th class="col-sm-12"></th><th class="col-sm-12 text-center">Description</th><th class="col-sm-12 text-right">Prix</th></tr>
+                <table class="row scroll2 form-control">
+                    <tr class="row"><th class=""></th><th class="champ-description-depense text-center">Description</th><th class="text-right">Prix</th></tr>
                     <?php 
                         $tabdepense = $budget->getTabdepense(); 
                         if ($tabdepense != null){
                             foreach ($tabdepense as $iddepense => $depense) { 
                     ?>
-                    <tr id="<?= $iddepense ?>" class="row"><td><p class="btn btn-danger" onclick="supp('<?= $iddepense ?>')"> X </p></td><td><input name="<?= $iddepense ?>depdescription" type="text" value="<?= $depense->getDescription() ?>"></td><td><input name="<?= $iddepense ?>depvalue" type="number" min="0" value="<?= $depense->getValue() ?>"></td></tr>
+                    <tr id="<?= $iddepense ?>" class="row"><td><p class="btn btn-danger btn-sm" onclick="supp('<?= $iddepense ?>')"> X </p></td><td><input class="champ-description-depense" name="<?= $iddepense ?>depdescription" type="text" maxlength="50" value="<?= $depense->getDescription() ?>"></td><td><input class="champ-value" name="<?= $iddepense ?>depvalue" type="number" min="0" max="2000000000" value="<?= $depense->getValue() ?>"></td></tr>
                     <?php }} ?>
                     <tr id="idadd<?= $idbudget ?>" class="row"></td><td><td><p class="col-sm-5 col-sm-offset-3 btn btn-success" onclick="add('<?= $budget->getId() ?>')">new</p></td><td></td></tr>
                 </table>
                 
                 <div class="row bouton-margin">
-                    <p onclick="annuler('<?= $idbudget ?>', '<?= $idmariage ?>')" name="action" value="annuler" class="col-sm-4 col-sm-offset-1 btn btn-primary">Annuler</p>
-                    <p onclick="valider('<?= $idbudget ?>', '<?= $idmariage ?>')" name="action" value="valider" class="col-sm-4 col-sm-offset-1 btn btn-primary">Valider</p>
+                    <p onclick="annuler('<?= $idbudget ?>', '<?= $idmariage ?>')" name="action" value="annuler" class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary">Annuler</p>
+                    <p onclick="valider('<?= $idbudget ?>', '<?= $idmariage ?>')" name="action" value="valider" class="btn-d col-sm-5 btn btn-primary">Valider</p>
                 </div>
  
             </form>
@@ -137,7 +138,7 @@
                     <p><?= $budget->getDescription() ?> : <?= $budget->getValue() ?> €</p>
                 </div>
                 <table class="row scroll form-control">
-                    <tr class="row"><th class="col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
+                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
                     <?php
                         $tabdepense = $budget->getTabdepense();
                         if ($tabdepense != null){
@@ -149,12 +150,12 @@
                     ?>
                 </table>
                 <table class="row table-margin col-sm-10">
-                    <tr class="row"><td class="text-center">Total dépensé</td><td class="text-right"><?= $budget->getTotalDepense() ?> €</td></tr>
-                    <tr class="row"><td class="text-center">Budget restant</td><td class="text-right"><?= $budget->getTotalRest() ?> €</td></tr>
+                    <tr class="row"><td class="text-center">Total dépensé : </td><td class="text-right"><?= $budget->getTotalDepense() ?> €</td></tr>
+                    <tr class="row"><td class="text-center">Budget restant : </td><td class="text-right"><?= $budget->getTotalRest() ?> €</td></tr>
                 </table>
                 <div class="row">                    
-                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onClick="confirmation('<?= $budget->getId() ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
-                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onclick="afficheModif('<?= $budget->getId() ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
+                    <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="confirmation('<?= $budget->getId() ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
+                    <button class="btn-d col-sm-5 btn btn-primary" onclick="afficheModif('<?= $budget->getId() ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
                 </div>
             
 <?php

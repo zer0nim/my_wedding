@@ -15,12 +15,12 @@
             if ($tabbudget != null){
                 foreach ($tabbudget as $idbudget => $budget) {
         ?>
-            <div id="<?= $idbudget ?>" class="row-margin budget col-sm-4 col-sm-offset-1 col-sm-push-1">
+            <div id="<?= $idbudget ?>" class="row-margin div-budget col-sm-5">
                 <div class="row col-sm-12">
                     <p><?= $budget->getDescription() ?> : <?= $budget->getValue() ?> €</p>
                 </div>
                 <table class="row scroll form-control">
-                    <tr class="row"><th class="col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
+                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
                     <?php
                         $tabdepense = $budget->getTabdepense();
                         if ($tabdepense != null){
@@ -33,12 +33,12 @@
                     ?>
                 </table>
                 <table class="row table-margin col-sm-10">
-                    <tr class="row"><td class="text-center">Total dépensé</td><td class="text-right"><?= $budget->getTotalDepense() ?> €</td><td></td></tr>
-                    <tr class="row"><td class="text-center">Budget restant</td><td class="text-right"><?= $budget->getTotalRest() ?> €</td><td></td></tr>
+                    <tr class="row"><td class="text-center">Total dépensé : </td><td class="text-right"><?= $budget->getTotalDepense() ?> €</td><td></td></tr>
+                    <tr class="row"><td class="text-center">Budget restant : </td><td class="text-right"><?= $budget->getTotalRest() ?> €</td><td></td></tr>
                 </table>
                 <div class="row">
-                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onClick="confirmation('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
-                    <button class="col-sm-4 col-sm-offset-1 btn btn-primary" onclick="afficheModif('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
+                    <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="confirmation('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
+                    <button class="btn-d col-sm-5 btn btn-primary" onclick="afficheModif('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
                 </div>
             </div>
         <?php
@@ -108,7 +108,7 @@
         function add(idbudget) {
             var iddepense = 19999999+i; // doit etre tout le temps different
             i++;
-            $("#idadd"+idbudget).before('<tr id="'+iddepense+'" class="row"><td><p class="btn btn-danger" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input name="'+iddepense+'depdescription" type="text" value=""></td><td class="text-right"><input name="'+iddepense+'depvalue" type="number" min="0" value="0 €"></td></tr>');
+            $("#idadd"+idbudget).before('<tr id="'+iddepense+'" class="row"><td><p class="btn btn-danger btn-sm" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input class="champ-description-depense" name="'+iddepense+'depdescription" type="text" maxlength="50" value=""></td><td class="text-right"><input class="champ-value" name="'+iddepense+'depvalue" type="number" min="0" max="2000000000" value="0 €"></td></tr>');
         }
         
         // fonction pour annuler les modifications
