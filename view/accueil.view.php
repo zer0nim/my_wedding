@@ -73,5 +73,5 @@
 	</footer>
 
 <?php include('../view/scripts.php') ?>
-<script src="js/accueil.js"></script>
+<script src="../view/js/accueil.js"></script>
 <?php include('../view/footer.php') ?>

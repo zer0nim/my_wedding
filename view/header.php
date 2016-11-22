@@ -6,6 +6,7 @@
 		<title>My Wedding</title>
 		<meta name="description" content="Le site de planification de mariage">
 
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../view/css/accueil.css" type="text/css" />
 

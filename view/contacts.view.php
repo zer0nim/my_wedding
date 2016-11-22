@@ -11,12 +11,22 @@ require_once '../view/baseMenuFnct.php';
 				<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouveau</button>
 			</div>
 			<!-- -^- Button -^- -->
+			<!-- -v- Button -v- -->
+			<div class="nopadding form-group col-xs-12">
+				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block">Supprimer</button>
+			</div>
+			<!-- -^- Button -^- -->
 
 			<!-- -v- Liste contacts -v- -->
-			<select multiple class="form-control">
+			<select multiple id="select-cnt" class="form-control">
 				<?php printAllContacts($allContacts); ?>
 			</select>
 			<!-- -^- Liste contacts-^- -->
+			<script>
+			$('#select-cnt').bind('input', function() {
+					document.getElementById("NomLink").value = $(this).val(); // get the current value of the input field.
+			});
+			</script>
 
 		</div>
 		<!--
@@ -29,7 +39,7 @@ require_once '../view/baseMenuFnct.php';
 			<div class="col-xs-12 col-sm-6">
 				<div class="input-group">
 					<span class="input-group-addon">Nom</span>
-					<input id="prependedtext" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="NomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6">
