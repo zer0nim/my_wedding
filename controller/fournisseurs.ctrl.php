@@ -15,7 +15,7 @@
   $titre = isset($_POST['titre']) ? $_POST['titre'] : NULL;
   $description = isset($_POST['description']) ? $_POST['description'] : NULL;
 
-  $addresse = isset($_POST['adresse']) ? $_POST['adresse'] : NULL;
+  $adresse = isset($_POST['adresse']) ? $_POST['adresse'] : NULL;
   $tel = isset($_POST['tel']) ? $_POST['tel'] : NULL;
   $mail = isset($_POST['mail']) ? $_POST['mail'] : NULL;
   $site = isset($_POST['site']) ? $_POST['site'] : NULL;
