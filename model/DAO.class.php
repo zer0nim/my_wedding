@@ -14,7 +14,7 @@ class DAO {
   // Ouverture de la base de donnée
   function __construct() {
     try {
-      $this->db = new PDO('mysql:host=137.74.148.71 ;dbname=base;', 'iut2info', 'projetweb');
+      $this->db = new PDO('mysql:host=137.74.148.71;dbname=base;', 'iut2info', 'projetweb');
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
@@ -348,21 +348,22 @@ class DAO {
 
     // supprime un Contact d'un mariage
     function delContacts($idM, $idCont) {
-      $req = $this->db->prepare('DELETE FROM Contact WHERE cont_idM = :idM');
-      $req->execute(array(':idM' => $idM,));
+      $req = $this->db->prepare('DELETE FROM Contact WHERE cont_idM = :idM and cont_id = :cont_id');
+      $req->execute(array(':idM' => $idM,
+                          ':cont_id' => $idCont,));
     }
 
     // insert un Contact à un mariage
-    function setContact($idM, $contacts) {
+    function setContact($idM, $contact) {
       foreach ($contacts as $key => $value) {
-        $req = $this->db->prepare('INSERT INTO Contact VALUES(:idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
-        $req->execute(array(':idM' => $idM,
-                              ':cont_nom' => $value['cont_nom'],
-                              ':cont_prenom' => $value['cont_prenom'],
-                              ':cont_adresse' => $value['cont_adresse'],
-                              ':cont_mail' => $value['cont_mail'],
-                              ':cont_age' => $value['cont_age'],
-                              ':cont_tel' => $value['cont_tel']));
+        $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
+        $req->execute(array(':cont_idM' => $contact['cont_idM'],
+                            ':cont_nom' => $value['cont_nom'],
+                            ':cont_prenom' => $value['cont_prenom'],
+                            ':cont_adresse' => $value['cont_adresse'],
+                            ':cont_mail' => $value['cont_mail'],
+                            ':cont_age' => $value['cont_age'],
+                            ':cont_tel' => $value['cont_tel']));
       }
     }
     //----------------------------------------------------------------------------------------
