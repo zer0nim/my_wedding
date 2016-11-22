@@ -1,89 +1,89 @@
 body {
-  background-image:  url("../../img/bgPaper.png");
-  background-repeat: repeat;
+	background-image:	url("../../img/bgPaper.png");
+	background-repeat: repeat;
 }
 
 nav {
-  margin: 5px;
+	margin: 5px;
 }
 
 
 select[multiple], select[size] {
-    height: 71vh;
+		height: 71vh;
 }
 @media (max-width: 768px) {
-  select[multiple], select[size] {
-      height: 35vh;
-  }
+	select[multiple], select[size] {
+			height: 35vh;
+	}
 }
 
 .panel-title {
-  font-size: 1em;
+	font-size: 1em;
 }
 
 #afinite {
-    height: 42.5vh;
+		height: 42.5vh;
 }
 @media (max-width: 768px) {
-  #afinite {
-      height: 25vh;
-  }
+	#afinite {
+			height: 25vh;
+	}
 }
 
 @media (max-width: 1200px) {
-  .margin-b-form {
-      margin-bottom: 15px;
-  }
-  #afinite {
-      height: 35vh;
-  }
+	.margin-b-form {
+			margin-bottom: 15px;
+	}
+	#afinite {
+			height: 35vh;
+	}
 }
 
 .control-btn {
-  padding-bottom: 4px;
-  padding-bottom: 4px;
+	padding-bottom: 4px;
+	padding-bottom: 4px;
 }
 
 .no-marg-bot {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .nopadding {
-  padding: 0;
+	padding: 0;
 }
 
 /* v---navBar---v*/
 
 .test-center .contacts{
-  color: #23527c;
-  background-color: #ecf3f7;
-  border-bottom: 2px solid #23527c;
+	color: #23527c;
+	background-color: #ecf3f7;
+	border-bottom: 2px solid #23527c;
 }
 
 .test-center .contacts:hover {
-  background-color: #dae8ef;
-  border-bottom: 2px solid #23527c;
+	background-color: #dae8ef;
+	border-bottom: 2px solid #23527c;
 }
 
 .test-center {
-  background-color: white;
-  text-align: center;
+	background-color: white;
+	text-align: center;
 }
 
 .test-center a {
-  width: 18%;
-  display: inline-block;
-  border-bottom: 2px solid white;
+	width: 18%;
+	display: inline-block;
+	border-bottom: 2px solid white;
 }
 
 .test-center a:hover {
-  border-bottom: 2px solid #23527c;
+	border-bottom: 2px solid #23527c;
 }
 
 /* Styles pour les tablettes */
 @media (min-width: 768px) {
-  .test-center a {
-    width: 10%;
-    display: inline-block;
-  }
+	.test-center a {
+		width: 10%;
+		display: inline-block;
+	}
 }

@@ -1,63 +1,41 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Wedding</title>
-  <meta name="description" content="Le site de planification de mariage">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://use.fontawesome.com/f332948f4d.js"></script>
-
-  <link type="text/css" href="../model/cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="../model/cntDown/jquery.countdown.min.js?v=1.0.0.0"></script>
-
-</head>
-<body class="container-fluid">
+<?php include('../view/header.php') ?>
 
 <style>
 .navbar-default {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 .navbar-default .navbar-nav > .active > a {
-  background-color: #dae8ef;
+	background-color: #dae8ef;
 }
 .test-center {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 </style>
 
 <header>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="accueil.ctrl.php">Accueil</a></li>
-          <li><a href="creation.ctrl.php">Paramètres mariage</a></li>
-          <li><a href="#">Page Publique</a></li>
-          <li><a href="#">Mon compte</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="inscription.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="accueil.ctrl.php">Accueil</a></li>
+					<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
+					<li><a href="#">Page Publique</a></li>
+					<li><a href="#">Mon compte</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inscription.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
 
 <nav class="test-center"><!-- @whitespace

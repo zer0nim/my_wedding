@@ -1,62 +1,62 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);/*pour le compteur*/
 body {
-  background-image:  url("../../img/bgPaper.png");
-  background-repeat: repeat;
+	background-image:	url("../../img/bgPaper.png");
+	background-repeat: repeat;
 }
 
 #wedding {
-  background: #8fb7db;
-  background: -moz-linear-gradient(-45deg,  #8fb7db 24%, #ffc1c1 84%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,  #8fb7db 24%,#ffc1c1 84%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg,  #8fb7db 24%,#ffc1c1 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7db', endColorstr='#ffc1c1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #8fb7db;
+	background: -moz-linear-gradient(-45deg,	#8fb7db 24%, #ffc1c1 84%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg,	#8fb7db 24%,#ffc1c1 84%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg,	#8fb7db 24%,#ffc1c1 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7db', endColorstr='#ffc1c1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-  color: white;
+	color: white;
 }
 
 /* Styles pour les tablettes */
 @media (min-width: 768px) {
-  #wedding {
-    background: #8fb7db;
-    background-image: url("../../img/boy.png"), url("../../img/girl.png"), -moz-linear-gradient(-45deg,  #8fb7db 24%, #ffc1c1 84%); /* FF3.6-15 */
-    background-image: url("../../img/boy.png"), url("../../img/girl.png"), -webkit-linear-gradient(-45deg,  #8fb7db 24%,#ffc1c1 84%); /* Chrome10-25,Safari5.1-6 */
-    background-image: url("../../img/boy.png"), url("../../img/girl.png"), linear-gradient(135deg,  #8fb7db 24%,#ffc1c1 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7db', endColorstr='#ffc1c1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	#wedding {
+		background: #8fb7db;
+		background-image: url("../../img/boy.png"), url("../../img/girl.png"), -moz-linear-gradient(-45deg,	#8fb7db 24%, #ffc1c1 84%); /* FF3.6-15 */
+		background-image: url("../../img/boy.png"), url("../../img/girl.png"), -webkit-linear-gradient(-45deg,	#8fb7db 24%,#ffc1c1 84%); /* Chrome10-25,Safari5.1-6 */
+		background-image: url("../../img/boy.png"), url("../../img/girl.png"), linear-gradient(135deg,	#8fb7db 24%,#ffc1c1 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb7db', endColorstr='#ffc1c1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-    background-position: left top, right top;
-    background-size: 15%, 15%, cover;
-    background-repeat: no-repeat;
-  }
+		background-position: left top, right top;
+		background-size: 15%, 15%, cover;
+		background-repeat: no-repeat;
+	}
 }
 
 /* Styles pour les écrans moyens et grands */
 @media (min-width: 992px) {
-  #wedding {
-    background-size: 20%, 20%, cover;
-  }
+	#wedding {
+		background-size: 20%, 20%, cover;
+	}
 }
 
 .col-sm-4{
-  padding: 5px;
+	padding: 5px;
 }
 .btn-primary {
-  color: #125566;
-  background-color: #dae8ef;
-  border: 3px solid #c0dee5;
+	color: #125566;
+	background-color: #dae8ef;
+	border: 3px solid #c0dee5;
 }
 .btn-primary:hover{
-  color: #dae8ef;
-  background-color: #125566;
-  border: 3px solid #f4f4f5;
+	color: #dae8ef;
+	background-color: #125566;
+	border: 3px solid #f4f4f5;
 }
 .btn-primary:focus{
-  color: #dae8ef;
-  background-color: #125566;
-  border: 3px solid #f4f4f5;
+	color: #dae8ef;
+	background-color: #125566;
+	border: 3px solid #f4f4f5;
 }
 .navbar-default .navbar-nav > .active > a {
-  background-color: #dae8ef;
+	background-color: #dae8ef;
 }
 nav {
-  margin: 5px;
+	margin: 5px;
 }

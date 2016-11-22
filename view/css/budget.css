@@ -1,105 +1,105 @@
 body {
-  background-image:  url("../../img/bgPaper.png");
-  background-repeat: repeat;
+	background-image:	url("../../img/bgPaper.png");
+	background-repeat: repeat;
 }
 
 nav {
-  margin: 5px;
+	margin: 5px;
 }
 
 /* v---navBar---v*/
 
 .test-center .budget{
-  color: #23527c;
-  background-color: #ecf3f7;
-  border-bottom: 2px solid #23527c;
+	color: #23527c;
+	background-color: #ecf3f7;
+	border-bottom: 2px solid #23527c;
 }
 
 .test-center .budget:hover {
-  background-color: #dae8ef;
-  border-bottom: 2px solid #23527c;
+	background-color: #dae8ef;
+	border-bottom: 2px solid #23527c;
 }
 
 .test-center {
-  background-color: white;
-  text-align: center;
+	background-color: white;
+	text-align: center;
 }
 
 .test-center a {
-  width: 18%;
-  display: inline-block;
-  border-bottom: 2px solid white;
+	width: 18%;
+	display: inline-block;
+	border-bottom: 2px solid white;
 }
 
 .test-center a:hover {
-  border-bottom: 2px solid #23527c;
+	border-bottom: 2px solid #23527c;
 }
 
 /* Styles pour les tablettes */
 @media (min-width: 768px) {
-  .test-center a {
-    width: 10%;
-    display: inline-block;
-  }
+	.test-center a {
+		width: 10%;
+		display: inline-block;
+	}
 }
 
 /* ^---navBar---^ */
 
 .scroll{
-    overflow-y:scroll;
-    height:200px;
+		overflow-y:scroll;
+		height:200px;
 }
 
 .form-control{
-    margin: 0px;
+		margin: 0px;
 }
 
 .scroll2{
-    overflow-y:scroll;
-    height:230px;
+		overflow-y:scroll;
+		height:230px;
 }
 
 .row-margin{
-    margin-top: 30px;
+		margin-top: 30px;
 }
 
 .div-budget{
-    margin-left: 4%;
-    margin-right: 4%;
-    height: 350px;
-    
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    -webkit-transition: border .2s ease-in-out;
-    -o-transition: border .2s ease-in-out;
-    transition: border .2s ease-in-out;
+		margin-left: 4%;
+		margin-right: 4%;
+		height: 350px;
+		
+		padding-top: 5px;
+		padding-bottom: 5px;
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		-webkit-transition: border .2s ease-in-out;
+		-o-transition: border .2s ease-in-out;
+		transition: border .2s ease-in-out;
 }
 
 .table-margin{
-    margin: 10px;
+		margin: 10px;
 }
 
 .bouton-margin{
-    margin-top: 10px;
+		margin-top: 10px;
 }
 
 .btn-d{
-    margin-left: 4%;
-    margin-right: 4%;
+		margin-left: 4%;
+		margin-right: 4%;
 }
 
 .champ-description{
-    width: 65%;
+		width: 65%;
 }
 
 .champ-value{
-    width: 100px;
+		width: 100px;
 }
 
 .champ-description-depense{
-    width: 100%;
-    min-width: 100px;
+		width: 100%;
+		min-width: 100px;
 }
