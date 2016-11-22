@@ -65,7 +65,7 @@ class DAO {
 
             // creation des objets depense (sans fetch_class car il fait ****)
             $tabdepense = null;
-            
+
             if ($depenses != null){
                 foreach ($depenses as $depense) {
                     $obj = new depense(); $obj->setAll($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
@@ -319,12 +319,11 @@ class DAO {
     function getInvitation($idM){//fonction pour recuperer le texte de la bd
       $req = $this->db->prepare('SELECT inv_invite FROM Invitation WHERE inv_idM=:idM');
       $req->execute(array(':idM' => $idM,));
-      $data=fetchAll();
+      $data=$req->fetch();
       var_dump($data);
       $data=$data[0][0];
       return $data;
     }
-    //----------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité contacts
