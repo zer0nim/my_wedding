@@ -338,33 +338,23 @@ class DAO {
     private $cont_tel;
     */
     function getContacts($idM) {
-      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idMariage = :id');
-      $req->execute(array(':id' => $idM,));
-      while ($donnee = $req->fetch()) {
-        $data[] = array('cont_id' => $donnee['cont_id'],
-                        'cont_nom' => $donnee['cont_nom'],
-                        'cont_prenom' => $donnee['cont_prenom'],
-                        'cont_adresse' => $donnee['cont_adresse'],
-                        'cont_mail' => $donnee['cont_mail'],
-                        'cont_age' => $donnee['cont_age'],
-                        'cont_tel' => $donnee['cont_tel']);
-      }
-      return $data;
+      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "contacts");
+      return $donnee;
     }
 
     // supprime un Contact d'un mariage
     function delContacts($idM, $idCont) {
-      $req = $this->db->prepare('DELETE FROM Contact WHERE cont_idMariage = :idM AND id = :id');
-      $req->execute(array(':idM' => $idM,
-                          ':id' => $idCont));
+      $req = $this->db->prepare('DELETE FROM Contact WHERE cont_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
     }
 
     // insert un Contact à un mariage
     function setContact($idM, $contacts) {
       foreach ($contacts as $key => $value) {
-        $req = $this->db->prepare('INSERT INTO Contact VALUES(:cont_idMariage, :cont_id, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
-        $req->execute(array(':cont_idMariage' => $idM,
-                              ':cont_id' => $value['cont_id'],
+        $req = $this->db->prepare('INSERT INTO Contact VALUES(:idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
+        $req->execute(array(':idM' => $idM,
                               ':cont_nom' => $value['cont_nom'],
                               ':cont_prenom' => $value['cont_prenom'],
                               ':cont_adresse' => $value['cont_adresse'],

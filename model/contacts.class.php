@@ -1,6 +1,6 @@
 <?php
 class contacts {
-  private $cont_id;
+  private $cont_idM;
   private $cont_nom;
   private $cont_prenom;
   private $cont_adresse;
