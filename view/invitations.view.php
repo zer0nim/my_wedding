@@ -1,10 +1,11 @@
 <?php
   require_once '../view/baseMenuFnct.php';
+  ///////////VERSION SANS SESSION////////////
   $idM=1;
-  //$texte=$dao->getInvitation($idM);
-  if(!isset($_POST['actSave'])){
-    $texte='je suis le texte chargé depuis la page php pour simuler le texte qui est dans la bd'."\ntest retour ligne";
-  }else {?>
+  ///////////////////////////////////////////
+  $texte=$dao->getInvitation($idM);
+  if(isset($_POST['actSave'])){
+?>
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Enregistré !</strong>

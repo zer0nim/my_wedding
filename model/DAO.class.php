@@ -322,8 +322,7 @@ class DAO {
       $req = $this->db->prepare('SELECT inv_invite FROM Invitation WHERE inv_idM=:idM');
       $req->execute(array(':idM' => $idM,));
       $data=$req->fetch();
-      var_dump($data);
-      $data=$data[0][0];
+      $data=$data['inv_invite'];
       return $data;
     }
 

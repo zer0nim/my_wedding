@@ -1,13 +1,15 @@
 <?php
+  include_once('../model/DAO.class.php');
+  //////////VERSION SANS SESSION//////////
+  $idM=1;
+  ////////////////////////////////////
   if (isset($_POST['actSave'])) {
-    echo "actSave<br>";
     $texte=$_POST['texteInvit'];
+    $dao->setInvitation($idM,$texte);
     include('../view/invitations.view.php');
   }elseif (isset($_POST['actMail'])) {
-    echo "actMail<br>";
     include('../view/invitations.view.php');
   }elseif (isset($_POST['actPrint'])) {
-    echo "actPrint<br>";
     include('../view/invitations.view.php');
   }else {
     echo "Cette page ne peut être chargé manuellement<br/>\n";
