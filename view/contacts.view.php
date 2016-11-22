@@ -143,10 +143,10 @@ require_once '../view/baseMenuFnct.php';
 					<div class="control-btn panel-heading">
 						<div class="btn-group btn-group-justified" role="group" aria-label="...">
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs"></button>
+								<button type="button" class="btn btn-default btn-xs"><</button>
 							</div>
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs"></button>
+								<button type="button" class="btn btn-default btn-xs">></button>
 							</div>
 						</div>
 					</div>
