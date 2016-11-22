@@ -14,7 +14,7 @@ class DAO {
   // Ouverture de la base de donnée
   function __construct() {
     try {
-      $this->db = new PDO('mysql:host=164.132.34.157;dbname=base;', 'iut2info', 'projetweb');
+      $this->db = new PDO('mysql:host=137.74.148.71 ;dbname=base;', 'iut2info', 'projetweb');
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
@@ -27,7 +27,7 @@ class DAO {
     // recupere le dernier id de budget ajouté à la bd
     function getLastId($idmariage){
         try{
-            $req = $this->db->prepare('select max(bud_id) from Budget where bud_idMariage = :idmariage');
+            $req = $this->db->prepare('select max(bud_id) from Budget where bud_idM = :idmariage');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
             exit("Erreur de req sql getBudget : ".$e->getMessage());
@@ -86,7 +86,7 @@ class DAO {
 
         // recuperation de tout les id
         try{
-            $req = $this->db->prepare('select bud_id from Budget where bud_idMariage = :idmariage order by bud_id desc');
+            $req = $this->db->prepare('select bud_id from Budget where bud_idM = :idmariage order by bud_id desc');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
             exit("Erreur de req sql getBudgets : ".$e->getMessage());
@@ -140,7 +140,7 @@ class DAO {
     function updateBudget($budget){
 
         // update budget ----------------------
-        
+
         try{
             $req = $this->db->prepare('select bud_id from Budget where bud_id = :idbudget');
             $req->execute(array(':idbudget' => $budget->getId()));
@@ -173,7 +173,7 @@ class DAO {
         }
 
         // update depenses ---------------------------
-        
+
         // récuperation des id des dépenses pour savoir les quelles ont été supprimés
         try{
             $req = $this->db->prepare('select dep_id from Depense where dep_idbudget = :idbudget');
@@ -181,18 +181,18 @@ class DAO {
         }catch (PDOException $e){
             exit("Erreur de req sql getiddepense : ".$e->getMessage());
         }
-        
+
         $tabdepense = $budget->getTabdepense(); // les dépenses du formulaires
         $tabdepenseinit = $req->fetchAll(PDO::FETCH_ASSOC); // les dépenses initial de la bd
 
         if ($tabdepense != null){
-            
+
             // met à jour ou cree les depenses
             foreach ($tabdepense as $depense) {
 
                 // si la depense existe dans la bd on la modifie sinon on la cree
                 if (in_array($depense->getId(), $tabdepenseinit)){
-                    
+
                     //update depenses
                     try{
                         $req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
@@ -202,7 +202,7 @@ class DAO {
                     }
 
                 }else{
-                    
+
                     //insert depenses
                     try{
                         $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)'); // id à null car auto-incrementation
@@ -233,7 +233,7 @@ class DAO {
                 }
             }
         }
-        
+
         return $budget->getId();
 
     }
@@ -282,7 +282,7 @@ class DAO {
 
     // recupere tout la liste d'un mariage
     function getListeSouhait($idM) {
-      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idMariage = :id ORDER BY ListSouh_preference');
+      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idM = :id ORDER BY ListSouh_preference');
       $req->execute(array(':id' => $idM,));
       while ($donnee = $req->fetch()) {
         $data[] = array('nom' => $donnee['ListSouh_nom'], 'preference' => $donnee['ListSouh_preference'],);
@@ -292,7 +292,7 @@ class DAO {
 
     // supprime les souhait d'un mariage
     function delListeSouhaitMariage($idM) {
-      $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idMariage = :idM');
+      $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idM = :idM');
       $req->execute(array(':idM' => $idM,));
     }
 
