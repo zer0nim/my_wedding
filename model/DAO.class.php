@@ -331,13 +331,14 @@ class DAO {
     // fonction pour la fonctionnalité contacts
     //----------------------------------------------------------------------------------------
     /*
-    private $cont_id;
-    private $cont_nom;
-    private $cont_prenom;
-    private $cont_adresse;
-    private $cont_mail;
-    private $cont_age;
-    private $cont_tel;
+    cont_id int(11) auto_increment
+    cont_idM int(11)
+    cont_nom varchar(25)
+    cont_prenom varchar(25)
+    cont_adresse varchar(50)
+    cont_mail varchar(30)
+    cont_age int(11)
+    cont_tel varchar(15)
     */
     function getContacts($idM) {
       $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM');
@@ -355,16 +356,14 @@ class DAO {
 
     // insert un Contact à un mariage
     function setContact($idM, $contact) {
-      foreach ($contacts as $key => $value) {
         $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
         $req->execute(array(':cont_idM' => $contact['cont_idM'],
-                            ':cont_nom' => $value['cont_nom'],
-                            ':cont_prenom' => $value['cont_prenom'],
-                            ':cont_adresse' => $value['cont_adresse'],
-                            ':cont_mail' => $value['cont_mail'],
-                            ':cont_age' => $value['cont_age'],
-                            ':cont_tel' => $value['cont_tel']));
-      }
+                            ':cont_nom' => $contact['cont_nom'],
+                            ':cont_prenom' => $contact['cont_prenom'],
+                            ':cont_adresse' => $contact['cont_adresse'],
+                            ':cont_mail' => $contact['cont_mail'],
+                            ':cont_age' => $contact['cont_age'],
+                            ':cont_tel' => $contact['cont_tel']));
     }
     //----------------------------------------------------------------------------------------
 }
