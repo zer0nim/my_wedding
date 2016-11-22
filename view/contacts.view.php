@@ -1,5 +1,3 @@
-<!-- For GOOGLE autocomplete -->
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
 <?php
 require_once '../view/baseMenuFnct.php';
 ?>
@@ -93,20 +91,6 @@ require_once '../view/baseMenuFnct.php';
 					<input id="user_input_autocomplete_address" placeholder="Votre adresse..." class="form-control">
 				</div>
 			</div>
-			<script type="text/javascript">
-			// Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
-			function initializeAutocomplete(id) {
-				var element = document.getElementById(id);
-				if (element) {
-					var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-					google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-				}
-			}
-			// Initialisation du champs autocomplete
-			google.maps.event.addDomListener(window, 'load', function() {
-				initializeAutocomplete('user_input_autocomplete_address');
-			});
-			</script>
 			<!-- -^- Adress input -^- -->
 
 			<div class="col-xs-12 col-sm-3">
@@ -208,5 +192,12 @@ require_once '../view/baseMenuFnct.php';
 </div>
 </form>
 
-</body>
-</html>
+
+<?php include('../view/scripts.php') ?>
+
+<!-- For GOOGLE autocomplete -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
+
+<script src="js/contacts.js"></script>
+
+<?php include('../view/footer.php') ?>

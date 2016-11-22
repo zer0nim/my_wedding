@@ -2,9 +2,6 @@
 	require_once '../view/baseMenuFnct.php';
 ?>
 <link rel="stylesheet" href="../view/css/fournisseurs.css" type="text/css" />
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 
 
 <div class="row">
@@ -100,26 +97,11 @@
 	</div><!-- Fin tableu ajout de fournisseur -->
 </div>
 
-<!-- Script pour géré les différente hauteur des éléments dans la grille-->
-<script>
-	$(function() {
-			$('.box').matchHeight();
-	});
-</script>
 
-<script type="text/javascript">
-	// Lis le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
-	function initializeAutocomplete(id) {
-		var element = document.getElementById(id);
-		if (element) {
-			var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-			google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-		}
-	}
-	// Initialisation du champs autocomplete
-	google.maps.event.addDomListener(window, 'load', function() {
-		initializeAutocomplete('user_input_autocomplete_address');
-	});
-</script>
-</body>
-</html>
+<?php include('../view/scripts.php') ?>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script src="js/fournisseurs.js"></script>
+
+<?php include('../view/footer.php') ?>

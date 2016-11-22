@@ -37,22 +37,6 @@
 		<li class="seperator"> - </li>
 		<li><span class="seconds">00</span><p class="seconds_text">Secondes</p></li>
 	</ul>
-	<script type="text/javascript">
-	$('#wedding').countdown({
-		date: '02/27/2017 14:00:00',
-		offset: +2,
-		day: 'Jour',
-		days: 'Jours',
-		hour: 'Heure',
-		hours: 'Heures',
-		minute: 'Minute',
-		minutes: 'Minutes',
-		second: 'Seconde',
-		seconds: 'Secondes'
-	}, function () {
-		alert('Que la cérémonie commence !');
-	});
-	</script>
 
 	<nav class="text-center">
 		<div class="col-btn col-xs-12 col-sm-4">
@@ -87,5 +71,7 @@
 	<footer>
 
 	</footer>
-	</body>
-</html>
+
+<?php include('../view/scripts.php') ?>
+<script src="js/accueil.js"></script>
+<?php include('../view/footer.php') ?>

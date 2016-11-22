@@ -102,20 +102,6 @@
 		<div class="form-group col-xs-12">
 			Adresse: <input id="user_input_autocomplete_address" placeholder="Votre adresse..." class="form-control">
 		</div>
-		<script type="text/javascript">
-			// Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
-			function initializeAutocomplete(id) {
-				var element = document.getElementById(id);
-				if (element) {
-				 var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-				 google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-				}
-			}
-			// Initialisation du champs autocomplete
-			google.maps.event.addDomListener(window, 'load', function() {
-				initializeAutocomplete('user_input_autocomplete_address');
-			});
-		</script>
 <!-- -^- Adress input -^- -->
 
 <!-- -v- Button -v- -->
@@ -129,5 +115,7 @@
 
 	<footer>
 	</footer>
-</body>
-</html>
+
+<?php include('../view/scripts.php') ?>
+<script src="js/creation.js"></script>
+<?php include('../view/footer.php') ?>

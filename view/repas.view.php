@@ -3,5 +3,4 @@
 ?>
 <link rel="stylesheet" href="../view/css/repas.css" type="text/css" />
 
-</body>
-</html>
+<?php include('../view/footer.php') ?>
