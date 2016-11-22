@@ -1,8 +1,6 @@
 <?php 
 
     require_once '../model/DAO.class.php';
-
-    $budget = null; 
     
     if(isset($_GET['action'])){
 
@@ -10,7 +8,7 @@
         $idmariage = $_GET['idmariage'];
         $action = $_GET['action'];
 
-        if($action != "ajouter" && $action != "supprimer"){
+        if($action == "annuler" || $action == "modifier"){
             // initialisation de $budget avec la base de donnée
 
             $budget = $dao->getbudget($idbudget);
@@ -35,7 +33,7 @@
         // -----------------------------------------------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------------
         if ($action == "supprimer"){
-            // suppression dans la base de donnée de idbudget a faire
+            // suppression dans la base de donnée de idbudget
             $dao->supBudget($idbudget);
             
         // -----------------------------------------------------------------------------------------------------------------
@@ -50,7 +48,7 @@
                 $depenseobj = new depense();
                 $depenseobj->setAll($_GET['iddepense'], $idbudget, "description", 0);
                 $tabdepense[$_GET['iddepense']] = $depenseobj;
-                $budget = new budget($idbudget, $idmariage, "description", 0, $tabdepense)
+                $budget = new budget($idbudget, $idmariage, "description", 0, $tabdepense);
                 
                 ?> <div id="<?= $idbudget ?>" class="row-margin div-budget col-sm-5">
             <?php } ?>
@@ -119,15 +117,13 @@
                 $budget = new budget($idbudget, $idmariage, $_POST['description'], $_POST['value'], $tabdepense);
                 
                 // mise à jour de la base de donnée
-                $dao->updateBudget($budget);
+                // et de l'objet avec le nouvelle id
+                $budget->setId($dao->updateBudget($budget));
                 
-                // mise à jour de l'objet avec le nouvelle id
-                $newid = $dao->getLastId($idmariage);
-                $budget->setId($newid);
-                
-                // affichage du nouvelle id car il faut le communiquer a la page web client
+                // affichage du nouvelle id car il faut le communiquer
+                // a la page web client en cas de création d'un nouveau budget.
                 // il est récupéré par javascript
-                ?> <?= $newid ?> <?php
+                ?> <?= $budget->getId() ?> <?php
             }
             
             if ($budget != null){

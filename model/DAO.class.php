@@ -135,43 +135,12 @@ class DAO {
         }
     }
 
-    // met à jour ou cree des objets depense dans la bd
-    function updateDepense($depense){
-
-        // recupearation de la depense
-        try{
-            $req = $this->db->prepare('select dep_id from Depense where dep_id = :iddepense');
-            $req->execute(array(':iddepense' => $depense->getId()));
-        }catch (PDOException $e){
-            exit("Erreur de req sql getiddepense : ".$e->getMessage());
-        }
-
-        // si la depense existe dans la bd on la modifie sinon on la cree
-        if ($req->fetch() != null){
-            //update depenses
-            try{
-                $req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
-                $req->execute(array(':description' => $depense->getDescription(), ':valeur' => $depense->getValue(), ':idbdepense' => $depense->getId()));
-            }catch (PDOException $e){
-                exit("Erreur de req sql update depense : ".$e->getMessage());
-            }
-
-        }else{
-            //insert depenses
-            try{
-                $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)'); // id à null car auto-incrementation
-                $req->execute(array(':idbudget' => $depense->getIdbudget(), ':description' => $depense->getDescription(), ':valeur' => $depense->getValue()));
-            }catch (PDOException $e){
-                exit("Erreur de req sql insert depense : ".$e->getMessage());
-            }
-        }
-
-    }
-
     // met à jour ou cree un objet budget et ces depenses dans la bd
+    // return l'id du budget crée
     function updateBudget($budget){
 
-        // recuperation du budget
+        // update budget ----------------------
+        
         try{
             $req = $this->db->prepare('select bud_id from Budget where bud_id = :idbudget');
             $req->execute(array(':idbudget' => $budget->getId()));
@@ -203,24 +172,55 @@ class DAO {
             $budget->setId($newId);
         }
 
-        // update depenses
-        $tabdepense = $budget->getTabdepense();
-        $tabdepenseinit = $this->getBudget($budget->getId())->getTabdepense();
+        // update depenses ---------------------------
+        
+        // récuperation des id des dépenses pour savoir les quelles ont été supprimés
+        try{
+            $req = $this->db->prepare('select dep_id from Depense where dep_idbudget = :idbudget');
+            $req->execute(array(':idbudget' => $budget->getId()));
+        }catch (PDOException $e){
+            exit("Erreur de req sql getiddepense : ".$e->getMessage());
+        }
+        
+        $tabdepense = $budget->getTabdepense(); // les dépenses du formulaires
+        $tabdepenseinit = $req->fetchAll(PDO::FETCH_ASSOC); // les dépenses initial de la bd
 
         if ($tabdepense != null){
+            
             // met à jour ou cree les depenses
             foreach ($tabdepense as $depense) {
-                $this->updateDepense($depense);
+
+                // si la depense existe dans la bd on la modifie sinon on la cree
+                if (in_array($depense->getId(), $tabdepenseinit)){
+                    
+                    //update depenses
+                    try{
+                        $req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
+                        $req->execute(array(':description' => $depense->getDescription(), ':valeur' => $depense->getValue(), ':idbdepense' => $depense->getId()));
+                    }catch (PDOException $e){
+                        exit("Erreur de req sql update depense : ".$e->getMessage());
+                    }
+
+                }else{
+                    
+                    //insert depenses
+                    try{
+                        $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)'); // id à null car auto-incrementation
+                        $req->execute(array(':idbudget' => $depense->getIdbudget(), ':description' => $depense->getDescription(), ':valeur' => $depense->getValue()));
+                    }catch (PDOException $e){
+                        exit("Erreur de req sql insert depense : ".$e->getMessage());
+                    }
+                }
             }
         }
 
         // supprime les depenses de la BD qui ont été supprimées par l'utilisateur
         if ($tabdepenseinit != null){
             if ($tabdepense != null){
-                foreach ($tabdepenseinit as $depense) {
-                    if (!array_key_exists($depense->getId(), $tabdepense)){
+                foreach ($tabdepenseinit as $id) {
+                    if (!array_key_exists($id, $tabdepense)){
                         // si la dépense n'est plus dans la nouvelle table on la supprime
-                        $this->supDepense($depense->getId());
+                        $this->supDepense($id);
                     }
                 }
             }else{
@@ -233,6 +233,8 @@ class DAO {
                 }
             }
         }
+        
+        return $budget->getId();
 
     }
 

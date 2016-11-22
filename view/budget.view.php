@@ -136,8 +136,7 @@
             xhttp4.onreadystatechange = function() {
                 if(xhttp4.readyState === XMLHttpRequest.DONE && xhttp4.status === 200) {
                     var reponse = this.responseText;
-                    var long = reponse.indexOf("<");
-                    var id = reponse.substring(0, long).trim();
+                    var id = reponse.substring(0, reponse.indexOf("<")).trim();
                     var data = reponse.replace(id, "");
                     document.getElementById(idbudget).innerHTML = data;
                     document.getElementById(idbudget).id = id;
