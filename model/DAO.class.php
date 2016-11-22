@@ -73,7 +73,7 @@ class DAO {
                 }
             }
 
-            return new budget($idbudget, $budget['bud_idMariage'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
+            return new budget($idbudget, $budget['bud_idM'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
 
         }else{
             return null;
