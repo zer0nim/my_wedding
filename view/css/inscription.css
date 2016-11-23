@@ -46,6 +46,14 @@ body {
 	margin-bottom: 0;
 }
 
+.navbar-default .navbar-nav > li > a {
+	padding: 0.4em 0.8em;
+	color: white;
+}
+.navbar-default .navbar-nav > li > .btn-default {
+	color: black;
+}
+
 header {
 	height: 100vh;
 	background-image: url("../../img/2.jpg");

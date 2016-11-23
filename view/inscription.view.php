@@ -31,8 +31,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" class="btn btn-primary navbar-btn">Sign up</button></li>
-					<li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
+						<li><a href="#sign" class="btn btn-primary navbar-btn" role="button">Sign up</a></li>
+						<li><a href="#sign" class="btn btn-default navbar-btn" role="button">Sign in</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
