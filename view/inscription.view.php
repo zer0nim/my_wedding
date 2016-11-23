@@ -13,33 +13,35 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image">
-				<a class="navbar-brand" href="#">WyWedding</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-				<li><button type="button" class="btn btn-primary navbar-btn">Sign up</button></li>
-				<li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
 		<header>
-			<div class="col-sm-6">
-				<h1>MyWedding:</h1>
-				<h2>Le meilleur moyen d'organiser votre marriage</h2>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+						<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image">
+					<a class="navbar-brand" href="#">WyWedding</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" class="btn btn-primary navbar-btn">Sign up</button></li>
+					<li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<div>
+				<div class="col-sm-6">
+					<h1>MyWedding:</h1>
+					<h2>Le meilleur moyen d'organiser votre marriage</h2>
+				</div>
 			</div>
 		</header>
 
