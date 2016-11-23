@@ -48,6 +48,6 @@
 
 
 <?php include('../view/scripts.php') ?>
-<script src="js/budget.js"></script>
+<script src="../view/js/budget.js"></script>
 
 <?php include('../view/footer.php') ?>

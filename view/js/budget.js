@@ -54,7 +54,7 @@ function supp(iddepense) {
 function add(idbudget) {
 		var iddepense = 19999999+i; // doit etre tout le temps different
 		i++;
-		$("#idadd"+idbudget).before('<tr id="'+iddepense+'" class="row"><td><p class="btn btn-danger btn-sm" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input class="champ-description-depense" name="'+iddepense+'depdescription" type="text" maxlength="50" value=""></td><td class="text-right"><input class="champ-value" name="'+iddepense+'depvalue" type="number" min="0" max="2000000000" value="0 €"></td></tr>');
+		$("#idadd"+idbudget).before('<tr id="'+iddepense+'" class="row"><td><p class="btn btn-danger btn-sm" onclick="supp(\''+iddepense+'\')"> X </p></td><td><input class="champ-description-depense" name="'+iddepense+'depdescription" type="text" maxlength="50" value=""></td><td class="text-right"><input class="champ-value" name="'+iddepense+'depvalue" type="number" min="0" max="2000000000" value="0" €></td></tr>');
 }
 
 // fonction pour annuler les modifications

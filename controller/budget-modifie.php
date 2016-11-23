@@ -46,9 +46,9 @@
                 
                 // creation d'un budget avec des valeurs par defaut
                 $depenseobj = new depense();
-                $depenseobj->setAll($_GET['iddepense'], $idbudget, "description", 0);
-                $tabdepense[$_GET['iddepense']] = $depenseobj;
-                $budget = new budget($idbudget, $idmariage, "description", 0, $tabdepense);
+                $depenseobj->setAll($_GET['iddepense'], $idbudget, "", 0);
+                $tabdepense[$depenseobj->getId()] = $depenseobj;
+                $budget = new budget($idbudget, $idmariage, "", 0, $tabdepense);
                 
                 ?> <div id="<?= $idbudget ?>" class="row-margin div-budget col-sm-5">
             <?php } ?>
@@ -58,7 +58,7 @@
             <form id="form<?= $budget->getId() ?>" method="post" action="budget-modifie.php?idbudget=<?= $idbudget ?>&action=valider">
 
                 <div class="row col-sm-12">
-                    <p><input class="champ-description" name="description" type="text" maxlength="35" value="<?= $budget->getDescription() ?>"> : <input class="champ-value" name="value" type="number" min="0" max="2000000000" value="<?= $budget->getValue() ?>"> €</p>
+                    <p><input placeholder="description" class="champ-description" name="description" type="text" maxlength="35" value="<?= $budget->getDescription() ?>"> : <input placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="<?= $budget->getValue() ?>"> €</p>
                 </div>
 
                 <table class="row scroll2 form-control">
@@ -101,7 +101,11 @@
                     if (strripos($name, "depdescription") != false){ // si c'est une description de dépense
                         $tabdepense[str_replace("depdescription", "", $name)]['depdescription'] = $value;
                     }else if (strripos($name, "depvalue") != false){ // si c'est une valeur de depense
-                        $tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = $value;
+                        if ($value == null){
+                            $tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = 0;
+                        }else{
+                            $tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = $value;
+                        }
                     }
                 }
                 
@@ -114,7 +118,9 @@
                     }
                 }
                 
-                $budget = new budget($idbudget, $idmariage, $_POST['description'], $_POST['value'], $tabdepense);
+                $value = $_POST['value'];
+                if ($value == null){$value = 0;}
+                $budget = new budget($idbudget, $idmariage, $_POST['description'], $value, $tabdepense);
                 
                 // mise à jour de la base de donnée
                 // et de l'objet avec le nouvelle id

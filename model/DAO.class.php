@@ -17,9 +17,8 @@ class DAO {
       $this->db = new PDO('mysql:host=137.74.148.71;dbname=base;', 'iut2info', 'projetweb');
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
-    }
-  }
-
+    }  
+  } 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------
@@ -182,8 +181,8 @@ class DAO {
             exit("Erreur de req sql getiddepense : ".$e->getMessage());
         }
 
+        $tabdepenseinit = $req->fetchAll(PDO::FETCH_COLUMN); // les dépenses initial de la bd
         $tabdepense = $budget->getTabdepense(); // les dépenses du formulaires
-        $tabdepenseinit = $req->fetchAll(PDO::FETCH_ASSOC); // les dépenses initial de la bd
 
         if ($tabdepense != null){
 
@@ -191,7 +190,7 @@ class DAO {
             foreach ($tabdepense as $depense) {
 
                 // si la depense existe dans la bd on la modifie sinon on la cree
-                if (in_array($depense->getId(), $tabdepenseinit)){
+                if ($tabdepenseinit != null && in_array($depense->getId(), $tabdepenseinit)){
 
                     //update depenses
                     try{
