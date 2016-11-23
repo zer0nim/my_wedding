@@ -18,5 +18,5 @@
 <?php include('../view/scripts.php') ?>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- script pour récupérer l'ordre de la liste à chaque changement -->
-<script src="js/liste.js"></script>
+<script src="../view/js/liste.js"></script>
 <?php include('../view/footer.php') ?>

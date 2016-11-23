@@ -117,5 +117,5 @@
 	</footer>
 
 <?php include('../view/scripts.php') ?>
-<script src="js/creation.js"></script>
+<script src="../view/js/creation.js"></script>
 <?php include('../view/footer.php') ?>

@@ -102,6 +102,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
-<script src="js/fournisseurs.js"></script>
+<script src="../view/js/fournisseurs.js"></script>
 
 <?php include('../view/footer.php') ?>
