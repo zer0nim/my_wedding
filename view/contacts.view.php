@@ -22,57 +22,47 @@ require_once '../view/baseMenuFnct.php';
 				<?php printAllContacts($allContacts); ?>
 			</select>
 			<!-- -^- Liste contacts-^- -->
-			<script>/*
-			function loadName(id) {
-			    var xhr = new XMLHttpRequest();
+			<script>
 
-			    // On souhaite juste récupérer le contenu du fichier, la méthode GET suffit amplement :
-			    xhr.open('GET', file);
+			$(document).ready(function(){
+				$('#select-cnt').bind('input', function() {
 
-			    xhr.addEventListener('readystatechange', function() { // On gère ici une requête asynchrone
+					if ($(this).val().length == 1) {
 
-			        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // Si le fichier est chargé sans erreur
+						$.post(
+						    '../controller/ajax_select_cnt.php', // Le fichier cible côté serveur.
+						    {
+						        idcont : $(this).val()
+						    },
 
-			            document.getElementById('fileContent').innerHTML = '<span>' + xhr.responseText + '</span>'; // Et on affiche !
+								function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+									document.getElementById("NomLink").value = data['cont_nom'];
+									document.getElementById("PrenomLink").value = data['cont_prenom'];
+									document.getElementById("user_input_autocomplete_address").value = data['cont_adresse'];
+									document.getElementById("MailLink").value = data['cont_mail'];
+									document.getElementById("TelLink").value = data['cont_tel'];
+									document.getElementById("AgeLink").value = data['cont_age'];
+		            },
 
-			        }
+								'json' // Format des données reçues.
+						);
+					}
+					else { //a faire: griser la partie droite de lecran
+						document.getElementById("NomLink").value = "";
+						document.getElementById("PrenomLink").value = "";
+						document.getElementById("user_input_autocomplete_address").value = "";
+						document.getElementById("MailLink").value = "";
+						document.getElementById("TelLink").value = "";
+						document.getElementById("AgeLink").value = "";
+						document.getElementById("NomLink").value = "";
+					}
 
-			    });
-
-			    xhr.send(null); // La requête est prête, on envoie tout !
-
-			}
-			(function() { // Comme d'habitude, une IIFE pour éviter les variables globales
-
-			    var inputs = document.getElementsByTagName('input'),
-			        inputsLen = inputs.length;
-
-			    for (var i = 0; i < inputsLen; i++) {
-
-			        inputs[i].addEventListener('click', function() {
-			            loadFile(this.value); // À chaque clique, un fichier sera chargé dans la page
-			        });
-
-			    }
-
-			})();
-			//controller\ajax\contact.ajax.php
-			$('#select-cnt').bind('input', function() {
-				var idcont = $(this).val();
-				if (idcont.length == 1) {
-					document.getElementById("NomLink").value = " <?php echo $allContacts[1]->getCont_nom(); ?>"; // get the current value of the input field.
-				}
-				else { //a faire: griser la partie droite de lecran
-					document.getElementById("NomLink").value = $(this).val(); // get the current value of the input field.
-				}
+				});
 			});
-			*/</script>
+
+			</script>
 
 		</div>
-		<!--
-		ajouter Contact
-		supprimer Contact
-	-->
 
 	<div class="col-xs-12 col-sm-7 col-lg-9 row">
 		<div class="nopadding form-group col-xs-12">
@@ -85,7 +75,7 @@ require_once '../view/baseMenuFnct.php';
 			<div class="col-xs-12 col-sm-6">
 				<div class="input-group">
 					<span class="input-group-addon">Prenom</span>
-					<input id="prependedtext" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="PrenomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
 				</div>
 			</div>
 		</div>
@@ -93,13 +83,13 @@ require_once '../view/baseMenuFnct.php';
 			<div class="margin-b-form col-xs-12 col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">Mail</span>
-					<input id="prependedtext" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="MailLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
 				</div>
 			</div>
 			<div class="col-xs-12 col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">Télephone</span>
-					<input id="prependedtext" name="prependedtext" class="form-control" placeholder="" type="text">
+					<input id="TelLink" name="prependedtext" class="form-control" placeholder="" type="text">
 				</div>
 			</div>
 		</div>
@@ -114,7 +104,7 @@ require_once '../view/baseMenuFnct.php';
 			<!-- -^- Adress input -^- -->
 
 			<div class="col-xs-12 col-sm-3">
-				<select class="form-control">
+				<select id="AgeLink" class="form-control">
 					<option value="NULL">Age</option>
 					<?php
 					for ($i=1; $i<=150; $i++)
