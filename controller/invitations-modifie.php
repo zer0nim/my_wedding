@@ -1,12 +1,13 @@
-<?php
+  <?php
   include_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
   $idM=1;
   ////////////////////////////////////
   if (isset($_POST['actSave'])) {
     $texte=$_POST['editor1'];
+    $dao->delInvitation($idM);
     $dao->setInvitation($idM,$texte);
-    
+
     include('../view/invitations.view.php');
   }elseif (isset($_POST['actMail'])) {
     include('../view/invitations.view.php');

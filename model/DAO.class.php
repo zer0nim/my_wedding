@@ -325,6 +325,11 @@ class DAO {
       return $data;
     }
 
+    function delInvitation($idM) {
+      $req = $this->db->prepare('DELETE FROM Invitation WHERE inv_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+    }
+
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité contacts
     //----------------------------------------------------------------------------------------
