@@ -47,17 +47,36 @@ nav {
 	list-style-type: none;
 	margin: auto;
 	padding: 0;
-	width: 60%;
+	width: 80%;
+	text-align: center;
 }
 
 #sortable li {
 	margin: 0 3px 3px 3px;
 	padding: 0.4em;
-	padding-left: 1.5em;
 	font-size: 1.4em;
+	text-align: center;
 }
 
 .liste {
 	width: 100%;
 	text-align: center;
+}
+
+ul li {
+	text-align: center;
+}
+
+ul {
+	text-align: center;
+}
+
+input {
+	margin: auto;
+	width: 80%;
+}
+
+.form-control {
+	margin: auto;
+	width: 80%;
 }
