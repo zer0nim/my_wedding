@@ -25,7 +25,7 @@
 						<span class="icon-bar"></span>
 					</button>
 						<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image">
-					<a class="navbar-brand" href="#">WyWedding</a>
+					<a class="navbar-brand" href="#">MyWedding</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
