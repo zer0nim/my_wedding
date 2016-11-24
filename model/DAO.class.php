@@ -17,8 +17,8 @@ class DAO {
       $this->db = new PDO('mysql:host=137.74.148.71;dbname=base;', 'iut2info', 'projetweb');
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
-    }  
-  } 
+    }
+  }
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------

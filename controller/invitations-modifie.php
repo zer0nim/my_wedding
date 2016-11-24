@@ -4,8 +4,9 @@
   $idM=1;
   ////////////////////////////////////
   if (isset($_POST['actSave'])) {
-    $texte=$_POST['texteInvit'];
+    $texte=$_POST['editor1'];
     $dao->setInvitation($idM,$texte);
+    
     include('../view/invitations.view.php');
   }elseif (isset($_POST['actMail'])) {
     include('../view/invitations.view.php');

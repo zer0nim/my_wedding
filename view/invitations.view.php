@@ -18,10 +18,10 @@
 
 <div class="col-sm-12">
 	<form class="" action="invitations-modifie.php" method="post">
-		<!--<textarea name="texteInvit" wrap="soft" ><?=$texte?></textarea>-->
+		<!--<textarea name="texteInvit" wrap="soft" ></textarea>-->
 
-		<textarea name="editor1" id="editor1" rows="10" cols="80">
-      This is my textarea to be replaced with CKEditor.
+		<textarea name="editor1" id="editor1" >
+      <?=$texte?>
     </textarea>
 
 		<div class="row">
