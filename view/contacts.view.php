@@ -1,7 +1,6 @@
-<?php
-require_once '../view/baseMenuFnct.php';
-?>
+<?php include('../view/header.php') ?>
 <link rel="stylesheet" href="../view/css/contacts.css" type="text/css" />
+<?php require_once '../view/baseMenuFnct.php';?>
 
 <form>
 	<div class="row">

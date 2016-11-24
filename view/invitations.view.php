@@ -1,3 +1,6 @@
+<?php include('../view/header.php') ?>
+<link rel="stylesheet" href="../view/css/invitations.css" type="text/css" />
+
 <?php
 	require_once '../view/baseMenuFnct.php';
 	///////////VERSION SANS SESSION////////////
@@ -13,16 +16,14 @@
 	<?php } ?>
 
 
-<link rel="stylesheet" href="../view/css/invitations.css" type="text/css" />
-<script src="../ckeditor/ckeditor.js"></script>
 
 <div class="col-sm-12">
 	<form class="" action="invitations-modifie.php" method="post">
 		<!--<textarea name="texteInvit" wrap="soft" ></textarea>-->
 
 		<textarea name="editor1" id="editor1" >
-      <?=$texte?>
-    </textarea>
+		<?=$texte?>
+	</textarea>
 
 		<div class="row">
 				<button class="col-sm-2 col-sm-offset-2 btn btn-primary" name="actSave">Enregistrer</button>
@@ -32,7 +33,8 @@
 	</form>
 </div>
 <?php include('../view/scripts.php') ?>
-<?php include('../view/footer.php') ?>
+<script src="../ckeditor/ckeditor.js"></script>
 <script>
 	CKEDITOR.replace( 'editor1' );
 </script>
+<?php include('../view/footer.php') ?>

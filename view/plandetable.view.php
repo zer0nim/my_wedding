@@ -1,9 +1,6 @@
-<?php
-	require_once '../view/baseMenuFnct.php';
-?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<?php include('../view/header.php') ?>
 <link rel="stylesheet" href="../view/css/plandetable.css" type="text/css" />
+<?php require_once '../view/baseMenuFnct.php'; ?>
 
 <!--
 Bouton Créer une table
@@ -178,4 +175,6 @@ Bouton Impression du plan de table
 <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-block">enregistrer</button>
 <!-- -^- Button -^- -->
 <?php include('../view/scripts.php') ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <?php include('../view/footer.php') ?>

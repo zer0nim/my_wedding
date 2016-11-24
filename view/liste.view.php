@@ -1,8 +1,7 @@
-<?php
-	require_once '../view/baseMenuFnct.php';
-?>
+<?php include('../view/header.php') ?>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="../view/css/liste.css" type="text/css" />
+<?php require_once '../view/baseMenuFnct.php'; ?>
 
 	<div class="box col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
 		<div class="liste">

@@ -1,5 +1,3 @@
-<?php include('../view/header.php') ?>
-
 <style>
 .navbar-default {
 	margin-bottom: 0;
@@ -11,6 +9,7 @@
 	margin-bottom: 15px;
 }
 </style>
+</head>
 
 <header>
 	<nav class="navbar navbar-default">
