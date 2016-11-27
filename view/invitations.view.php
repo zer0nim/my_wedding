@@ -3,9 +3,6 @@
 
 <?php
 	require_once '../view/baseMenuFnct.php';
-	///////////VERSION SANS SESSION////////////
-	$idM=1;
-	///////////////////////////////////////////
 	$texte=$dao->getInvitation($idM);
 	if(isset($_POST['actSave'])){
 ?>
@@ -13,17 +10,13 @@
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Enregistré !</strong>
 		</div>
-	<?php } ?>
-
-
+<?php } ?>
 
 <div class="col-sm-12">
-	<form class="" action="invitations-modifie.php" method="post">
-		<!--<textarea name="texteInvit" wrap="soft" ></textarea>-->
-
+	<form class="" action="invitations.ctrl.php" method="post">
 		<textarea name="editor1" id="editor1" >
-		<?=$texte?>
-	</textarea>
+			<?=$texte?>
+		</textarea>
 
 		<div class="row">
 				<button class="col-sm-2 col-sm-offset-2 btn btn-primary" name="actSave">Enregistrer</button>
