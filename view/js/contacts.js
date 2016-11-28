@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#info').addClass('disabledInf');
 	$('#select-cnt').bind('input', function() {
 
 		if ($(this).val().length == 1) {
@@ -16,12 +17,14 @@ $(document).ready(function(){
 						document.getElementById("MailLink").value = data['cont_mail'];
 						document.getElementById("TelLink").value = data['cont_tel'];
 						document.getElementById("AgeLink").value = data['cont_age'];
+						$('#info').removeClass('disabledInf');
 					},
 
 					'json' // Format des données reçues.
 			);
 		}
-		else { //a faire: griser la partie droite de lecran
+		else {
+			$('#info').addClass('disabledInf');
 			document.getElementById("NomLink").value = "";
 			document.getElementById("PrenomLink").value = "";
 			document.getElementById("user_input_autocomplete_address").value = "";

@@ -4,28 +4,25 @@
 
 <form>
 	<div class="row">
-		<div class="col-xs-12 col-sm-5 col-lg-3">
-			<!-- -v- Button -v- -->
-			<div class="nopadding form-group col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouveau</button>
-			</div>
-			<!-- -^- Button -^- -->
-			<!-- -v- Button -v- -->
-			<div class="nopadding form-group col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block">Supprimer</button>
-			</div>
-			<!-- -^- Button -^- -->
-
+		<div class="edit-cnt panel panel-default">
+		<div class="panel-body">
+			<div class="col-xs-12 col-sm-5 col-lg-3">
 			<!-- -v- Liste contacts -v- -->
 			<select multiple id="select-cnt" class="form-control">
 				<?php printAllContacts($allContacts); ?>
 			</select>
 			<!-- -^- Liste contacts-^- -->
+			<div class="nopadding form-group col-xs-12">
+				<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouveau</button>
+			</div>
+			<div class="nopadding form-group col-xs-12">
+				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block">Supprimer</button>
+			</div>
 		</div>
 
-	<div class="col-xs-12 col-sm-7 col-lg-9 row">
+	<div id="info" class="col-xs-12 col-sm-7 col-lg-9 row">
 		<div class="nopadding form-group col-xs-12">
-			<div class="col-xs-12 col-sm-6">
+			<div class="margin-b-form col-xs-12 col-sm-6">
 				<div class="input-group">
 					<span class="input-group-addon">Nom</span>
 					<input id="NomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
@@ -54,7 +51,7 @@
 		</div>
 		<div class="nopadding form-group col-xs-12">
 			<!-- -v- Adress input -v- -->
-			<div class="col-xs-12 col-sm-9">
+			<div class="margin-b-form col-xs-12 col-sm-9">
 				<div class="input-group">
 					<span class="input-group-addon">Adresse</span>
 					<input id="user_input_autocomplete_address" class="form-control">
@@ -79,7 +76,7 @@
 
 		<!-- -v- Liste affinités -v- -->
 		<div class="form-group col-xs-12">
-			<div class="nopadding col-xs-4">
+			<div class="nopadding col-sm-4">
 
 				<div class="no-marg-bot panel panel-default">
 					<div class="panel-heading">
@@ -90,16 +87,16 @@
 				</div>
 
 			</div>
-			<div class="nopadding col-xs-4">
+			<div class="nopadding col-sm-4">
 
 				<div class="no-marg-bot panel panel-default">
 					<div class="control-btn panel-heading">
 						<div class="btn-group btn-group-justified" role="group" aria-label="...">
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs">&#60;</button>
+								<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
 							</div>
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs">&#62;</button>
+								<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 							</div>
 						</div>
 					</div>
@@ -138,7 +135,7 @@
 						</select>
 				</div>
 			</div>
-			<div class="nopadding col-xs-4">
+			<div class="nopadding col-sm-4">
 
 				<div class="no-marg-bot panel panel-default">
 					<div class="panel-heading">
@@ -158,6 +155,8 @@
 		</div>
 		<!-- -^- Button -^- -->
 	</div>
+</div>
+</div>
 </div>
 </form>
 

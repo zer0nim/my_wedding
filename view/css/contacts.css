@@ -11,7 +11,7 @@ nav {
 select[multiple], select[size] {
 		height: 71vh;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	select[multiple], select[size] {
 			height: 35vh;
 	}
@@ -41,7 +41,6 @@ select[multiple], select[size] {
 
 .control-btn {
 	padding-bottom: 4px;
-	padding-bottom: 4px;
 }
 
 .no-marg-bot {
@@ -50,6 +49,19 @@ select[multiple], select[size] {
 
 .nopadding {
 	padding: 0;
+}
+
+.disabledInf {
+	-webkit-filter: blur(3px);
+	-moz-filter: blur(3px);
+	-o-filter: blur(3px);
+	-ms-filter: blur(3px);
+	filter: blur(3px);
+}
+
+.edit-cnt {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 /* v---navBar---v*/
