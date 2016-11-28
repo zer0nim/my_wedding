@@ -16,7 +16,7 @@
 				<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouveau</button>
 			</div>
 			<div class="nopadding form-group col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block">Supprimer</button>
+				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block" onClick="confirmation()">Supprimer</button>
 			</div>
 		</div>
 

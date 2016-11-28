@@ -35,6 +35,21 @@ $(document).ready(function(){
 		}
 
 	});
+
+	// fonction pour confirmation de suppression d'un ou plusieurs contact (cree une popup)
+	function confirmation() {
+		var msg;
+		if ($(this).val().length == 1) {
+			msg = "Êtes-vous sur de vouloir supprimer le contact sélectionné ?";
+		}
+		else {
+			msg = "Êtes-vous sur de vouloir supprimer les contacts sélectionnés ?";
+		}
+		if (confirm(msg)){
+			//To do !
+			//appel ajax fonction de suppression
+		}
+	}
 });
 
 // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
