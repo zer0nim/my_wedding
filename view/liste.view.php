@@ -11,7 +11,9 @@
 						;	}
 				?>
 			</ul>
-			<input type="text" placeholder="nouveau souhait ?" class="form-control">
+		</div>
+			<span class="input-group-addon">Nouveau souhait</span>
+			<input type="text" class="form-control">
 			<input type="submit" class="form-control btn btn-primary">
 		</div>
 

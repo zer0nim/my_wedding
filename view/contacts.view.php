@@ -57,7 +57,7 @@
 			<div class="col-xs-12 col-sm-9">
 				<div class="input-group">
 					<span class="input-group-addon">Adresse</span>
-					<input id="user_input_autocomplete_address" placeholder="Votre adresse..." class="form-control">
+					<input id="user_input_autocomplete_address" class="form-control">
 				</div>
 			</div>
 			<!-- -^- Adress input -^- -->

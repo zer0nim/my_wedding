@@ -1,15 +1,6 @@
-<style>
-.navbar-default {
-	margin-bottom: 0;
-}
-.navbar-default .navbar-nav > .active > a {
-	background-color: #dae8ef;
-}
-.test-center {
-	margin-bottom: 15px;
-}
-</style>
+<link rel="stylesheet" href="../view/css/baseMenuFnct.css" type="text/css" />
 </head>
+<body class="container-fluid">
 
 <header>
 	<nav class="navbar navbar-default">
@@ -42,7 +33,6 @@
 --><a href="contacts.ctrl.php" class="contacts btn btn-link btn-sm"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="invitations.ctrl.php" class="invitations btn btn-link btn-sm"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="plandetable.ctrl.php" class="plandetable btn btn-link btn-sm"><i class="fa fa-th fa-2x" aria-hidden="true"></i></a><!-- @whitespace
---><a href="repas.ctrl.php" class="repas btn btn-link btn-sm"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="fournisseurs.ctrl.php" class="fournisseurs btn btn-link btn-sm"><i class="fa fa-truck fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="inspiration.ctrl.php" class="inspiration btn btn-link btn-sm"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i></a><!-- @whitespace
 --><a href="liste.ctrl.php" class="liste btn btn-link btn-sm"><i class="fa fa-gift fa-2x" aria-hidden="true"></i></a><!-- @whitespace

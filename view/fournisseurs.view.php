@@ -26,15 +26,29 @@
 				<div class="no-marg-bot panel panel-default">
 
 					<div class="panel-heading">
-						<input type="text"name="titre" class="form-control" placeholder="Titre" aria-describedby="basic-addon1">
-						<input type="text"name="adresse" class="form-control" id="user_input_autocomplete_address" placeholder="Adresse" aria-describedby="basic-addon1">
-						<input type="text"name="tel" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon1">
-						<input type="text"name="mail" class="form-control" placeholder="Adresse mail" aria-describedby="basic-addon1">
-						<input type="text"name="site" class="form-control" placeholder="Site Internet" aria-describedby="basic-addon1">
+						<div class="input-group">
+							<span class="input-group-addon">Titre</span>
+							<input type="text"name="titre" class="form-control" aria-describedby="basic-addon1">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon">Adresse</span>
+							<input type="text"name="adresse" class="form-control" id="user_input_autocomplete_address" aria-describedby="basic-addon1">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon">Téléphone</span>
+							<input type="text"name="tel" class="form-control" aria-describedby="basic-addon1">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon">Adresse mail</span>
+							<input type="text"name="mail" class="form-control" aria-describedby="basic-addon1">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon">Site Internet</span>
+							<input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+						</div>
 					</div>
-
-					<textarea class="form-control" name="description" id="" placeholder="Description" name=""></textarea>
-
+						<span class="input-group-addon">Description</span>
+						<textarea class="form-control" name="description" id="" name=""></textarea>
 				</div><!-- Fin champs input -->
 			</form><!-- Fin formulaire -->
 

@@ -19,26 +19,3 @@ nav {
 	background-color: #dae8ef;
 	border-bottom: 2px solid #23527c;
 }
-
-.test-center {
-	background-color: white;
-	text-align: center;
-}
-
-.test-center a {
-	width: 18%;
-	display: inline-block;
-	border-bottom: 2px solid white;
-}
-
-.test-center a:hover {
-	border-bottom: 2px solid #23527c;
-}
-
-/* Styles pour les tablettes */
-@media (min-width: 768px) {
-	.test-center a {
-		width: 10%;
-		display: inline-block;
-	}
-}
