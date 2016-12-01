@@ -12,12 +12,13 @@
 		</div>
 <?php } ?>
 
-<div class="form-group">
+
 	<form class="" action="invitations.ctrl.php" method="post">
-		<textarea name="editor1" id="editor1">
-			<?=$texte?>
-		</textarea>
-</div>
+		<div class="form-group col-lg-offset-2 col-lg-8 col-sm-12">
+			<textarea name="editor1" id="editor1">
+				<?=$texte?>
+			</textarea>
+		</div>
 		<div class="row">
 				<button class="col-sm-2 col-sm-offset-2 btn btn-primary" name="actSave">Enregistrer</button>
 				<button class="col-sm-2 col-sm-offset-1 btn btn-primary" name="actMail">Envoyer par mail</button>

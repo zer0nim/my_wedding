@@ -10,12 +10,8 @@ nav {
 div{
 	text-align: center;
 }
-textarea{
-	resize: none;
-	height: 80vh;
-	width: 100vh;
-	margin-bottom: 10px;
-}
+
+
 /* v---navBar---v*/
 
 .test-center .invitations{
