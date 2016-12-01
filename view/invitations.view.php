@@ -14,7 +14,7 @@
 
 
 	<form class="" action="invitations.ctrl.php" method="post">
-		<div class="form-group">
+		<div class="form-group col-lg-offset-2 col-lg-8 col-sm-12">
 			<textarea name="editor1" id="editor1">
 				<?=$texte?>
 			</textarea>
