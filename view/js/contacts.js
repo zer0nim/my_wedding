@@ -10,13 +10,24 @@ function confirmation() {
 			msg = "Êtes-vous sur de vouloir supprimer les contacts sélectionnés ?";
 		}
 		if (confirm(msg)){
-			//To do !
-			//appel ajax fonction de suppression
+			//suppression dans la base
+			$.post(
+					'../controller/ajax_delete_cnt.php', // Le fichier cible côté serveur.
+					{
+							idcont : selected
+					},
+
+					function(data){
+						location.reload(true);
+					},
+
+					'text' // Format des données reçues.
+			);
 		}
 	}
 	else {
 		//message erreur
-		msg
+		alert(msg);
 	}
 }
 
