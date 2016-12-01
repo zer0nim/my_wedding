@@ -23,7 +23,7 @@ class DAO {
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------
 
-    // recupere le dernier id de budget ajouté à la bd
+    // recupere le dernier id de budget ajouté au mariage dans la bd
     function getLastId($idmariage){
         try{
             $req = $this->db->prepare('select max(bud_id) from Budget where bud_idM = :idmariage');
@@ -67,7 +67,7 @@ class DAO {
 
             if ($depenses != null){
                 foreach ($depenses as $depense) {
-                    $obj = new depense(); $obj->setAll($depense['dep_id'], $depense['dep_idbudget'], $depense['dep_description'], $depense['dep_valeur']);
+                    $obj = new depense($depense['dep_id'], $depense['dep_description'], $depense['dep_valeur']);
                     $tabdepense[$depense['dep_id']] = $obj;
                 }
             }
@@ -80,22 +80,48 @@ class DAO {
     }
 
     // recupere tout les budgets et depense d'un mariage
+    // contient une partie du code de getBudget() mais necessaire pour limiter le nombre de requettes sql
     function getBudgets($idmariage){
         $tabbudget = null;
 
-        // recuperation de tout les id
+        // recuperation de tout les budget
         try{
-            $req = $this->db->prepare('select bud_id from Budget where bud_idM = :idmariage order by bud_id desc');
+            $req = $this->db->prepare('select * from Budget where bud_idM = :idmariage order by bud_id desc');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
             exit("Erreur de req sql getBudgets : ".$e->getMessage());
         }
-        $resultats = $req->fetchAll();
+        $budgets = $req->fetchAll(PDO::FETCH_ASSOC);
+                
+        if ($budgets != null){
+            
+            // recuperation de toutes les depenses de tout les budgets
+            try{
+                $req = $this->db->prepare('select * from Depense where dep_idbudget in (select bud_id from Budget where bud_idM = :idmariage)');
+                $req->execute(array(':idmariage' => $idmariage));
+            }catch (PDOException $e){
+                exit("Erreur de req sql getDepenses : ".$e->getMessage());
+            }
+            $depenses = $req->fetchAll(PDO::FETCH_ASSOC /*PDO::FETCH_CLASS, "depense"*/);
+            
+            // modification du tableau pour le classer par budget
+            foreach ($depenses as $depense) {
+                $depenses[$depense['dep_idbudget']][$depense['dep_id']] = $depense;
+            }
+            
+            // creation des objets budget et depense
+            foreach ($budgets as $budget) {
+                
+                $tabdepense = null;
 
-        // creation des obgets budget
-        if ($resultats != null){
-            foreach ($resultats as $idbudget) {
-                $tabbudget[$idbudget[0]] = $this->getBudget($idbudget[0]);
+                if ($depenses != null){
+                    foreach ($depenses[$budget['bud_id']] as $depense) {
+                        $obj = new depense($depense['dep_id'], $depense['dep_description'], $depense['dep_valeur']);
+                        $tabdepense[$depense['dep_id']] = $obj;
+                    }
+                }
+                
+                $tabbudget[$budget['bud_id']] = new budget($budget['bud_id'], $budget['bud_idM'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
             }
 
             return $tabbudget;
@@ -205,7 +231,7 @@ class DAO {
                     //insert depenses
                     try{
                         $req = $this->db->prepare('insert into Depense values(NULL, :idbudget, :description, :valeur)'); // id à null car auto-incrementation
-                        $req->execute(array(':idbudget' => $depense->getIdbudget(), ':description' => $depense->getDescription(), ':valeur' => $depense->getValue()));
+                        $req->execute(array(':idbudget' => $budget->getId(), ':description' => $depense->getDescription(), ':valeur' => $depense->getValue()));
                     }catch (PDOException $e){
                         exit("Erreur de req sql insert depense : ".$e->getMessage());
                     }
