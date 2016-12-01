@@ -13,10 +13,10 @@
 			</select>
 			<!-- -^- Liste contacts-^- -->
 			<div class="nopadding form-group col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouveau</button>
+				<input type="button" class="btn btn-default btn-block" value="Créer nouveau">
 			</div>
 			<div class="nopadding form-group col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-danger btn-block" onClick="confirmation()">Supprimer</button>
+				<input type="button" class="btn btn-danger btn-block" value="Supprimer" onClick="confirmation()">
 			</div>
 		</div>
 
@@ -82,7 +82,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title">Entente</h3>
 					</div>
-						<select multiple id="afinite" class="form-control">
+						<select multiple id="EntenteLink" class="form-control">
 						</select>
 				</div>
 
@@ -93,14 +93,14 @@
 					<div class="control-btn panel-heading">
 						<div class="btn-group btn-group-justified" role="group" aria-label="...">
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+								<button type="button" id="LikeLink" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
 							</div>
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+								<button type="button" id="dislikeLink" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 							</div>
 						</div>
 					</div>
-						<select multiple id="afinite" class="form-control">
+						<select multiple id="EntenteChoiceLink" class="form-control">
 							<option>Bellefeuille Bertrand</option>
 							<option>Bonnet Valentine</option>
 							<option>Charette Christien</option>
@@ -141,7 +141,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title">Mésentente</h3>
 					</div>
-						<select multiple id="afinite" class="form-control">
+						<select multiple id="MesententeLink" class="form-control">
 						</select>
 				</div>
 
@@ -149,11 +149,9 @@
 		</div>
 		<!-- -^- Liste affinités-^- -->
 
-		<!-- -v- Button -v- -->
 		<div class="form-group	col-xs-12">
-			<button id="singlebutton" name="singlebutton" class="btn btn-primary">enregistrer</button>
+			<button id="SaveContactInfoLink" class="btn btn-primary">enregistrer</button>
 		</div>
-		<!-- -^- Button -^- -->
 	</div>
 </div>
 </div>
@@ -162,10 +160,5 @@
 
 
 <?php include('../view/scripts.php') ?>
-
-<!-- For GOOGLE autocomplete -->
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAIGMBk_u4Odlmc-UhPHgQ3RsZzq6J0Ak0" type="text/javascript"></script>
-
 <script src="../view/js/contacts.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <?php include('../view/footer.php') ?>

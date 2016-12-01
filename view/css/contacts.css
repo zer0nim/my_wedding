@@ -21,11 +21,11 @@ select[multiple], select[size] {
 	font-size: 1em;
 }
 
-#afinite {
+#EntenteLink, #EntenteChoiceLink, #MesententeLink {
 		height: 42.5vh;
 }
 @media (max-width: 768px) {
-	#afinite {
+	#EntenteLink, #EntenteChoiceLink, #MesententeLink {
 			height: 25vh;
 	}
 }
@@ -34,7 +34,7 @@ select[multiple], select[size] {
 	.margin-b-form {
 			margin-bottom: 15px;
 	}
-	#afinite {
+	#EntenteLink, #EntenteChoiceLink, #MesententeLink {
 			height: 35vh;
 	}
 }
