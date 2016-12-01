@@ -1,7 +1,7 @@
 <?php
   function printAllContacts($allContacts) {
     foreach ($allContacts as $key => $contact) {
-      echo '<option value="' . $key . '">' . $contact->getCont_nom() . " " . $contact->getCont_prenom() . "</option>" . "\n";
+      echo '<option value="' . $contact->getCont_id() . '">' . $contact->getCont_nom() . " " . $contact->getCont_prenom() . "</option>" . "\n";
     }
   }
 

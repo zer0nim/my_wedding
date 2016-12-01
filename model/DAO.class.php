@@ -92,9 +92,9 @@ class DAO {
             exit("Erreur de req sql getBudgets : ".$e->getMessage());
         }
         $budgets = $req->fetchAll(PDO::FETCH_ASSOC);
-                
+
         if ($budgets != null){
-            
+
             // recuperation de toutes les depenses de tout les budgets
             try{
                 $req = $this->db->prepare('select * from Depense where dep_idbudget in (select bud_id from Budget where bud_idM = :idmariage)');
@@ -103,15 +103,15 @@ class DAO {
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());
             }
             $depenses = $req->fetchAll(PDO::FETCH_ASSOC /*PDO::FETCH_CLASS, "depense"*/);
-            
+
             // modification du tableau pour le classer par budget
             foreach ($depenses as $depense) {
                 $depenses[$depense['dep_idbudget']][$depense['dep_id']] = $depense;
             }
-            
+
             // creation des objets budget et depense
             foreach ($budgets as $budget) {
-                
+
                 $tabdepense = null;
 
                 if ($depenses != null){
@@ -120,7 +120,7 @@ class DAO {
                         $tabdepense[$depense['dep_id']] = $obj;
                     }
                 }
-                
+
                 $tabbudget[$budget['bud_id']] = new budget($budget['bud_id'], $budget['bud_idM'], $budget['bud_description'], $budget['bud_valeur'], $tabdepense);
             }
 
@@ -374,6 +374,14 @@ class DAO {
       $req->execute(array(':idM' => $idM,));
       $donnee = $req->fetchAll(PDO::FETCH_CLASS, "contacts");
       return $donnee;
+    }
+
+    function getContact($idM, $idCont) {
+      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM and cont_id = :cont_id');
+      $req->execute(array(':idM' => $idM,
+                          ':cont_id' => $idCont,));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "contacts");
+      return $donnee[0];
     }
 
     // supprime un Contact d'un mariage
