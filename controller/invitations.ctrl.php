@@ -9,8 +9,6 @@
     $dao->setInvitation($idM,$texte); //Ajoute le nouveau texte dans la bdd
   }elseif (isset($_POST['actMail'])) {
 
-  }elseif (isset($_POST['actPrint'])) {
-
   }
   include_once('../view/invitations.view.php');
 ?>
