@@ -376,6 +376,16 @@ class DAO {
       return $donnee;
     }
 
+    function getContactsIndiceParId($idM) {
+      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $donnees = $req->fetchAll(PDO::FETCH_CLASS, "contacts");
+      foreach ($donnees as $donnee) {
+        $listContact[$donnee->getCont_id()] = $donnee;
+      }
+      return $listContact;
+    }
+
     function getContact($idM, $idCont) {
       $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM and cont_id = :cont_id');
       $req->execute(array(':idM' => $idM,
@@ -403,6 +413,34 @@ class DAO {
                             ':cont_tel' => $contact['cont_tel']));
     }
     //----------------------------------------------------------------------------------------
+
+    function placement($idMariage) {
+      try {
+        $tabPasEnsemble = $this->db->prepare('Select pref_idContact, pref_idContact2 From Preferences Where pref_idM = :idMariage and pref_aime = \'non\'');
+        $tabPasEnsemble->execute(array(':idMariage' => $idMariage));
+        //$tabPasEnsemble[0] contient idContact et $tabPasEnsemble[1] contient idContact2
+      }
+      catch (PDOException $e) {
+        exit("Erreur de req sql placement -> Pas ensemble : ".$e->getMessage());
+      }
+
+      try {
+        $tabEnsemble = $this->db->prepare('Select pref_idContact, pref_idContact2 From Preferences Where pref_idM = :idMariage and pref_aime = \'oui\'');
+        $tabEnsemble->execute(array(':idMariage' => $idMariage));
+        //$tabEnsemble[0] contient idContact et $tabEnsemble[1] contient idContact2
+      }
+      catch (PDOException $e) {
+        exit("Erreur de req sql placement -> Ensemble : ".$e->getMessage());
+      }
+
+      $contacts = $this->getContactsIndiceParId($idMariage);
+      foreach ($tabPasEnsemble as $pasEnsemble) {
+        echo $contacts[$pasEnsemble[0]]->getCont_nom()." ".$contacts[$pasEnsemble[0]]->getCont_prenom()." et ".$contacts[$pasEnsemble[1]]->getCont_nom()." ".$contacts[$pasEnsemble[1]]->getCont_prenom()." ne s'aiment pas !<BR>";
+      }
+      foreach ($tabEnsemble as $ensemble) {
+        echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
+      }
+    }
 }
 
 ?>
