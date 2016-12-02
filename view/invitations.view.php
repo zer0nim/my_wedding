@@ -28,7 +28,8 @@
 </div>
 <?php include('../view/scripts.php') ?>
 <script src="../ckeditor/ckeditor.js"></script>
-<script>
+<!--<script>
 	CKEDITOR.replace( 'editor1' );
-</script>
+</script> -->
+<script src="../view/js/invitations.js"></script>
 <?php include('../view/footer.php') ?>
