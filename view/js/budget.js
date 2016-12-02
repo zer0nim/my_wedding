@@ -33,7 +33,7 @@ function getHtmlDepenseModif(id, description, value){
 // fonction qui renvoie le forme html d'un budget avec des champs modifiables
 function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
 
-    var depenses;
+    var depenses = "";
     for (i = 0 ; i < tabDepenses.length ; i++){
         depenses += getHtmlDepenseModif(tabDepenses[i][0], tabDepenses[i][1], tabDepenses[i][2]);
     }
@@ -63,7 +63,16 @@ function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
 function supprimer(idbudget, idmariage){
 
     var msg = "Êtes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !";
-    if (confirm(msg)){
+    
+    swal({
+	title: "Supression",   
+	text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
+	type: "warning",   
+	showCancelButton: true,   
+	confirmButtonColor: "#DD6B55",   
+	confirmButtonText: "Supprimer", 
+	cancelButtonText: "Annuler"
+    },  function(){
 
         var xhttp0 = new XMLHttpRequest();
         xhttp0.onreadystatechange = function(){
@@ -84,7 +93,7 @@ function supprimer(idbudget, idmariage){
         xhttp0.open("POST", "budget-modifie.php", true);
         xhttp0.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhttp0.send("idbudget="+idbudget+"&action=supprimer&idmariage="+idmariage);
-    }
+    });
 }
 
 
@@ -119,7 +128,7 @@ function ajouter(idmariage){
 
     var tabDepenses = new Array();
     tabDepenses.push(new Array(iddepadd, "", 0));
-    $("#divboutonajouter").after('<div id="'+idbudadd+'" class="row-margin div-budget col-sm-5">'
+    $("#divboutonajouter").after('<div id="'+idbudadd+'" class="row-margin div-budget border col-sm-5">'
                                     +getHtmlBudgetModif(idbudadd, idmariage, "", 0, tabDepenses)
                                 +'</div>');
 
@@ -207,6 +216,14 @@ function valider(idbudget, idmariage){
 // function pour si le client pert la connexion avec le serveur web
 // (les requettes ne sont pas recus)
 function serverLost(){
-    var msg = "Connexion avec le serveur perdu !";
-    // faire quelque chose ...
+    swal({
+	title: "Erreur",   
+	text: "La connexion au serveur à été perdue !",   
+	type: "warning",   
+	showCancelButton: false,   
+	confirmButtonColor: "#DD6B55",   
+	confirmButtonText: "Ok"
+    },  function(){
+	document.location.href="budget.ctrl.php";
+    });
 }

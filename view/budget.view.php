@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="../view/css/budget.css" type="text/css" />
 
 <div class="text-center">
-    <div class="row row-margin">
-        <p>Budget globale : <b id="budgetglobale"><?= $budgetglobale ?></b> €</p>
-        <p>Budget globale dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
-        <p>Budget globale restant : <b id="budgetglobalerestant"><?= $budgetglobalerestant ?></b> €</p>
-    </div>
     
-    <div id="divboutonajouter" class="row col-sm-4 col-sm-offset-4">
+    <div id="divboutonajouter" class="row border col-sm-4 col-sm-offset-4">
+	<div class="row budgetglobal">
+	    <p class="row no-margin">Budget global : <b id="budgetglobale"><?= $budgetglobale ?></b> €</p>
+	    <p class="row no-margin">Budget global dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
+	    <p class="row no-margin">Budget global restant : <b id="budgetglobalerestant"><?= $budgetglobalerestant ?></b> €</p>
+	</div>
         <button class="btn btn-primary" onClick="ajouter('<?= $idmariage ?>')">Ajouter un budget</button>
     </div>
     
@@ -18,8 +18,8 @@
     if ($tabbudget != null){
         foreach ($tabbudget as $idbudget => $budget) {
             ?>
-            <div id="<?= $idbudget ?>" class="row-margin div-budget col-sm-5">
-                <div class="row col-sm-12">
+            <div id="<?= $idbudget ?>" class="row-margin div-budget border col-sm-5">
+                <div class="row">
                     <p><b id="description<?= $idbudget ?>"><?= $budget->getDescription() ?></b> : <b id="value<?= $idbudget ?>"><?= $budget->getValue() ?></b> €</p>
                 </div>
                 <table id="tab<?= $idbudget ?>" class="row scroll form-control">
@@ -35,10 +35,10 @@
                     }
                     ?>
                 </table>
-                <table class="row table-margin col-sm-10">
-                    <tr class="row"><td class="text-center">Total dépensé : </td><td id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</td><td></td></tr>
-                    <tr class="row"><td class="text-center">Budget restant : </td><td class="text-right"><?= $budget->getTotalRest() ?> €</td><td></td></tr>
-                </table>
+                <div class="row table-margin">
+                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</b></p>
+                    <p class="row no-margin">Budget restant : <b class="text-right"><?= $budget->getTotalRest() ?> €</b></p>
+                </div>
                 <div class="row">
                     <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
                     <button class="btn-d col-sm-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
