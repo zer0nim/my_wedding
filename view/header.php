@@ -10,3 +10,5 @@
 		<link rel="stylesheet" href="../view/css/accueil.css" type="text/css" />
 
 		<link type="text/css" href="../model/cntDown/jquery.countdown.css?v=1.0.0.0" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css"><!-- sweetalert -->

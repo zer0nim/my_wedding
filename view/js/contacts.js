@@ -4,30 +4,47 @@ function confirmation() {
 	var selected = $('#select-cnt').val();
 	if (selected) {
 		if (selected.length == 1) {
-			msg = "Êtes-vous sur de vouloir supprimer le contact sélectionné ?";
+			msg = "e contact sélectionné";
 		}
 		else {
-			msg = "Êtes-vous sur de vouloir supprimer les contacts sélectionnés ?";
+			msg = "es contacts sélectionnés";
 		}
-		if (confirm(msg)){
-			//suppression dans la base
-			$.post(
-					'../controller/ajax_delete_cnt.php', // Le fichier cible côté serveur.
-					{
-							idcont : selected
-					},
 
-					function(data){
-						location.reload(true);
-					},
+		swal({
+		  title: "Êtes-vous sur de vouloir supprimer l" + msg + " ?",
+		  text: "Vous ne pourrez pas revenir en arrière!",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Oui, supprimer!",
+		  cancelButtonText: "Non, annuler!",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+		    swal("Supprimé!", "", "success");
+				//suppression dans la base
+				$.post(
+						'../controller/ajax_delete_cnt.php', // Le fichier cible côté serveur.
+						{
+								idcont : selected
+						},
 
-					'text' // Format des données reçues.
-			);
-		}
+						function(data){
+							location.reload(true);
+						},
+
+						'text' // Format des données reçues.
+				);
+		  } else {
+			    swal("Annnulé", "Votre fichier est en sécurité :)", "error");
+		  }
+		});
 	}
 	else {
 		//message erreur
-		alert(msg);
+		swal("Oops...", msg, "error");
 	}
 }
 

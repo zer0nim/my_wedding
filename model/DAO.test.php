@@ -1,6 +1,19 @@
 <?php
 // Test de la classe DAO
 require_once('DAO.class.php');
+$cnt = new contacts();
+$cnt->faux_construct(NULL, 1, "vdsdvv", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
+$cnt->faux_construct(NULL, 1, "bbbb", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
+$cnt->faux_construct(NULL, 1, "ngfg", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
+$cnt->faux_construct(NULL, 1, "wee", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
+$cnt->faux_construct(NULL, 1, "vcbgbgfbgf", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
+$cnt->faux_construct(NULL, 1, "sds", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
+$dao->setContact(1, $cnt->getCont());
 /* creation de contacts pour les tests
   $cnt = new contacts();
   $cnt->faux_construct(NULL, 1, "Bellefeuille", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
