@@ -434,6 +434,12 @@ class DAO {
       }
 
       $contacts = $this->getContactsIndiceParId($idMariage);
+      foreach ($tabPasEnsemble as $pasEnsemble) {
+        echo $contacts[$pasEnsemble[0]]->getCont_nom()." ".$contacts[$pasEnsemble[0]]->getCont_prenom()." et ".$contacts[$pasEnsemble[1]]->getCont_nom()." ".$contacts[$pasEnsemble[1]]->getCont_prenom()." ne s'aiment pas !<BR>";
+      }
+      foreach ($tabEnsemble as $ensemble) {
+        echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
+      }
     }
 }
 
