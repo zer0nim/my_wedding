@@ -6,13 +6,12 @@
 var idbudadd = -1;
 var iddepadd = -1;
 
-var budgetglobale = +document.getElementById("budgetglobale").innerHTML;
+var budgetglobale = +document.getElementById("champbudgetglobale").innerHTML;
 var budgetglobaledepense = +document.getElementById("budgetglobaledepense").innerHTML;
 
 
 // fonction pour mettre à jour le budget global
 function updatebudgetglobal(){
-    document.getElementById("budgetglobale").innerHTML = budgetglobale;
     document.getElementById("budgetglobaledepense").innerHTML = budgetglobaledepense;
     document.getElementById("budgetglobalerestant").innerHTML = budgetglobale - budgetglobaledepense;
 }
@@ -78,7 +77,6 @@ function supprimer(idbudget, idmariage){
         xhttp0.onreadystatechange = function(){
             if(xhttp0.readyState === XMLHttpRequest.DONE){
                 if (xhttp0.status === 200){
-                    budgetglobale -= +document.getElementById("value"+idbudget).innerHTML;
                     budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
                     updatebudgetglobal();
                     
@@ -97,10 +95,42 @@ function supprimer(idbudget, idmariage){
 }
 
 
+// fonction pour modifier le budget global
+function modifierbudgetglobal(idmariage){
+    document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Valider";
+    document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "validerbudgetglobal('"+idmariage+"')";
+    $("#champbudgetglobale").replaceWith('<input id="champbudgetglobale" placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+document.getElementById("champbudgetglobale").innerHTML+'">');
+}
+
+
+// fonction pour modifier le budget global
+function validerbudgetglobal(idmariage){
+    
+    /*var xhttp5 = new XMLHttpRequest();
+    xhttp5.onreadystatechange = function(){
+        if(xhttp5.readyState === XMLHttpRequest.DONE){
+            if (xhttp5.status === 200){*/
+		budgetglobale = +document.getElementById("champbudgetglobale").value;
+		updatebudgetglobal();
+                document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Modifier";
+		document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "modifierbudgetglobal('"+idmariage+"')";
+		$("#champbudgetglobale").replaceWith('<b id="champbudgetglobale">'+budgetglobale+'</b>');
+            /*}else{
+                serverLost();
+            }
+        }
+    };
+    
+    xhttp5.open("POST", "budget-modifie.php", true);
+    xhttp5.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp5.send("idbudget="+idbudget+"&action=annuler&idmariage="+idmariage);*/
+    
+}
+
+
 // fonction pour afficher les champs quand l'utilisateur veut modifier un budget
 function modifier(idbudget, idmariage){
     
-    budgetglobale -= +document.getElementById("value"+idbudget).innerHTML;
     budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
 
     var description = document.getElementById("description"+idbudget).innerHTML;
@@ -195,7 +225,6 @@ function valider(idbudget, idmariage){
             }else{
                 serverLost();
             }
-            budgetglobale += +document.getElementById("value"+id).innerHTML;
             budgetglobaledepense += +document.getElementById("totaldepense"+id).innerHTML.replace("€", "");
             updatebudgetglobal();
                     

@@ -5,11 +5,10 @@
     $idmariage = 1; // modifier par l'id du mariage à afficher
     $tabbudget = $dao->getBudgets($idmariage);
 
-    $budgetglobale = 0;
+    $budgetglobale = 0; // à modifier
     $budgetglobaledepense = 0;
 
     foreach ($tabbudget as $budget) {
-        $budgetglobale += $budget->getValue();
         $budgetglobaledepense += $budget->getTotalDepense();
     }
     $budgetglobalerestant = $budgetglobale - $budgetglobaledepense;

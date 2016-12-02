@@ -7,7 +7,9 @@
     
     <div id="divboutonajouter" class="row border col-sm-4 col-sm-offset-4">
 	<div class="row budgetglobal">
-	    <p class="row no-margin">Budget global : <b id="budgetglobale"><?= $budgetglobale ?></b> €</p>
+            <button id="boutonmodifierbudgetglobal" class="btn-d btn" onClick="modifierbudgetglobal('<?= $budget->getIdMariage() ?>')">Modifier</button>
+	    <p class="row no-margin">Budget global : <b id="champbudgetglobale"><?= $budgetglobale ?></b> €</p>
+	    
 	    <p class="row no-margin">Budget global dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
 	    <p class="row no-margin">Budget global restant : <b id="budgetglobalerestant"><?= $budgetglobalerestant ?></b> €</p>
 	</div>
