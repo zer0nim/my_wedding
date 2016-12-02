@@ -60,7 +60,7 @@
                 
 ?>
             
-                <div class="row col-sm-12">
+                <div class="row">
                     <p><b id="description<?= $idbudget ?>"><?= $budget->getDescription() ?></b> : <b id="value<?= $idbudget ?>"><?= $budget->getValue() ?></b> €</p>
                 </div>
                 <table id="tab<?= $idbudget ?>" class="row scroll form-control">
@@ -76,10 +76,10 @@
                     }
                     ?>
                 </table>
-                <table class="row table-margin col-sm-10">
-                    <tr class="row"><td class="text-center">Total dépensé : </td><td id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</td><td></td></tr>
-                    <tr class="row"><td class="text-center">Budget restant : </td><td class="text-right"><?= $budget->getTotalRest() ?> €</td><td></td></tr>
-                </table>
+                <div class="row table-margin">
+                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</b></p>
+                    <p class="row no-margin">Budget restant : <b class="text-right"><?= $budget->getTotalRest() ?> €</b></p>
+                </div>
                 <div class="row">
                     <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
                     <button class="btn-d col-sm-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>

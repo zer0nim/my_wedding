@@ -3,6 +3,7 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
+<<<<<<< HEAD
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 //config.uiColor = '#AADC6E';
@@ -26,4 +27,10 @@ CKEDITOR.editorConfig = function( config ) {
 	];
   config.skin = 'kama';
 	config.removeButtons = 'Source,NewPage,PasteFromWord,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,About,Maximize,ShowBlocks,CopyFormatting,RemoveFormat,Superscript,Flash,Smiley,SpecialChar,Iframe,CreateDiv,Table';
+=======
+CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+>>>>>>> origin/master
 };
