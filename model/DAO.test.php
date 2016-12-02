@@ -79,4 +79,5 @@ $dao->setContact(1, $cnt->getCont());
   $cnt->faux_construct(NULL, 1, "Petitjean", "Yves", "route de Brest", "Yves25@hotmail.fr", 31, "0600114441");
   $dao->setContact(1, $cnt->getCont());
 */
+$dao->placement(1);
 ?>
