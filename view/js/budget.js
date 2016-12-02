@@ -9,11 +9,66 @@ var iddepadd = -1;
 var budgetglobale = +document.getElementById("champbudgetglobale").innerHTML;
 var budgetglobaledepense = +document.getElementById("budgetglobaledepense").innerHTML;
 
+// initialisation des couleurs pour les budgets dépasées
+// ------------------------------------------------
+if (budgetglobale - budgetglobaledepense < 0){
+	document.getElementById("budgetglobalerestant").style.color = "red";
+}
 
-// fonction pour mettre à jour le budget global
+var listebudgetrestant = document.getElementsByClassName("totalrestant");
+for (i = 0 ; i < listebudgetrestant.length ; i++){
+	if (+listebudgetrestant[i].innerHTML < 0){
+		listebudgetrestant[i].style.color = "red";
+	}
+}
+// ------------------------------------------------
+
+
+// fonction pour mettre à jour le champ budget global
 function updatebudgetglobal(){
     document.getElementById("budgetglobaledepense").innerHTML = budgetglobaledepense;
     document.getElementById("budgetglobalerestant").innerHTML = budgetglobale - budgetglobaledepense;
+	
+	// modification couleur
+	if (budgetglobale - budgetglobaledepense >= 0){
+		document.getElementById("budgetglobalerestant").style.color = "black";
+	}else{
+		document.getElementById("budgetglobalerestant").style.color = "red";
+	}
+}
+
+// fonction pour modifier le budget global
+function modifierbudgetglobal(idmariage){
+    document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Valider";
+    document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "validerbudgetglobal('"+idmariage+"')";
+    $("#champbudgetglobale").replaceWith('<input id="champbudgetglobale" placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+document.getElementById("champbudgetglobale").innerHTML+'">');
+}
+
+
+// fonction pour modifier le budget global
+function validerbudgetglobal(idmariage){
+    var value = +document.getElementById("champbudgetglobale").value;
+	if (value < 0){value = 0;}
+	if (value > 2000000000){value = 2000000000;}
+    var xhttp5 = new XMLHttpRequest();
+    xhttp5.onreadystatechange = function(){
+        if(xhttp5.readyState === XMLHttpRequest.DONE){
+            if (xhttp5.status === 200){
+				budgetglobale = value;
+				updatebudgetglobal();
+				document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Modifier";
+				document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "modifierbudgetglobal('"+idmariage+"')";
+				$("#champbudgetglobale").replaceWith('<b id="champbudgetglobale">'+budgetglobale+'</b>');
+            }else{
+                serverLost();
+            }
+        }
+    };
+    
+    xhttp5.open("POST", "budget-modifie.php", true);
+    xhttp5.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp5.send("action=updatebudgetglobal&idmariage="+idmariage+"&value="+value);
+    
 }
 
 
@@ -64,67 +119,34 @@ function supprimer(idbudget, idmariage){
     var msg = "Êtes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !";
     
     swal({
-	title: "Supression",   
-	text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
-	type: "warning",   
-	showCancelButton: true,   
-	confirmButtonColor: "#DD6B55",   
-	confirmButtonText: "Supprimer", 
-	cancelButtonText: "Annuler"
-    },  function(){
+		title: "Supression",   
+		text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
+		type: "warning",   
+		showCancelButton: true,   
+		confirmButtonColor: "#DD6B55",   
+		confirmButtonText: "Supprimer", 
+		cancelButtonText: "Annuler"
+		},  function(){
 
-        var xhttp0 = new XMLHttpRequest();
-        xhttp0.onreadystatechange = function(){
-            if(xhttp0.readyState === XMLHttpRequest.DONE){
-                if (xhttp0.status === 200){
-                    budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
-                    updatebudgetglobal();
-                    
-                    document.getElementById(idbudget).remove();
-                    
-                }else{
-                    serverLost();
-                }
-            }
-        };
+			var xhttp0 = new XMLHttpRequest();
+			xhttp0.onreadystatechange = function(){
+				if(xhttp0.readyState === XMLHttpRequest.DONE){
+					if (xhttp0.status === 200){
+						budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
+						updatebudgetglobal();
 
-        xhttp0.open("POST", "budget-modifie.php", true);
-        xhttp0.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhttp0.send("idbudget="+idbudget+"&action=supprimer&idmariage="+idmariage);
+						document.getElementById(idbudget).remove();
+
+					}else{
+						serverLost();
+					}
+				}
+			};
+
+			xhttp0.open("POST", "budget-modifie.php", true);
+			xhttp0.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhttp0.send("idbudget="+idbudget+"&action=supprimer&idmariage="+idmariage);
     });
-}
-
-
-// fonction pour modifier le budget global
-function modifierbudgetglobal(idmariage){
-    document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Valider";
-    document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "validerbudgetglobal('"+idmariage+"')";
-    $("#champbudgetglobale").replaceWith('<input id="champbudgetglobale" placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+document.getElementById("champbudgetglobale").innerHTML+'">');
-}
-
-
-// fonction pour modifier le budget global
-function validerbudgetglobal(idmariage){
-    
-    /*var xhttp5 = new XMLHttpRequest();
-    xhttp5.onreadystatechange = function(){
-        if(xhttp5.readyState === XMLHttpRequest.DONE){
-            if (xhttp5.status === 200){*/
-		budgetglobale = +document.getElementById("champbudgetglobale").value;
-		updatebudgetglobal();
-                document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Modifier";
-		document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "modifierbudgetglobal('"+idmariage+"')";
-		$("#champbudgetglobale").replaceWith('<b id="champbudgetglobale">'+budgetglobale+'</b>');
-            /*}else{
-                serverLost();
-            }
-        }
-    };
-    
-    xhttp5.open("POST", "budget-modifie.php", true);
-    xhttp5.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp5.send("idbudget="+idbudget+"&action=annuler&idmariage="+idmariage);*/
-    
 }
 
 
@@ -191,6 +213,9 @@ function annuler(idbudget, idmariage){
                 var reponse = this.responseText;
                 if (reponse.trim() != ""){
                     document.getElementById(idbudget).innerHTML = reponse;
+					
+					budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
+					updatebudgetglobal();
                 }else{
                     document.getElementById(idbudget).remove(); 
                 }
@@ -215,20 +240,27 @@ function valider(idbudget, idmariage){
     var xhttp4 = new XMLHttpRequest();
     xhttp4.onreadystatechange = function(){
         if(xhttp4.readyState === XMLHttpRequest.DONE){
-            var id = idbudget;
             if (xhttp4.status === 200){
                 var reponse = this.responseText;
-                id = reponse.substring(0, reponse.indexOf("<")).trim();
-                document.getElementById(idbudget).innerHTML = reponse.replace(id, "");
-                document.getElementById(idbudget).id = id;
+				var newid = reponse.substring(0, reponse.indexOf("<")).trim();
+				document.getElementById(idbudget).id = newid;
+                document.getElementById(newid).innerHTML = reponse.replace(newid, "");
                 
+				budgetglobaledepense += +document.getElementById("totaldepense"+newid).innerHTML;
+				updatebudgetglobal();
+				
+				// modification couleur
+				if (+document.getElementById("totalrestant"+newid).innerHTML >= 0){
+					document.getElementById("totalrestant"+newid).style.color = "black";
+				}else{
+					document.getElementById("totalrestant"+newid).style.color = "red";
+				}
+				document.getElementById(newid).style.filter = "";
             }else{
                 serverLost();
+				document.getElementById(idbudget).style.filter = "";
             }
-            budgetglobaledepense += +document.getElementById("totaldepense"+id).innerHTML.replace("€", "");
-            updatebudgetglobal();
-                    
-            document.getElementById(id).style.filter = "";
+                    			
         }
     };
 
@@ -246,13 +278,13 @@ function valider(idbudget, idmariage){
 // (les requettes ne sont pas recus)
 function serverLost(){
     swal({
-	title: "Erreur",   
-	text: "La connexion au serveur à été perdue !",   
-	type: "warning",   
-	showCancelButton: false,   
-	confirmButtonColor: "#DD6B55",   
-	confirmButtonText: "Ok"
-    },  function(){
-	document.location.href="budget.ctrl.php";
+		title: "Erreur",   
+		text: "La connexion au serveur à été perdue !\nLes données ne peuvent pas être sauvegardés ...",   
+		type: "warning",   
+		showCancelButton: false,   
+		confirmButtonColor: "#DD6B55",   
+		confirmButtonText: "Ok"
+		},  function(){
+		// ne rien faire
     });
 }

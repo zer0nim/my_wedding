@@ -7,7 +7,7 @@
     
     <div id="divboutonajouter" class="row border col-sm-4 col-sm-offset-4">
 	<div class="row budgetglobal">
-            <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal('<?= $budget->getIdMariage() ?>')">Modifier</button>
+        <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal('<?= $budget->getIdMariage() ?>')">Modifier</button>
 	    <p class="row no-margin">Budget global : <b id="champbudgetglobale"><?= $budgetglobale ?></b> €</p>
 	    
 	    <p class="row no-margin">Budget global dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
@@ -38,8 +38,8 @@
                     ?>
                 </table>
                 <div class="row table-margin">
-                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</b></p>
-                    <p class="row no-margin">Budget restant : <b class="text-right"><?= $budget->getTotalRest() ?> €</b></p>
+                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?></b> €</p>
+                    <p class="row no-margin">Budget restant : <b id="totalrestant<?= $idbudget ?>" class="totalrestant text-right"><?= $budget->getTotalRest() ?></b> €</p>
                 </div>
                 <div class="row">
                     <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>

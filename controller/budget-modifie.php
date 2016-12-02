@@ -4,15 +4,21 @@
         
     if(isset($_POST['action'])){
                 
-        $idbudget = $_POST['idbudget'];
         $idmariage = $_POST['idmariage'];
         $action = $_POST['action'];
 
         if ($action == "supprimer"){
             // suppression dans la base de donnée de idbudget
+			$idbudget = $_POST['idbudget'];
             $dao->supBudget($idbudget);
             
+        }else if ($action == "updatebudgetglobal"){
+            // mise à jour du budget global
+            $dao->updateBudgetGlobal($idmariage, $_POST['value']);
+            
         }else if ($action == "annuler" || $action == "valider"){
+            
+            $idbudget = $_POST['idbudget'];
             
             if ($action == "valider"){
             // enregistrement dans la base de donnée des modifications
@@ -27,7 +33,13 @@
                         if ($value == null){
                             $tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = 0;
                         }else{
-                            $tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = $value;
+							if ($value < 0){
+								$tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = 0;
+							}else if ($value > 2000000000){
+								$tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = 2000000000;
+							}else{
+								$tabdepense[str_replace("depvalue", "", $name)]['depvalue'] = $value;
+							}
                         }
                     }
                 }
@@ -77,8 +89,8 @@
                     ?>
                 </table>
                 <div class="row table-margin">
-                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?> €</b></p>
-                    <p class="row no-margin">Budget restant : <b class="text-right"><?= $budget->getTotalRest() ?> €</b></p>
+                    <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?></b> €</p>
+                    <p class="row no-margin">Budget restant : <b id="totalrestant<?= $idbudget ?>" class="totalrestant text-right"><?= $budget->getTotalRest() ?></b> €</p>
                 </div>
                 <div class="row">
                     <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>

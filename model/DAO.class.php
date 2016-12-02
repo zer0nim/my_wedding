@@ -23,6 +23,41 @@ class DAO {
     // fonction pour la fonctionnalité budget
     //----------------------------------------------------------------------------------------
 
+    // fonction pour mettre à jour le budget global
+    function updateBudgetGlobal($idmariage, $valeur){
+        try{
+            $req = $this->db->prepare('update Budget set bud_valeur=:valeur where bud_id = :id');
+            $req->execute(array(':id' => -$idmariage, ':valeur' => $valeur));
+        }catch (PDOException $e){
+            exit("Erreur de req sql updateBudgetGlobal : ".$e->getMessage());
+        }
+    }
+
+    // fonction pour récuperer ou creer la valeur du budget global
+    // l'id de ce budget à une valeur négative = -idmariage
+    function getBudgetGlobal($idmariage){
+        try{
+            $req = $this->db->prepare('select bud_valeur from Budget where bud_id = :id');
+            $req->execute(array(':id' => -$idmariage));
+        }catch (PDOException $e){
+            exit("Erreur de req sql getBudgetGlobal : ".$e->getMessage());
+        }
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+
+        // si le budget existe
+        if ($resultat){
+            return $resultat['bud_valeur'];
+        }else{
+            try{
+                $req = $this->db->prepare('insert into Budget values(:id, :idmariage, "budget global", :valeur)');
+                $req->execute(array(':id' => -$idmariage, ':idmariage' => $idmariage, ':valeur' => 0));
+            }catch (PDOException $e){
+                exit("Erreur de req sql insert BudgetGlobal : ".$e->getMessage());
+            }
+            return 0;
+        }
+    }
+
     // recupere le dernier id de budget ajouté au mariage dans la bd
     function getLastId($idmariage){
         try{
@@ -86,7 +121,7 @@ class DAO {
 
         // recuperation de tout les budget
         try{
-            $req = $this->db->prepare('select * from Budget where bud_idM = :idmariage order by bud_id desc');
+            $req = $this->db->prepare('select * from Budget where bud_idM = :idmariage and bud_id >= 0 order by bud_id desc');
             $req->execute(array(':idmariage' => $idmariage));
         }catch (PDOException $e){
             exit("Erreur de req sql getBudgets : ".$e->getMessage());
@@ -174,7 +209,7 @@ class DAO {
         }
 
         // si le budget existe dans la bd on le modifie sinon on le cree
-        if ($req->fetch() != null){
+        if ($budget->getId() >= 0 && $req->fetch() != null){
             // update du budget
             try{
                 $req = $this->db->prepare('update Budget set bud_description=:description , bud_valeur=:valeur where bud_id = :idbudget');
