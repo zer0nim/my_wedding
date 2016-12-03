@@ -78,10 +78,10 @@
 					<h2 class="form-signin-heading">Connectez-vous</h2>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
 					<div class="checkbox">
 						<label>
@@ -96,16 +96,16 @@
 					<h2 class="form-signin-heading">Inscrivez-vous</h2>
 
 					<label for="inputNom" class="sr-only">Nom</label>
-					<input type="text" id="inputNom" class="form-control" placeholder="Nom" required>
+					<input type="text" id="inputNom" class="form-control" placeholder="Last name" required>
 
 					<label for="inputPrenom" class="sr-only">Prenom</label>
-					<input type="text" id="inputPrenom" class="form-control" placeholder="Prenom" required>
+					<input type="text" id="inputPrenom" class="form-control" placeholder="First name" required>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
 				</form>
