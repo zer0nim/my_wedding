@@ -2,7 +2,7 @@
   require_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
   $idM=1;
-  $nom='MyWedding';
+  $nom='FauxUtilisateurDeMyWedding';
   ////////////////////////////////////////
   if (isset($_POST['actSend'])) {
     //$mailfrom=$_POST['from'];
@@ -28,7 +28,7 @@
 
     //=====Création du header de l'e-mail.
     $header = "From: \"$nom\"<$mailfrom>".$passage_ligne;
-    $header.= "Reply-to: \"$nom\" <$mailfor>".$passage_ligne;
+    $header.= "To: <$mailfor>".$passage_ligne;
     $header.= "MIME-Version: 1.0".$passage_ligne;
     $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
     //==========
