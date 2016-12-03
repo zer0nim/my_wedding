@@ -15,8 +15,6 @@
 			<!-- -^- Liste contacts-^- -->
 			<div class="nopadding form-group col-xs-12">
 				<input type="button" class="btn btn-default btn-block" value="Créer nouveau">
-			</div>
-			<div class="nopadding form-group col-xs-12">
 				<input type="button" class="btn btn-danger btn-block" value="Supprimer" onClick="confirmation()">
 			</div>
 		</div>
@@ -151,7 +149,8 @@
 		<!-- -^- Liste affinités-^- -->
 
 		<div class="form-group	col-xs-12">
-			<button id="SaveContactInfoLink" class="btn btn-primary">enregistrer</button>
+			<input id="SaveContactInfoLink" type="button" class="btn btn-default" value="Enregistrer" onClick="saveContact()">
+		<!--	<button id="SaveContactInfoLink" class="btn btn-primary" onClick="saveContact()">enregistrer</button>-->
 		</div>
 	</div>
 </div>

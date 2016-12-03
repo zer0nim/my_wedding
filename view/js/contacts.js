@@ -1,59 +1,44 @@
+$(document).ready(function(){
+	disableCntInfo();
+
+	var selectHandler = function() {
+		actionSelect();
+	};
+	var disselectHandler = function() {
+		preventChangeSlct();
+	};
+	var noDiffHandler = function() {
+		$("#select-cnt" ).bind( "input", selectHandler);
+		$("#select-cnt" ).unbind( "input", disselectHandler);
+	};
+	var asDiffHandler = function() {
+		$("#select-cnt" ).bind( "input", disselectHandler);
+		$("#select-cnt" ).unbind( "input", selectHandler );
+	};
+	$("#select-cnt" ).bind( "input", selectHandler);
+	$("#select-cnt" ).unbind( "input", disselectHandler);
+
+	$("#SaveContactInfoLink").bind("click", noDiffHandler);
+
+	$("#NomLink").bind("input", asDiffHandler);
+	$("#PrenomLink").bind("input", asDiffHandler);
+	$("#user_input_autocomplete_address").bind("input", asDiffHandler);
+	$("#MailLink").bind("input", asDiffHandler);
+	$("#TelLink").bind("input", asDiffHandler);
+	$("#AgeLink").bind("input", asDiffHandler);
+});
+
 function actionSelect() {
-	console.log('anc: ' + $('#PreviousValue').val());
-	//comparaison des valeurs dans la base
-	if ($('#PreviousValue').val() == 0) {
-		$('#PreviousValue').val($('#select-cnt').val());
-		asNoModif();
-	}
-	else {
-		$.post(
-				'../controller/ajax_compare_cnt.php', // Le fichier cible côté serveur.
-				{
-						idcont : $('#PreviousValue').val()
-				},
-				function(data){
-					if (
-						(document.getElementById("NomLink").value == data['cont_nom']) &&
-						(document.getElementById("PrenomLink").value == data['cont_prenom']) &&
-						(document.getElementById("user_input_autocomplete_address").value == data['cont_adresse']) &&
-						(document.getElementById("MailLink").value == data['cont_mail']) &&
-						(document.getElementById("TelLink").value == data['cont_tel']) &&
-						(document.getElementById("AgeLink").value == data['cont_age'])
-					) {
-						console.log("if");
-						$('#PreviousValue').val($('#select-cnt').val());
-						asNoModif();
-					}
-					else {
-						console.log("else");
-						$('#select-cnt').val([]);
-						$('#select-cnt').val($('#PreviousValue').val()).change();
-					/*	swal({
-							title: "Are you sure?",
-							text: "You will not be able to recover this imaginary file!",
-							type: "warning",
-							showCancelButton: true,
-							confirmButtonColor: "#DD6B55",
-							confirmButtonText: "Yes, delete it!",
-							cancelButtonText: "No, cancel plx!",
-							closeOnConfirm: false,
-							closeOnCancel: false
-						},
-						function(isConfirm){
-							if (isConfirm) {
-								swal("Deleted!", "Your imaginary file has been deleted.", "success");
-							} else {
-									swal("Cancelled", "Your imaginary file is safe :)", "error");
-							}
-						});*/
-					}
-				},
-				'json' // Format des données reçues.
-		);
-	}
+	$('#PreviousValue').val($('#select-cnt').val());
+	showCntInfo();
 }
 
-function asNoModif() {
+function preventChangeSlct() {
+	$('#select-cnt').val([]);
+	$('#select-cnt').val($('#PreviousValue').val()).change();
+}
+
+function showCntInfo() {
 	if ($('#select-cnt').val().length == 1) {
 
 		$.post(
@@ -90,30 +75,54 @@ function asNoModif() {
 		);
 	}
 	else {
-		$('#info').addClass('disabledInf');
-		document.getElementById("NomLink").value = "";
-		document.getElementById("NomLink").disabled=true;
-		document.getElementById("PrenomLink").value = "";
-		document.getElementById("PrenomLink").disabled=true;
-		document.getElementById("user_input_autocomplete_address").value = "";
-		document.getElementById("user_input_autocomplete_address").disabled=true;
-		document.getElementById("MailLink").value = "";
-		document.getElementById("MailLink").disabled=true;
-		document.getElementById("TelLink").value = "";
-		document.getElementById("TelLink").disabled=true;
-		document.getElementById("AgeLink").value = "";
-		document.getElementById("AgeLink").disabled=true;
-		document.getElementById("NomLink").value = "";
-		document.getElementById("NomLink").disabled=true;
-
-		document.getElementById("EntenteLink").disabled=true;
-		document.getElementById("EntenteChoiceLink").disabled=true;
-		document.getElementById("MesententeLink").disabled=true;
-		document.getElementById("LikeLink").disabled=true;
-		document.getElementById("dislikeLink").disabled=true;
-
-		document.getElementById("SaveContactInfoLink").disabled=true;
+		disableCntInfo();
 	}
+}
+
+function disableCntInfo() {
+	$('#info').addClass('disabledInf');
+	document.getElementById("NomLink").value = "";
+	document.getElementById("NomLink").disabled=true;
+	document.getElementById("PrenomLink").value = "";
+	document.getElementById("PrenomLink").disabled=true;
+	document.getElementById("user_input_autocomplete_address").value = "";
+	document.getElementById("user_input_autocomplete_address").disabled=true;
+	document.getElementById("MailLink").value = "";
+	document.getElementById("MailLink").disabled=true;
+	document.getElementById("TelLink").value = "";
+	document.getElementById("TelLink").disabled=true;
+	document.getElementById("AgeLink").value = "";
+	document.getElementById("AgeLink").disabled=true;
+	document.getElementById("NomLink").value = "";
+	document.getElementById("NomLink").disabled=true;
+
+	document.getElementById("EntenteLink").disabled=true;
+	document.getElementById("EntenteChoiceLink").disabled=true;
+	document.getElementById("MesententeLink").disabled=true;
+	document.getElementById("LikeLink").disabled=true;
+	document.getElementById("dislikeLink").disabled=true;
+
+	document.getElementById("SaveContactInfoLink").disabled=true;
+}
+
+// fonction pour sauvergarder les infos d'un contact
+function saveContact() {
+/*
+	var selected = $('#select-cnt').val();
+  swal("Contact enregistré!", "", "success");
+	//enregistrement dans la base
+	$.post(
+			'../controller/ajax_modify_cnt.php', // Le fichier cible côté serveur.
+			{
+					idcont : selected
+			},
+
+			function(data){
+				location.reload(true);
+			},
+
+			'text' // Format des données reçues.
+	);*/
 }
 
 // fonction pour confirmation de suppression d'un ou plusieurs contact (cree une popup)
@@ -176,36 +185,4 @@ function initializeAutocomplete(id) {
 // Initialisation du champs autocomplete
 google.maps.event.addDomListener(window, 'load', function() {
 	initializeAutocomplete('user_input_autocomplete_address');
-});
-
-$(document).ready(function(){
-	$('#info').addClass('disabledInf');
-	document.getElementById("NomLink").value = "";
-	document.getElementById("NomLink").disabled=true;
-	document.getElementById("PrenomLink").value = "";
-	document.getElementById("PrenomLink").disabled=true;
-	document.getElementById("user_input_autocomplete_address").value = "";
-	document.getElementById("user_input_autocomplete_address").disabled=true;
-	document.getElementById("MailLink").value = "";
-	document.getElementById("MailLink").disabled=true;
-	document.getElementById("TelLink").value = "";
-	document.getElementById("TelLink").disabled=true;
-	document.getElementById("AgeLink").value = "";
-	document.getElementById("AgeLink").disabled=true;
-	document.getElementById("NomLink").value = "";
-	document.getElementById("NomLink").disabled=true;
-
-	document.getElementById("EntenteLink").disabled=true;
-	document.getElementById("EntenteChoiceLink").disabled=true;
-	document.getElementById("MesententeLink").disabled=true;
-	document.getElementById("LikeLink").disabled=true;
-	document.getElementById("dislikeLink").disabled=true;
-
-	document.getElementById("SaveContactInfoLink").disabled=true;
-
-	$( "#select-cnt" ).bind({
-	  input: function() {
-			actionSelect();
-	  }
-	});
 });
