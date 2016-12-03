@@ -8,7 +8,7 @@
 
   <form class="" action="mail.ctrl.php" method="post">
 
-    <div class="form-horizontal col-sm-offset-3">
+    <div class="form-horizontal col-sm-offset-4">
       <div class="form-group">
         <label for="from" class="col-sm-1">From : </label>
         <div class="col-sm-5">
