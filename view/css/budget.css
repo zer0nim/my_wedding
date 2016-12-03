@@ -24,17 +24,21 @@ nav {
 /* ^---navBar---^ */
 
 .scroll{
-    overflow-y:scroll;
-    height:200px;
+    overflow-y: scroll;
+    min-height: 60%;
 }
 
 .form-control{
     margin: 0px;
 }
 
+.form{
+    height: 100%;
+}
+
 .scroll2{
-    overflow-y:scroll;
-    height:230px;
+    overflow-y: scroll;
+    min-height: 74%;
 }
 
 .row-margin{
@@ -76,14 +80,16 @@ nav {
 }
 
 .champ-description{
-    width: 65%;
+    width: 50%;
 }
 
 .champ-value{
-    width: 100px;
+    text-align: right;
+    width: 80px;
 }
 
 .champ-description-depense{
+    text-align: center;
     width: 100%;
     min-width: 100px;
 }

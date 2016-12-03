@@ -92,21 +92,21 @@ function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
         depenses += getHtmlDepenseModif(tabDepenses[i][0], tabDepenses[i][1], tabDepenses[i][2]);
     }
 
-    return  '<form id="form'+id+'" method="POST" action="budget-modifie.php">'
+    return  '<form id="form'+id+'" class="form" method="POST" action="budget-modifie.php">'
 
                 +'<div class="row col-sm-12">'
                     +'<p><input placeholder="description" class="champ-description" name="description" type="text" maxlength="35" value="'+description+'"> : <input placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+value+'"> €</p>'
                 +'</div>'
 
                 +'<table class="row scroll2 form-control">'
-                    +'<tr class="row"><th class=""></th><th class="champ-description-depense text-center">Description</th><th class="text-right">Prix</th></tr>'
+                    +'<tr class="row"><th class=""></th><th class="champ-description-depense text-center">Description</th><th class="text-center">Prix</th></tr>'
                     +depenses
-                    +'<tr id="idadd'+id+'" class="row"></td><td><td><p class="col-sm-5 col-sm-offset-3 btn btn-success" onclick="add('+id+')">new</p></td><td></td></tr>'
+                    +'<tr id="idadd'+id+'" class="row"></td><td><td><p class="col-xs-5 col-xs-offset-3 btn btn-success" onclick="add('+id+')">new</p></td><td></td></tr>'
                 +'</table>'
 
                 +'<div class="row bouton-margin">'
-                    +'<p onclick="annuler('+id+', '+idmariage+')" class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary">Annuler</p>'
-                    +'<p onclick="valider('+id+', '+idmariage+')" class="btn-d col-sm-5 btn btn-primary">Valider</p>'
+                    +'<p onclick="annuler('+id+', '+idmariage+')" class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary">Annuler</p>'
+                    +'<p onclick="valider('+id+', '+idmariage+')" class="btn-d col-xs-5 btn btn-primary">Valider</p>'
                 +'</div>'
 
             +'</form>';
@@ -214,8 +214,11 @@ function annuler(idbudget, idmariage){
                 if (reponse.trim() != ""){
                     document.getElementById(idbudget).innerHTML = reponse;
 					
-					budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
-					updatebudgetglobal();
+					budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML;
+					if (+document.getElementById("totalrestant"+idbudget).innerHTML < 0){
+						document.getElementById("totalrestant"+idbudget).style.color = "red"
+					}
+					
                 }else{
                     document.getElementById(idbudget).remove(); 
                 }

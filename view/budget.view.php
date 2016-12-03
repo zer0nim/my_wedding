@@ -25,7 +25,7 @@
                     <p><b id="description<?= $idbudget ?>"><?= $budget->getDescription() ?></b> : <b id="value<?= $idbudget ?>"><?= $budget->getValue() ?></b> €</p>
                 </div>
                 <table id="tab<?= $idbudget ?>" class="row scroll form-control">
-                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12">Prix</th></tr>
+                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12 champ-description-depense">Prix</th></tr>
                     <?php
                     $tabdepense = $budget->getTabdepense();
                     if ($tabdepense != null){
@@ -42,8 +42,8 @@
                     <p class="row no-margin">Budget restant : <b id="totalrestant<?= $idbudget ?>" class="totalrestant text-right"><?= $budget->getTotalRest() ?></b> €</p>
                 </div>
                 <div class="row">
-                    <button class="btn-d col-sm-5 col-sm-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
-                    <button class="btn-d col-sm-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
+                    <button class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
+                    <button class="btn-d col-xs-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
                 </div>
             </div>
             <?php
