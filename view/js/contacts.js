@@ -1,14 +1,15 @@
-function actionSelect(anc_select_item) {
+function actionSelect() {
+	console.log('anc: ' + $('#PreviousValue').val());
 	//comparaison des valeurs dans la base
-	if (anc_select_item == null) {
+	if ($('#PreviousValue').val() == 0) {
+		$('#PreviousValue').val($('#select-cnt').val());
 		asNoModif();
 	}
 	else {
-		console.log('anc: ' + anc_select_item);
 		$.post(
 				'../controller/ajax_compare_cnt.php', // Le fichier cible côté serveur.
 				{
-						idcont : anc_select_item
+						idcont : $('#PreviousValue').val()
 				},
 				function(data){
 					if (
@@ -19,12 +20,14 @@ function actionSelect(anc_select_item) {
 						(document.getElementById("TelLink").value == data['cont_tel']) &&
 						(document.getElementById("AgeLink").value == data['cont_age'])
 					) {
+						console.log("if");
+						$('#PreviousValue').val($('#select-cnt').val());
 						asNoModif();
 					}
 					else {
+						console.log("else");
 						$('#select-cnt').val([]);
-						$('#select-cnt').val(anc_select_item).change();
-						console
+						$('#select-cnt').val($('#PreviousValue').val()).change();
 					/*	swal({
 							title: "Are you sure?",
 							text: "You will not be able to recover this imaginary file!",
@@ -176,7 +179,6 @@ google.maps.event.addDomListener(window, 'load', function() {
 });
 
 $(document).ready(function(){
-var anc_select_item;
 	$('#info').addClass('disabledInf');
 	document.getElementById("NomLink").value = "";
 	document.getElementById("NomLink").disabled=true;
@@ -203,10 +205,7 @@ var anc_select_item;
 
 	$( "#select-cnt" ).bind({
 	  input: function() {
-			actionSelect(anc_select_item);
-	  },
-	  mouseenter: function() {
-			anc_select_item = $('#select-cnt').val();
+			actionSelect();
 	  }
 	});
 });

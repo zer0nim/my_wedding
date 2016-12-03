@@ -7,6 +7,7 @@
 		<div class="edit-cnt panel panel-default">
 		<div class="panel-body">
 			<div class="col-xs-12 col-sm-5 col-lg-3">
+			<input id="PreviousValue" type="text" name="" value="" style="display:none">
 			<!-- -v- Liste contacts -v- -->
 			<select multiple id="select-cnt" class="form-control">
 				<?php printAllContacts($allContacts); ?>
