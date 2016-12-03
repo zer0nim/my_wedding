@@ -1,20 +1,5 @@
 $(document).ready(function(){
 	disableCntInfo();
-
-	var selectHandler = function() {
-		actionSelect();
-	};
-	var disselectHandler = function() {
-		preventChangeSlct();
-	};
-	var noDiffHandler = function() {
-		$("#select-cnt" ).bind( "input", selectHandler);
-		$("#select-cnt" ).unbind( "input", disselectHandler);
-	};
-	var asDiffHandler = function() {
-		$("#select-cnt" ).bind( "input", disselectHandler);
-		$("#select-cnt" ).unbind( "input", selectHandler );
-	};
 	$("#select-cnt" ).bind( "input", selectHandler);
 	$("#select-cnt" ).unbind( "input", disselectHandler);
 
@@ -28,14 +13,48 @@ $(document).ready(function(){
 	$("#AgeLink").bind("input", asDiffHandler);
 });
 
+function selectHandler() {
+	actionSelect();
+}
+function disselectHandler() {
+	preventChangeSlct();
+}
+function noDiffHandler() {
+	$("#select-cnt" ).bind( "input", selectHandler);
+	$("#select-cnt" ).unbind( "input", disselectHandler);
+}
+function asDiffHandler() {
+	$("#select-cnt" ).bind( "input", disselectHandler);
+	$("#select-cnt" ).unbind( "input", selectHandler );
+}
+
 function actionSelect() {
-	$('#PreviousValue').val($('#select-cnt').val());
+	$('#PreviousValue').data('previous', $('#select-cnt').val());
 	showCntInfo();
 }
 
 function preventChangeSlct() {
-	$('#select-cnt').val([]);
-	$('#select-cnt').val($('#PreviousValue').val()).change();
+	swal({
+		title: "Êtes-vous sur?",
+	  text: "Les modifications effectuées sur le contact ne seront pas sauvegardées!",
+	  type: "warning",
+	  showCancelButton: true,
+	  confirmButtonColor: "#DD6B55",
+		confirmButtonText: "Ne pas sauvergarder",
+	  cancelButtonText: "Annuler",
+	  closeOnConfirm: true,
+	  closeOnCancel: true
+	},
+	function(isConfirm){
+	  if (isConfirm) {
+			noDiffHandler();
+			showCntInfo();
+	  }
+		else {
+			$('#select-cnt').val([]);
+			$('#select-cnt').val($('#PreviousValue').data('previous')).change();
+		}
+	});
 }
 
 function showCntInfo() {
