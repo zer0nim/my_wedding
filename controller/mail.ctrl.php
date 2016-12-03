@@ -2,10 +2,11 @@
   require_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
   $idM=1;
-  $nom='FauxUtilisateurDeMyWedding';
   ////////////////////////////////////////
   if (isset($_POST['actSend'])) {
-    //$mailfrom=$_POST['from'];
+    //////////VERSION SANS SESSION//////////
+    $nom=$_POST['from'];
+    ////////////////////////////////////////
     $mailfrom="www.mywedding.gdn";
     $mailfor = $_POST['for']; // Déclaration de l'adresse de destination.
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.

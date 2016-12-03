@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="from" class="col-sm-1">From : </label>
         <div class="col-sm-6">
-          <input type="email" name="from" id="from" class="form-control" placeholder="example@mail.com" required autofocus>
+          <input type="text" name="from" id="from" class="form-control" placeholder="Insert the name that will appear in the mail" required autofocus>
         </div>
       </div>
 
