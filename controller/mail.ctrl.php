@@ -37,7 +37,7 @@
     $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
 
     //=====Ajout du message au format HTML.
-    $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+    $message.= "Content-Type: text/html; charset=\"UTF-8\"".$passage_ligne;
     $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
     $message.= $passage_ligne.$message_html.$passage_ligne;
     //==========
@@ -46,8 +46,8 @@
     $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
     //==========
 
-    $message.= $passage_ligne."--".$boundary.$passage_ligne;
-
+    //$message.= $passage_ligne."--".$boundary.$passage_ligne;
+  //  var_dump($mail,$sujet,$message,$header);
     //=====Envoi de l'e-mail.
     mail($mail,$sujet,$message,$header);
     //==========
