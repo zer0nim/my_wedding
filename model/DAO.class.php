@@ -95,9 +95,9 @@ class DAO {
             }
 
             $depenses = null;
-            $depenses = $req->fetchAll(PDO::FETCH_ASSOC /*PDO::FETCH_CLASS, "depense"*/);
+            $depenses = $req->fetchAll(PDO::FETCH_ASSOC);
 
-            // creation des objets depense (sans fetch_class car il fait ****)
+            // creation des objets depense
             $tabdepense = null;
 
             if ($depenses != null){
@@ -137,9 +137,9 @@ class DAO {
             }catch (PDOException $e){
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());
             }
-            $depenses = $req->fetchAll(PDO::FETCH_ASSOC /*PDO::FETCH_CLASS, "depense"*/);
+            $depenses = $req->fetchAll(PDO::FETCH_ASSOC);
 
-            // modification du tableau pour le classer par budget
+            // modification du tableau pour l'e classer par budget'indexer par idbudget et iddepense
             foreach ($depenses as $depense) {
                 $depenses[$depense['dep_idbudget']][$depense['dep_id']] = $depense;
             }
@@ -234,16 +234,25 @@ class DAO {
 
         // update depenses ---------------------------
 
-        // récuperation des id des dépenses pour savoir les quelles ont été supprimés
+        // récuperation des dépenses initial pour savoir les quelles ont été modifié ou supprimés
         try{
-            $req = $this->db->prepare('select dep_id from Depense where dep_idbudget = :idbudget');
+            $req = $this->db->prepare('select * from Depense where dep_idbudget = :idbudget');
             $req->execute(array(':idbudget' => $budget->getId()));
         }catch (PDOException $e){
             exit("Erreur de req sql getiddepense : ".$e->getMessage());
         }
 
-        $tabdepenseinit = $req->fetchAll(PDO::FETCH_COLUMN); // les dépenses initial de la bd
+        $tabdepenseinit = $req->fetchAll(PDO::FETCH_ASSOC); // les dépenses initial de la bd
         $tabdepense = $budget->getTabdepense(); // les dépenses du formulaires
+		
+		// indexion des dépenses initiales par leurs id
+		if ($tabdepenseinit != null){
+			$tabdepenseinit2 = null;
+			foreach ($tabdepenseinit as $depenseinit) {
+				$tabdepenseinit2[$depenseinit['dep_id']] = $depenseinit;
+			}
+			$tabdepenseinit = $tabdepenseinit2;
+		}
 
         if ($tabdepense != null){
 
@@ -251,15 +260,18 @@ class DAO {
             foreach ($tabdepense as $depense) {
 
                 // si la depense existe dans la bd on la modifie sinon on la cree
-                if ($tabdepenseinit != null && in_array($depense->getId(), $tabdepenseinit)){
+                if ($tabdepenseinit != null && array_key_exists($depense->getId(), $tabdepenseinit)){
 
-                    //update depenses
-                    try{
-                        $req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
-                        $req->execute(array(':description' => $depense->getDescription(), ':valeur' => $depense->getValue(), ':idbdepense' => $depense->getId()));
-                    }catch (PDOException $e){
-                        exit("Erreur de req sql update depense : ".$e->getMessage());
-                    }
+					// si la dépense à été modifé on la met à jour
+					if ($depense->getValue() != $tabdepenseinit[$depense->getId()]['dep_valeur'] || $depense->getDescription() != $tabdepenseinit[$depense->getId()]['dep_description']){
+
+						try{
+							$req = $this->db->prepare('update Depense set dep_description=:description , dep_valeur=:valeur where dep_id = :idbdepense');
+							$req->execute(array(':description' => $depense->getDescription(), ':valeur' => $depense->getValue(), ':idbdepense' => $depense->getId()));
+						}catch (PDOException $e){
+							exit("Erreur de req sql update depense : ".$e->getMessage());
+						}
+					}
 
                 }else{
 
@@ -277,7 +289,7 @@ class DAO {
         // supprime les depenses de la BD qui ont été supprimées par l'utilisateur
         if ($tabdepenseinit != null){
             if ($tabdepense != null){
-                foreach ($tabdepenseinit as $id) {
+                foreach ($tabdepenseinit as $id => $depenseinit) {
                     if (!array_key_exists($id, $tabdepense)){
                         // si la dépense n'est plus dans la nouvelle table on la supprime
                         $this->supDepense($id);

@@ -243,8 +243,8 @@ function valider(idbudget, idmariage){
             if (xhttp4.status === 200){
                 var reponse = this.responseText;
 				var newid = reponse.substring(0, reponse.indexOf("<")).trim();
+				document.getElementById(idbudget).innerHTML = reponse.replace(newid, "");
 				document.getElementById(idbudget).id = newid;
-                document.getElementById(newid).innerHTML = reponse.replace(newid, "");
                 
 				budgetglobaledepense += +document.getElementById("totaldepense"+newid).innerHTML;
 				updatebudgetglobal();
