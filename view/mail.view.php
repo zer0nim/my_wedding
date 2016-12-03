@@ -15,9 +15,10 @@
 ?>
 		<div class="alert alert-danger">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  <strong>Erreur:</strong> Mail non envoyé
+		  <strong>Erreur:</strong> Email not sent
 		</div>
 <?php }
+}
 ?>
 
   <form class="" action="mail.ctrl.php" method="post">
