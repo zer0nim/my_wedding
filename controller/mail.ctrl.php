@@ -49,7 +49,7 @@
     //$message.= $passage_ligne."--".$boundary.$passage_ligne;
   //  var_dump($mail,$sujet,$message,$header);
     //=====Envoi de l'e-mail.
-    mail($mail,$sujet,$message,$header);
+    $accepte=mail($mail,$sujet,$message,$header);
     //==========
   }
 

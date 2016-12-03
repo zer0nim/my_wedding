@@ -5,10 +5,17 @@
 	require_once '../view/baseMenuFnct.php';
 	$texte=$dao->getInvitation($idM);
 	if (isset($_POST['actSend'])) {
+		if ($accepte) {
 ?>
 		<div class="alert alert-success">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Mail envoyé !</strong>
+		</div>
+<?php }else{
+?>
+		<div class="alert alert-danger">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>Erreur:</strong> Mail non envoyé
 		</div>
 <?php }
 ?>
