@@ -2,11 +2,12 @@
   require_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
   $idM=1;
-  $nom='un inconnu qui test';
+  $nom='MyWedding';
   ////////////////////////////////////////
   if (isset($_POST['actSend'])) {
-    $mail = $_POST['for']; // Déclaration de l'adresse de destination.
-    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn|yahoo).[a-z]{2,4}$#", $mail)){ // On filtre les serveurs qui présentent des bogues.
+    $mailfrom=$_POST['from'];
+    $mailfor = $_POST['for']; // Déclaration de l'adresse de destination.
+    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
     	$passage_ligne = "\r\n";
     }else{
     	$passage_ligne = "\n";
@@ -25,8 +26,8 @@
     //=========
 
     //=====Création du header de l'e-mail.
-    $header = "From: \"$nom\"<$mail>".$passage_ligne;
-    $header.= "Reply-to: \"$nom\" <$mail>".$passage_ligne;
+    $header = "From: \"$nom\"<$mailfrom>".$passage_ligne;
+    $header.= "Reply-to: \"$nom\" <$mailfor>".$passage_ligne;
     $header.= "MIME-Version: 1.0".$passage_ligne;
     $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
     //==========
@@ -49,7 +50,7 @@
     //$message.= $passage_ligne."--".$boundary.$passage_ligne;
   //  var_dump($mail,$sujet,$message,$header);
     //=====Envoi de l'e-mail.
-    $accepte=mail($mail,$sujet,$message,$header);
+    $accepte=mail($mailfor,$sujet,$message,$header);
     //==========
   }
 
