@@ -77,17 +77,5 @@ class contacts {
   function getCont_tel() {
       return $this->cont_tel;
   }
-
-  function getCont() {
-    $value['cont_id'] = $this->getCont_id();
-    $value['cont_idM'] = $this->getCont_idM();
-    $value['cont_nom'] = $this->getCont_nom();
-    $value['cont_prenom'] = $this->getCont_prenom();
-    $value['cont_adresse'] = $this->getCont_adresse();
-    $value['cont_mail'] = $this->getCont_mail();
-    $value['cont_age'] = $this->getCont_age();
-    $value['cont_tel'] = $this->getCont_tel();
-    return $value;
-  }
 }
 ?>

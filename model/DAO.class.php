@@ -244,7 +244,7 @@ class DAO {
 
         $tabdepenseinit = $req->fetchAll(PDO::FETCH_ASSOC); // les dépenses initial de la bd
         $tabdepense = $budget->getTabdepense(); // les dépenses du formulaires
-		
+
 		// indexion des dépenses initiales par leurs id
 		if ($tabdepenseinit != null){
 			$tabdepenseinit2 = null;
@@ -448,16 +448,34 @@ class DAO {
                           ':cont_id' => $idCont,));
     }
 
+    // modifie un Contact d'un mariage
+    function updateContactInfo($contact) {
+        $req = $this->db->prepare('UPDATE Contact SET cont_nom=:cont_nom, cont_prenom=:cont_prenom, cont_adresse=:cont_adresse, cont_mail=:cont_mail, cont_age=:cont_age, cont_tel=:cont_tel WHERE cont_idM=:cont_idM AND cont_id=:cont_id');
+        $req->execute(array(':cont_id' => $contact->getCont_id(),
+                            ':cont_idM' => $contact->getCont_idM(),
+                            ':cont_nom' => $contact->getCont_nom(),
+                            ':cont_prenom' => $contact->getCont_prenom(),
+                            ':cont_adresse' => $contact->getCont_adresse(),
+                            ':cont_mail' => $contact->getCont_mail(),
+                            ':cont_age' => $contact->getCont_age(),
+                            ':cont_tel' => $contact->getCont_tel()));
+    }
+
     // insert un Contact à un mariage
-    function setContact($idM, $contact) {
-        $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel)');
-        $req->execute(array(':cont_idM' => $contact['cont_idM'],
-                            ':cont_nom' => $contact['cont_nom'],
-                            ':cont_prenom' => $contact['cont_prenom'],
-                            ':cont_adresse' => $contact['cont_adresse'],
-                            ':cont_mail' => $contact['cont_mail'],
-                            ':cont_age' => $contact['cont_age'],
-                            ':cont_tel' => $contact['cont_tel']));
+    function setContact($contact) {
+      try {
+        $req = $this->db->prepare('INSERT INTO Contact VALUES(:cont_idM, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel, 0)');
+        $req->execute(array(':cont_idM' => $contact->getCont_idM(),
+                            ':cont_nom' => $contact->getCont_nom(),
+                            ':cont_prenom' => $contact->getCont_prenom(),
+                            ':cont_adresse' => $contact->getCont_adresse(),
+                            ':cont_mail' => $contact->getCont_mail(),
+                            ':cont_age' => $contact->getCont_age(),
+                            ':cont_tel' => $contact->getCont_tel()));
+                          }
+      catch (PDOException $e) {
+        exit("Erreur création nouveau contact: ".$e->getMessage());
+      }
     }
     //----------------------------------------------------------------------------------------
 
