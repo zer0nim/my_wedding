@@ -114,10 +114,7 @@ function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
 }
 
 // fonction pour supprimer un budget (cree une popup)
-function supprimer(idbudget, idmariage){
-
-    var msg = "Êtes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !";
-    
+function supprimer(idbudget, idmariage){    
     swal({
 		title: "Supression",   
 		text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
@@ -206,31 +203,30 @@ function add(idbudget){
 // fonction pour annuler les modifications
 function annuler(idbudget, idmariage){
 
-    var xhttp3 = new XMLHttpRequest();
-    xhttp3.onreadystatechange = function(){
-        if(xhttp3.readyState === XMLHttpRequest.DONE){
-            if (xhttp3.status === 200){
-                var reponse = this.responseText;
-                if (reponse.trim() != ""){
-                    document.getElementById(idbudget).innerHTML = reponse;
-					
+	if (idbudget >= 0){
+		var xhttp3 = new XMLHttpRequest();
+		xhttp3.onreadystatechange = function(){
+			if(xhttp3.readyState === XMLHttpRequest.DONE){
+				if (xhttp3.status === 200){
+					var reponse = this.responseText;
+					document.getElementById(idbudget).innerHTML = reponse;
 					budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML;
 					if (+document.getElementById("totalrestant"+idbudget).innerHTML < 0){
 						document.getElementById("totalrestant"+idbudget).style.color = "red"
 					}
-					
-                }else{
-                    document.getElementById(idbudget).remove(); 
-                }
-            }else{
-                serverLost();
-            }
-        }
-    };
+				}else{
+					serverLost();
+				}
+			}
+		};
 
-    xhttp3.open("POST", "budget-modifie.php", true);
-    xhttp3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp3.send("idbudget="+idbudget+"&action=annuler&idmariage="+idmariage);
+		xhttp3.open("POST", "budget-modifie.php", true);
+		xhttp3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp3.send("idbudget="+idbudget+"&action=annuler&idmariage="+idmariage);
+		
+	}else{
+		document.getElementById(idbudget).remove();
+	}
 
 }
 
@@ -282,7 +278,7 @@ function valider(idbudget, idmariage){
 function serverLost(){
     swal({
 		title: "Erreur",   
-		text: "La connexion au serveur à été perdue !\nLes données ne peuvent pas être sauvegardés ...",   
+		text: "La connexion au serveur à été perdue !\nLes données ne peuvent pas être enregistrées ...",   
 		type: "warning",   
 		showCancelButton: false,   
 		confirmButtonColor: "#DD6B55",   
