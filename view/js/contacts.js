@@ -11,6 +11,18 @@ $(document).ready(function(){
 	$("#MailLink").bind("input", asDiffHandler);
 	$("#TelLink").bind("input", asDiffHandler);
 	$("#AgeLink").bind("input", asDiffHandler);
+
+	$('#contInfoform').submit(function () {
+		if ($('#select-cnt').val() == "newC") {
+		//si Création nouveau contact non inscrit dans la bdd
+			saveContact();
+		}
+		else {
+		//si modification contact inscrit dans la bdd
+			modifContact();
+		}
+		return false;
+	});
 });
 
 function selectHandler() {
@@ -30,7 +42,7 @@ function asDiffHandler() {
 }
 
 function actionSelect() {
-	$('#PreviousValue').data('previous', $('#select-cnt').val());
+	$('#select-cnt').data('previous', $('#select-cnt').val());
 	showCntInfo();
 }
 
@@ -48,12 +60,21 @@ function preventChangeSlct() {
 	},
 	function(isConfirm){
 	  if (isConfirm) {
+			// Si le contact séléctionné est un "nouveauContact" on le supprime de la liste
+			$('#select-cnt option[value=' + "newC" + ']').remove();
 			noDiffHandler();
 			showCntInfo();
 	  }
 		else {
-			$('#select-cnt').val([]);
-			$('#select-cnt').val($('#PreviousValue').data('previous')).change();
+			if ($("#select-cnt option[value='newC']").length > 0) {
+			//en cas d'annulation de changement de nouveauContact
+				$('#select-cnt').val([]);
+				$('#select-cnt').val("newC").change();
+			}
+			else {
+				$('#select-cnt').val([]);
+				$('#select-cnt').val($('#select-cnt').data('previous')).change();
+			}
 		}
 	});
 }
@@ -123,8 +144,32 @@ function disableCntInfo() {
 	document.getElementById("SaveContactInfoLink").disabled=true;
 }
 
-// fonction pour sauvergarder les infos d'un contact
-function saveContact() {
+function initCntInfo() {
+	document.getElementById("NomLink").value = "";
+	document.getElementById("NomLink").disabled=false;
+	document.getElementById("PrenomLink").value = "";
+	document.getElementById("PrenomLink").disabled=false;
+	document.getElementById("user_input_autocomplete_address").value = "";
+	document.getElementById("user_input_autocomplete_address").disabled=false;
+	document.getElementById("MailLink").value = "";
+	document.getElementById("MailLink").disabled=false;
+	document.getElementById("TelLink").value = "";
+	document.getElementById("TelLink").disabled=false;
+	document.getElementById("AgeLink").value = "";
+	document.getElementById("AgeLink").disabled=false;
+
+	document.getElementById("EntenteLink").disabled=false;
+	document.getElementById("EntenteChoiceLink").disabled=false;
+	document.getElementById("MesententeLink").disabled=false;
+	document.getElementById("LikeLink").disabled=false;
+	document.getElementById("dislikeLink").disabled=false;
+
+	asDiffHandler();
+	$('#info').removeClass('disabledInf');
+}
+
+// fonction pour sauvergarder les infos d'un contact existant
+function modifContact() {
 	//enregistrement dans la base
 	$.post(
 			'../controller/ajax_modify_cnt.php', // Le fichier cible côté serveur.
@@ -139,8 +184,33 @@ function saveContact() {
 			},
 
 			function(data){
+				swal("Contact enregistré!", "", "success");
+				noDiffHandler();
+				document.getElementById("SaveContactInfoLink").disabled=true;
+			},
+
+			'text' // Format des données reçues.
+	);
+}
+
+// fonction pour sauvergarder les infos d'un nouveau contact
+function saveContact() {
+	//enregistrement dans la base
+	$.post(
+			'../controller/ajax_save_cnt.php', // Le fichier cible côté serveur.
+			{
+					nom : $("#NomLink").val(),
+					prenom : $("#PrenomLink").val(),
+					adresse : $("#user_input_autocomplete_address").val(),
+					mail : $("#MailLink").val(),
+					tel : $("#TelLink").val(),
+					age : $("#AgeLink").val()
+			},
+
+			function(data){
 				console.log(data);
 				swal("Contact enregistré!", "", "success");
+				//location.reload();
 			},
 
 			'text' // Format des données reçues.
@@ -181,7 +251,10 @@ function confirmation() {
 						},
 
 						function(data){
-							location.reload(true);
+							var i;
+							for (i = 0; i < selected.length; ++i) {
+    						$('#select-cnt option[value=' + selected[i] + ']').remove();
+							}
 						},
 
 						'text' // Format des données reçues.
@@ -194,6 +267,40 @@ function confirmation() {
 	else {
 		//message erreur
 		swal("Oops...", msg, "error");
+	}
+}
+
+function	nouveauContact() {
+	if (document.getElementById("SaveContactInfoLink").disabled) {
+		initCntInfo();
+		$('#select-cnt').append(new Option("Nouveau contact","newC"));
+		$('#select-cnt').val([]);
+		$('#select-cnt').val("newC").change();
+	}
+	else {
+		swal({
+			title: "Êtes-vous sur?",
+			text: "Des modifications en cours non pas été sauvegardées!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Ne pas sauvergarder",
+			cancelButtonText: "Annuler",
+			closeOnConfirm: true,
+			closeOnCancel: true
+		},
+		function(isConfirm){
+			if (isConfirm) {
+				initCntInfo();
+				$('#select-cnt').append(new Option("Nouveau contact","newC"));
+				$('#select-cnt').val([]);
+				$('#select-cnt').val("newC").change();
+			}
+			else {
+				$('#select-cnt').val([]);
+				$('#select-cnt').val($('#select-cnt').data('previous')).change();
+			}
+		});
 	}
 }
 

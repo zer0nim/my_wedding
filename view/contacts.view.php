@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="../view/css/contacts.css" type="text/css" />
 <?php require_once '../view/baseMenuFnct.php';?>
 
-<form>
 	<div class="row">
 		<div class="edit-cnt panel panel-default">
 		<div class="panel-body">
@@ -14,11 +13,12 @@
 			</select>
 			<!-- -^- Liste contacts-^- -->
 			<div class="nopadding form-group col-xs-12">
-				<input type="button" class="btn btn-default btn-block" value="Créer nouveau">
+				<input type="button" class="btn btn-default btn-block" value="Créer nouveau" onClick="nouveauContact()">
 				<input type="button" class="btn btn-danger btn-block" value="Supprimer" onClick="confirmation()">
 			</div>
 		</div>
 
+<form id="contInfoform">
 	<div id="info" class="col-xs-12 col-sm-7 col-lg-9 row">
 		<div class="nopadding form-group col-xs-12">
 			<div class="margin-b-form col-xs-12 col-sm-6">
@@ -38,7 +38,7 @@
 			<div class="margin-b-form col-xs-12 col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">Mail</span>
-					<input id="MailLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="MailLink" name="prependedtext" class="form-control" placeholder="" required="" type="email">
 				</div>
 			</div>
 			<div class="col-xs-12 col-lg-6">
@@ -149,7 +149,7 @@
 		<!-- -^- Liste affinités-^- -->
 
 		<div class="form-group	col-xs-12">
-			<input id="SaveContactInfoLink" type="button" class="btn btn-default" value="Enregistrer" onClick="saveContact()">
+			<input id="SaveContactInfoLink" type="submit" class="btn btn-default" value="Enregistrer">
 		<!--	<button id="SaveContactInfoLink" class="btn btn-primary" onClick="saveContact()">enregistrer</button>-->
 		</div>
 	</div>

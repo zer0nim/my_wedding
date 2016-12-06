@@ -484,7 +484,7 @@ class DAO {
     // insert un Contact à un mariage
     function setContact($contact) {
       try {
-        $req = $this->db->prepare('INSERT INTO Contact VALUES(:cont_idM, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel, 0)');
+        $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel, 0)');
         $req->execute(array(':cont_idM' => $contact->getCont_idM(),
                             ':cont_nom' => $contact->getCont_nom(),
                             ':cont_prenom' => $contact->getCont_prenom(),
@@ -494,6 +494,7 @@ class DAO {
                             ':cont_tel' => $contact->getCont_tel()));
                           }
       catch (PDOException $e) {
+        echo "heyheyhey";
         exit("Erreur création nouveau contact: ".$e->getMessage());
       }
     }

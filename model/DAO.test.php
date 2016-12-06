@@ -1,7 +1,8 @@
 <?php
 // Test de la classe DAO
+/*
 require_once('DAO.class.php');
-/*$cnt = new contacts();
+$cnt = new contacts();
 $cnt->faux_construct(NULL, 1, "vdsdvv", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
 $dao->setContact($cnt);
 $cnt->faux_construct(NULL, 1, "bbbb", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
