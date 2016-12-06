@@ -24,6 +24,7 @@ function noDiffHandler() {
 	$("#select-cnt" ).unbind( "input", disselectHandler);
 }
 function asDiffHandler() {
+	document.getElementById("SaveContactInfoLink").disabled=false;
 	$("#select-cnt" ).bind( "input", disselectHandler);
 	$("#select-cnt" ).unbind( "input", selectHandler );
 }
@@ -86,7 +87,7 @@ function showCntInfo() {
 					document.getElementById("LikeLink").disabled=false;
 					document.getElementById("dislikeLink").disabled=false;
 
-					document.getElementById("SaveContactInfoLink").disabled=false;
+					document.getElementById("SaveContactInfoLink").disabled=true;
 					$('#info').removeClass('disabledInf');
 				},
 
@@ -112,8 +113,6 @@ function disableCntInfo() {
 	document.getElementById("TelLink").disabled=true;
 	document.getElementById("AgeLink").value = "";
 	document.getElementById("AgeLink").disabled=true;
-	document.getElementById("NomLink").value = "";
-	document.getElementById("NomLink").disabled=true;
 
 	document.getElementById("EntenteLink").disabled=true;
 	document.getElementById("EntenteChoiceLink").disabled=true;
@@ -126,22 +125,26 @@ function disableCntInfo() {
 
 // fonction pour sauvergarder les infos d'un contact
 function saveContact() {
-/*
-	var selected = $('#select-cnt').val();
-  swal("Contact enregistré!", "", "success");
 	//enregistrement dans la base
 	$.post(
 			'../controller/ajax_modify_cnt.php', // Le fichier cible côté serveur.
 			{
-					idcont : selected
+					idcont : $('#select-cnt').val()[0],
+					nom : $("#NomLink").val(),
+					prenom : $("#PrenomLink").val(),
+					adresse : $("#user_input_autocomplete_address").val(),
+					mail : $("#MailLink").val(),
+					tel : $("#TelLink").val(),
+					age : $("#AgeLink").val()
 			},
 
 			function(data){
-				location.reload(true);
+				console.log(data);
+				swal("Contact enregistré!", "", "success");
 			},
 
 			'text' // Format des données reçues.
-	);*/
+	);
 }
 
 // fonction pour confirmation de suppression d'un ou plusieurs contact (cree une popup)
