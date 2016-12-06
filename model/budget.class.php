@@ -3,14 +3,12 @@ require_once '../model/depense.class.php';
 
 class budget {
     private $id;
-    private $idMariage;
     private $description;
     private $value;
     private $tabdepense;
 
-    function __construct($id, $idmariage, $description, $value, $tabdepense) {
+    function __construct($id, $description, $value, $tabdepense) {
         $this->id = $id;
-        $this->idMariage = $idmariage;
         $this->description = $description;
         $this->value = $value;
         $this->tabdepense = $tabdepense;
@@ -22,10 +20,6 @@ class budget {
     
     function getId() {
         return $this->id;
-    }
-
-    function getIdMariage() {
-        return $this->idMariage;
     }
 
     function getDescription() {

@@ -7,13 +7,13 @@
     
     <div id="divboutonajouter" class="row border col-sm-4 col-sm-offset-4">
 	<div class="row budgetglobal">
-        <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal('<?= $budget->getIdMariage() ?>')">Modifier</button>
+        <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal()">Modifier</button>
 	    <p class="row no-margin">Budget global : <b id="champbudgetglobale"><?= $budgetglobale ?></b> €</p>
 	    
 	    <p class="row no-margin">Budget global dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
 	    <p class="row no-margin">Budget global restant : <b id="budgetglobalerestant"><?= $budgetglobalerestant ?></b> €</p>
 	</div>
-        <button class="btn btn-primary" onClick="ajouter('<?= $idmariage ?>')">Ajouter un budget</button>
+        <button class="btn btn-primary" onClick="ajouter()">Ajouter un budget</button>
     </div>
     
     <?php
@@ -31,19 +31,19 @@
                     if ($tabdepense != null){
                         foreach ($tabdepense as $depense) {
                             ?>
-                            <tr id="dep<?= $depense->getId() ?>" class="depense<?= $idbudget ?> row"><td><?= $depense->getDescription() ?></td><td class="text-right"><?= $depense->getValue() ?> €</td></tr>
+                            <tr id="dep<?= $idbudget ?><?= $depense->getId() ?>" class="depense<?= $idbudget ?> row"><td class="border-depense"><?= $depense->getDescription() ?></td><td class="border-depense text-right"><?= $depense->getValue() ?> €</td></tr>
                             <?php
                         }
                     }
                     ?>
                 </table>
-                <div class="row table-margin">
+                <div class="row table-margin form-group-lg">
                     <p class="row no-margin">Total dépensé : <b id="totaldepense<?= $idbudget ?>" class="text-right"><?= $budget->getTotalDepense() ?></b> €</p>
                     <p class="row no-margin">Budget restant : <b id="totalrestant<?= $idbudget ?>" class="totalrestant text-right"><?= $budget->getTotalRest() ?></b> €</p>
                 </div>
                 <div class="row">
-                    <button class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Supprimer</button>
-                    <button class="btn-d col-xs-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>', '<?= $budget->getIdMariage() ?>')">Modifier</button>
+                    <button class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary" onClick="supprimer('<?= $idbudget ?>')">Supprimer</button>
+                    <button class="btn-d col-xs-5 btn btn-primary" onclick="modifier('<?= $idbudget ?>')">Modifier</button>
                 </div>
             </div>
             <?php

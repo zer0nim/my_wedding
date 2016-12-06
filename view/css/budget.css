@@ -25,6 +25,12 @@ nav {
 .scroll{
     overflow-y: scroll;
     min-height: 60%;
+    border-collapse: separate;
+    border-spacing: 0px 2px;
+}
+
+.border-depense{
+    border-bottom : 1px dotted black;
 }
 
 .form-control{
@@ -38,6 +44,12 @@ nav {
 .scroll2{
     overflow-y: scroll;
     min-height: 74%;
+    border-collapse: separate;
+    border-spacing: 0px 2px;
+}
+
+.suppdepense{
+    margin-right: 5px;
 }
 
 .row-margin{
@@ -80,6 +92,7 @@ nav {
 
 .champ-description{
     width: 50%;
+    text-align: center;
 }
 
 .champ-value{

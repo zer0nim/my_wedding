@@ -24,8 +24,9 @@ for (i = 0 ; i < listebudgetrestant.length ; i++){
 // ------------------------------------------------
 
 
-// fonction pour mettre à jour le champ budget global
+// fonction pour mettre à jour le champ budget global sur l'ihm
 function updatebudgetglobal(){
+	
     document.getElementById("budgetglobaledepense").innerHTML = budgetglobaledepense;
     document.getElementById("budgetglobalerestant").innerHTML = budgetglobale - budgetglobaledepense;
 	
@@ -35,18 +36,22 @@ function updatebudgetglobal(){
 	}else{
 		document.getElementById("budgetglobalerestant").style.color = "red";
 	}
+	
 }
 
 // fonction pour modifier le budget global
-function modifierbudgetglobal(idmariage){
+function modifierbudgetglobal(){
+	
     document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Valider";
-    document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "validerbudgetglobal('"+idmariage+"')";
+    document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "validerbudgetglobal()";
     $("#champbudgetglobale").replaceWith('<input id="champbudgetglobale" placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+document.getElementById("champbudgetglobale").innerHTML+'">');
+	
 }
 
 
-// fonction pour modifier le budget global
-function validerbudgetglobal(idmariage){
+// fonction pour mettre à jour le budget global dans la bd
+function validerbudgetglobal(){
+	
     var value = +document.getElementById("champbudgetglobale").value;
 	if (value < 0){value = 0;}
 	if (value > 2000000000){value = 2000000000;}
@@ -57,7 +62,7 @@ function validerbudgetglobal(idmariage){
 				budgetglobale = value;
 				updatebudgetglobal();
 				document.getElementById("boutonmodifierbudgetglobal").innerHTML = "Modifier";
-				document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "modifierbudgetglobal('"+idmariage+"')";
+				document.getElementById("boutonmodifierbudgetglobal").getAttributeNode("onClick").value = "modifierbudgetglobal()";
 				$("#champbudgetglobale").replaceWith('<b id="champbudgetglobale">'+budgetglobale+'</b>');
             }else{
                 serverLost();
@@ -67,29 +72,29 @@ function validerbudgetglobal(idmariage){
     
     xhttp5.open("POST", "budget-modifie.php", true);
     xhttp5.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp5.send("action=updatebudgetglobal&idmariage="+idmariage+"&value="+value);
+    xhttp5.send("action=updatebudgetglobal&value="+value);
     
 }
 
 
-// fonction qui renvoie la forme html d'une dépense
-function getHtmlDepenseModif(id, description, value){
+// fonction qui renvoie la forme html d'une dépense modifiable
+function getHtmlDepenseModif(id, idbud, description, value){
     
-    return  '<tr id="'+id+'" class="row">'
-                +'<td><p class="btn btn-danger btn-sm" onclick="supp(\''+id+'\')"> X </p></td>'
-                +'<td><input class="champ-description-depense" name="'+id+'depdescription" type="text" maxlength="50" value="'+description+'"></td>'
-                +'<td class="text-right"><input class="champ-value" name="'+id+'depvalue" type="number" min="0" max="2000000000" value="'+value+'" €></td>'
+    return  '<tr id="'+idbud+id+'" class="row">'
+                +'<td><p class="btn btn-danger btn-sm suppdepense" onclick="supp(\''+id+'\', \''+idbud+'\')"> X </p></td>'
+                +'<td><input class="champ-description-depense" name="'+idbud+id+'depdescription" type="text" maxlength="50" value="'+description+'"></td>'
+                +'<td class="text-right"><input class="champ-value" name="'+idbud+id+'depvalue" type="number" min="0" max="2000000000" value="'+value+'" €></td>'
             +'</tr>';
 
 }
 
 
-// fonction qui renvoie le forme html d'un budget avec des champs modifiables
-function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
+// fonction qui renvoie la forme html d'un budget avec des champs modifiables
+function getHtmlBudgetModif(id, description, value, tabDepenses){
 
     var depenses = "";
     for (i = 0 ; i < tabDepenses.length ; i++){
-        depenses += getHtmlDepenseModif(tabDepenses[i][0], tabDepenses[i][1], tabDepenses[i][2]);
+        depenses += getHtmlDepenseModif(tabDepenses[i][0], id, tabDepenses[i][1], tabDepenses[i][2]);
     }
 
     return  '<form id="form'+id+'" class="form" method="POST" action="budget-modifie.php">'
@@ -101,12 +106,12 @@ function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
                 +'<table class="row scroll2 form-control">'
                     +'<tr class="row"><th class=""></th><th class="champ-description-depense text-center">Description</th><th class="text-center">Prix</th></tr>'
                     +depenses
-                    +'<tr id="idadd'+id+'" class="row"></td><td><td><p class="col-xs-5 col-xs-offset-3 btn btn-success" onclick="add('+id+')">new</p></td><td></td></tr>'
+                    +'<tr id="idadd'+id+'" class="row"></td><td><td><p class="col-xs-6 col-xs-offset-3 btn btn-success" onclick="add('+id+')">new</p></td><td></td></tr>'
                 +'</table>'
 
                 +'<div class="row bouton-margin">'
-                    +'<p onclick="annuler('+id+', '+idmariage+')" class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary">Annuler</p>'
-                    +'<p onclick="valider('+id+', '+idmariage+')" class="btn-d col-xs-5 btn btn-primary">Valider</p>'
+                    +'<p onclick="annuler('+id+')" class="btn-d col-xs-5 col-xs-offset-1 btn btn-primary">Annuler</p>'
+                    +'<p onclick="valider('+id+')" class="btn-d col-xs-5 btn btn-primary">Valider</p>'
                 +'</div>'
 
             +'</form>';
@@ -114,71 +119,83 @@ function getHtmlBudgetModif(id, idmariage, description, value, tabDepenses){
 }
 
 // fonction pour supprimer un budget (cree une popup)
-function supprimer(idbudget, idmariage){    
-    swal({
-		title: "Supression",   
-		text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
-		type: "warning",   
-		showCancelButton: true,   
-		confirmButtonColor: "#DD6B55",   
-		confirmButtonText: "Supprimer", 
-		cancelButtonText: "Annuler"
-		},  function(){
+function supprimer(idbudget){ 
+	
+	if (idbudget > 0 && document.getElementById(idbudget) != null){
+		swal({
+			title: "Supression",   
+			text: "Etes-vous sûr de vouloir supprimer ce budget ?\nToutes les données seront perdues !",   
+			type: "warning",   
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",   
+			confirmButtonText: "Supprimer", 
+			cancelButtonText: "Annuler"
+			},  function(){
 
-			var xhttp0 = new XMLHttpRequest();
-			xhttp0.onreadystatechange = function(){
-				if(xhttp0.readyState === XMLHttpRequest.DONE){
-					if (xhttp0.status === 200){
-						budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
-						updatebudgetglobal();
+				var xhttp0 = new XMLHttpRequest();
+				xhttp0.onreadystatechange = function(){
+					if(xhttp0.readyState === XMLHttpRequest.DONE){
+						if (xhttp0.status === 200){
+							budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
+							updatebudgetglobal();
 
-						document.getElementById(idbudget).remove();
+							document.getElementById(idbudget).remove();
 
-					}else{
-						serverLost();
+						}else{
+							serverLost();
+						}
 					}
-				}
-			};
+				};
 
-			xhttp0.open("POST", "budget-modifie.php", true);
-			xhttp0.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhttp0.send("idbudget="+idbudget+"&action=supprimer&idmariage="+idmariage);
-    });
+				xhttp0.open("POST", "budget-modifie.php", true);
+				xhttp0.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhttp0.send("idbudget="+idbudget+"&action=supprimer");
+		});
+		
+	}else{
+		donnéesInvalides();
+	}
+	
 }
 
 
 // fonction pour afficher les champs quand l'utilisateur veut modifier un budget
-function modifier(idbudget, idmariage){
-    
-    budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
+function modifier(idbudget){
 
-    var description = document.getElementById("description"+idbudget).innerHTML;
-    var value = document.getElementById("value"+idbudget).innerHTML;
-    var tabDepenses = new Array();
+	if (idbudget > 0 && document.getElementById(idbudget) != null){
+		budgetglobaledepense -= +document.getElementById("totaldepense"+idbudget).innerHTML.replace("€", "");
 
-    var tabhtml = document.getElementsByClassName("depense"+idbudget);
-    for (i = 0 ; i < tabhtml.length ; i++){
-        var depdescription = tabhtml[i].children[0].innerHTML;
-        var depvalue = tabhtml[i].children[1].innerHTML.replace("€", "").trim();
+		var description = document.getElementById("description"+idbudget).innerHTML;
+		var value = document.getElementById("value"+idbudget).innerHTML;
+		var tabDepenses = new Array();
 
-        tabDepenses.push(new Array(
-            tabhtml[i].id.replace("dep", ""),
-            depdescription,
-            depvalue));
-    }
+		var tabhtml = document.getElementsByClassName("depense"+idbudget);
+		for (i = 0 ; i < tabhtml.length ; i++){
+			var depdescription = tabhtml[i].children[0].innerHTML;
+			var depvalue = tabhtml[i].children[1].innerHTML.replace("€", "").trim();
 
-    document.getElementById(idbudget).innerHTML = getHtmlBudgetModif(idbudget, idmariage, description, value, tabDepenses);
+			tabDepenses.push(new Array(
+				tabhtml[i].id.replace("dep", "").replace(idbudget.toString(), ""),
+				depdescription,
+				depvalue));
+		}
+
+		document.getElementById(idbudget).innerHTML = getHtmlBudgetModif(idbudget, description, value, tabDepenses);
+		
+	}else{
+		donnéesInvalides();
+	}
 
 }
 
 
 // fonction pour ajouter un budget
-function ajouter(idmariage){
+function ajouter(){
 
     var tabDepenses = new Array();
     tabDepenses.push(new Array(iddepadd, "", 0));
     $("#divboutonajouter").after('<div id="'+idbudadd+'" class="row-margin div-budget border col-sm-5">'
-                                    +getHtmlBudgetModif(idbudadd, idmariage, "", 0, tabDepenses)
+                                    +getHtmlBudgetModif(idbudadd, "", 0, tabDepenses)
                                 +'</div>');
 
     iddepadd--;
@@ -188,87 +205,96 @@ function ajouter(idmariage){
 
 
 // fonction pour supprimer une dépense
-function supp(iddepense){
-    document.getElementById(iddepense).remove();
+function supp(iddepense, idbudget){
+    document.getElementById(''+idbudget+iddepense+'').remove();
 }
 
 
 // fonction pour ajouter un champ dépense
 function add(idbudget){
-    $("#idadd"+idbudget).before(getHtmlDepenseModif(iddepadd,"",0));
+    $("#idadd"+idbudget).before(getHtmlDepenseModif(iddepadd, idbudget, "", 0));
     iddepadd--;
 }
 
 
 // fonction pour annuler les modifications
-function annuler(idbudget, idmariage){
+function annuler(idbudget){
 
-	if (idbudget >= 0){
-		var xhttp3 = new XMLHttpRequest();
-		xhttp3.onreadystatechange = function(){
-			if(xhttp3.readyState === XMLHttpRequest.DONE){
-				if (xhttp3.status === 200){
-					var reponse = this.responseText;
-					document.getElementById(idbudget).innerHTML = reponse;
-					budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML;
-					if (+document.getElementById("totalrestant"+idbudget).innerHTML < 0){
-						document.getElementById("totalrestant"+idbudget).style.color = "red"
+	if (idbudget != 0 && document.getElementById(idbudget) != null){
+		if (idbudget > 0){
+			var xhttp3 = new XMLHttpRequest();
+			xhttp3.onreadystatechange = function(){
+				if(xhttp3.readyState === XMLHttpRequest.DONE){
+					if (xhttp3.status === 200){
+						var reponse = this.responseText;
+						document.getElementById(idbudget).innerHTML = reponse;
+						budgetglobaledepense += +document.getElementById("totaldepense"+idbudget).innerHTML;
+						if (+document.getElementById("totalrestant"+idbudget).innerHTML < 0){
+							document.getElementById("totalrestant"+idbudget).style.color = "red"
+						}
+					}else{
+						serverLost();
 					}
-				}else{
-					serverLost();
 				}
-			}
-		};
+			};
 
-		xhttp3.open("POST", "budget-modifie.php", true);
-		xhttp3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhttp3.send("idbudget="+idbudget+"&action=annuler&idmariage="+idmariage);
+			xhttp3.open("POST", "budget-modifie.php", true);
+			xhttp3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhttp3.send("idbudget="+idbudget+"&action=annuler");
+
+		}else{
+			document.getElementById(idbudget).remove();
+		}
 		
 	}else{
-		document.getElementById(idbudget).remove();
+		donnéesInvalides();
 	}
 
 }
 
 
 // fonction pour valider les modifications
-function valider(idbudget, idmariage){
+function valider(idbudget){
 
-    document.getElementById(idbudget).style.filter = "blur(2px)";
+	if (idbudget != 0 && document.getElementById(idbudget) != null){
+		document.getElementById(idbudget).style.filter = "blur(2px)";
 
-    var xhttp4 = new XMLHttpRequest();
-    xhttp4.onreadystatechange = function(){
-        if(xhttp4.readyState === XMLHttpRequest.DONE){
-            if (xhttp4.status === 200){
-                var reponse = this.responseText;
-				var newid = reponse.substring(0, reponse.indexOf("<")).trim();
-				document.getElementById(idbudget).innerHTML = reponse.replace(newid, "");
-				document.getElementById(idbudget).id = newid;
-                
-				budgetglobaledepense += +document.getElementById("totaldepense"+newid).innerHTML;
-				updatebudgetglobal();
-				
-				// modification couleur
-				if (+document.getElementById("totalrestant"+newid).innerHTML >= 0){
-					document.getElementById("totalrestant"+newid).style.color = "black";
+		var xhttp4 = new XMLHttpRequest();
+		xhttp4.onreadystatechange = function(){
+			if(xhttp4.readyState === XMLHttpRequest.DONE){
+				if (xhttp4.status === 200){
+					var reponse = this.responseText;
+					var newid = reponse.substring(0, reponse.indexOf("<")).trim();
+					document.getElementById(idbudget).innerHTML = reponse.replace(newid, "");
+					document.getElementById(idbudget).id = newid;
+
+					budgetglobaledepense += +document.getElementById("totaldepense"+newid).innerHTML;
+					updatebudgetglobal();
+
+					// modification couleur
+					if (+document.getElementById("totalrestant"+newid).innerHTML >= 0){
+						document.getElementById("totalrestant"+newid).style.color = "black";
+					}else{
+						document.getElementById("totalrestant"+newid).style.color = "red";
+					}
+					document.getElementById(newid).style.filter = "";
 				}else{
-					document.getElementById("totalrestant"+newid).style.color = "red";
+					serverLost();
+					document.getElementById(idbudget).style.filter = "";
 				}
-				document.getElementById(newid).style.filter = "";
-            }else{
-                serverLost();
-				document.getElementById(idbudget).style.filter = "";
-            }
-                    			
-        }
-    };
 
-    var formdata = new FormData(document.getElementById("form"+idbudget));
-    formdata.append('action', "valider");
-    formdata.append('idbudget', idbudget);
-    formdata.append('idmariage', idmariage);
-    xhttp4.open("POST", "budget-modifie.php", true);
-    xhttp4.send(formdata);
+			}
+		};
+
+		var formdata = new FormData(document.getElementById("form"+idbudget));
+		formdata.append('action', "valider");
+		formdata.append('idbudget', idbudget);
+		xhttp4.open("POST", "budget-modifie.php", true);
+		xhttp4.send(formdata);
+		
+	}else{
+		donnéesInvalides();
+	}
 
 }
 
@@ -285,5 +311,21 @@ function serverLost(){
 		confirmButtonText: "Ok"
 		},  function(){
 		// ne rien faire
+    });
+}
+
+
+// fonction pour empecher les erreurs au niveau du serveur si l'utilisateur à modifié
+// des attributs dans son html
+function donnéesInvalides(){
+	swal({
+		title: "Erreur",   
+		text: "Certaines données sont érronées !\nLa page va être rechargé ...",   
+		type: "warning",   
+		showCancelButton: false,   
+		confirmButtonColor: "#DD6B55",   
+		confirmButtonText: "Ok"
+		},  function(){
+			window.location.href = 'budget.ctrl.php';
     });
 }
