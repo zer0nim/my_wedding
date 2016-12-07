@@ -40,7 +40,7 @@
 			<div>
 				<div class="col-sm-6">
 					<h1>MyWedding:</h1>
-					<h2>Le meilleur moyen d'organiser votre marriage</h2>
+					<h2>Le meilleur moyen d'organiser votre mariage</h2>
 				</div>
 			</div>
 		</header>
@@ -75,39 +75,39 @@
 
 			<div id="sign">
 				<form class="form-signin" action="connecter.ctrl.php" method="get">
-					<h2 class="form-signin-heading">Connectez-vous</h2>
+					<h2 class="form-signin-heading">Sign in</h2>
 
-					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<label for="inputEmail" class="sr-only">Mail address</label>
 					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
-					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<label for="inputPassword" class="sr-only">Password</label>
 					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" value="remember-me"> Se souvenir de moi
+							<input type="checkbox" value="remember-me"> Remember me
 						</label>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 				</form>
 
 
 				<form class="form-signin" action="inscrire.ctrl.php" method="post">
-					<h2 class="form-signin-heading">Inscrivez-vous</h2>
+					<h2 class="form-signin-heading">Sign up</h2>
 
-					<label for="inputNom" class="sr-only">Nom</label>
+					<label for="inputNom" class="sr-only">Last name</label>
 					<input type="text" id="inputNom" class="form-control" placeholder="Last name" required>
 
-					<label for="inputPrenom" class="sr-only">Prenom</label>
+					<label for="inputPrenom" class="sr-only">First name</label>
 					<input type="text" id="inputPrenom" class="form-control" placeholder="First name" required>
 
-					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<label for="inputEmail" class="sr-only">Mail address</label>
 					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
-					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<label for="inputPassword" class="sr-only">Password</label>
 					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 				</form>
 			</div>
 		</main>
