@@ -24,13 +24,13 @@
 			<div class="margin-b-form col-xs-12 col-sm-6">
 				<div class="input-group">
 					<span class="input-group-addon">Nom</span>
-					<input id="NomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="NomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text" tabindex="1">
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6">
 				<div class="input-group">
 					<span class="input-group-addon">Prenom</span>
-					<input id="PrenomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text">
+					<input id="PrenomLink" name="prependedtext" class="form-control" placeholder="" required="" type="text" tabindex="2">
 				</div>
 			</div>
 		</div>
@@ -38,13 +38,13 @@
 			<div class="margin-b-form col-xs-12 col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">Mail</span>
-					<input id="MailLink" name="prependedtext" class="form-control" placeholder="" required="" type="email">
+					<input id="MailLink" name="prependedtext" class="form-control" placeholder="" required="" type="email" tabindex="3">
 				</div>
 			</div>
 			<div class="col-xs-12 col-lg-6">
 				<div class="input-group">
 					<span class="input-group-addon">Télephone</span>
-					<input id="TelLink" name="prependedtext" class="form-control" placeholder="" type="text">
+					<input id="TelLink" name="prependedtext" class="form-control" placeholder="" type="text" tabindex="4">
 				</div>
 			</div>
 		</div>
@@ -53,13 +53,13 @@
 			<div class="margin-b-form col-xs-12 col-sm-9">
 				<div class="input-group">
 					<span class="input-group-addon">Adresse</span>
-					<input id="user_input_autocomplete_address" class="form-control">
+					<input id="user_input_autocomplete_address" class="form-control" tabindex="5">
 				</div>
 			</div>
 			<!-- -^- Adress input -^- -->
 
 			<div class="col-xs-12 col-sm-3">
-				<select id="AgeLink" class="form-control">
+				<select id="AgeLink" class="form-control" tabindex="6">
 					<option value="NULL">Age</option>
 					<?php
 					for ($i=1; $i<=150; $i++)
@@ -99,7 +99,7 @@
 							</div>
 						</div>
 					</div>
-						<select multiple id="EntenteChoiceLink" class="form-control">
+						<select multiple id="EntenteChoiceLink" class="form-control" tabindex="7">
 							<option>Bellefeuille Bertrand</option>
 							<option>Bonnet Valentine</option>
 							<option>Charette Christien</option>

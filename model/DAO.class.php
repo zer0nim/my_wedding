@@ -69,7 +69,7 @@ class DAO {
         }
         return $req->fetch()[0];
     }
-	
+
 	// recupere l'id de la derniere depense ajouté au budget du mariage dans la bd
     function getLastIdDep($idbudget, $idmariage){
         try{
@@ -150,7 +150,7 @@ class DAO {
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());
             }
             $depenses = $req->fetchAll(PDO::FETCH_ASSOC);
-			
+
             // modification du tableau pour l'indexer par idbudget et iddepense
 			if ($depenses != null){
 				$depenses2 = null;
@@ -268,7 +268,7 @@ class DAO {
 		}
 
         if ($tabdepense != null){
-			
+
 			$newId = $this->getLastIdDep($budget->getId(), $idmariage);
 			if ($newId == null){
 				$newId = 0;
@@ -494,9 +494,20 @@ class DAO {
                             ':cont_tel' => $contact->getCont_tel()));
                           }
       catch (PDOException $e) {
-        echo "heyheyhey";
         exit("Erreur création nouveau contact: ".$e->getMessage());
       }
+      try {
+        $req = $this->db->prepare('SELECT cont_id, cont_nom, cont_prenom FROM Contact WHERE cont_idM = :cont_idM and cont_nom = :cont_nom and cont_prenom = :cont_prenom and cont_mail = :cont_mail');
+        $req->execute(array(':cont_idM' => $contact->getCont_idM(),
+                            ':cont_nom' => $contact->getCont_nom(),
+                            ':cont_prenom' => $contact->getCont_prenom(),
+                            ':cont_mail' => $contact->getCont_mail()));
+        $donnee = $req->fetch();
+      }
+      catch (PDOException $e) {
+        exit("Erreur création nouveau contact: ".$e->getMessage());
+      }
+      return ($donnee);
     }
     //----------------------------------------------------------------------------------------
 

@@ -208,12 +208,15 @@ function saveContact() {
 			},
 
 			function(data){
-				console.log(data);
+				$('#select-cnt option[value=' + "newC" + ']').text(data["cont_nom"] + " " + data["cont_prenom"]);
+				$('#select-cnt option[value=' + "newC" + ']').val(data["cont_id"]);
 				swal("Contact enregistré!", "", "success");
+				noDiffHandler();
+				document.getElementById("SaveContactInfoLink").disabled=true;
 				//location.reload();
 			},
 
-			'text' // Format des données reçues.
+			'json' // Format des données reçues.
 	);
 }
 
@@ -243,23 +246,34 @@ function confirmation() {
 		function(isConfirm){
 		  if (isConfirm) {
 		    swal("Supprimé!", "", "success");
-				//suppression dans la base
-				$.post(
-						'../controller/ajax_delete_cnt.php', // Le fichier cible côté serveur.
-						{
-								idcont : selected
-						},
+				if ($("#select-cnt option[value='newC']").length <= 0) {
+					//suppression dans la base
+					$.post(
+							'../controller/ajax_delete_cnt.php', // Le fichier cible côté serveur.
+							{
+									idcont : selected
+							},
 
-						function(data){
-							var i;
-							for (i = 0; i < selected.length; ++i) {
-    						$('#select-cnt option[value=' + selected[i] + ']').remove();
-							}
-						},
+							function(data){
+								disableCntInfo();
+								noDiffHandler();
+								var i;
+								for (i = 0; i < selected.length; ++i) {
+	    						$('#select-cnt option[value=' + selected[i] + ']').remove();
+								}
+							},
 
-						'text' // Format des données reçues.
-				);
-		  } else {
+							'text' // Format des données reçues.
+					);
+				}
+				else {
+					// Si le contact séléctionné est un "nouveauContact" on le supprime de la liste
+					$('#select-cnt option[value=' + "newC" + ']').remove();
+					disableCntInfo();
+					noDiffHandler();
+				}
+		  }
+			else {
 			    swal("Annnulé", "Votre fichier est en sécurité :)", "error");
 		  }
 		});
@@ -278,29 +292,33 @@ function	nouveauContact() {
 		$('#select-cnt').val("newC").change();
 	}
 	else {
-		swal({
-			title: "Êtes-vous sur?",
-			text: "Des modifications en cours non pas été sauvegardées!",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Ne pas sauvergarder",
-			cancelButtonText: "Annuler",
-			closeOnConfirm: true,
-			closeOnCancel: true
-		},
-		function(isConfirm){
-			if (isConfirm) {
-				initCntInfo();
-				$('#select-cnt').append(new Option("Nouveau contact","newC"));
-				$('#select-cnt').val([]);
-				$('#select-cnt').val("newC").change();
-			}
-			else {
-				$('#select-cnt').val([]);
-				$('#select-cnt').val($('#select-cnt').data('previous')).change();
-			}
-		});
+		if ($("#select-cnt option[value='newC']").length <= 0) {
+			swal({
+				title: "Êtes-vous sur?",
+				text: "Des modifications en cours non pas été sauvegardées!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Ne pas sauvergarder",
+				cancelButtonText: "Annuler",
+				closeOnConfirm: true,
+				closeOnCancel: true
+			},
+			function(isConfirm){
+				if (isConfirm) {
+					$('#select-cnt option[value=' + "newC" + ']').remove();
+					noDiffHandler();
+					initCntInfo();
+					$('#select-cnt').append(new Option("Nouveau contact","newC"));
+					$('#select-cnt').val([]);
+					$('#select-cnt').val("newC").change();
+				}
+				else {
+					$('#select-cnt').val([]);
+					$('#select-cnt').val($('#select-cnt').data('previous')).change();
+				}
+			});
+		}
 	}
 }
 
