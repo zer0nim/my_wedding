@@ -1,7 +1,22 @@
 <?php
 // Test de la classe DAO
-/*
+
 require_once('DAO.class.php');
+
+//var_dump($dao->getTable(1, 0));
+
+//var_dump($dao->getTables(1));
+
+/*
+$tb = new tables();
+$tb->faux_construct(NULL, 1, 6);
+$dao->setTable($tb);
+*/
+
+//$dao->delTable(1, 0);
+
+
+/*
 $cnt = new contacts();
 $cnt->faux_construct(NULL, 1, "vdsdvv", "Bertrand", "rue des Belges", "Bertranddvd@gmail.fr", 32, "0600110011");
 $dao->setContact($cnt);
@@ -82,5 +97,5 @@ $dao->setContact($cnt);
   $cnt->faux_construct(NULL, 1, "Petitjean", "Yves", "route de Brest", "Yves25@hotmail.fr", 31, "0600114441");
   $dao->setContact($cnt);
 */
-$dao->placement(1);
+//$dao->placement(1);
 ?>

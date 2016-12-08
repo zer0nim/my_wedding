@@ -3,6 +3,7 @@
 require_once '../model/budget.class.php';
 require_once '../model/depense.class.php';
 require_once '../model/contacts.class.php';
+require_once '../model/tables.class.php';
 
 require_once('fournisseurs.class.php');
 $dao = new DAO();
@@ -426,16 +427,7 @@ class DAO {
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité contacts
     //----------------------------------------------------------------------------------------
-    /*
-    cont_id int(11) auto_increment
-    cont_idM int(11)
-    cont_nom varchar(25)
-    cont_prenom varchar(25)
-    cont_adresse varchar(50)
-    cont_mail varchar(30)
-    cont_age int(11)
-    cont_tel varchar(15)
-    */
+
     function getContacts($idM) {
       $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM');
       $req->execute(array(':idM' => $idM,));
@@ -484,7 +476,7 @@ class DAO {
     // insert un Contact à un mariage
     function setContact($contact) {
       try {
-        $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel, 0)');
+        $req = $this->db->prepare('INSERT INTO Contact VALUES(NULL, :cont_idM, :cont_nom, :cont_prenom, :cont_adresse, :cont_mail, :cont_age, :cont_tel, NULL)');
         $req->execute(array(':cont_idM' => $contact->getCont_idM(),
                             ':cont_nom' => $contact->getCont_nom(),
                             ':cont_prenom' => $contact->getCont_prenom(),
@@ -538,6 +530,69 @@ class DAO {
         echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
       }
     }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité tables
+    //----------------------------------------------------------------------------------------
+
+/*
+listTab_idM
+listTab_id
+listTab_nom
+listTab_nbPlaces
+*/
+
+    function getTables($idM) {
+      $req = $this->db->prepare('SELECT * FROM ListeTables WHERE listTab_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "tables");
+      return $donnee;
+    }
+
+    function getTable($idM, $listTab_id) {
+      $req = $this->db->prepare('SELECT * FROM ListeTables WHERE listTab_idM = :idM and listTab_id = :listTab_id');
+      $req->execute(array(':idM' => $idM,
+                          ':listTab_id' => $listTab_id,));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "tables");
+      return $donnee[0];
+    }
+
+    // supprime une table d'un mariage
+    function delTable($idM, $listTab_id) {
+      // On remplace par NULL les idTables des Contact associé a celle-ci
+      try {
+        $req = $this->db->prepare('UPDATE Contact SET cont_idT=NULL WHERE cont_idM=:cont_idM AND cont_idT=:cont_idT');
+        $req->execute(array(':cont_idM' => $idM,
+                            ':cont_idT' => $listTab_id));
+      }
+      catch (PDOException $e) {
+        exit("Erreur suppression de table: ".$e->getMessage());
+      }
+
+      try {
+        $req = $this->db->prepare('DELETE FROM ListeTables WHERE listTab_idM = :idM and listTab_id = :listTab_id');
+        $req->execute(array(':idM' => $idM,
+                            ':listTab_id' => $listTab_id,));
+      }
+      catch (PDOException $e) {
+        exit("Erreur suppression de table: ".$e->getMessage());
+      }
+    }
+
+    // insert une table à un mariage
+    function setTable($table) {
+      try {
+        $req = $this->db->prepare('INSERT INTO ListeTables VALUES(:listTab_idM, :listTab_id, :listTab_nom, :listTab_nbPlaces)');
+        $req->execute(array(':listTab_idM' => $table->getListTab_idM(),
+                            ':listTab_id' => $table->getListTab_id(),
+                            ':listTab_nom' => $table->getListTab_nom(),
+                            ':listTab_nbPlaces' => $table->getListTab_nbPlaces()));
+                          }
+      catch (PDOException $e) {
+        exit("Erreur création nouvelle table: ".$e->getMessage());
+      }
+    }
+    //----------------------------------------------------------------------------------------
 }
 
 ?>

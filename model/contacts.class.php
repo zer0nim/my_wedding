@@ -8,6 +8,7 @@ class contacts {
   private $cont_mail;
   private $cont_age;
   private $cont_tel;
+  private $cont_idT;
 
   function faux_construct($cont_id, $cont_idM, $cont_nom, $cont_prenom, $cont_adresse, $cont_mail, $cont_age, $cont_tel) {
     if (isset($cont_id)) {
@@ -52,7 +53,16 @@ class contacts {
   function setCont_tel($cont_tel) {
       $this->cont_tel = $cont_tel;
   }
+  function setCont_idT($cont_idT) {
+      $this->cont_idT = $cont_idT;
+  }
 
+
+
+
+  function getCont_idT() {
+      return $this->cont_idT;
+  }
   function getCont_id() {
       return $this->cont_id;
   }
