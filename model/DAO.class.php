@@ -4,7 +4,6 @@ require_once '../model/budget.class.php';
 require_once '../model/depense.class.php';
 require_once '../model/contacts.class.php';
 require_once '../model/tables.class.php';
-require_once '../model/evenement.class.php';
 
 require_once('fournisseurs.class.php');
 $dao = new DAO();
@@ -543,7 +542,26 @@ class DAO {
         //$nbPlace contient le nombre de place disponible pour ce mariage
       }
       catch (PDOException $e) {
-        exit("Erreur de req sql placement -> Ensemble : ".$e->getMessage());
+        exit("Erreur de req sql placement -> nbPlace : ".$e->getMessage());
+      }
+
+      try {
+        $req = $this->db->prepare('
+        Select listTab_id, listTab_nbPlaces - (Select count(*)
+                                   From Contact
+                                   Where cont_idT = L.listTab_id) as nbPlaceRestante
+        From ListeTables L
+        Where listTab_idM = :idMariage');
+
+        $req->execute(array(':idMariage' => $idMariage));
+        $donnees = $req->fetchAll();
+        foreach ($donnees as $donnee) {
+          $nbPlaceRestante[$donnee[0]] = $donnee[1];
+        }
+        //$nbPlaceRestante contient le nombre de place restante par table
+      }
+      catch (PDOException $e) {
+        exit("Erreur de req sql placement -> nbPlaceRestante : ".$e->getMessage());
       }
 
       $contacts = $this->getContactsIndiceParId($idMariage);
@@ -677,14 +695,6 @@ listTab_nbPlaces
       }
     }
     //----------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------
-    // fonction pour la fonctionnalité planning
-    //----------------------------------------------------------------------------------------
-    
-    // fonction qui retourne les événements d'un mariage
-    function getEvenements($idM){
-	return null;
-    }
 }
 
 ?>
