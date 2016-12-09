@@ -2,11 +2,11 @@
 function printAllTables($allTables, $allContacts) {
   foreach ($allTables as $key => $table) {
 ?>
-        <tr>
+        <tr id="<?php echo "link" . $table->getListTab_id(); ?>">
           <td>
             <input type="text" class="form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
             <br>
-            <a href="#" class="btn btn-danger" role="button">Supprimer</a>
+            <a class="btn btn-danger" role="button" onclick="return supprT(<?php echo $table->getListTab_id(); ?>);">Supprimer</a>
           </td>
           <td>
             <select class="form-control">
@@ -27,7 +27,7 @@ function printAllTables($allTables, $allContacts) {
               <tbody>
                 <?php foreach ($allContacts as $key => $value): ?>
                   <?php if ($value->getCont_idT() == $table->getListTab_id()): ?>
-                    <tr><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()) ?><a href="#" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+                    <tr><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()) ?><a id="supprCntLink" href="<?php echo $value->getCont_id(); ?>" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
                   <?php endif; ?>
                 <?php endforeach; ?>
                 <tr><td>

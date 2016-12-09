@@ -6,7 +6,7 @@
 	<!-- -v- Génerer -v- -->
 	<div class="nopadding col-xs-12 col-lg-6">
 		<div class="nopadding form-group">
-			<button id="singlebutton" name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
+			<button name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
 		</div>
 		<div class="alert alert-info alert-dismissable fade in">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -23,16 +23,15 @@
 				<th	class="col-sm-7">Invités</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="tablesLink">
 			<?php printAllTables($allTables, $allContacts); ?>
 		</tbody>
 		</table>
 
 
-	<button id="singlebutton" name="singlebutton" class="btn btn-default btn-block">Créer nouvelle</button>
+	<button name="singlebutton" class="btn btn-default btn-block" onClick="nouvelleTable()">Créer nouvelle</button>
 </div>
 
 <?php include('../view/scripts.php') ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../view/js/planDeTable.js"></script>
 <?php include('../view/footer.php') ?>
