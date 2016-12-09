@@ -43,6 +43,23 @@ function nouvelleTable() {
 	);
 }
 
+supprCntTab = function(cntId) {
+	//On met la TbleId du contact à NULL
+	$.post(
+			'../controller/ajax_delete_cnt_table.php', // Le fichier cible côté serveur.
+			{
+					idCnt : cntId
+			},
+
+			function(data){
+				$("#contId" + cntId).remove();
+			},
+
+			'text' // Format des données reçues.
+	);
+	return false;
+}
+
 supprT = function(ref) {
 	//fonction appelé lors du clic sur supprimer
 //	console.log($('#supprLink').attr('href'));

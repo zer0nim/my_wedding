@@ -696,6 +696,14 @@ listTab_nbPlaces
       }
     }
 
+    // reinitialise la table attribué a un contact
+    function updCntTable($cntIdM, $cntId, $numT) {
+        $req = $this->db->prepare('UPDATE Contact SET cont_idT=:cont_idT WHERE cont_idM=:cont_idM AND cont_id=:cont_id');
+        $req->execute(array(':cont_id' => $cntId,
+                            ':cont_idM' => $cntIdM,
+                            ':cont_idT' => $numT,));
+    }
+
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité planning
     //----------------------------------------------------------------------------------------
