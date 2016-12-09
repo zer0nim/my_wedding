@@ -37,7 +37,7 @@
   }
  ?>
 
- <form class="col-sm-12 col-md-5 col-md-offset-1" action="mon_compte.ctrl.php" method="post">
+ <form class="col-sm-12 col-md-5 col-md-offset-2" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
      <h2>Changer son mot de passe :</h2>
@@ -56,13 +56,13 @@
      </div>
 
      <div class="row">
-       <button class="col-sm-6 btn btn-primary" name="changeMdp">Confirmer</button>
+       <button class="col-xs-12 col-sm-6 btn btn-primary" name="changeMdp">Confirmer</button>
      </div>
    </div>
 
  </form>
 
- <form class="col-sm-12 col-md-5 col-md-offset-1" action="mon_compte.ctrl.php" method="post">
+ <form class="col-sm-12 col-md-5" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
      <h2>Changer son email :</h2>
@@ -81,7 +81,7 @@
      </div>
 
      <div class="row">
-       <button class="col-sm-6 btn btn-primary" name="changeMail">Confirmer</button>
+       <button class="col-xs-12 col-sm-6 btn btn-primary" name="changeMail">Confirmer</button>
      </div>
    </div>
 
