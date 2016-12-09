@@ -74,7 +74,7 @@
 			</div>
 
 			<div id="sign">
-				<form class="form-signin" action="connecter.ctrl.php" method="get">
+				<form class="form-signin" action="connecter.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Sign in</h2>
 
 					<label for="inputEmail" class="sr-only">Mail address</label>
