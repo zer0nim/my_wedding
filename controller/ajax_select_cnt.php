@@ -1,6 +1,10 @@
 <?php
+  include_once('session_gestion.ctrl.php');
   require_once '../model/DAO.class.php';
-  $Contact = $dao->getContact(1, $_POST['idcont'][0]);
+
+  // recup id du mariage
+  $idM = $_SESSION['idM'];
+  $Contact = $dao->getContact($idM, $_POST['idcont'][0]);
 
   if( isset($_POST['idcont'])){
 

@@ -1,9 +1,13 @@
 <?php
+  include_once('session_gestion.ctrl.php');
   require_once '../model/DAO.class.php';
+
+  //Recup id du mariage
+  $idM = $_SESSION['idM'];
 
   if( isset($_POST['idcont'])){
     foreach ($_POST['idcont'] as $key => $value) {
-      $dao->delContacts(1, $value);
+      $dao->delContacts($idM, $value);
     }
     echo "Success";
   }

@@ -1,6 +1,7 @@
 <?php
+  include_once('session_gestion.ctrl.php');
   require_once('../model/DAO.class.php');
-  $idM = 1;
+  $idM = $_SESSION[idM];
   $liste = $_POST['list'];
   var_dump($_POST['list']);
   echo $_POST['list'][0]['nom'];
