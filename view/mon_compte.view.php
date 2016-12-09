@@ -44,14 +44,14 @@
      <div class="form-group">
        <label for="nmdp" class="col-sm-12">Nouveau mot de passe :</label>
        <div class="col-sm-6">
-         <input type="text" name="newmdp" id="nmdp" class="form-control" required>
+         <input type="password" name="newmdp" id="nmdp" class="form-control" required>
        </div>
      </div>
 
      <div class="form-group">
        <label for="cmdp" class="col-sm-12">Confirmer nouveau mot de passe :</label>
        <div class="col-sm-6">
-         <input type="text" name="confirmMdp" id="cmdp" class="form-control" required>
+         <input type="password" name="confirmMdp" id="cmdp" class="form-control" required>
        </div>
      </div>
 
@@ -69,14 +69,14 @@
      <div class="form-group">
        <label for="nmail" class="col-sm-12">Nouveau mail :</label>
        <div class="col-sm-6">
-         <input type="text" name="newmail" id="nmail" class="form-control" required>
+         <input type="email" name="newmail" id="nmail" class="form-control" required>
        </div>
      </div>
 
      <div class="form-group">
        <label for="cmail" class="col-sm-12">Confirmer son nouveau mail :</label>
        <div class="col-sm-6">
-         <input type="text" name="confirmMail" id="cmail" class="form-control" required>
+         <input type="email" name="confirmMail" id="cmail" class="form-control" required>
        </div>
      </div>
 
