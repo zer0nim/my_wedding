@@ -1,6 +1,7 @@
 <?php
+  include_once('session_gestion.ctrl.php');
   require_once('../model/DAO.class.php');
-  $idM = 1;
+  $idM = $_SESSION['idM'];
 
   // Pour suppression d'un fournisseur
   if (isset($_GET['idS']) && (isset($_GET['idM']))) {
