@@ -1,5 +1,20 @@
 $(document).ready(function(){
+	$(".nbPlacesLink").bind("input", function functionName() {
+		//modification dans la base
+		$.post(
+				'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.
+				{
+						idtable : $(this).parent().parent().attr('id'),
+						nbPlaces : $(this).val()
+				},
 
+				function(data){
+					console.log(data);
+				},
+
+				'text' // Format des données reçues.
+		);
+	});
 });
 
 function nouvelleTable() {
@@ -18,7 +33,7 @@ function nouvelleTable() {
 						optionNb = optionNb + "<option value=\"" + i + "\">" + i + "</option>";
 					}
 				}
-				var newRow = "<tr id=\"link" + data + "\"><td><input type=\"text\" class=\"form-control\" placeholder=\"nom\" aria-describedby=\"basic-addon1\" value=\"SansNom\"><br><a class=\"btn btn-danger\" role=\"button\" onclick=\"return supprT(" + data + ");\">Supprimer</a></td><td><select class=\"form-control\"><option value=\"NULL\">-</option>" + optionNb + "</select></td><td><table class=\"table table-bordered table-striped table-hover table-responsive\"><tbody><tr><td><p><div class=\"input-group\"><select class=\"form-control\"><option>-</option></select><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Ajouter</button></span></div></p></td></tr></tbody></table></td></tr>";
+				var newRow = "<tr id=\"" + data + "\"><td><input type=\"text\" class=\"form-control\" placeholder=\"nom\" aria-describedby=\"basic-addon1\" value=\"SansNom\"><br><a class=\"btn btn-danger\" role=\"button\" onclick=\"return supprT(" + data + ");\">Supprimer</a></td><td><select class=\"form-control\">" + optionNb + "</select></td><td><table class=\"table table-bordered table-striped table-hover table-responsive\"><tbody><tr><td><p><div class=\"input-group\"><select class=\"form-control\"><option>-</option></select><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Ajouter</button></span></div></p></td></tr></tbody></table></td></tr>";
 				console.log(optionNb);
 				//Affichage de la nouvelle Table dans le tableau
 				$("#tablesLink").append(newRow);
@@ -51,7 +66,7 @@ supprT = function(ref) {
 					},
 
 					function(data){
-						$("#link"+ref).remove();
+						$("#"+ref).remove();
 					},
 
 					'text' // Format des données reçues.

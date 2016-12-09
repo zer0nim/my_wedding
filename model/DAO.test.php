@@ -1,15 +1,18 @@
 <?php
 // Test de la classe DAO
-
+/*
 require_once('DAO.class.php');
-
+$tb = new tables();
+$tb->faux_construct(66, 1, "table ronde", 8);
+$dao->updateTable($tb);
+*/
 //var_dump($dao->getTable(1, 0));
 
 //var_dump($dao->getTables(1));
 
 /*
 $tb = new tables();
-$tb->faux_construct(NULL, 1, 6);
+$tb->faux_construct(NULL, 1, "SansNom", 6);
 $dao->setTable($tb);
 */
 

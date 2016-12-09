@@ -2,15 +2,14 @@
 function printAllTables($allTables, $allContacts) {
   foreach ($allTables as $key => $table) {
 ?>
-        <tr id="<?php echo "link" . $table->getListTab_id(); ?>">
+        <tr id="<?php echo $table->getListTab_id(); ?>">
           <td>
             <input type="text" class="form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
             <br>
             <a class="btn btn-danger" role="button" onclick="return supprT(<?php echo $table->getListTab_id(); ?>);">Supprimer</a>
           </td>
           <td>
-            <select class="form-control">
-              <option value="NULL">-</option>
+            <select class="form-control nbPlacesLink">
               <?php
               for ($i=1; $i<=500; $i++) {
                 ?>

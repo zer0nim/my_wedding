@@ -18,7 +18,7 @@
 					<li><a href="accueil.ctrl.php">Accueil</a></li>
 					<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
 					<li><a href="#">Page Publique</a></li>
-					<li><a href="#">Mon compte</a></li>
+					<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="inscription.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>

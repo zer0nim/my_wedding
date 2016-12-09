@@ -56,5 +56,5 @@
     //==========
   }
 
-  include("../view/mail.view.php");
+  include_once("../view/mail.view.php");
  ?>
