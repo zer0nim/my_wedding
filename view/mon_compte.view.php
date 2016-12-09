@@ -37,7 +37,7 @@
   }
  ?>
 
- <form class="col-sm-12 col-md-5 col-md-offset-2" action="mon_compte.ctrl.php" method="post">
+ <form class="col-sm-12 col-md-5 col-sm-offset-3 col-md-offset-2" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
      <h2>Changer son mot de passe :</h2>
@@ -62,7 +62,7 @@
 
  </form>
 
- <form class="col-sm-12 col-md-5" action="mon_compte.ctrl.php" method="post">
+ <form class="col-sm-12 col-md-5 col-sm-offset-3 col-md-offset-0" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
      <h2>Changer son email :</h2>
