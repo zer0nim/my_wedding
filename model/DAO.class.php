@@ -501,6 +501,18 @@ class DAO {
       }
       return ($donnee);
     }
+
+    //attribué une table à un contact
+    function setTableToContact($table, $contact) {
+      try {
+        $req = $this->db->prepare('UPDATE Contact SET cont_idT = :idTable Where cont_id = :idContact');
+        $rq->execute(array(':idTable' => $table->getListTab_id(),
+                           ':idContact' => $contact->getCont_id()));
+      }
+      catch (PDOException $e) {
+        exit("Erreur d'attribution d'une table à un contact: ".$e->getMessage());
+      }
+    }
     //----------------------------------------------------------------------------------------
 
     function placement($idMariage) {
@@ -522,12 +534,48 @@ class DAO {
         exit("Erreur de req sql placement -> Ensemble : ".$e->getMessage());
       }
 
-      $contacts = $this->getContactsIndiceParId($idMariage);
-      foreach ($tabPasEnsemble as $pasEnsemble) {
-        echo $contacts[$pasEnsemble[0]]->getCont_nom()." ".$contacts[$pasEnsemble[0]]->getCont_prenom()." et ".$contacts[$pasEnsemble[1]]->getCont_nom()." ".$contacts[$pasEnsemble[1]]->getCont_prenom()." ne s'aiment pas !<BR>";
+      try {
+        $nbPlace = $this->db->prepare('Select numplace From V_NbPlaceParMariage Where idM = :idMariage');
+        $nbPlace->execute(array(':idMariage' => $idMariage));
+        $nbPlace = $nbPlace->fetch();
+        $nbPlace = $nbPlace[0];
+        //$nbPlace contient le nombre de place disponible pour ce mariage
       }
-      foreach ($tabEnsemble as $ensemble) {
-        echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
+      catch (PDOException $e) {
+        exit("Erreur de req sql placement -> Ensemble : ".$e->getMessage());
+      }
+
+      $contacts = $this->getContactsIndiceParId($idMariage);
+      //$contacts contient la liste des invités du mariage
+      $tables = $this->getTablesIndiceParId($idMariage);
+      //$tables contient la liste des tables du mariage
+
+      if ($nbPlace < count($contacts)) {
+        echo "Pas assez de place disponible...<BR>";
+        echo "Il manque ".(count($contacts)-$nbPlace)." places.<BR>";
+        echo "Pensez à rajouter des tables !<BR>";
+      }
+      else {
+
+        //$this->setTableToContact($table, $contact);
+        foreach ($tables as $table) {
+          echo $table->getListTab_id()." ".$table->getListTab_nom()."<BR>";
+          $suiv = current($tables);
+          if ($suiv !== false) {
+            echo "Prochaine table : ".$suiv->getListTab_id()."<BR>";
+            $suiv = next($tables);
+          }
+          else {
+            echo "Dernière table !<BR>";
+          }
+        }
+        foreach ($tabPasEnsemble as $pasEnsemble) {
+          echo $contacts[$pasEnsemble[0]]->getCont_nom()." ".$contacts[$pasEnsemble[0]]->getCont_prenom()." et ".$contacts[$pasEnsemble[1]]->getCont_nom()." ".$contacts[$pasEnsemble[1]]->getCont_prenom()." ne s'aiment pas !<BR>";
+        }
+        echo "<BR>";
+        foreach ($tabEnsemble as $ensemble) {
+          echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
+        }
       }
     }
 
@@ -541,6 +589,16 @@ listTab_id
 listTab_nom
 listTab_nbPlaces
 */
+
+    function getTablesIndiceParId($idM) {
+      $req = $this->db->prepare('SELECT * FROM ListeTables WHERE listTab_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $donnees = $req->fetchAll(PDO::FETCH_CLASS, "tables");
+      foreach ($donnees as $donnee) {
+        $listTables[$donnee->getListTab_id()] = $donnee;
+      }
+      return $listTables;
+    }
 
     function getTables($idM) {
       $req = $this->db->prepare('SELECT * FROM ListeTables WHERE listTab_idM = :idM');
@@ -587,7 +645,6 @@ listTab_nbPlaces
                             ':listTab_id' => $table->getListTab_id(),
                             ':listTab_nom' => $table->getListTab_nom(),
                             ':listTab_nbPlaces' => $table->getListTab_nbPlaces()));
-        return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
                           }
       catch (PDOException $e) {
         exit("Erreur création nouvelle table: ".$e->getMessage());
