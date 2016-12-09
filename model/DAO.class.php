@@ -4,6 +4,7 @@ require_once '../model/budget.class.php';
 require_once '../model/depense.class.php';
 require_once '../model/contacts.class.php';
 require_once '../model/tables.class.php';
+require_once '../model/evenement.class.php';
 
 require_once('fournisseurs.class.php');
 $dao = new DAO();
@@ -593,7 +594,16 @@ listTab_nbPlaces
         exit("Erreur création nouvelle table: ".$e->getMessage());
       }
     }
+    
     //----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité planning
+    //----------------------------------------------------------------------------------------
+    
+    // fonction qui retourne les événements d'un mariage
+    function getEvenements($idM){
+	return null;
+    }
 }
 
 ?>

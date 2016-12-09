@@ -10,12 +10,8 @@
 <script src='../fullcalendar/lib/moment.min.js'></script>
 <script src='../fullcalendar/lib/jquery.min.js'></script>
 <script src='../fullcalendar/fullcalendar.min.js'></script>
-<script>
-	$(document).ready(function() {
-		$('#calendar').fullCalendar({
-		});
-	});
-</script>
 
+<!-- C'est le script qui gère de mettre la view -->
+<script src='../view/js/planning.js'></script>
 
 <?php include('../view/footer.php') ?>
