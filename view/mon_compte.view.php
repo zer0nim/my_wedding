@@ -4,6 +4,37 @@
 <link rel="stylesheet" href="../view/css/mon_compte.css" type="text/css" />
 <?php
   include_once('../view/baseMenuFnct.php');
+  if (isset($_POST['changeMdp']) || isset($_POST['changeMail'])) {
+    if (isset($errmodif)) {
+      if($errmodif=="MdpCourant"){?>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Changement non effectué :</strong> Le nouveau mot de passe est le même que l'ancien
+        </div>
+<?php }elseif ($errmodif=="MdpConfirmation") {?>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Changement non effectué :</strong> Nouveau mot de passe mal confirmé
+        </div>
+<?php }elseif ($errmodif=="MailCourant") {?>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Changement non effectué :</strong> Le nouveau mail est le meme que l'ancien
+        </div>
+<?php }elseif ($errmodif=="MailConfirmation") {?>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Changement non effectué :</strong> Nouveau mail mal confirmé
+        </div>
+<?php }
+    }else {?>
+      <div class="alert alert-success">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  			<strong>Changement effectué !</strong>
+  		</div>
+<?php
+    }
+  }
  ?>
 
  <form class="col-lg-5 col-sm-12 col-md-6 col-lg-offset-1" action="mon_compte.ctrl.php" method="post">
@@ -20,12 +51,12 @@
      <div class="form-group">
        <label for="cmdp" class="col-sm-12">Confirmer nouveau mot de passe :</label>
        <div class="col-sm-6">
-         <input type="text" id="cmdp" name="confirmMdp" class="form-control" required>
+         <input type="text" name="confirmMdp" id="cmdp" class="form-control" required>
        </div>
      </div>
 
      <div class="row">
-       <button class="col-sm-6 btn btn-primary" name="changemdp">Confirmer</button>
+       <button class="col-sm-6 btn btn-primary" name="changeMdp">Confirmer</button>
      </div>
    </div>
 
@@ -45,12 +76,12 @@
      <div class="form-group">
        <label for="cmail" class="col-sm-12">Confirmer son nouveau mail :</label>
        <div class="col-sm-6">
-         <input type="text" id="cmail" name="confirmMail" class="form-control" required>
+         <input type="text" name="confirmMail" id="cmail" class="form-control" required>
        </div>
      </div>
 
      <div class="row">
-       <button class="col-sm-6 btn btn-primary" name="changemdp">Confirmer</button>
+       <button class="col-sm-6 btn btn-primary" name="changeMail">Confirmer</button>
      </div>
    </div>
 
