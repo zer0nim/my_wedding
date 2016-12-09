@@ -1,8 +1,20 @@
 $(document).ready(function(){
 	$(".nbPlacesLink").bind("input", function functionName() {
+		//modification dans la base
+		$.post(
+				'../controller/ajax_delete_table.php', // Le fichier cible côté serveur.
+				{
+						idtable : ref
+				},
+
+				function(data){
+					$("#"+ref).remove();
+				},
+
+				'text' // Format des données reçues.
+		);
 		console.log($(this).parent().parent().attr('id'));
 	});
-
 });
 
 function nouvelleTable() {

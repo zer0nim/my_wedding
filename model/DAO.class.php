@@ -652,12 +652,23 @@ listTab_nbPlaces
     }
 
     // modifie une table d'un mariage
-    function updateTable($table) {
+    function updateTableNom($table) {
       try {
-        $req = $this->db->prepare('UPDATE ListeTables SET listTab_nom = :listTab_nom, listTab_nbPlaces = :listTab_nbPlaces WHERE listTab_idM = :listTab_idM AND listTab_id = :listTab_id');
+        $req = $this->db->prepare('UPDATE ListeTables SET listTab_nom = :listTab_nom WHERE listTab_idM = :listTab_idM AND listTab_id = :listTab_id');
         $req->execute(array(':listTab_idM' => $table->getListTab_idM(),
                             ':listTab_id' => $table->getListTab_id(),
-                            ':listTab_nom' => $table->getListTab_nom(),
+                            ':listTab_nom' => $table->getListTab_nom()));
+                          }
+      catch (PDOException $e) {
+        exit("Erreur modification table: ".$e->getMessage());
+      }
+    }
+    // modifie une table d'un mariage
+    function updateTablePlaces($table) {
+      try {
+        $req = $this->db->prepare('UPDATE ListeTables SET listTab_nbPlaces = :listTab_nbPlaces WHERE listTab_idM = :listTab_idM AND listTab_id = :listTab_id');
+        $req->execute(array(':listTab_idM' => $table->getListTab_idM(),
+                            ':listTab_id' => $table->getListTab_id(),
                             ':listTab_nbPlaces' => $table->getListTab_nbPlaces()));
                           }
       catch (PDOException $e) {
