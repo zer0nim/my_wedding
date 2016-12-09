@@ -4,7 +4,12 @@ function printAllTables($allTables, $allContacts) {
 ?>
         <tr id="<?php echo $table->getListTab_id(); ?>">
           <td>
-            <input type="text" class="form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
+              <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div><!-- /input-group -->
             <br>
             <a class="btn btn-danger" role="button" onclick="return supprT(<?php echo $table->getListTab_id(); ?>);">Supprimer</a>
           </td>
