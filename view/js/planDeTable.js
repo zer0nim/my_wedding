@@ -2,18 +2,18 @@ $(document).ready(function(){
 	$(".nbPlacesLink").bind("input", function functionName() {
 		//modification dans la base
 		$.post(
-				'../controller/ajax_delete_table.php', // Le fichier cible côté serveur.
+				'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.
 				{
-						idtable : ref
+						idtable : $(this).parent().parent().attr('id'),
+						nbPlaces : $(this).val()
 				},
 
 				function(data){
-					$("#"+ref).remove();
+					console.log(data);
 				},
 
 				'text' // Format des données reçues.
 		);
-		console.log($(this).parent().parent().attr('id'));
 	});
 });
 
