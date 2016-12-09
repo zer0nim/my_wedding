@@ -99,7 +99,7 @@ function getHtmlBudgetModif(id, description, value, tabDepenses){
 
     return  '<form id="form'+id+'" class="form" method="POST" action="budget-modifie.php">'
 
-                +'<div class="row col-sm-12">'
+                +'<div class="row col-md-12">'
                     +'<p><input placeholder="description" class="champ-description" name="description" type="text" maxlength="35" value="'+description+'"> : <input placeholder="prix" class="champ-value" name="value" type="number" min="0" max="2000000000" value="'+value+'"> €</p>'
                 +'</div>'
 

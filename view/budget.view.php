@@ -5,7 +5,7 @@
 
 <div class="text-center">
     
-    <div id="divboutonajouter" class="row border col-sm-4 col-sm-offset-4">
+    <div id="divboutonajouter" class="row border col-md-4 col-md-offset-4">
 	<div class="row budgetglobal">
         <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal()">Modifier</button>
 	    <p class="row no-margin">Budget global : <b id="champbudgetglobale"><?= $budgetglobale ?></b> €</p>
@@ -20,12 +20,12 @@
     if ($tabbudget != null){
         foreach ($tabbudget as $idbudget => $budget) {
             ?>
-            <div id="<?= $idbudget ?>" class="row-margin div-budget border col-sm-5">
+            <div id="<?= $idbudget ?>" class="row-margin div-budget border col-md-5">
                 <div class="row">
                     <p><b id="description<?= $idbudget ?>"><?= $budget->getDescription() ?></b> : <b id="value<?= $idbudget ?>"><?= $budget->getValue() ?></b> €</p>
                 </div>
                 <table id="tab<?= $idbudget ?>" class="row scroll form-control">
-                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12 champ-description-depense">Prix</th></tr>
+                    <tr class="row"><th class="champ-description-depense col-md-12 text-center">Description</th><th class="col-md-12 champ-description-depense">Prix</th></tr>
                     <?php
                     $tabdepense = $budget->getTabdepense();
                     if ($tabdepense != null){

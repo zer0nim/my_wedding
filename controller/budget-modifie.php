@@ -1,7 +1,7 @@
 <?php 
 
 require_once '../model/DAO.class.php';
-	
+
 session_start();
 if (false /* !isset($_SESSION['idmariage']) */){
 	// si l'utilisateur n'est pas connecté, on ne fait pas son action
@@ -81,7 +81,7 @@ if (false /* !isset($_SESSION['idmariage']) */){
                     <p><b id="description<?= $idbudget ?>"><?= $budget->getDescription() ?></b> : <b id="value<?= $idbudget ?>"><?= $budget->getValue() ?></b> €</p>
                 </div>
                 <table id="tab<?= $idbudget ?>" class="row scroll form-control">
-                    <tr class="row"><th class="champ-description-depense col-sm-12 text-center">Description</th><th class="col-sm-12 champ-description-depense">Prix</th></tr>
+                    <tr class="row"><th class="champ-description-depense col-md-12 text-center">Description</th><th class="col-md-12 champ-description-depense">Prix</th></tr>
                     <?php
                     $tabdepense = $budget->getTabdepense();
                     if ($tabdepense != null){
