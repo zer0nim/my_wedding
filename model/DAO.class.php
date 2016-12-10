@@ -715,6 +715,7 @@ listTab_nbPlaces
         $req->execute(array(':idA' => $idA));
         $req=$req->fetch();
         $req=$req[0];
+        return $req;
       }catch (PDOException $e) {
         exit("Erreur getter du mdp du compte: ".$e->getMessage());
       }
@@ -726,6 +727,7 @@ listTab_nbPlaces
         $req->execute(array(':idA' => $idA));
         $req=$req->fetch();
         $req=$req[0];
+        return $req;
       }catch (PDOException $e) {
         exit("Erreur getter du mail du compte: ".$e->getMessage());
       }
