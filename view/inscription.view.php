@@ -31,8 +31,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#sign" class="btn btn-primary navbar-btn" role="button">Sign up</a></li>
-						<li><a href="#sign" class="btn btn-default navbar-btn" role="button">Sign in</a></li>
+						<li><a href="#sign" class="btn btn-primary navbar-btn" role="button">S'inscrire</a></li>
+						<li><a href="#sign" class="btn btn-default navbar-btn" role="button">Se connecter</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
@@ -75,39 +75,39 @@
 
 			<div id="sign">
 				<form class="form-signin" action="connecter.ctrl.php" method="post">
-					<h2 class="form-signin-heading">Sign in</h2>
+					<h2 class="form-signin-heading">Connexion</h2>
 
-					<label for="inputEmail" class="sr-only">Mail address</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+					<label for="inputEmail" class="sr-only">Adresse email</label>
+					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" required>
 
-					<label for="inputPassword" class="sr-only">Password</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" value="remember-me"> Remember me
+							<input type="checkbox" value="remember-me"> Se souvenir de moi
 						</label>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
 				</form>
 
 
 				<form class="form-signin" action="inscrire.ctrl.php" method="post">
-					<h2 class="form-signin-heading">Sign up</h2>
+					<h2 class="form-signin-heading">Inscription</h2>
 
-					<label for="inputNom" class="sr-only">Last name</label>
-					<input type="text" id="inputNom" class="form-control" placeholder="Last name" required>
+					<label for="inputNom" class="sr-only">Nom</label>
+					<input type="text" id="inputNom" class="form-control" placeholder="Nom" required>
 
-					<label for="inputPrenom" class="sr-only">First name</label>
-					<input type="text" id="inputPrenom" class="form-control" placeholder="First name" required>
+					<label for="inputPrenom" class="sr-only">Prenom</label>
+					<input type="text" id="inputPrenom" class="form-control" placeholder="Prenom" required>
 
-					<label for="inputEmail" class="sr-only">Mail address</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
-					<label for="inputPassword" class="sr-only">Password</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
 				</form>
 			</div>
 		</main>
