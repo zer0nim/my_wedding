@@ -17,7 +17,9 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Paramètres mariage</a></li>
+						<li><a href="accueil.ctrl.php">Accueil</a></li>
+						<li class="active"><a href="">Paramètres mariage</a></li>
+						<li><a href="">Page Publique</a></li>
 						<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
 					</ul>
 
