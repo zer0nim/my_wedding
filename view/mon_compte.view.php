@@ -5,33 +5,17 @@
 <?php
   include_once('../view/baseMenuFnct.php');
   if (isset($_POST['changeMdp']) || isset($_POST['changeMail'])) {
-    if (isset($errmodif)) {
-      if($errmodif=="MdpCourant"){?>
+    if (isset($errmodif)) {?>
         <div class="alert alert-danger">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Changement non effectué :</strong> Le nouveau mot de passe est le même que l'ancien
+          <strong>Changement non effectué :</strong><?=$messErr?>
         </div>
-<?php }elseif ($errmodif=="MdpConfirmation") {?>
-        <div class="alert alert-danger">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Changement non effectué :</strong> Nouveau mot de passe mal confirmé
-        </div>
-<?php }elseif ($errmodif=="MailCourant") {?>
-        <div class="alert alert-danger">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Changement non effectué :</strong> Le nouveau mail est le meme que l'ancien
-        </div>
-<?php }elseif ($errmodif=="MailConfirmation") {?>
-        <div class="alert alert-danger">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Changement non effectué :</strong> Nouveau mail mal confirmé
-        </div>
-<?php }
+<?php
     }else {?>
-      <div class="alert alert-success">
-  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  			<strong>Changement effectué !</strong>
-  		</div>
+        <div class="alert alert-success">
+    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    			<strong>Changement effectué !</strong>
+    		</div>
 <?php
     }
   }

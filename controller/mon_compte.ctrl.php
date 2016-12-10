@@ -15,6 +15,13 @@
     }else {
       $errmodif="MdpConfirmation";
     }
+    if (isset($errmodif)) {
+      if ($errmodif=="MdpCourant") {
+        $messErr="Le nouveau mot de passe est le même que l'ancien";
+      }elseif ($errmodif="MdpConfirmation") {
+        $messErr="Nouveau mot de passe mal confirmé";
+      }
+    }
   }elseif (isset($_POST['changeMail'])) {
     $newmail=$_POST['newmail'];
     $confirmmail=$_POST['confirmMail'];
@@ -27,6 +34,13 @@
       }
     }else {
       $errmodif="MailConfirmation";
+    }
+    if (isset($errmodif)) {
+      if ($errmodif=="MailCourant") {
+        $messErr="Le nouveau mail est le meme que l'ancien";
+      }elseif ($errmodif="MailConfirmation") {
+        $messErr="Nouveau mail mal confirmé";
+      }
     }
   }
   include_once('../view/mon_compte.view.php');
