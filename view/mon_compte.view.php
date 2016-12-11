@@ -54,7 +54,7 @@
  <form class="col-sm-12 col-md-5 col-sm-offset-3 col-md-offset-2" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
-     <legend>Changer son mot de passe :</legend>
+     <h4><strong>Changer son mot de passe :</strong></h4>
      <div class="form-group">
        <label for="nmdp" class="col-sm-12">Nouveau mot de passe :</label>
        <div class="col-sm-6">
@@ -79,7 +79,7 @@
  <form class="col-sm-12 col-md-5 col-sm-offset-3 col-md-offset-0" action="mon_compte.ctrl.php" method="post">
 
    <div class="form-horizontal">
-     <legend>Changer son email :</legend>
+     <h4><strong>Changer son email :</strong></h4>
      <div class="form-group">
        <label for="nmail" class="col-sm-12">Nouveau mail :</label>
        <div class="col-sm-6">
