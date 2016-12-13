@@ -1,10 +1,9 @@
-<?php 
-	include('../view/header.php');
-	require_once '../view/baseMenuFnct.php'; 
-?>
+<?php include('../view/header.php'); ?>
 
 <link rel="stylesheet" href="../view/css/planning.css" type="text/css" />
 <link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />
+
+<?php require_once '../view/baseMenuFnct.php'; ?>
 
 <div id='calendar'></div>
 

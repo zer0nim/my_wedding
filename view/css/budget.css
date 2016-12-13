@@ -25,8 +25,10 @@ nav {
 .scroll{
     overflow-y: scroll;
     min-height: 60%;
+    min-height: 40vh;
     border-collapse: separate;
     border-spacing: 0px 2px;
+    border-spacing: 0px 1vh;
 }
 
 .border-depense{
@@ -44,12 +46,15 @@ nav {
 .scroll2{
     overflow-y: scroll;
     min-height: 74%;
+    min-height: 46vh;
     border-collapse: separate;
     border-spacing: 0px 2px;
+    border-spacing: 0px 0.6vh;
 }
 
 .suppdepense{
     margin-right: 5px;
+    margin-right: 1vh;
 }
 
 .row-margin{
@@ -60,6 +65,7 @@ nav {
     margin-left: 4%;
     margin-right: 4%;
     height: 350px;
+    height: 60vh;
 }
 
 .budgetglobal{
@@ -97,16 +103,20 @@ nav {
 
 .champ-value{
     text-align: right;
-    width: 80px;
+    width: 100px;
 }
 
 .champ-description-depense{
     text-align: center;
     width: 100%;
-    min-width: 100px;
+    min-width: 120px;
 }
 
 .no-margin{
     margin: 0px;
     padding: 0px;
+}
+
+.btn-primary, p, .scroll th, .scroll2 th, input, .scroll td, .suppdepense, .btn-success, .div-budget, .sweet-alert{
+    font-size: 2vh;
 }

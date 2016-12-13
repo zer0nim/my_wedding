@@ -132,6 +132,7 @@ function supprimer(idbudget){
 			cancelButtonText: "Annuler"
 			},  function(){
 
+				startLoad(idbudget);
 				var xhttp0 = new XMLHttpRequest();
 				xhttp0.onreadystatechange = function(){
 					if(xhttp0.readyState === XMLHttpRequest.DONE){
@@ -142,6 +143,7 @@ function supprimer(idbudget){
 							document.getElementById(idbudget).remove();
 
 						}else{
+							endLoad(idbudget);
 							serverLost();
 						}
 					}
@@ -194,7 +196,7 @@ function ajouter(){
 
     var tabDepenses = new Array();
     tabDepenses.push(new Array(iddepadd, "", 0));
-    $("#divboutonajouter").after('<div id="'+idbudadd+'" class="row-margin div-budget border col-sm-5">'
+    $("#divboutonajouter").after('<div id="'+idbudadd+'" class="row-margin div-budget border col-md-5">'
                                     +getHtmlBudgetModif(idbudadd, "", 0, tabDepenses)
                                 +'</div>');
 
@@ -222,6 +224,8 @@ function annuler(idbudget){
 
 	if (idbudget != 0 && document.getElementById(idbudget) != null){
 		if (idbudget > 0){
+			
+			startLoad(idbudget);
 			var xhttp3 = new XMLHttpRequest();
 			xhttp3.onreadystatechange = function(){
 				if(xhttp3.readyState === XMLHttpRequest.DONE){
@@ -232,7 +236,9 @@ function annuler(idbudget){
 						if (+document.getElementById("totalrestant"+idbudget).innerHTML < 0){
 							document.getElementById("totalrestant"+idbudget).style.color = "red"
 						}
+						endLoad(idbudget);
 					}else{
+						endLoad(idbudget);
 						serverLost();
 					}
 				}
@@ -257,7 +263,7 @@ function annuler(idbudget){
 function valider(idbudget){
 
 	if (idbudget != 0 && document.getElementById(idbudget) != null){
-		document.getElementById(idbudget).style.filter = "blur(2px)";
+		startLoad(idbudget);
 
 		var xhttp4 = new XMLHttpRequest();
 		xhttp4.onreadystatechange = function(){
@@ -277,10 +283,10 @@ function valider(idbudget){
 					}else{
 						document.getElementById("totalrestant"+newid).style.color = "red";
 					}
-					document.getElementById(newid).style.filter = "";
+					endLoad(newid);
 				}else{
+					endLoad(idbudget);
 					serverLost();
-					document.getElementById(idbudget).style.filter = "";
 				}
 
 			}
@@ -328,4 +334,13 @@ function donnéesInvalides(){
 		},  function(){
 			window.location.href = 'budget.ctrl.php';
     });
+}
+
+// fonction pour afficher quelque chose le temps de l'appelle au serveur
+function startLoad(idbudget){
+	document.getElementById(idbudget).style.filter = "blur(2px)";
+}
+
+function endLoad(idbudget){
+	document.getElementById(idbudget).style.filter = "";
 }
