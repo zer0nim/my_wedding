@@ -24,11 +24,7 @@
 				<button class="col-sm-2 col-sm-offset-2 btn btn-primary" name="actMail">Envoyer par mail</button>
 		</div>
 	</form>
-</div>
 <?php include('../view/scripts.php') ?>
 <script src="../ckeditor/ckeditor.js"></script>
-<!--<script>
-	CKEDITOR.replace( 'editor1' );
-</script> -->
 <script src="../view/js/invitations.js"></script>
 <?php include('../view/footer.php') ?>

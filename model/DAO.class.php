@@ -699,11 +699,60 @@ listTab_nbPlaces
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité planning
     //----------------------------------------------------------------------------------------
-    
+
     // fonction qui retourne les événements d'un mariage
     function getEvenements($idM){
 		return null;
     }
-}
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité Mon compte
+    //----------------------------------------------------------------------------------------
+    //GETTERS POUR LE COMPTE
+    function getMdpAccount($idA){
+      try {
+        $req = $this->db->prepare('SELECT acc_mdp FROM Account WHERE acc_id = :idA');
+        $req->execute(array(':idA' => $idA));
+        $req=$req->fetch();
+        $req=$req[0];
+        return $req;
+      }catch (PDOException $e) {
+        exit("Erreur getter du mdp du compte: ".$e->getMessage());
+      }
+    }
+
+    function getMailAccount($idA){
+      try {
+        $req = $this->db->prepare('SELECT acc_mail FROM Account WHERE acc_id = :idA');
+        $req->execute(array(':idA' => $idA));
+        $req=$req->fetch();
+        $req=$req[0];
+        return $req;
+      }catch (PDOException $e) {
+        exit("Erreur getter du mail du compte: ".$e->getMessage());
+      }
+    }
+    //fonction pour modifier le mot de passe
+    function updateMdpAccount($idA, $newMdp){
+      try {
+        $req = $this->db->prepare('UPDATE Account SET acc_mdp = :mdp WHERE acc_id = :idA');
+        $req->execute(array(':mdp' => $newMdp,
+                            ':idA' => $idA));
+      }catch (PDOException $e) {
+        exit("Erreur modification du mdp du compte: ".$e->getMessage());
+      }
+    }
+
+    //fonction pour modifier le mail
+    function updateMailAccount($idA, $newMail){
+      try {
+        $req = $this->db->prepare('UPDATE Account SET acc_mail = :mail WHERE acc_id = :idA');
+        $req->execute(array(':mail' => $newMail,
+                            ':idA' => $idA));
+      }catch (PDOException $e) {
+        exit("Erreur modification du mail du compte: ".$e->getMessage());
+      }
+    }
+  }
 
 ?>
