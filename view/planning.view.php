@@ -51,10 +51,9 @@
 				?>
 							{
 							id: <?= $evenement->getId() ?>,
-							title: '<?= $evenement->getTitle() ?>',
+							title: '<?= $evenement->getDescription() ?>',
 							start: '<?= $evenement->getStart()->format('Y-m-d') ?>',
-							end: '<?= $evenement->getEnd()->format('Y-m-d') ?>',
-							url: '<?= $evenement->getUrl() ?>'
+							end: '<?= $evenement->getEnd()->format('Y-m-d') ?>'
 							},
 				<?php
 						}

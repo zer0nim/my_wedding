@@ -702,7 +702,24 @@ listTab_nbPlaces
 
     // fonction qui retourne les événements d'un mariage
     function getEvenements($idM){
-		return null;
+		try {
+			$req = $this->db->prepare('SELECT * FROM Planning WHERE plan_idM = :idM');
+			$req->execute(array(':idM' => $idM));
+		}catch (PDOException $e) {
+			exit("Erreur geEvenements : ".$e->getMessage());
+		}
+		  
+		$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+		$tabEvenements = null;
+		
+		if ($resultat != null){
+			foreach ($resultat as $evenement) {
+				$tabEvenements[] = new evenement($evenement['plan_id'], $evenement['plan_description'], $evenement['plan_start'], $evenement['plan_end']);
+			}
+		}
+		
+		return $tabEvenements;
+		  
     }
 
     //----------------------------------------------------------------------------------------

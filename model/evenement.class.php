@@ -3,18 +3,16 @@
     class evenement {
 		
 		private $id;
-		private $title; // description
+		private $description; // description
 		private $start; // datetime (Y-m-d)
 		private $end; // datetime
-		private $url; // lien de redirection
 
-		public function __construct($id, $title, $start, $end, $url) { // (end et url peuvent etre null)
+		public function __construct($id, $description, $start, $end) { // (end et url peuvent etre null)
 
 			$this->id = $id;
-			$this->title = $title;
+			$this->description = $description;
 			$this->start = new DateTime($start);
 			$this->end = new DateTime($end);
-			$this->url = $url;
 			
 		}
 		
@@ -22,8 +20,8 @@
 			return $this->id;
 		}
 
-		function getTitle() {
-			return $this->title;
+		function getDescription() {
+			return $this->description;
 		}
 
 		function getStart() {
@@ -34,18 +32,14 @@
 			return $this->end;
 		}
 
-		function getUrl() {
-			return $this->url;
-		}
-
 		// ---------------------------------------
 		
 		function setId($id) {
 			$this->id = $id;
 		}
 
-		function setTitle($title) {
-			$this->title = $title;
+		function setDescription($description) {
+			$this->description = $description;
 		}
 
 		function setStart($start) {
@@ -54,10 +48,6 @@
 
 		function setEnd($end) {
 			$this->end = $end;
-		}
-
-		function setUrl($url) {
-			$this->url = $url;
 		}
 		
 	}
