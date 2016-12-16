@@ -700,6 +700,17 @@ listTab_nbPlaces
     // fonction pour la fonctionnalité planning
     //----------------------------------------------------------------------------------------
 
+    // fonction qui retourne l'id du dernier événement du mariage
+    function getLastIdEvenement($idM){
+		try {
+			$req = $this->db->prepare('SELECT max(plan_id) FROM Planning WHERE plan_idM = :idM');
+			$req->execute(array(':idM' => $idM));
+		}catch (PDOException $e) {
+			exit("Erreur geLastId : ".$e->getMessage());
+		}
+		return $req->fetch();
+    }
+    
     // fonction qui retourne les événements d'un mariage
     function getEvenements($idM){
 		try {
@@ -719,8 +730,39 @@ listTab_nbPlaces
 		}
 		
 		return $tabEvenements;
-		  
+		
     }
+
+    // fonction pour ajouter un évenement
+    function addEvenement($evenement, $idM){
+		try {
+			$req = $this->db->prepare('insert INTO Planning values(:id, :idM, :description, :start, :end)');
+			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart(), ':end' => $evenement->getEnd()));
+		}catch (PDOException $e) {
+			exit("Erreur addEvenements : ".$e->getMessage());
+		}
+    }
+
+    // fonction pour supprimer un évenement
+    function delEvenement($idevenement, $idM){
+		try {
+			$req = $this->db->prepare('delete FROM Planning WHERE plan_idM = :idM and plan_id = :id');
+			$req->execute(array(':idM' => $idM, ':id' => $idevenement));
+		}catch (PDOException $e) {
+			exit("Erreur delEvenements : ".$e->getMessage());
+		}
+    }
+
+    // fonction pour mettre à jour un évenement
+    function updateEvenement($evenement, $idM){
+		try {
+			$req = $this->db->prepare('update Planning set plan_description = :description, plan_start = :start, plan_end = :end WHERE plan_idM = :idM and plan_id = :id');
+			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart(), ':end' => $evenement->getEnd()));
+		}catch (PDOException $e) {
+			exit("Erreur delEvenements : ".$e->getMessage());
+		}
+    }
+
 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité Mon compte

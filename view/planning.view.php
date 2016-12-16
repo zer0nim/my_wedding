@@ -5,6 +5,7 @@
 
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
+<button id="boutonaddevenement" class="btn-xs btn-primary" onClick="afficheModifieEvenement(null)">Ajouter un évènement</button>
 <div id='calendar'></div>
 
 <?php include('../view/scripts.php') ?>
@@ -12,6 +13,11 @@
 <script src='../fullcalendar/lib/moment.min.js'></script>
 <script src='../fullcalendar/lib/jquery.min.js'></script>
 <script src='../fullcalendar/fullcalendar.min.js'></script>
+<script src='../fullcalendar/fullcalendar.js'></script>
+<script src='../fullcalendar/locale-all.js'></script>
+<script src='../fullcalendar/locale/fr.js'></script>
+
+<script src='../view/js/planning.js'></script>
 
 <!-- C'est le script qui gère de mettre la view -->
 <script>	
@@ -19,7 +25,7 @@
 		var date = new Date();
 		
 		$('#calendar').fullCalendar({
-
+		    				    
 			header: {
 				left: 'prev,next today',
 				center: 'title',
@@ -35,7 +41,7 @@
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-
+			
 			events: [
 				<?php
 					/* format
@@ -60,7 +66,19 @@
 					}
 				?>
 				
-			]
+			],
+			
+			// fonction quand on click sur un évènement
+			// utilisé pour quand l'utilisateur veut modifier un événement
+			eventClick: function(event, element) {
+				//afficheModifieEvenement(event);
+			},
+
+
+			// fonction quand un évenemnt est changé de place
+			eventDrop: function(event, delta, revertFunc) {
+				//modifEvenement(event);
+			}
 		});
 	});
 </script>
