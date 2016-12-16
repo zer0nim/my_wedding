@@ -78,12 +78,12 @@
 					<h2 class="form-signin-heading">Connexion</h2>
 
 					<label for="inputEmail" class="sr-only">Adresse email</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" required>
+					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse email" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+					<button class="btn btn-lg btn-primary btn-block" name="connexion" type="submit">Se connecter</button>
 				</form>
 
 
@@ -91,18 +91,18 @@
 					<h2 class="form-signin-heading">Inscription</h2>
 
 					<label for="inputNom" class="sr-only">Nom</label>
-					<input type="text" id="inputNom" class="form-control" placeholder="Nom" required>
+					<input type="text" name="nom" id="inputNom" class="form-control" placeholder="Nom" required>
 
 					<label for="inputPrenom" class="sr-only">Prenom</label>
-					<input type="text" id="inputPrenom" class="form-control" placeholder="Prenom" required>
+					<input type="text" name="prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<input type="email" name="mail" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+					<button class="btn btn-lg btn-primary btn-block" name="inscription" type="submit">S'inscrire</button>
 				</form>
 			</div>
 		</main>

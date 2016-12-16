@@ -31,7 +31,7 @@ function printAllTables($allTables, $allContacts) {
               <tbody>
                 <?php foreach ($allContacts as $key => $value): ?>
                   <?php if ($value->getCont_idT() == $table->getListTab_id()): ?>
-                    <tr><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()) ?><a id="supprCntLink" href="<?php echo $value->getCont_id(); ?>" class="supr-inv btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+                    <tr id="<?php echo "contId" . $value->getCont_id(); ?>"><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()) ?><a onclick="return supprCntTab(<?php echo $value->getCont_id(); ?>);" class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
                   <?php endif; ?>
                 <?php endforeach; ?>
                 <tr><td>
