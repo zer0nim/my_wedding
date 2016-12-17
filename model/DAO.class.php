@@ -490,7 +490,7 @@ class DAO {
         exit("Erreur création nouveau contact: ".$e->getMessage());
       }
       try {
-        $req = $this->db->prepare('SELECT cont_id, cont_nom, cont_prenom FROM Contact WHERE cont_idM = :cont_idM and cont_nom = :cont_nom and cont_prenom = :cont_prenom and cont_mail = :cont_mail');
+        $req = $this->db->prepare('SELECT cont_id, cont_nom, cont_prenom FROM Contact WHERE cont_idM = :cont_idM AND cont_nom = :cont_nom AND cont_prenom = :cont_prenom AND cont_mail = :cont_mail');
         $req->execute(array(':cont_idM' => $contact->getCont_idM(),
                             ':cont_nom' => $contact->getCont_nom(),
                             ':cont_prenom' => $contact->getCont_prenom(),
@@ -506,8 +506,9 @@ class DAO {
     //attribué une table à un contact
     function setTableToContact($table, $contact) {
       try {
-        $req = $this->db->prepare('UPDATE Contact SET cont_idT = :idTable Where cont_id = :idContact');
-        $rq->execute(array(':idTable' => $table->getListTab_id(),
+        $req = $this->db->prepare('UPDATE Contact SET cont_idT = :idTable WHERE cont_idM = :cont_idM AND cont_id = :idContact');
+        $req->execute(array(':cont_idM' => $contact->getCont_idM(),
+                           ':idTable' => $table->getListTab_id(),
                            ':idContact' => $contact->getCont_id()));
       }
       catch (PDOException $e) {

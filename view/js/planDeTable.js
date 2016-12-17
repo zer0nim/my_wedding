@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	//vv
 	$(".nameLink").bind("input", function allowModifNom() {
 		//--v modif du bouton v--
 		$(this).next().children().prop("disabled", false);
@@ -28,7 +27,27 @@ $(document).ready(function(){
 				'text' // Format des données reçues.
 		);
 	});
-	//^^
+
+	$(".addCntLink").bind("click", function ModifCnt() {
+		var slctdCont = $(this).parent().prev();
+		//modification dans la base
+		$.post(
+				'../controller/ajax_modify_cnt_table.php', // Le fichier cible côté serveur.
+				{
+						idtable : $(this).parent().parent().parent().parent().parent().parent().parent().parent().attr('id'),
+						idCnt : slctdCont.val()
+				},
+
+				function(data){
+					var newRow = "<tr id=\"contId" + slctdCont.val() + "\"><td><p>" + slctdCont.find(":selected").text() + "<a onclick=\"return supprCntTab(" + slctdCont.val() + ")\;\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
+					slctdCont.parent().parent().parent().parent().parent().append(newRow);
+					$('.listCntToAddlink option[value=' + slctdCont.val() + ']').remove();
+					console.log(data);
+				},
+
+				'text' // Format des données reçues.
+		);
+	});
 
 	$(".nbPlacesLink").bind("input", function saveModifNbPlaces() {
 		//modification dans la base
@@ -83,6 +102,8 @@ supprCntTab = function(cntId) {
 			},
 
 			function(data){
+				// --v ajoute le contact dans les posibilités d'ajout v--
+				$('.listCntToAddlink').append("<option value='" + $("#contId" + cntId).val() + "'>" + $("#contId" + cntId).text() + "</option>");
 				$("#contId" + cntId).remove();
 			},
 
