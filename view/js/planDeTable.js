@@ -1,5 +1,36 @@
 $(document).ready(function(){
-	$(".nbPlacesLink").bind("input", function functionName() {
+	//vv
+	$(".nameLink").bind("input", function allowModifNom() {
+		//--v modif du bouton v--
+		$(this).next().children().prop("disabled", false);
+		$(this).next().children().removeClass('btn-success');
+		$(this).next().children().addClass('btn-warning');
+	});
+
+	$(".nameModifLink").bind("click", function saveModifNom() {
+		//--v modif du bouton v--
+		$(this).prop("disabled", false);
+		$(this).removeClass('btn-warning');
+		$(this).addClass('btn-success');
+
+		//--v enregistrement dans la base v--
+		$.post(
+				'../controller/ajax_update_nom_table.php', // Le fichier cible côté serveur.
+				{
+						idtable : $(this).parent().parent().parent().parent().attr('id'),
+						nom : $(this).parent().prev().val()
+				},
+
+				function(data){
+					console.log(data);
+				},
+
+				'text' // Format des données reçues.
+		);
+	});
+	//^^
+
+	$(".nbPlacesLink").bind("input", function saveModifNbPlaces() {
 		//modification dans la base
 		$.post(
 				'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.

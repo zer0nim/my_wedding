@@ -5,9 +5,9 @@ function printAllTables($allTables, $allContacts) {
         <tr id="<?php echo $table->getListTab_id(); ?>">
           <td>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
+              <input type="text" class="nameLink form-control" placeholder="nom" aria-describedby="basic-addon1" value="<?=$table->getListTab_nom();?>">
               <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
+              <button class="nameModifLink btn btn-success" type="button" disabled="true"><i class="fa fa-check" aria-hidden="true"></i></button>
               </span>
             </div><!-- /input-group -->
             <br>

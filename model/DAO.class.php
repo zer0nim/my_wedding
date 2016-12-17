@@ -671,7 +671,7 @@ listTab_nbPlaces
       }
     }
 
-    // modifie une table d'un mariage
+    // modifie le nom d'une table d'un mariage
     function updateTableNom($table) {
       try {
         $req = $this->db->prepare('UPDATE ListeTables SET listTab_nom = :listTab_nom WHERE listTab_idM = :listTab_idM AND listTab_id = :listTab_id');
@@ -683,7 +683,7 @@ listTab_nbPlaces
         exit("Erreur modification table: ".$e->getMessage());
       }
     }
-    // modifie une table d'un mariage
+    // modifie le nombre de place d'une table d'un mariage
     function updateTablePlaces($table) {
       try {
         $req = $this->db->prepare('UPDATE ListeTables SET listTab_nbPlaces = :listTab_nbPlaces WHERE listTab_idM = :listTab_idM AND listTab_id = :listTab_id');
@@ -718,7 +718,7 @@ listTab_nbPlaces
 		}
 		return $req->fetch();
     }
-    
+
     // fonction qui retourne les événements d'un mariage
     function getEvenements($idM){
 		try {
@@ -727,18 +727,18 @@ listTab_nbPlaces
 		}catch (PDOException $e) {
 			exit("Erreur geEvenements : ".$e->getMessage());
 		}
-		  
+
 		$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
 		$tabEvenements = null;
-		
+
 		if ($resultat != null){
 			foreach ($resultat as $evenement) {
 				$tabEvenements[] = new evenement($evenement['plan_id'], $evenement['plan_description'], $evenement['plan_start'], $evenement['plan_end']);
 			}
 		}
-		
+
 		return $tabEvenements;
-		
+
     }
 
     // fonction pour ajouter un évenement
