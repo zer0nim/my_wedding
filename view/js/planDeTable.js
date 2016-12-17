@@ -1,4 +1,12 @@
 $(document).ready(function(){
+//$("#myTable > tbody > tr").length
+
+	$(".cntTable").each(function() {
+		if (($(this).find('td').length >= $(this).parent().parent().prev().children().val())) {
+			$("#cntTableAdding_" + $(this).parent().parent().parent().attr('id')).hide();
+		}
+	});
+
 	$(".nameLink").bind("input", function allowModifNom() {
 		//--v modif du bouton v--
 		$(this).next().children().prop("disabled", false);
@@ -42,6 +50,12 @@ $(document).ready(function(){
 					var newCntRow = "<tr id=\"contId" + slctdCont.val() + "\"><td>" + slctdCont.find(":selected").text() + "<a onclick=\"return supprCntTab(" + slctdCont.val() + ")\;\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
 					$("#cntTable_" + slctdCont.parent().parent().parent().attr('id')).append(newCntRow);
 					$('.listCntToAddlink option[value=' + slctdCont.val() + ']').remove();
+
+					sortTable($("#cntTable_" + slctdCont.parent().parent().parent().attr('id')).parent(),'asc');
+
+					if (slctdCont.parent().prev().find('tbody').find('td').length >= slctdCont.parent().parent().prev().children().val()) {
+						$("#cntTableAdding_" + slctdCont.parent().parent().parent().attr('id')).hide();
+					}
 					console.log(data);
 				},
 
@@ -67,7 +81,31 @@ $(document).ready(function(){
 	});
 });
 
+function sortTable(table, order) {
+    var asc   = order === 'asc',
+        tbody = table.find('tbody');
+
+    tbody.find('tr').sort(function(a, b) {
+        if (asc) {
+            return $('td:first', a).text().localeCompare($('td:first', b).text());
+        } else {
+            return $('td:first', b).text().localeCompare($('td:first', a).text());
+        }
+    }).appendTo(tbody);
+}
+
+$.fn.sortOptions = function(){
+    $(this).each(function(){
+        var op = $(this).children("option");
+        op.sort(function(a, b) {
+            return a.text > b.text ? 1 : -1;
+        })
+        return $(this).empty().append(op);
+    });
+}
+
 function nouvelleTable() {
+
 	$.post(
 			'../controller/ajax_save_table.php', // Le fichier cible côté serveur.
 			{
@@ -83,13 +121,91 @@ function nouvelleTable() {
 						optionNb = optionNb + "<option value=\"" + i + "\">" + i + "</option>";
 					}
 				}
-				var newRow = "<tr id=\"" + data + "\"><td><input type=\"text\" class=\"form-control\" placeholder=\"nom\" aria-describedby=\"basic-addon1\" value=\"SansNom\"><br><a class=\"btn btn-danger\" role=\"button\" onclick=\"return supprT(" + data + ");\">Supprimer</a></td><td><select class=\"form-control\">" + optionNb + "</select></td><td><table class=\"table table-bordered table-striped table-hover table-responsive\"><tbody><tr><td><p><div class=\"input-group\"><select class=\"form-control\"><option>-</option></select><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Ajouter</button></span></div></p></td></tr></tbody></table></td></tr>";
-				console.log(optionNb);
-				//Affichage de la nouvelle Table dans le tableau
+
+				var newRow = "<tr id=\"" + data['idT'] + "\"><td><div class=\"input-group\"><input type=\"text\" class=\"nameLink form-control\" placeholder=\"nom\" aria-describedby=\"basic-addon1\" value=\"SansNom\"><span class=\"input-group-btn\"><button class=\"nameModifLink btn btn-success\" type=\"button\" disabled=\"true\"><i class=\"fa fa-check\" aria-hidden=\"true\"></i></button></span></div><br><a class=\"btn btn-danger\" role=\"button\" onclick=\"return supprT(" + data['idT'] + ");\">Supprimer</a></td><td><select class=\"form-control nbPlacesLink\">" + optionNb + "</select></td><td><table class=\"table table-bordered table-striped table-hover table-responsive\"><tbody class=\"cntTable\" id=\"cntTable_" + data['idT']  + "\"></tbody></table><div class=\"input-group\" id=\"cntTableAdding_" + data['idT'] + "\"><select class=\"listCntToAddlink form-control\"></select><span class=\"input-group-btn\"><button class=\"addCntLink btn btn-default\" type=\"button\">Ajouter</button></span></div></td></tr>";
+								//Affichage de la nouvelle Table dans le tableau
 				$("#tablesLink").append(newRow);
+
+//console.log(data['toAppend']);
+$("#cntTableAdding_" + data['idT']).children().append(data['toAppend']);
+		//		$("#cntTableAdding_" + data['idT']).append(data['toAppend']);
+
+				// rappel des bind car non appliqué au dernier élément ajouté
+				$(".nameLink").bind("input", function allowModifNom() {
+					//--v modif du bouton v--
+					$(this).next().children().prop("disabled", false);
+					$(this).next().children().removeClass('btn-success');
+					$(this).next().children().addClass('btn-warning');
+				});
+
+				$(".nameModifLink").bind("click", function saveModifNom() {
+					//--v modif du bouton v--
+					$(this).prop("disabled", true);
+					$(this).removeClass('btn-warning');
+					$(this).addClass('btn-success');
+
+					//--v enregistrement dans la base v--
+					$.post(
+							'../controller/ajax_update_nom_table.php', // Le fichier cible côté serveur.
+							{
+									idtable : $(this).parent().parent().parent().parent().attr('id'),
+									nom : $(this).parent().prev().val()
+							},
+
+							function(data){
+								console.log(data);
+							},
+
+							'text' // Format des données reçues.
+					);
+				});
+
+				$(".addCntLink").bind("click", function ModifCnt() {
+					var slctdCont = $(this).parent().prev();
+					//modification dans la base
+					$.post(
+							'../controller/ajax_modify_cnt_table.php', // Le fichier cible côté serveur.
+							{
+									idtable : slctdCont.parent().parent().parent().attr('id'),
+									idCnt : slctdCont.val()
+							},
+
+							function(data){
+								var newCntRow = "<tr id=\"contId" + slctdCont.val() + "\"><td>" + slctdCont.find(":selected").text() + "<a onclick=\"return supprCntTab(" + slctdCont.val() + ")\;\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
+								$("#cntTable_" + slctdCont.parent().parent().parent().attr('id')).append(newCntRow);
+								$('.listCntToAddlink option[value=' + slctdCont.val() + ']').remove();
+
+								sortTable($("#cntTable_" + slctdCont.parent().parent().parent().attr('id')).parent(),'asc');
+
+								if (slctdCont.parent().prev().find('tbody').find('td').length >= slctdCont.parent().parent().prev().children().val()) {
+									$("#cntTableAdding_" + slctdCont.parent().parent().parent().attr('id')).hide();
+								}
+								console.log(data);
+							},
+
+							'text' // Format des données reçues.
+					);
+				});
+
+				$(".nbPlacesLink").bind("input", function saveModifNbPlaces() {
+					//modification dans la base
+					$.post(
+							'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.
+							{
+									idtable : $(this).parent().parent().attr('id'),
+									nbPlaces : $(this).val()
+							},
+
+							function(data){
+								console.log(data);
+							},
+
+							'text' // Format des données reçues.
+					);
+				});
 			},
 
-			'text' // Format des données reçues.
+			'json' // Format des données reçues.
 	);
 }
 
@@ -103,7 +219,11 @@ supprCntTab = function(cntId) {
 
 			function(data){
 				// --v ajoute le contact dans les posibilités d'ajout v--
-				$('.listCntToAddlink').append("<option value='" + $("#contId" + cntId).val() + "'>" + $("#contId" + cntId).text() + "</option>");
+				$('.listCntToAddlink').append("<option value='" + cntId + "'>" + $("#contId" + cntId).text() + "</option>");
+				$('.listCntToAddlink').sortOptions();
+				if (($("#contId" + cntId).parent().find('td').length - 1) < $("#contId" + cntId).parent().parent().parent().prev().children().val()) {
+					$("#cntTableAdding_" + $("#contId" + cntId).parent().parent().parent().parent().attr('id')).show();
+				}
 				$("#contId" + cntId).remove();
 			},
 

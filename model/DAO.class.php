@@ -666,6 +666,7 @@ listTab_nbPlaces
                             ':listTab_id' => $table->getListTab_id(),
                             ':listTab_nom' => $table->getListTab_nom(),
                             ':listTab_nbPlaces' => $table->getListTab_nbPlaces()));
+                            return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
                           }
       catch (PDOException $e) {
         exit("Erreur création nouvelle table: ".$e->getMessage());

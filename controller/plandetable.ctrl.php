@@ -28,7 +28,7 @@ function printAllTables($allTables, $allContacts) {
           </td>
           <td>
             <table class="table table-bordered table-striped table-hover table-responsive">
-              <tbody id="<?php echo "cntTable_" . $table->getListTab_id(); ?>">
+              <tbody class="cntTable" id="<?php echo "cntTable_" . $table->getListTab_id(); ?>">
                 <?php foreach ($allContacts as $key => $value): ?>
                   <?php if ($value->getCont_idT() == $table->getListTab_id()): ?>
                     <tr id="<?php echo "contId" . $value->getCont_id(); ?>"><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()); ?><a onclick="return supprCntTab(<?php echo $value->getCont_id(); ?>);" class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
@@ -36,7 +36,7 @@ function printAllTables($allTables, $allContacts) {
                 <?php endforeach; ?>
               </tbody>
             </table>
-            <div class="input-group">
+            <div class="input-group" id="<?php echo "cntTableAdding_" . $table->getListTab_id(); ?>">
                 <select class="listCntToAddlink form-control">
                   <?php foreach ($allContacts as $key => $value): ?>
                     <?php if ($value->getCont_idT() == NULL): ?>
