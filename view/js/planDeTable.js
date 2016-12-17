@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 	$(".nameModifLink").bind("click", function saveModifNom() {
 		//--v modif du bouton v--
-		$(this).prop("disabled", false);
+		$(this).prop("disabled", true);
 		$(this).removeClass('btn-warning');
 		$(this).addClass('btn-success');
 
@@ -34,13 +34,13 @@ $(document).ready(function(){
 		$.post(
 				'../controller/ajax_modify_cnt_table.php', // Le fichier cible côté serveur.
 				{
-						idtable : $(this).parent().parent().parent().parent().parent().parent().parent().parent().attr('id'),
+						idtable : slctdCont.parent().parent().parent().attr('id'),
 						idCnt : slctdCont.val()
 				},
 
 				function(data){
-					var newRow = "<tr id=\"contId" + slctdCont.val() + "\"><td><p>" + slctdCont.find(":selected").text() + "<a onclick=\"return supprCntTab(" + slctdCont.val() + ")\;\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
-					slctdCont.parent().parent().parent().parent().parent().append(newRow);
+					var newCntRow = "<tr id=\"contId" + slctdCont.val() + "\"><td>" + slctdCont.find(":selected").text() + "<a onclick=\"return supprCntTab(" + slctdCont.val() + ")\;\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
+					$("#cntTable_" + slctdCont.parent().parent().parent().attr('id')).append(newCntRow);
 					$('.listCntToAddlink option[value=' + slctdCont.val() + ']').remove();
 					console.log(data);
 				},

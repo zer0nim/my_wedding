@@ -28,29 +28,26 @@ function printAllTables($allTables, $allContacts) {
           </td>
           <td>
             <table class="table table-bordered table-striped table-hover table-responsive">
-              <tbody>
+              <tbody id="<?php echo "cntTable_" . $table->getListTab_id(); ?>">
                 <?php foreach ($allContacts as $key => $value): ?>
                   <?php if ($value->getCont_idT() == $table->getListTab_id()): ?>
                     <tr id="<?php echo "contId" . $value->getCont_id(); ?>"><td><p><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()); ?><a onclick="return supprCntTab(<?php echo $value->getCont_id(); ?>);" class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
                   <?php endif; ?>
                 <?php endforeach; ?>
-                <tr><td>
-                  <p><div class="input-group">
-                      <select class="listCntToAddlink form-control">
-                        <?php foreach ($allContacts as $key => $value): ?>
-                          <?php if ($value->getCont_idT() == NULL): ?>
-                            <option value="<?php echo ($value->getCont_id()); ?>"><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()); ?></option>
-                          <?php endif; ?>
-                        <?php endforeach; ?>
-                      </select>
-                      <span class="input-group-btn">
-                        <button class="addCntLink btn btn-default" type="button">Ajouter</button>
-                      </span>
-                    </div>
-                  </p>
-                </td></tr>
               </tbody>
             </table>
+            <div class="input-group">
+                <select class="listCntToAddlink form-control">
+                  <?php foreach ($allContacts as $key => $value): ?>
+                    <?php if ($value->getCont_idT() == NULL): ?>
+                      <option value="<?php echo ($value->getCont_id()); ?>"><?php echo ($value->getCont_nom() . " " . $value->getCont_prenom()); ?></option>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                </select>
+                <span class="input-group-btn">
+                  <button class="addCntLink btn btn-default" type="button">Ajouter</button>
+                </span>
+              </div>
           </td>
         </tr>
 <?php
