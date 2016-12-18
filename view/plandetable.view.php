@@ -4,7 +4,7 @@
 
 <div class="col-lg-offset-2 col-lg-8 col-sm-12">
 	<!-- -v- Génerer -v- -->
-	<div class="nopadding col-xs-12 col-lg-6">
+	<div class="nopadding col-xs-12 col-lg-offset-3 col-lg-6">
 		<div class="nopadding form-group">
 			<button name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
 		</div>
