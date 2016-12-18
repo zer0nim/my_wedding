@@ -208,21 +208,42 @@ $("#cntTableAdding_" + data['idT']).children().append(data['toAppend']);
 					);
 				});
 
+				$(".nbPlacesLink").bind("click", function savePrevNbPlaces() {
+					$(this).data('previous', $(this).val());
+				});
+
 				$(".nbPlacesLink").bind("input", function saveModifNbPlaces() {
-					//modification dans la base
-					$.post(
-							'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.
-							{
-									idtable : $(this).parent().parent().attr('id'),
-									nbPlaces : $(this).val()
-							},
+					var linkNb = $(this);
+			//		console.log(linkNb.parent().next().children().find('tbody').find('td').length + "/" + linkNb.val());
 
-							function(data){
-								//console.log(data);
-							},
+					if (linkNb.parent().next().children().find('tbody').find('td').length > linkNb.val()) {
+			//			console.log("need to cancel the modification, prev = " + linkNb.data('previous'));
+						sweetAlert("Oops...", "Supprimez d'abord des contacts de la table!", "error");
+						linkNb.val([]);
+						linkNb.val(linkNb.data('previous')).change();
+					}
+					else {
+						if (linkNb.parent().next().children().find('tbody').find('td').length < linkNb.val()) {
+							$("#cntTableAdding_" + linkNb.parent().parent().attr('id')).show();
+						}
+						else {
+							$("#cntTableAdding_" + linkNb.parent().parent().attr('id')).hide();
+						}
+						//modification dans la base
+						$.post(
+								'../controller/ajax_update_places_table.php', // Le fichier cible côté serveur.
+								{
+										idtable : $(this).parent().parent().attr('id'),
+										nbPlaces : $(this).val()
+								},
 
-							'text' // Format des données reçues.
-					);
+								function(data){
+									//console.log(data);
+								},
+
+								'text' // Format des données reçues.
+						);
+					}
 				});
 			},
 
