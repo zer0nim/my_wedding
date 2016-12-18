@@ -1,7 +1,8 @@
 <?php
   require_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
-  $idM=1;
+  include_once('session_create.ctrl.php');
+  $idM = $_SESSION['idM'];
   ////////////////////////////////////////
   if (isset($_POST['actSave'])) {
     $texte=$_POST['editor1'];         //Récupère le nouveau texte à ajouter
