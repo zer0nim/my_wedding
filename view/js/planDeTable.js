@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 		if (linkNb.parent().next().children().find('tbody').find('td').length > linkNb.val()) {
 //			console.log("need to cancel the modification, prev = " + linkNb.data('previous'));
-			sweetAlert("Oops...", "Supprimez d'abord des contacts de la table!", "error");
+			sweetAlert("Oops...", "Il ne peut pas y avoir plus de personnes que de places!", "error");
 			linkNb.val([]);
 			linkNb.val(linkNb.data('previous')).change();
 		}
@@ -218,7 +218,7 @@ $("#cntTableAdding_" + data['idT']).children().append(data['toAppend']);
 
 					if (linkNb.parent().next().children().find('tbody').find('td').length > linkNb.val()) {
 			//			console.log("need to cancel the modification, prev = " + linkNb.data('previous'));
-						sweetAlert("Oops...", "Supprimez d'abord des contacts de la table!", "error");
+						sweetAlert("Oops...", "Il ne peut pas y avoir plus de personnes que de places!", "error");
 						linkNb.val([]);
 						linkNb.val(linkNb.data('previous')).change();
 					}
