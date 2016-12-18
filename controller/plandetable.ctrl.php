@@ -1,4 +1,5 @@
 <?php
+require_once('session_create.ctrl.php');
 function printAllTables($allTables, $allContacts) {
   foreach ($allTables as $key => $table) {
 ?>

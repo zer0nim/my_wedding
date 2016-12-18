@@ -1,7 +1,8 @@
 <?php
+  require_once('session_create.ctrl.php');
   require_once('../model/DAO.class.php');
   //////////VERSION SANS SESSION//////////
-  $idM=1;
+  $idM = $_SESSION['idM'];
   ////////////////////////////////////////
   if (isset($_POST['actSend'])) {
     //////////VERSION SANS SESSION//////////

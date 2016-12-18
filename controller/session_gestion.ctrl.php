@@ -1,5 +1,5 @@
 <?php
-  session_start();
-  $_SESSION['idM'] = 1;
-  $_SESSION['account'] = 1;
+  if ( !isset($_SESSION['account']) && $_SESSION['account'] == NULL) {
+    header('location:inscription.ctrl.php');
+  }
 ?>
