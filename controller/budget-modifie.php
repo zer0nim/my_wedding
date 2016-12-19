@@ -1,15 +1,15 @@
 <?php 
 
+include_once('session_create.ctrl.php');
 require_once '../model/DAO.class.php';
 
-session_start();
-if (false /* !isset($_SESSION['idmariage']) */){
+if (!isset($_SESSION['idM'])){
 	// si l'utilisateur n'est pas connecté, on ne fait pas son action
 }else{
         
     if(isset($_POST['action'])){
                 
-        $idmariage = 1; //$_SESSION['idmariage']
+        $idmariage = $_SESSION['idM'];
         $action = $_POST['action'];
 
         if ($action == "supprimer"){

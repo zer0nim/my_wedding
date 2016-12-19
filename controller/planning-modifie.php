@@ -21,7 +21,7 @@
 	    $dao->updateEvenement($evenement, $idM);
 
 	}else if ($action == 'addevenement'){
-	    $newId = $dao->getLastIdEvenement($idM);
+	    $newId = $dao->getLastIdEvenement($idM)+1;
 	    $evenement = new evenement($newId, $description, $start, $end);
 	    $dao->addEvenement($evenement, $idM);
 	    echo $newId;
