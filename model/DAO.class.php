@@ -828,13 +828,38 @@ listTab_nbPlaces
     //----------------------------------------------------------------------------------------
     function connexion($email,$mdp){
       try{
-        $req = $this->db->prepare('SELECT acc_id, maria_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
+        $req = $this->db->prepare('SELECT acc_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
         $req->execute(array(':mail' => $email,
                               ':mdp'=> $mdp));
         $req=$req->fetch();
-        return $req;
+        $reponse[0]=$req[0];
+
+        $req = $this->db->prepare('SELECT maria_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
+        $req->execute(array(':mail' => $email,
+                              ':mdp'=> $mdp));
+        $req=$req->fetch();
+        $reponse[1]=$req[0];
+        var_dump($reponse);
+        return $reponse;
       }catch(PDOException $e){
         exit("Erreur dans la fonction connexion: ".$e->getMessage());
+      }
+    }
+
+    function inscription($email,$mdp){
+      try{
+        $req = $this->db->prepare('SELECT acc_mail FROM Account WHERE acc_mail = :mail');
+        $req->execute(array(':mail' => $email));
+        $req=$req->fetch();
+        if($req[0] != NULL && $req[0]==$email){
+          return 66;
+        }else{
+          $req = $this->db->prepare('INSERT INTO Account values(NULL, :mail, :mdp)');
+          $req->execute(array(':mail' => $email,
+                              ':mdp'=> $mdp));
+        }
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction inscription: ".$e->getMessage());
       }
     }
   }

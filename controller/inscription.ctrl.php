@@ -5,24 +5,40 @@
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
     $info=$dao->connexion($email,$mdp);
+    var_dump($info);
     if ($info != NULL) {
       include_once('session_init.ctrl.php');
-      header('location:accueil.ctrl.php');
+      if ($info[1] == NULL) {
+        header('location: mon_compte.ctrl.php');
+      }else{
+        header('location:accueil.ctrl.php');
+      }
     }else {
       $erreur=0;
     }
   }elseif (isset($_POST['inscription'])) {
-    $nom=$_POST['nom'];
-    $prenom=$_POST['prenom'];
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
-    include_once('session_create.ctrl.php');
+    $coderetour=$dao->inscription($email,$mdp);
+    if ($coderetour != NULL) {
+      if($coderetour == 66){
+        $erreur=1;
+      }
+    }else{
+      $info=$dao->connexion($email,$mdp);
+      include_once('session_init.ctrl.php');
+      header('location:mon_compte.ctrl.php');
+    }
   }
 
   if(isset($erreur)){
     switch ($erreur) {
       case 0:
-        $messErr="Email ou mot de passe incorrect";
+        $messErr='Email ou mot de passe incorrect lors de la connexion';
+        break;
+
+      case 1:
+        $messErr='L\'email utilisé pour l\'inscription est déjà utilisé';
         break;
 
       default:

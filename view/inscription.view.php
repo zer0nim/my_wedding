@@ -25,7 +25,7 @@
 							<span class="icon-bar"></span>
 						</button>
 							<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image">
-						<a class="navbar-brand" href="#">MyWedding</a>
+						<a class="navbar-brand" href="inscription.ctrl.php">MyWedding</a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,7 +76,7 @@
 			<?php if (isset($messErr)) {?>
 					<div class="alert alert-danger">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Erreur :</strong><?=$messErr?>
+						<strong>Erreur : </strong><?=$messErr?>
 					</div>
 			<?php } ?>
 			<div id="sign">
@@ -95,12 +95,6 @@
 
 				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Inscription</h2>
-
-					<label for="inputNom" class="sr-only">Nom</label>
-					<input type="text" name="nom" id="inputNom" class="form-control" placeholder="Nom" required>
-
-					<label for="inputPrenom" class="sr-only">Prenom</label>
-					<input type="text" name="prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
 					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
