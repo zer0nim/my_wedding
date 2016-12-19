@@ -4,7 +4,7 @@
 		
 		private $id;
 		private $description; // description
-		private $start; // datetime (Y-m-d)
+		private $start; // datetime (ISO8601 = "Y-m-d\TH:i:sO")
 		private $end; // datetime
 
 		public function __construct($id, $description, $start, $end) { // (end et url peuvent etre null)
@@ -12,10 +12,15 @@
 			$this->id = $id;
 			$this->description = $description;
 			$this->start = new DateTime($start);
-			$this->end = new DateTime($end);
-			
+
+			if ($end == null){
+				$this->end = new DateTime($start);
+			}else{
+				$this->end = new DateTime($end);
+			}
+
 		}
-		
+
 		function getId() {
 			return $this->id;
 		}

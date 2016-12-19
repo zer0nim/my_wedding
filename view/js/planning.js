@@ -35,49 +35,29 @@ objet event :
 
 // fonction pour afficher le planning modifiable
 function afficheModifieEvenement(evenement){
+	// evenement == null : ajout d'un nouvel evenement
+	
     if (evenement == null){
-	description = ""; start = null; end = null;
+		id = -1; description = ""; start = null; end = null;
     }else{
-	description = evenement.title; start = evenement.start; end = evenement.end;
+		id = evenement.id;
+		description = evenement.title;
+		start = evenement.start.format();
+		if (evenement.end != null){
+			end = evenement.end.format();
+		}else{
+			end = evenement.start.format();
+		}
     }
     
     // créér une popup de modification
+	
     
 }
 
 // fonction pour caché le planning modifiable
 function cacher(){
     // supprime la popup
-}
-
-// fonction pour ajouter un évenement à la bd
-function addEvenement(){
-	description = ;
-	start = ; // récuperer les champs
-	end = ;
-    
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-	    if(xhttp.readyState === XMLHttpRequest.DONE){
-		if (xhttp.status === 200){
-		    $('#calendar').fullCalendar( 'addEventSource', 
-			{
-			id: this.responseText,
-			title: description,
-			start: start,
-			end: end
-			}
-		    );
-		    cacher();
-		}else{
-		    serverLost();
-		}
-	    }
-	};
-
-	xhttp.open("POST", "planning-modifie.php", true);
-	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhttp.send("action=addevenement&id=-1&description="+description+"&start="+start+"&end="+end);
 }
 
 // fonction pour supprimer un evenement de la bd
@@ -100,28 +80,66 @@ function delEvenement(id){
 }
 
 // fonction pour enregister les modifications d'un evenement dans la bd
-function modifEvenement(evenement){ // eventobject    
-	if (evenement == null){
-	    id = ; description = ; start = ; end = ; // recuperer les champs
-	}else{
-	    id = evenement.id; description = evenement.title; start = evenement.start; end = evenement.end;
-	}
+function modifEvenement(evenement){ // eventobject
+	// evenement == null : planning modifier via les champs de modifications
+	// evenement != null : planning modifié via le js du planning
+	// id < 0 : nouvelle evenement
+	// id >+ 0 / evenement modifié 
 	
+	if (evenement == null){
+		// recuperer les champs de description
+		/*id = ;
+		description = ;
+		start = ;
+		end = ;*/
+	}else{
+		id = evenement.id;
+		description = evenement.title;
+		start = evenement.start.format();
+		if (evenement.end != null){
+			end = evenement.end.format();
+		}else{
+			end = evenement.start.format();
+		}
+	}
+
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 	    if(xhttp.readyState === XMLHttpRequest.DONE){
-		if (xhttp.status === 200){
-		    $('#calendar').fullCalendar( 'updateEvents' ,evenement);
-		    cacher();
-		}else{
-		    serverLost();
-		}
+			if (xhttp.status === 200){
+
+				if (evenement == null){
+					if (id >= 0){
+						$('#calendar').fullCalendar( 'removeEvents' ,id);
+					}else{
+						id = this.responseText;
+					}
+					$('#calendar').fullCalendar( 'addEventSource', 
+						{
+						id: id,
+						title: description,
+						start: start,
+						end: end
+						}
+					);
+				}
+
+				cacher();
+			}else{
+				serverLost();
+			}
 	    }
 	};
 
 	xhttp.open("POST", "planning-modifie.php", true);
 	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhttp.send("action=updateevenement&id="+id+"&description="+description+"&start="+start+"&end="+end);
+	
+	if (id < 0){
+		xhttp.send("action=addevenement&id="+id+"&description="+description+"&start="+start+"&end="+end);
+	}else{
+		xhttp.send("action=updateevenement&id="+id+"&description="+description+"&start="+start+"&end="+end);
+	}
+	
 }
 
 // function pour si le client pert la connexion avec le serveur web

@@ -14,7 +14,7 @@
 <script src='../fullcalendar/lib/jquery.min.js'></script>
 <script src='../fullcalendar/fullcalendar.min.js'></script>
 <script src='../fullcalendar/fullcalendar.js'></script>
-<script src='../fullcalendar/locale-all.js'></script>
+<!-- <script src='../fullcalendar/locale-all.js'></script> -->
 <script src='../fullcalendar/locale/fr.js'></script>
 
 <script src='../view/js/planning.js'></script>
@@ -58,8 +58,8 @@
 							{
 							id: <?= $evenement->getId() ?>,
 							title: '<?= $evenement->getDescription() ?>',
-							start: '<?= $evenement->getStart()->format('Y-m-d') ?>',
-							end: '<?= $evenement->getEnd()->format('Y-m-d') ?>'
+							start: '<?= $evenement->getStart()->format('Y-m-d H:i:s') ?>',
+							end: '<?= $evenement->getEnd()->format('Y-m-d H:i:s') ?>'
 							},
 				<?php
 						}
@@ -71,13 +71,17 @@
 			// fonction quand on click sur un évènement
 			// utilisé pour quand l'utilisateur veut modifier un événement
 			eventClick: function(event, element) {
-				//afficheModifieEvenement(event);
+				afficheModifieEvenement(event);
 			},
-
 
 			// fonction quand un évenemnt est changé de place
 			eventDrop: function(event, delta, revertFunc) {
-				//modifEvenement(event);
+				modifEvenement(event);
+			},
+			
+			// fonction quand un événement à sa durée qui est modifié
+			eventResize: function(event, delta, revertFunc) {
+				modifEvenement(event);
 			}
 		});
 	});

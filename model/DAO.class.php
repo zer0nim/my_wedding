@@ -747,7 +747,7 @@ listTab_nbPlaces
     function addEvenement($evenement, $idM){
 		try {
 			$req = $this->db->prepare('insert INTO Planning values(:id, :idM, :description, :start, :end)');
-			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart(), ':end' => $evenement->getEnd()));
+			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart()->format('Y-m-d H:i:s'), ':end' => $evenement->getEnd()->format('Y-m-d H:i:s')));
 		}catch (PDOException $e) {
 			exit("Erreur addEvenements : ".$e->getMessage());
 		}
@@ -767,7 +767,7 @@ listTab_nbPlaces
     function updateEvenement($evenement, $idM){
 		try {
 			$req = $this->db->prepare('update Planning set plan_description = :description, plan_start = :start, plan_end = :end WHERE plan_idM = :idM and plan_id = :id');
-			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart(), ':end' => $evenement->getEnd()));
+			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart()->format('Y-m-d H:i:s'), ':end' => $evenement->getEnd()->format('Y-m-d H:i:s')));
 		}catch (PDOException $e) {
 			exit("Erreur delEvenements : ".$e->getMessage());
 		}
