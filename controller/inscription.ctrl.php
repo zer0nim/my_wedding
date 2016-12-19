@@ -9,7 +9,7 @@
     if ($info != NULL) {
       include_once('session_init.ctrl.php');
       if ($info[1] == NULL) {
-        header('location: mon_compte.ctrl.php');
+        header('location: creation.ctrl.php');
       }else{
         header('location:accueil.ctrl.php');
       }
@@ -27,7 +27,7 @@
     }else{
       $info=$dao->connexion($email,$mdp);
       include_once('session_init.ctrl.php');
-      header('location:mon_compte.ctrl.php');
+      header('location: creation.ctrl.php');
     }
   }
 
