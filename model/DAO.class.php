@@ -839,7 +839,7 @@ listTab_nbPlaces
                               ':mdp'=> $mdp));
         $req=$req->fetch();
         $reponse[1]=$req[0];
-        var_dump($reponse);
+        //var_dump($reponse);
         return $reponse;
       }catch(PDOException $e){
         exit("Erreur dans la fonction connexion: ".$e->getMessage());

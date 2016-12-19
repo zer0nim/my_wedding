@@ -5,7 +5,7 @@
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
     $info=$dao->connexion($email,$mdp);
-    var_dump($info);
+    //var_dump($info);
     if ($info != NULL) {
       include_once('session_init.ctrl.php');
       if ($info[1] == NULL) {
