@@ -83,8 +83,8 @@
 				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Connexion</h2>
 
-					<label for="inputEmail" class="sr-only">Adresse email</label>
-					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse email" required>
+					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
 					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
