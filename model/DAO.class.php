@@ -822,6 +822,21 @@ listTab_nbPlaces
         exit("Erreur modification du mail du compte: ".$e->getMessage());
       }
     }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité inscription et connection
+    //----------------------------------------------------------------------------------------
+    function connexion($email,$mdp){
+      try{
+        $req = $this->db->prepare('SELECT acc_id, maria_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
+        $req->execute(array(':mail' => $email,
+                              ':mdp'=> $mdp));
+        $req=$req->fetch();
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction connexion: ".$e->getMessage());
+      }
+    }
   }
 
 ?>

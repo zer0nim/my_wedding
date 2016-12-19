@@ -74,7 +74,7 @@
 			</div>
 
 			<div id="sign">
-				<form class="form-signin" action="connecter.ctrl.php" method="post">
+				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Connexion</h2>
 
 					<label for="inputEmail" class="sr-only">Adresse email</label>
@@ -87,7 +87,7 @@
 				</form>
 
 
-				<form class="form-signin" action="inscrire.ctrl.php" method="post">
+				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Inscription</h2>
 
 					<label for="inputNom" class="sr-only">Nom</label>
@@ -97,7 +97,7 @@
 					<input type="text" name="prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required>
 
 					<label for="inputEmail" class="sr-only">Adresse mail</label>
-					<input type="email" name="mail" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
 					<label for="inputPassword" class="sr-only">Mot de passe</label>
 					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
