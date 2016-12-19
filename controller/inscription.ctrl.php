@@ -9,7 +9,7 @@
       include_once('session_init.ctrl.php');
       header('location:accueil.ctrl.php');
     }else {
-      include_once('../view/inscription.view.php');
+      $erreur=0;
     }
   }elseif (isset($_POST['inscription'])) {
     $nom=$_POST['nom'];
@@ -17,8 +17,20 @@
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
     include_once('session_create.ctrl.php');
-  }else{
-    include_once('../view/inscription.view.php');
   }
+
+  if(isset($erreur)){
+    switch ($erreur) {
+      case 0:
+        $messErr="Email ou mot de passe incorrect";
+        break;
+
+      default:
+        $messErr="Erreur inconnue";
+        break;
+    }
+  }
+  include_once('../view/inscription.view.php');
+
 
 ?>

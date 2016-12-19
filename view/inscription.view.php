@@ -37,6 +37,7 @@
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 			</nav>
+
 			<div>
 				<div class="col-sm-6">
 					<h1>MyWedding:</h1>
@@ -72,7 +73,12 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
 				</div>
 			</div>
-
+			<?php if (isset($messErr)) {?>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Erreur :</strong><?=$messErr?>
+					</div>
+			<?php } ?>
 			<div id="sign">
 				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Connexion</h2>
