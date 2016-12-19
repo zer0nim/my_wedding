@@ -5,10 +5,11 @@
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
     $info=$dao->connexion($email,$mdp);
-    var_dump($info);
     if ($info != NULL) {
       include_once('session_init.ctrl.php');
       header('location:accueil.ctrl.php');
+    }else {
+      include_once('../view/inscription.view.php');
     }
   }elseif (isset($_POST['inscription'])) {
     $nom=$_POST['nom'];
