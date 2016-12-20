@@ -7,6 +7,25 @@ nav {
 	margin: 5px;
 }
 
+.timeLine {
+	border-radius: 2px;
+	padding: 5px;
+	border-left: 6px solid #104b73;
+}
+
+.tlpoint {
+	background-color: #deeffa;
+	padding-left: 5px;
+	margin-top: 15px;
+	border-top: 5px solid #8fb7db;
+}
+
+.tlbox {
+	padding: 5px;
+	background-color: #8fb7db;
+	border-radius: 0;
+}
+
 /* v---navBar---v*/
 
 .test-center .inspiration{
