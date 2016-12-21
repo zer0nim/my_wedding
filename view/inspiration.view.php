@@ -6,29 +6,51 @@
 
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
-
-
 <div class="main">
   <ul class="cbp_tmtimeline">
+    <li>
+      <div class="panel panel-default cbp_tmlabel">
+        <h2>Nouveau post</h2>
+        <div class="panel-heading">
+          <select id="postSlctLink" class="form-control">
+            <option value="none" selected="selected">Type</option>
+            <option value="note">Note</option>
+            <option value="link">Lien</option>
+            <option value="pict">Photo</option>
+          </select>
+        </div>
+        <div id="newpost" class="panel-body">
 
-<li>
-  <div class="panel panel-default cbp_tmlabel">
-    <h2>Nouveau post</h2>
-    <div class="panel-heading">
-      <select class="form-control">
-        <option value="NULL" selected="selected">Type</option>
-        <option value="note">Note</option>
-        <option value="link">Lien</option>
-        <option value="pict">Photo</option>
-      </select>
-    </div>
-    <div class="panel-body newpost">
-      <p>Veuillez selectioner le type ci-dessus.</p>
-      <input type="button" class="btn btn-default btn-block" value="Ajouter" disabled="true">
-    </div>
-  </div>
-</li>
+          <div id="link">
+            <label class="control-label" for="textinput">Adresse</label>
+            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <span class="input-group-addon">Description</span>
+            <textarea class="form-control" name="description" id="" name=""></textarea>
+          </div>
 
+          <div id="note">
+            <label class="control-label" for="textinput">Titre</label>
+            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <span class="input-group-addon">Note</span>
+            <textarea class="form-control" name="description" id="" name=""></textarea>
+          </div>
+
+          <div id="pict">
+            <label class="control-label" for="textinput">Titre</label>
+            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <span class="input-group-addon">Description</span>
+            <textarea class="form-control" name="description" id="" name=""></textarea>
+            <input type="button" class="btn btn-default" value="Parcourir...">
+          </div>
+
+          <div id="none">
+            <p>Veuillez selectioner le type ci-dessus.</p>
+          </div>
+          <input type="button" class="btn btn-default btn-block" value="Ajouter" disabled="true">
+
+        </div>
+      </div>
+    </li>
     <li>
       <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
       <div class="cbp_tmicon fa fa-paint-brush"></div>
@@ -58,4 +80,5 @@
 </div>
 
 <?php include('../view/scripts.php') ?>
+<script src="../view/js/inspiration.js"></script>
 <?php include('../view/footer.php') ?>
