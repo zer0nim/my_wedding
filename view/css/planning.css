@@ -31,3 +31,52 @@ body {
     max-width: 900px;
     margin: 0 auto;
 }
+
+.div-principal{
+    text-align: center;
+}
+
+#boutonaddevenement{
+    margin: 20px;
+}
+
+#fond-popup{
+    position:fixed;
+    z-index:9000;
+    background-color:#000;
+    display:none;
+    border-radius: 10px;
+}
+
+#popup{
+    text-align: center;
+    width: 70vw;
+    position:fixed;
+    display:none;
+    z-index:9001;
+    padding:20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+#divbouton{
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.champ{
+    margin: 7px 0px;
+}
+
+.libelle{
+    min-width: 140px;
+}
+
+textarea{
+    resize: none;
+}
+
+.btn-popup{
+    margin: 0px 5px;
+}

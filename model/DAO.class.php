@@ -718,7 +718,14 @@ listTab_nbPlaces
 		}catch (PDOException $e) {
 			exit("Erreur geLastId : ".$e->getMessage());
 		}
-		return $req->fetch();
+
+		$resultat = $req->fetch()[0];
+		if ($resultat != null){
+			return $resultat;
+		}else{
+			return 0;
+		}
+
     }
 
     // fonction qui retourne les événements d'un mariage
@@ -769,7 +776,7 @@ listTab_nbPlaces
 			$req = $this->db->prepare('update Planning set plan_description = :description, plan_start = :start, plan_end = :end WHERE plan_idM = :idM and plan_id = :id');
 			$req->execute(array(':idM' => $idM, ':id' => $evenement->getId(), ':description' => $evenement->getDescription(), ':start' => $evenement->getStart()->format('Y-m-d H:i:s'), ':end' => $evenement->getEnd()->format('Y-m-d H:i:s')));
 		}catch (PDOException $e) {
-			exit("Erreur delEvenements : ".$e->getMessage());
+			exit("Erreur updateEvenements : ".$e->getMessage());
 		}
     }
 

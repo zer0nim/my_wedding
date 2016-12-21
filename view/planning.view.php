@@ -5,8 +5,13 @@
 
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
-<button id="boutonaddevenement" class="btn-xs btn-primary" onClick="afficheModifieEvenement(null)">Ajouter un évènement</button>
-<div id='calendar'></div>
+<div class="div-principal">
+	<div id='calendar'></div>
+	<button id="boutonaddevenement" class="btn-md btn-primary" onClick="afficheModifieEvenement(null)">Ajouter un évènement</button>
+</div>
+
+<div id="fond-popup"></div>
+<div id="popup"></div>
 
 <?php include('../view/scripts.php') ?>
 
@@ -22,7 +27,6 @@
 <!-- C'est le script qui gère de mettre la view -->
 <script>	
 	$(document).ready(function() {
-		var date = new Date();
 		
 		$('#calendar').fullCalendar({
 		    				    
@@ -33,8 +37,8 @@
 			},
 
 			views: {
-				listDay: { buttonText: 'list day' },
-				listWeek: { buttonText: 'list week' }
+				listDay: { buttonText: 'jour' },
+				listWeek: { buttonText: 'semaine' }
 			},
 						
 			defaultView: 'month',
@@ -47,9 +51,8 @@
 					/* format
 						id: nombre,
 						title: '',
-						start: '2016-12-09',
-						end: '2016-12-09', facultatif
-						url: 'http://google.com/' facultatif
+						start: ,
+						end:
 					*/
 
 					if (isset($evenements)){
@@ -76,12 +79,12 @@
 
 			// fonction quand un évenemnt est changé de place
 			eventDrop: function(event, delta, revertFunc) {
-				modifEvenement(event);
+				modifEvenement(event, null);
 			},
 			
 			// fonction quand un événement à sa durée qui est modifié
 			eventResize: function(event, delta, revertFunc) {
-				modifEvenement(event);
+				modifEvenement(event, null);
 			}
 		});
 	});

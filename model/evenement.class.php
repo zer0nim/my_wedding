@@ -7,7 +7,7 @@
 		private $start; // datetime (ISO8601 = "Y-m-d\TH:i:sO")
 		private $end; // datetime
 
-		public function __construct($id, $description, $start, $end) { // (end et url peuvent etre null)
+		public function __construct($id, $description, $start, $end) { // (end peut etre null)
 
 			$this->id = $id;
 			$this->description = $description;
