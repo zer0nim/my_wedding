@@ -1,7 +1,48 @@
 <?php
 // Test de la classe DAO
-/*
+
 require_once('DAO.class.php');
+
+/*
+$ln = new lien();
+
+$ln->faux_construct(NULL, 1, '2017/01/13', 'http://google.fr', 'google');
+
+var_dump($dao->getLiens(1));
+$dao->setLien($ln);
+$dao->delLien(1, 2);
+var_dump($dao->getLiens(1));
+var_dump($dao->getLien(1, 2));
+*/
+
+/*
+$n = new note();
+$n->faux_construct(NULL, 1, '2017/01/13', 'titreNote', 'heyheyhey');
+
+var_dump($dao->getNotes(1));
+$dao->setNote($n);
+$dao->delNote(1, 2);
+var_dump($dao->getNotes(1));
+var_dump($dao->getNote(1, 2));
+*/
+
+
+
+/*
+$pic = new photo();
+$pic->faux_construct(NULL, 1, '2017/01/13', 'bestTitreEver', 'jpg', 'The best background-image !');
+
+var_dump($dao->getPhotos(1));
+echo $dao->setPhoto($pic);
+var_dump($dao->getPhotos(1));
+var_dump($dao->getPhoto(1, 2));
+$dao->delPhoto(1, 2);
+var_dump($dao->getPhotos(1));
+*/
+
+
+
+/*
 $tb = new tables();
 $tb->faux_construct(66, 1, "table ronde", 8);
 $dao->updateTable($tb);

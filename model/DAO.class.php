@@ -5,7 +5,9 @@ require_once '../model/depense.class.php';
 require_once '../model/contacts.class.php';
 require_once '../model/tables.class.php';
 require_once '../model/evenement.class.php';
-
+require_once '../model/photo.class.php';
+require_once '../model/note.class.php';
+require_once '../model/lien.class.php';
 require_once('fournisseurs.class.php');
 $dao = new DAO();
 
@@ -599,6 +601,179 @@ class DAO {
         }
       }
     }
+
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité inspiration
+    //----------------------------------------------------------------------------------------
+
+// Photo -> pict_id, pict_idM, pict_date, pict_title, pict_adress, pict_descr
+
+    function getPhotos($idM) {
+      try {
+        $req = $this->db->prepare('SELECT * FROM Photo WHERE pict_idM = :idM');
+        $req->execute(array(':idM' => $idM,));
+        $donnee = $req->fetchAll(PDO::FETCH_CLASS, "photo");
+      }
+      catch (PDOException $e) {
+        exit("Erreur recupération des photos: ".$e->getMessage());
+      }
+      return $donnee;
+    }
+
+    function getPhoto($idM, $pict_id) {
+      try {
+        $req = $this->db->prepare('SELECT * FROM Photo WHERE pict_idM = :idM and pict_id = :pict_id');
+        $req->execute(array(':idM' => $idM,
+                            ':pict_id' => $pict_id,));
+        $donnee = $req->fetchAll(PDO::FETCH_CLASS, "photo");
+      }
+      catch (PDOException $e) {
+        exit("Erreur recupération de la photo: ".$e->getMessage());
+      }
+      return $donnee[0];
+    }
+
+    function delPhoto($idM, $pict_id) {
+      try {
+        $req = $this->db->prepare('DELETE FROM Photo WHERE pict_idM = :idM and pict_id = :pict_id');
+        $req->execute(array(':idM' => $idM,
+                            ':pict_id' => $pict_id,));
+      }
+      catch (PDOException $e) {
+        exit("Erreur suppression de photo: ".$e->getMessage());
+      }
+    }
+
+    function setPhoto($photo) {
+      try {
+        $req = $this->db->prepare('INSERT INTO Photo VALUES(:pict_id, :pict_idM,  NOW(), :pict_title, :pict_format, :pict_descr)');
+        $req->execute(array(':pict_id' => $photo->getPict_id(),
+                            ':pict_idM' => $photo->getPict_idM(),
+                            ':pict_title' => $photo->getPict_title(),
+                            ':pict_format' => $photo->getPict_format(),
+                            ':pict_descr' => $photo->getPict_descr()));
+                            return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                          }
+      catch (PDOException $e) {
+        exit("Erreur création nouvelle photo: ".$e->getMessage());
+      }
+    }
+
+    // Note ->  note_id, note_idM, note_date, note_title, note_text
+
+        function getNotes($idM) {
+          try {
+            $req = $this->db->prepare('SELECT * FROM Note WHERE note_idM = :idM');
+            $req->execute(array(':idM' => $idM,));
+            $donnee = $req->fetchAll(PDO::FETCH_CLASS, "note");
+          }
+          catch (PDOException $e) {
+            exit("Erreur recupération des notes: ".$e->getMessage());
+          }
+          return $donnee;
+        }
+
+        function getNote($idM, $note_id) {
+          try {
+            $req = $this->db->prepare('SELECT * FROM Note WHERE note_idM = :idM and note_id = :note_id');
+            $req->execute(array(':idM' => $idM,
+                                ':note_id' => $note_id,));
+            $donnee = $req->fetchAll(PDO::FETCH_CLASS, "note");
+          }
+          catch (PDOException $e) {
+            exit("Erreur recupération de la note: ".$e->getMessage());
+          }
+          return $donnee[0];
+        }
+
+        function delNote($idM, $note_id) {
+          try {
+            $req = $this->db->prepare('DELETE FROM Note WHERE note_idM = :idM and note_id = :note_id');
+            $req->execute(array(':idM' => $idM,
+                                ':note_id' => $note_id,));
+          }
+          catch (PDOException $e) {
+            exit("Erreur suppression de note: ".$e->getMessage());
+          }
+        }
+
+        function setNote($note) {
+          try {
+            $req = $this->db->prepare('INSERT INTO Note VALUES(:note_id, :note_idM,  NOW(), :note_title, :note_text)');
+            $req->execute(array(':note_id' => $note->getNote_id(),
+                                ':note_idM' => $note->getNote_idM(),
+                                ':note_title' => $note->getNote_title(),
+                                ':note_text' => $note->getNote_text()));
+                                return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                              }
+          catch (PDOException $e) {
+            exit("Erreur création nouvelle photo: ".$e->getMessage());
+          }
+        }
+
+    // Lien ->  link_id, link_idM, link_date, link_adress, link_descr
+
+    function getLiens($idM) {
+      try {
+        $req = $this->db->prepare('SELECT * FROM Lien WHERE link_idM = :idM');
+        $req->execute(array(':idM' => $idM,));
+        $donnee = $req->fetchAll(PDO::FETCH_CLASS, "lien");
+      }
+      catch (PDOException $e) {
+        exit("Erreur recupération des liens: ".$e->getMessage());
+      }
+      return $donnee;
+    }
+
+    function getLien($idM, $link_id) {
+      try {
+        $req = $this->db->prepare('SELECT * FROM Lien WHERE link_idM = :idM and link_id = :link_id');
+        $req->execute(array(':idM' => $idM,
+                            ':link_id' => $link_id,));
+        $donnee = $req->fetchAll(PDO::FETCH_CLASS, "lien");
+      }
+      catch (PDOException $e) {
+        exit("Erreur recupération du lien: ".$e->getMessage());
+      }
+      return $donnee[0];
+    }
+
+    function delLien($idM, $link_id) {
+      try {
+        $req = $this->db->prepare('DELETE FROM Lien WHERE link_idM = :idM and link_id = :link_id');
+        $req->execute(array(':idM' => $idM,
+                            ':link_id' => $link_id,));
+      }
+      catch (PDOException $e) {
+        exit("Erreur suppression de lien: ".$e->getMessage());
+      }
+    }
+
+    function setLien($lien) {
+      try {
+        $req = $this->db->prepare('INSERT INTO Lien VALUES(:link_id, :link_idM, NOW(), :link_adress, :link_descr)');
+        $req->execute(array(':link_id' => $lien->getLink_id(),
+                            ':link_idM' => $lien->getLink_idM(),
+                            ':link_adress' => $lien->getLink_adress(),
+                            ':link_descr' => $lien->getLink_descr()));
+                            return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                          }
+      catch (PDOException $e) {
+        exit("Erreur création nouveau lien: ".$e->getMessage());
+      }
+    }
+/*
+function getLink_id() {
+    return $this->link_id;
+function getLink_idM() {
+    return $this->link_idM;
+function getLink_date() {
+    return $this->link_date;
+function getLink_adress() {
+    return $this->link_adress;
+function getLink_descr() {
+    return $this->link_descr;
 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité tables

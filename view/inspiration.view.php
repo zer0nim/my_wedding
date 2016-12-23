@@ -21,36 +21,49 @@
         </div>
         <div id="newpost" class="panel-body">
 
-          <div id="link">
+          <form id="link" method="post" >
             <label class="control-label" for="textinput">Adresse</label>
-            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1">
             <span class="input-group-addon">Description</span>
             <textarea class="form-control" name="description" id="" name=""></textarea>
-          </div>
+            <input type="submit" class="btn btn-default btn-block" value="Ajouter">
+          </form>
 
-          <div id="note">
+          <form id="note" method="post" >
             <label class="control-label" for="textinput">Titre</label>
-            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1">
             <span class="input-group-addon">Note</span>
             <textarea class="form-control" name="description" id="" name=""></textarea>
-          </div>
+            <input type="submit" class="btn btn-default btn-block" value="Ajouter">
+          </form>
 
-          <div id="pict">
+          <form id="pict" method="post" enctype="multipart/form-data">
             <label class="control-label" for="textinput">Titre</label>
-            <input type="text"name="site" class="form-control" aria-describedby="basic-addon1">
+            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>
             <span class="input-group-addon">Description</span>
             <textarea class="form-control" name="description" id="" name=""></textarea>
-            <input type="button" class="btn btn-default" value="Parcourir...">
-          </div>
+            <input type="file" name="image" accept="image/*" required>
+            <div id="image_preview" class="col-lg-10 col-lg-offset-2">
+              <div class="thumbnail hidden">
+                  <img src="http://placehold.it/5" alt="">
+                  <div class="caption">
+                      <h4></h4>
+                      <p></p>
+                      <p><button type="button" class="btn btn-default btn-danger">Annuler</button></p>
+                  </div>
+              </div>
+            </div>
+            <input type="submit" class="btn btn-default btn-block" value="Ajouter">
+          </form>
 
           <div id="none">
             <p>Veuillez selectioner le type ci-dessus.</p>
           </div>
-          <input type="button" class="btn btn-default btn-block" value="Ajouter" disabled="true">
-
         </div>
       </div>
     </li>
+    <?php printAllInsp($insp); ?>
+    <!--
     <li>
       <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
       <div class="cbp_tmicon fa fa-paint-brush"></div>
@@ -60,7 +73,7 @@
       </div>
     </li>
     <li>
-      <time class="cbp_tmtime" datetime="2013-04-11T12:04"><span>4/11/13</span> <span>12:04</span></time>
+      <time class="cbp_tmtime" datetime="2013-04-11 12:04"><span>4/11/13</span> <span>12:04</span></time>
       <div class="cbp_tmicon fa fa-paint-brush"></div>
       <div class="cbp_tmlabel">
         <h2>Verrerie</h2>
@@ -76,6 +89,7 @@
         <p>Un questionnaire malicieux et tendre à remplir par chaque invité, idéal pour les convives en manque d’inspiration et qui vous permettra de récolter des dizaines de souvenirs inattendus : des confidences rigolotes, touchantes, surprenantes…</p>
       </div>
     </li>
+  -->
   </ul>
 </div>
 
