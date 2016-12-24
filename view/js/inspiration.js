@@ -36,6 +36,8 @@ $(document).ready(function(){
 		}
 	});
 
+
+
 	$('#link').on('submit', function (e) {
 		// On empêche le navigateur de soumettre le formulaire
 		e.preventDefault();
@@ -50,10 +52,17 @@ $(document).ready(function(){
 				},
 
 				function(data){
+					var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
+					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
+					postLink = postLink + "<h2><a href=\"" + data['adress'] + "\">" + data['adress'] + "</a></h2>" + "\n";
+					postLink = postLink + "<p>" + data['descr'] + "</p>" + "\n";
+					postLink = postLink + "</div></li>" + "\n";
+					$('#newPost').after(postLink);
 					//console.log(data);
 				},
 
-				'text' // Format des données reçues.
+				'json' // Format des données reçues.
 		);
 	});
 
@@ -71,10 +80,17 @@ $(document).ready(function(){
 				},
 
 				function(data){
+					var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
+					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
+					postLink = postLink + "<h2>" + data["titre"] + "</h2>" + "\n";
+					postLink = postLink + "<p>" + data["text"] + "</p>" + "\n";
+					postLink = postLink + "</div></li>" + "\n";
+					$('#newPost').after(postLink);
 					//console.log(data);
 				},
 
-				'text' // Format des données reçues.
+				'json' // Format des données reçues.
 		);
 	});
 
@@ -102,11 +118,15 @@ $(document).ready(function(){
 		      dataType: 'json', // selon le retour attendu
 		      data: data,
 		      success: function (data) {
-						console.log("in function success");
+						var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+						postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
+						postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
+						postLink = postLink +  "<h2>" + data["titre"] + "</h2>" + "\n";
+						postLink = postLink +  "<p>" + data["descr"] + "</p>" + "\n";
+						postLink = postLink +  "<img src=\"../uploads/" + data["idM"] + "/" + data["id"] + "." + data["format"] + "\" width=\"100%\" height=\"100%\">" + "\n";
+						postLink = postLink + "</div></li>" + "\n";
+						$('#newPost').after(postLink);
 						console.log(data);
-
-						console.log(data['file']);
-						console.log(data['text']);
 		      }
 		  });
 		}

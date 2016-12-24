@@ -8,7 +8,7 @@
 
 <div class="main">
   <ul class="cbp_tmtimeline">
-    <li>
+    <li id="newPost">
       <div class="panel panel-default cbp_tmlabel">
         <h2>Nouveau post</h2>
         <div class="panel-heading">
@@ -23,7 +23,7 @@
 
           <form id="link" method="post" >
             <label class="control-label" for="textinput">Adresse</label>
-            <input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1">
+            <input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1" required>
             <span class="input-group-addon">Description</span>
             <textarea class="form-control" name="description" id="" name=""></textarea>
             <input type="submit" class="btn btn-default btn-block" value="Ajouter">
@@ -31,14 +31,14 @@
 
           <form id="note" method="post" >
             <label class="control-label" for="textinput">Titre</label>
-            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1">
+            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>
             <span class="input-group-addon">Note</span>
-            <textarea class="form-control" name="description" id="" name=""></textarea>
+            <textarea class="form-control" name="description" id="" name="" required></textarea>
             <input type="submit" class="btn btn-default btn-block" value="Ajouter">
           </form>
 
           <form id="pict" method="post" enctype="multipart/form-data">
-            <label class="control-label" for="textinput">Titre</label>
+            <label class="control-label" for="textinput" required>Titre</label>
             <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>
             <span class="input-group-addon">Description</span>
             <textarea class="form-control" name="description" id="" name=""></textarea>

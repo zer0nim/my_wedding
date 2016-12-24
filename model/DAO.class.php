@@ -653,7 +653,11 @@ class DAO {
                             ':pict_title' => $photo->getPict_title(),
                             ':pict_format' => $photo->getPict_format(),
                             ':pict_descr' => $photo->getPict_descr()));
-                            return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                            $date = new DateTime();
+                            $date->setTimezone(new DateTimeZone('Europe/Berlin'));
+                            $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                            $idDate['date'] = $date->format('Y-m-d H:i:s');
+                            return($idDate);
                           }
       catch (PDOException $e) {
         exit("Erreur création nouvelle photo: ".$e->getMessage());
@@ -705,7 +709,11 @@ class DAO {
                                 ':note_idM' => $note->getNote_idM(),
                                 ':note_title' => $note->getNote_title(),
                                 ':note_text' => $note->getNote_text()));
-                                return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                                $date = new DateTime();
+                                $date->setTimezone(new DateTimeZone('Europe/Berlin'));
+                                $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                                $idDate['date'] = $date->format('Y-m-d H:i:s');
+                                return($idDate);
                               }
           catch (PDOException $e) {
             exit("Erreur création nouvelle photo: ".$e->getMessage());
@@ -757,23 +765,16 @@ class DAO {
                             ':link_idM' => $lien->getLink_idM(),
                             ':link_adress' => $lien->getLink_adress(),
                             ':link_descr' => $lien->getLink_descr()));
-                            return $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                            $date = new DateTime();
+                            $date->setTimezone(new DateTimeZone('Europe/Berlin'));
+                            $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
+                            $idDate['date'] = $date->format('Y-m-d H:i:s');
+                            return($idDate);
                           }
       catch (PDOException $e) {
         exit("Erreur création nouveau lien: ".$e->getMessage());
       }
     }
-/*
-function getLink_id() {
-    return $this->link_id;
-function getLink_idM() {
-    return $this->link_idM;
-function getLink_date() {
-    return $this->link_date;
-function getLink_adress() {
-    return $this->link_adress;
-function getLink_descr() {
-    return $this->link_descr;
 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité tables

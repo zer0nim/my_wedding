@@ -13,6 +13,9 @@
 
       $pic = new photo();
       $pic->faux_construct(NULL, $idM, NULL, $_POST['titre'], (end((explode(".", $_FILES["image"]["name"])))), $_POST['description']);
+      $idDate = $dao->setPhoto($pic);
+      $pic->setPict_id($idDate['id']);
+      $pic->setPict_date($idDate['date']);
 
       if (!file_exists('../uploads/')) {
           mkdir('../uploads/');
@@ -20,7 +23,13 @@
       if (!file_exists('../uploads/' . $idM)) {
         mkdir('../uploads/' . $idM);
       }
-      move_uploaded_file($_FILES['image']['tmp_name'], '../uploads/' . $idM . '/' . $dao->setPhoto($pic) . '.' . end((explode(".", $_FILES["image"]["name"]))));
+      move_uploaded_file($_FILES['image']['tmp_name'], '../uploads/' . $idM . '/' . $idDate['id'] . '.' . end((explode(".", $_FILES["image"]["name"]))));
+      echo json_encode(array("date" => $pic->getPict_date(),
+                              "titre" => $pic->getPict_title(),
+                              "descr" => $pic->getPict_descr(),
+                              "id" => $pic->getPict_id(),
+                              "idM" => $pic->getPict_idM(),
+                              "format" => $pic->getPict_format()));
     }
   }
 ?>
