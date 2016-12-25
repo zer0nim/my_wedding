@@ -24,6 +24,7 @@ $(document).ready(function(){
 
 				function(data){
 					$('#postSlctLink').val('none').change();
+					modifCreaPost();
 
 					var postLink = "<li id=\'l" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
@@ -95,6 +96,7 @@ $(document).ready(function(){
 		      data: data,
 		      success: function (data) {
 						$('#postSlctLink').val('none').change();
+						modifCreaPost();
 
 						var postLink = "<li id=\'p" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
