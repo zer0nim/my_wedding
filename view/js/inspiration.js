@@ -29,7 +29,7 @@ $(document).ready(function(){
 					var postLink = "<li id=\'l" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
-					postLink = postLink + "<h2><a href=\"" + data['adress'] + "\">" + data['adress'] + "</a></h2>" + "\n";
+					postLink = postLink + "<h2><i class=\"fa fa-link\" aria-hidden=\"true\"></i> <a href=\"" + data['adress'] + "\">" + data['adress'] + "</a></h2>" + "\n";
 					postLink = postLink + "<p>" + data['descr'] + "</p>" + "\n";
 					postLink = postLink + "<a onclick=\"return supprInsp(" + data['id'] + ", " + "'l'" + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></div></li>" + "\n";
 					$('#newPost').after(postLink);

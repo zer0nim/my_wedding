@@ -23,7 +23,7 @@
         echo '<li id=\'l' . $value->getLink_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getLink_date() . '"><span>' . explode(" ", $value->getLink_date())[0] . '</span><span>' . explode(" ", $value->getLink_date())[1] . '</span></time>' . "\n";
         echo '<div class="cbp_tmicon fa fa-paint-brush"></div>' . "\n";
         echo '<div class="cbp_tmlabel">' . "\n";
-        echo '<h2><a href="' . $value->getLink_adress() . '">' . $value->getLink_adress() . '</a></h2>' . "\n";
+        echo '<h2><i class="fa fa-link" aria-hidden="true"></i> <a href="' . $value->getLink_adress() . '">' . $value->getLink_adress() . '</a></h2>' . "\n";
         echo '<p>' . $value->getLink_descr() . '</p>' . "\n";
         echo '<a onclick="return supprInsp(' . $value->getLink_id() . ', ' . "'l'" . ');" class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></div></li>' . "\n";
       }
