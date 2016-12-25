@@ -5,36 +5,7 @@ $(document).ready(function(){
 	$('#pict').hide();
 	$('#none').show();
 
-	$('#postSlctLink').bind("input", function modifCreaPost() {
-		if ($('#postSlctLink').val() == 'note') {
-			$('#upload').prop("disabled", false);
-			$('#note').show();
-			$('#link').hide();
-			$('#pict').hide();
-			$('#none').hide();
-		}
-		else if ($('#postSlctLink').val() == 'link') {
-			$('#upload').prop("disabled", false);
-			$('#note').hide();
-			$('#link').show();
-			$('#pict').hide();
-			$('#none').hide();
-		}
-		else if ($('#postSlctLink').val() == 'pict') {
-			$('#upload').prop("disabled", false);
-			$('#note').hide();
-			$('#link').hide();
-			$('#pict').show();
-			$('#none').hide();
-		}
-		else if ($('#postSlctLink').val() == 'none') {
-			$('#upload').prop("disabled", true);
-			$('#note').hide();
-			$('#link').hide();
-			$('#pict').hide();
-			$('#none').show();
-		}
-	});
+	$('#postSlctLink').bind("input", modifCreaPost);
 
 
 
@@ -52,12 +23,14 @@ $(document).ready(function(){
 				},
 
 				function(data){
-					var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					$('#postSlctLink').val('none').change();
+
+					var postLink = "<li id=\'l" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 					postLink = postLink + "<h2><a href=\"" + data['adress'] + "\">" + data['adress'] + "</a></h2>" + "\n";
 					postLink = postLink + "<p>" + data['descr'] + "</p>" + "\n";
-					postLink = postLink + "</div></li>" + "\n";
+					postLink = postLink + "<a onclick=\"return supprInsp(" + data['id'] + ", " + "'l'" + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></div></li>" + "\n";
 					$('#newPost').after(postLink);
 					//console.log(data);
 				},
@@ -80,12 +53,15 @@ $(document).ready(function(){
 				},
 
 				function(data){
-					var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					$('#postSlctLink').val('none').change();
+					modifCreaPost();
+
+					var postLink = "<li id=\'n" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 					postLink = postLink + "<h2>" + data["titre"] + "</h2>" + "\n";
 					postLink = postLink + "<p>" + data["text"] + "</p>" + "\n";
-					postLink = postLink + "</div></li>" + "\n";
+					postLink = postLink + "<a onclick=\"return supprInsp(" + data['id'] + ", " + "'n'" + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></div></li>" + "\n";
 					$('#newPost').after(postLink);
 					//console.log(data);
 				},
@@ -118,13 +94,15 @@ $(document).ready(function(){
 		      dataType: 'json', // selon le retour attendu
 		      data: data,
 		      success: function (data) {
-						var postLink = "<li><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+						$('#postSlctLink').val('none').change();
+
+						var postLink = "<li id=\'p" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 						postLink = postLink +  "<h2>" + data["titre"] + "</h2>" + "\n";
 						postLink = postLink +  "<p>" + data["descr"] + "</p>" + "\n";
 						postLink = postLink +  "<img src=\"../uploads/" + data["idM"] + "/" + data["id"] + "." + data["format"] + "\" width=\"100%\" height=\"100%\">" + "\n";
-						postLink = postLink + "</div></li>" + "\n";
+						postLink = postLink + "<a onclick=\"return supprInsp(" + data['id'] + ", " + "'p'" + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></div></li>" + "\n";
 						$('#newPost').after(postLink);
 						console.log(data);
 		      }
@@ -159,3 +137,63 @@ $(document).ready(function(){
 	});
 
 });
+
+function modifCreaPost() {
+	if ($('#postSlctLink').val() == 'note') {
+		$('#upload').prop("disabled", false);
+		$('#note').show();
+		$('#link').hide();
+		$('#pict').hide();
+		$('#none').hide();
+	}
+	else if ($('#postSlctLink').val() == 'link') {
+		$('#upload').prop("disabled", false);
+		$('#note').hide();
+		$('#link').show();
+		$('#pict').hide();
+		$('#none').hide();
+	}
+	else if ($('#postSlctLink').val() == 'pict') {
+		$('#upload').prop("disabled", false);
+		$('#note').hide();
+		$('#link').hide();
+		$('#pict').show();
+		$('#none').hide();
+	}
+	else if ($('#postSlctLink').val() == 'none') {
+		$('#upload').prop("disabled", true);
+		$('#note').hide();
+		$('#link').hide();
+		$('#pict').hide();
+		$('#none').show();
+	}
+}
+
+function supprInsp(idToDel, typePost) {
+	swal({
+	  title: "Êtes-vous sûr?",
+	  text: "Vous ne pouvez pas revenir en arrière!",
+	  type: "warning",
+	  showCancelButton: true,
+	  confirmButtonColor: "#DD6B55",
+	  confirmButtonText: "Oui, supprimer!",
+	  closeOnConfirm: false
+	},
+	function(){
+		$.post(
+				'../controller/ajax_post_del.php', // Le fichier cible côté serveur.
+				{
+						id : idToDel,
+						typeP : typePost
+				},
+
+				function(data){
+					$('#' + typePost + idToDel).remove();
+					swal("Supprimé!", "La publication a bien été supprimée.", "success");
+					//console.log(data);
+				},
+
+				'text' // Format des données reçues.
+		);
+	});
+}
