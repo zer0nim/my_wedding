@@ -1,6 +1,4 @@
 <?php
-  if(isset($_SESSION['account'])){
-    session_destroy();
-  }
+  $_SESSION['account'] = NULL;
   include_once('session_gestion.ctrl.php');
 ?>
