@@ -43,31 +43,51 @@
 		</div>
 	<?php }
 	if ($dao->getMariage($idacc) == NULL) { ?>
-
+	<legend class="col-xs-12">Création de l'événement</legend>
 	<form class="col-xs-12" method="post">
-		<legend>Création de l'événement</legend>
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
-			<label class="control-label">Mariage de</label><br>
-			Nom : <input name="nom1" type="text" class="form-control" required>
-			Prenom : <input name="prenom1" type="text" class="form-control" required>
+			<legend class="col-xs-12">Mariage de</legend>
+			<label class="col-xs-12">Nom :</label>
+			<div class="col-xs-12">
+				<input name="nom1" type="text" class="form-control" required>
+			</div>
+
+			<label class="col-xs-12">Prenom :</label>
+			<div class="col-xs-12">
+				<input name="prenom1" type="text" class="form-control" required>
+			</div>
+
 		</div>
 
 		<!--Deuxième personne-->
 		<div class="form-group col-xs-12	col-sm-6">
-			<label class="control-label">et</label><br>
-			Nom : <input name="nom2" type="text" class="form-control" required>
-			Prenom : <input name="prenom2" type="text" class="form-control" required>
+			<legend class="col-xs-12">et</legend>
+			<label class="col-xs-12">Nom :</label>
+			<div class="col-xs-12">
+				<input name="nom2" type="text" class="form-control" required>
+			</div>
+
+			<label class="col-xs-12">Prenom :</label>
+			<div class="col-xs-12">
+				<input name="prenom2" type="text" class="form-control" required>
+			</div>
 		</div>
 
-		<!--Date du mariage-->
-		<div class="form-group col-xs-12">
-			Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" required/>
+		<legend >Informations supplémentaires</legend>
+		<div class="form-group col-xs-12	col-sm-3">
+			<!--Date du mariage-->
+			<label class="col-xs-12">Date:</label>
+			<div class="form-group col-xs-12">
+				<input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" required/>
+			</div>
 		</div>
-
 		<!--Adresse du lieu de mariage-->
-		<div class="form-group col-xs-12">
-			Adresse: <input id="user_input_autocomplete_address" name="adresse" class="form-control" required>
+		<div class="form-group col-xs-12 col-sm-9">
+			<label class="col-xs-12">Adresse :</label>
+			<div class="form-group col-xs-12">
+				<input id="user_input_autocomplete_address" name="adresse" class="form-control" required>
+			</div>
 		</div>
 
 		<!--Bouton d'envoi-->
@@ -77,37 +97,59 @@
 	</form>
 
 <?php }else { $data=$dao->getMariage($idacc); // formulaire avec les données deja existantes?>
-
+	<legend class="col-xs-12">Modification de l'événement</legend>
 	<form class="col-xs-12" method="post">
-		<legend>Modification de l'événement</legend>
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
-			<label class="control-label">Mariage de</label><br>
-			Nom : <input name="nom1" type="text" class="form-control" value=<?=$data['maria_nomF']?> required>
-			Prenom : <input name="prenom1" type="text" class="form-control" value=<?=$data['maria_prenomF']?> required>
+			<legend class="col-xs-12">Mariage de</legend>
+			<label class="col-xs-12">Nom :</label>
+			<div class="col-xs-12">
+				<input name="nom1" type="text" class="form-control" value=<?=$data['maria_nomF']?> required>
+			</div>
+
+			<label class="col-xs-12">Prenom :</label>
+			<div class="col-xs-12">
+				<input name="prenom1" type="text" class="form-control" value=<?=$data['maria_prenomF']?> required>
+			</div>
+
 		</div>
 
 		<!--Deuxième personne-->
 		<div class="form-group col-xs-12	col-sm-6">
-			<label class="control-label">et</label><br>
-			Nom : <input name="nom2" type="text" class="form-control" value=<?=$data['maria_nomH']?> required>
-			Prenom : <input name="prenom2" type="text" class="form-control" value=<?=$data['maria_prenomH']?> required>
+			<legend class="col-xs-12">et</legend>
+			<label class="col-xs-12">Nom :</label>
+			<div class="col-xs-12">
+				<input name="nom2" type="text" class="form-control" value=<?=$data['maria_nomH']?> required>
+			</div>
+
+			<label class="col-xs-12">Prenom :</label>
+			<div class="col-xs-12">
+				<input name="prenom2" type="text" class="form-control" value=<?=$data['maria_prenomH']?> required>
+			</div>
 		</div>
 
-		<!--Date du mariage-->
-		<div class="form-group col-xs-12">
-			Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" value=<?=$data['maria_date']?> required/>
+		<legend >Informations supplémentaires</legend>
+		<div class="form-group col-xs-12	col-sm-3">
+			<!--Date du mariage-->
+			<label class="col-xs-12">Date:</label>
+			<div class="form-group col-xs-12">
+				<input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" value=<?=$data['maria_date']?> required/>
+			</div>
 		</div>
-
 		<!--Adresse du lieu de mariage-->
-		<div class="form-group col-xs-12">
-			Adresse: <input id="user_input_autocomplete_address" name="adresse" class="form-control" value="<?=$data['maria_lieu']?>" required>
+		<div class="form-group col-xs-12 col-sm-9">
+			<label class="col-xs-12">Adresse :</label>
+			<div class="form-group col-xs-12">
+				<input id="user_input_autocomplete_address" name="adresse" class="form-control" value="<?=$data['maria_lieu']?>" required>
+			</div>
 		</div>
 
 		<!--Bouton d'envoi-->
-		<div class="form-group	col-xs-12">
+		<div class="form-group col-xs-12">
 			<button id="singlebutton" name="creation" class="btn btn-primary">Modifier l'événement</button>
 		</div>
+
+
 	</form>
 <?php } ?>
 <?php include('../view/scripts.php') ?>
