@@ -45,7 +45,7 @@
 	if ($dao->getMariage($idacc) == NULL) { ?>
 
 	<form class="col-xs-12" method="post">
-		<legend>Création et modification de l'événement</legend>
+		<legend>Création de l'événement</legend>
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
 			<label class="control-label">Mariage de</label><br>
@@ -79,7 +79,7 @@
 <?php }else { $data=$dao->getMariage($idacc); // formulaire avec les données deja existantes?>
 
 	<form class="col-xs-12" method="post">
-		<legend>Création et modification de l'événement</legend>
+		<legend>Modification de l'événement</legend>
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
 			<label class="control-label">Mariage de</label><br>
@@ -106,7 +106,7 @@
 
 		<!--Bouton d'envoi-->
 		<div class="form-group	col-xs-12">
-			<button id="singlebutton" name="creation" class="btn btn-primary">Créer l'événement</button>
+			<button id="singlebutton" name="creation" class="btn btn-primary">Modifier l'événement</button>
 		</div>
 	</form>
 <?php } ?>
