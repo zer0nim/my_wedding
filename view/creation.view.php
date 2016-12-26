@@ -29,8 +29,20 @@
 				</div>
 			</div>
 		</nav>
-
 	</header>
+
+	<?php if (isset($erreur)) {?>
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Erreur : </strong><?=$erreur?>
+			</div>
+	<?php }elseif (isset($modif)) { ?>
+		<div class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong><?=$modif?></strong>
+		</div>
+	<?php }
+	if ($dao->getMariage($idacc) == NULL) { ?>
 
 	<form class="col-xs-12" method="post">
 		<legend>Création et modification de l'événement</legend>
@@ -64,6 +76,40 @@
 		</div>
 	</form>
 
+<?php }else { $data=$dao->getMariage($idacc); // formulaire avec les données deja existantes?>
+
+	<form class="col-xs-12" method="post">
+		<legend>Création et modification de l'événement</legend>
+		<!--Première personne-->
+		<div class="form-group col-xs-12	col-sm-6">
+			<label class="control-label">Mariage de</label><br>
+			Nom : <input name="nom1" type="text" class="form-control" value=<?=$data['maria_nomF']?> required>
+			Prenom : <input name="prenom1" type="text" class="form-control" value=<?=$data['maria_prenomF']?> required>
+		</div>
+
+		<!--Deuxième personne-->
+		<div class="form-group col-xs-12	col-sm-6">
+			<label class="control-label">et</label><br>
+			Nom : <input name="nom2" type="text" class="form-control" value=<?=$data['maria_nomH']?> required>
+			Prenom : <input name="prenom2" type="text" class="form-control" value=<?=$data['maria_prenomH']?> required>
+		</div>
+
+		<!--Date du mariage-->
+		<div class="form-group col-xs-12">
+			Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" value=<?=$data['maria_date']?> required/>
+		</div>
+
+		<!--Adresse du lieu de mariage-->
+		<div class="form-group col-xs-12">
+			Adresse: <input id="user_input_autocomplete_address" name="adresse" class="form-control" value="<?=$data['maria_lieu']?>" required>
+		</div>
+
+		<!--Bouton d'envoi-->
+		<div class="form-group	col-xs-12">
+			<button id="singlebutton" name="creation" class="btn btn-primary">Créer l'événement</button>
+		</div>
+	</form>
+<?php } ?>
 <?php include('../view/scripts.php') ?>
 <script src="../view/js/creation.js"></script>
 <?php include('../view/footer.php') ?>

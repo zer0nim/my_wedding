@@ -1049,6 +1049,38 @@ listTab_nbPlaces
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité de creation de mariage
     //----------------------------------------------------------------------------------------
+    function getMariage($idaccount){
+      try{
+        $req = $this->db->prepare('SELECT maria_date, maria_lieu, maria_nomF, maria_prenomF, maria_nomH, maria_prenomH FROM Mariage WHERE maria_idAcc = :acc');
+        $req->execute(array(':acc' => $idaccount));
+        $req=$req->fetch();
+        if ($req != NULL) {
+          $req['maria_date']=explode(' ',$req['maria_date'])[0];
+          $req['maria_date']=explode('-',$req['maria_date']);
+          $req['maria_date']=$req['maria_date'][2].'/'.$req['maria_date'][1].'/'.$req['maria_date'][0];
+        }
+
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction getMariage: ".$e->getMessage());
+      }
+    }
+
+    function modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
+      try {
+        $req = $this->db->prepare('UPDATE Mariage SET maria_date=:dat, maria_lieu=:lieu, maria_nomF=:nom1, maria_prenomF=:prenom1, maria_nomH=:nom2, maria_prenomH=:prenom2 WHERE maria_idAcc = :acc');
+        $req->execute(array(':dat' => $date,
+                            ':lieu' => $adresse,
+                            ':nom1' => $nom1,
+                            ':prenom1' => $prenom1,
+                            ':nom2' => $nom2,
+                            ':prenom2' => $prenom2,
+                            ':acc' => $idacc));
+      }catch (PDOException $e) {
+        exit("Erreur modification dans la fonction modifMariage: ".$e->getMessage());
+      }
+    }
+
     function createMariage($idaccount,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
       try{
         $req = $this->db->prepare('INSERT INTO Mariage values(NULL, :acc, :dat, :lieu, :nom1, :prenom1, :nom2, :prenom2)');
