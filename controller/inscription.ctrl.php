@@ -1,6 +1,6 @@
 <?php
   require_once('../model/DAO.class.php');
-  require_once('session_delete.ctrl.php');
+  //require_once('session_delete.ctrl.php');
   if (isset($_POST['connexion'])) {
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
