@@ -32,54 +32,37 @@
 
 	</header>
 
-
-
-	<form class="col-xs-12">
-		<legend>Création de l'événement</legend>
-
-		<!-- -v- Name input -v- -->
+	<form class="col-xs-12" method="post">
+		<legend>Création et modification de l'événement</legend>
+		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
 			<label class="control-label">Mariage de</label><br>
-		Nom : <input type="text" class="form-control">
-		Prenom : <input type="text" class="form-control">
-	</div>
+			Nom : <input name="nom1" type="text" class="form-control" required>
+			Prenom : <input name="prenom1" type="text" class="form-control" required>
+		</div>
 
-	<div class="form-group col-xs-12	col-sm-6">
-		<label class="control-label">et</label><br>
-		Nom : <input type="text" class="form-control">
-		Prenom : <input type="text" class="form-control">
-	</div>
-	<!-- -^- Name input -^- -->
+		<!--Deuxième personne-->
+		<div class="form-group col-xs-12	col-sm-6">
+			<label class="control-label">et</label><br>
+			Nom : <input name="nom2" type="text" class="form-control" required>
+			Prenom : <input name="prenom2" type="text" class="form-control" required>
+		</div>
 
-	<!-- -v- Description input -v- -->
-	<div class="form-group col-xs-12">
-		Description : <textarea id="textarea" class="form-control"></textarea>
-	</div>
-	<!-- -^- Description input -^- -->
-
-<!-- -v- Date input -v- -->
-	<div class="form-group col-xs-12">
-			Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text"/>
-	</div>
-<!-- -^- Date input -^- -->
-
-<!-- -v- Adress input -v- -->
+		<!--Date du mariage-->
 		<div class="form-group col-xs-12">
-			Adresse: <input id="user_input_autocomplete_address" class="form-control">
+			Date: <input class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" type="text" required/>
 		</div>
-<!-- -^- Adress input -^- -->
 
-<!-- -v- Button -v- -->
+		<!--Adresse du lieu de mariage-->
+		<div class="form-group col-xs-12">
+			Adresse: <input id="user_input_autocomplete_address" name="adresse" class="form-control" required>
+		</div>
+
+		<!--Bouton d'envoi-->
 		<div class="form-group	col-xs-12">
-				<button id="singlebutton" name="singlebutton" class="btn btn-primary">Créer l'événement</button>
+			<button id="singlebutton" name="creation" class="btn btn-primary">Créer l'événement</button>
 		</div>
-<!-- -^- Button -^- -->
-
 	</form>
-
-
-	<footer>
-	</footer>
 
 <?php include('../view/scripts.php') ?>
 <script src="../view/js/creation.js"></script>

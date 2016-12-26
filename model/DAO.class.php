@@ -1007,7 +1007,7 @@ listTab_nbPlaces
     }
 
     //----------------------------------------------------------------------------------------
-    // fonction pour la fonctionnalité inscription et connection
+    // fonction pour la fonctionnalité inscription et connexion
     //----------------------------------------------------------------------------------------
     function connexion($email,$mdp){
       try{
@@ -1043,6 +1043,26 @@ listTab_nbPlaces
         }
       }catch(PDOException $e){
         exit("Erreur dans la fonction inscription: ".$e->getMessage());
+      }
+    }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité de creation de mariage
+    //----------------------------------------------------------------------------------------
+    function createMariage($idaccount,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
+      try{
+        $req = $this->db->prepare('INSERT INTO Mariage values(NULL, :acc, :dat, :lieu, :nom1, :prenom1, :nom2, :prenom2)');
+        $req=$req->execute(array(
+                            ':acc' => $idaccount,
+                            ':dat' => $date,
+                            ':lieu' => $adresse,
+                            ':nom1' => $nom1,
+                            'prenom1' => $prenom1,
+                            ':nom2' => $nom2,
+                            ':prenom2' => $prenom2));
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction createMariage: ".$e->getMessage());
       }
     }
   }
