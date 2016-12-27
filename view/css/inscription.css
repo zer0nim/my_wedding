@@ -93,7 +93,7 @@ main #sign {
 #features {
 	display: block;
 	background-image: url("../../img/9.jpg");
-	margin: auto;
+	width: auto;
 }
 #features > div {
 	padding: 1em;
