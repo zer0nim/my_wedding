@@ -1,6 +1,46 @@
 body {
-	margin: 0;
+	margin: 0px;
 }
+/*barre de nav*/
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+	padding: 0.4em 0.8em;
+	color: white;
+}
+.navbar-default .navbar-nav > li > .btn-default {
+	color: black;
+}
+/*Cadre première image*/
+header {
+	height: 100vh;
+	background-image: url("../../img/2.jpg");
+	background-size: cover;
+}
+header > div {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+header > div div {
+	margin: 0 3em;
+}
+
+header > div h1, header > div h2 {
+	color: white;
+	font-style: normal;
+}
+header > div h1 {
+	margin: 0;
+	font-size: 5em;
+}
+header > div h2 {
+	font-size: 4em;
+}
+/*Zone connexion/inscription*/
 
 .form-signin {
 	max-width: 330px;
@@ -39,46 +79,17 @@ body {
 	border-top-right-radius: 0;
 }
 
-.navbar {
-	margin-bottom: 0;
-}
+main #sign {
 
-.navbar-default .navbar-nav > li > a {
-	padding: 0.4em 0.8em;
-	color: white;
-}
-.navbar-default .navbar-nav > li > .btn-default {
-	color: black;
-}
-
-header {
-	height: 100vh;
-	background-image: url("../../img/2.jpg");
-	background-size: cover;
-}
-header > div {
-	height: 100%;
 	display: flex;
+	justify-content: space-around;
+	flex-flow: row wrap;
 	align-items: center;
 }
-
-header > div div {
-	margin: 0 3em;
+.form-signin {
+	flex-basis: 500px;
 }
-
-header > div h1, header > div h2 {
-	color: white;
-	font-style: normal;
-}
-header > div h1 {
-	margin: 0;
-	font-size: 5em;
-}
-header > div h2 {
-	font-size: 4em;
-}
-
-
+/*Zone des fonctionnalités*/
 #features {
 	display: block;
 	background-image: url("../../img/9.jpg");
@@ -92,17 +103,7 @@ header > div h2 {
 	margin: 1em auto;
 }
 
-main #sign {
-
-	display: flex;
-	justify-content: space-around;
-	flex-flow: row wrap;
-	align-items: center;
-}
-.form-signin {
-	flex-basis: 500px;
-}
-
+/*Bas de page*/
 footer {
 	background-color: #bbbbbb;
 }
