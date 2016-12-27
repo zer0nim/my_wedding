@@ -6,7 +6,7 @@ body {
 	max-width: 330px;
 	padding: 15px;
 	font-size: 16px;
-	color: #ffffff;
+	color: #286090;
 }
 .form-signin .form-signin-heading {
 	margin-bottom: 10px;
@@ -78,19 +78,22 @@ header > div h2 {
 	font-size: 4em;
 }
 
-main #features {
+
+#features {
 	display: block;
+	background-image: url("../../img/9.jpg");
+	margin: auto;
 }
-main #features > div {
+#features > div {
 	padding: 1em;
 }
-main img {
+#features img {
 	display: block;
 	margin: 1em auto;
 }
 
 main #sign {
-	background-image: url("../../img/9.jpg");
+
 	display: flex;
 	justify-content: space-around;
 	flex-flow: row wrap;

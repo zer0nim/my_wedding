@@ -44,35 +44,10 @@
 					<h2>Le meilleur moyen d'organiser votre mariage</h2>
 				</div>
 			</div>
+
 		</header>
 
 		<main>
-			<div id="features" class="container">
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
-				</div>
-			</div>
 			<?php if (isset($messErr)) {?>
 					<div class="alert alert-danger">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -105,7 +80,35 @@
 					<button class="btn btn-lg btn-primary btn-block" name="inscription" type="submit">S'inscrire</button>
 				</form>
 			</div>
-		</main>
+					</main>
+			<div id="features" class="container">
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+				<div class="col-sm-4">
+					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim id ante luctus bibendum. Sed non arcu nec turpis molestie commodo et ut orci. Nam id lobortis erat. Maecenas ultricies nec nisl eget porttitor. In efficitur, turpis a vestibulum lobortis, orci tortor hendrerit risus, vel volutpat purus diam vitae sem. Aliquam dapibus risus id iaculis euismod. Nulla egestas porttitor ante, non luctus risus eleifend id. Morbi in libero elementum, pharetra leo eget, porta orci. Cras bibendum porta dolor sit amet vehicula. Integer nec quam purus. Integer aliquet posuere venenatis. Aliquam ante massa, tristique nec tempor a, placerat fermentum lacus.</p>
+				</div>
+			</div>
+
+
 		<footer>
 			<p class="col-sm-6">Addresse: qwfqwfqwf</p>
 			<p class="col-sm-6">Mentions légales: qwfqwfqwfqwf</p>
