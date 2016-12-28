@@ -15,9 +15,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Accueil</a></li>
+				<li class="active"><a href="">Accueil</a></li>
 				<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
-				<li><a href="#">Page Publique</a></li>
+				<li><a href="page-publique.ctrl.php">Page Publique</a></li>
 				<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
