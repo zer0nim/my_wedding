@@ -28,11 +28,11 @@
         echo '<a class="cnt_l' . $value->getLink_id() . ' supprCntLink btn btn-danger btn-xs" onclick="return supprInsp(' . $value->getLink_id() . ', ' . "'l'" . ');" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>  ';
         echo '<a class="cnt_l' . $value->getLink_id() . ' btn btn-warning btn-xs" onclick="return edit(' . $value->getLink_id() . ', ' . "'l'" . ');" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>';
 
-        echo '<form method="post" class="edit" id="edit' . $value->getLink_id() . 'l">' . "\n";
+        echo '<form method="post" class="edit link" id="edit' . $value->getLink_id() . 'l">' . "\n";
         echo '<label class="control-label" for="textinput">Adresse</label>' . "\n";
-        echo '<input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1" required>' . "\n";
+        echo '<input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1" value="' . $value->getLink_adress() . '"required>' . "\n";
         echo '<span class="input-group-addon">Description</span>' . "\n";
-        echo '<textarea class="form-control" name="description" id="" name=""></textarea>' . "\n";
+        echo '<textarea class="form-control" name="description" id="" name="">' . $value->getLink_descr() . '</textarea>' . "\n";
         echo '<input type="submit" class="btn btn-default btn-block" value="Modifier">' . "\n";
         echo '<input type="button" class="btn btn-primary btn-block" value="Annuler" onclick="return cancelEdit(' . $value->getLink_id() . ', ' . "'l'" . ');">' . "\n";
         echo '</form>' . "\n";
@@ -50,11 +50,11 @@
         echo '<a class="cnt_p' . $value->getPict_id() . ' supprCntLink btn btn-danger btn-xs" onclick="return supprInsp(' . $value->getPict_id() . ', ' . "'p'" . ');" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>  ';
         echo '<a class="cnt_p' . $value->getPict_id() . ' supprCntLink btn btn-warning btn-xs" onclick="return edit(' . $value->getPict_id() . ', ' . "'p'" . ');" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>';
 
-        echo '<form method="post" enctype="multipart/form-data" class="edit" id="edit' . $value->getPict_id() . 'p">' . "\n";
+        echo '<form method="post" enctype="multipart/form-data" class="edit pict" id="edit' . $value->getPict_id() . 'p">' . "\n";
         echo '<label class="control-label" for="textinput" required>Titre</label>' . "\n";
-        echo '<input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>' . "\n";
+        echo '<input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" value="' . $value->getPict_title() . '" required>' . "\n";
         echo '<span class="input-group-addon">Description</span>' . "\n";
-        echo '<textarea class="form-control" name="description" id="" name=""></textarea>' . "\n";
+        echo '<textarea class="form-control" name="description" id="" name="">' . $value->getPict_descr() . '</textarea>' . "\n";
         echo '<input type="file" name="image" accept="image/*" required>' . "\n";
         echo '<div id="image_preview" class="col-lg-10 col-lg-offset-2">' . "\n";
         echo '<div class="thumbnail hidden">' . "\n";
@@ -81,11 +81,11 @@
         echo '<a class="cnt_n' . $value->getNote_id() . ' supprCntLink btn btn-danger btn-xs" onclick="return supprInsp(' . $value->getNote_id() . ', ' . "'n'" . ');" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>  ';
         echo '<a class="cnt_n' . $value->getNote_id() . ' btn btn-warning btn-xs" onclick="return edit(' . $value->getNote_id() . ', ' . "'n'" . ');" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>';
 
-        echo '<form class="edit" id="edit' . $value->getNote_id() . 'n" method="post" >' . "\n";
+        echo '<form class="edit note" id="edit' . $value->getNote_id() . 'n" method="post" >' . "\n";
         echo '<label class="control-label" for="textinput">Titre</label>' . "\n";
-        echo '<input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>' . "\n";
+        echo '<input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" value="' . $value->getNote_title() . '" required>' . "\n";
         echo '<span class="input-group-addon">Note</span>' . "\n";
-        echo '<textarea class="form-control" name="description" id="" name="" required></textarea>' . "\n";
+        echo '<textarea class="form-control" name="description" id="" name="" required>' . $value->getNote_text() . '</textarea>' . "\n";
         echo '<input type="submit" class="btn btn-default btn-block" value="Modifier">' . "\n";
         echo '<input type="button" class="btn btn-primary btn-block" value="Annuler" onclick="return cancelEdit(' . $value->getNote_id() . ', ' . "'n'" . ');">' . "\n";
         echo '</form>' . "\n";

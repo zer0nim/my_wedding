@@ -6,7 +6,7 @@
   $idM = $_SESSION['idM'];
 
   $ln = new lien();
-  $ln->faux_construct(NULL, 1, NULL, $_POST['adr'], $_POST['desc']);
+  $ln->faux_construct(NULL, $idM, NULL, $_POST['adr'], $_POST['desc']);
 
   $idDate = $dao->setLien($ln);
   $ln->setLink_id($idDate['id']);

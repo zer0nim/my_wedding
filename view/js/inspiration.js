@@ -40,6 +40,31 @@ $(document).ready(function(){
 		);
 	});
 
+	$('.link').on('submit', function (e) {
+		// On empêche le navigateur de soumettre le formulaire
+		e.preventDefault();
+
+		var form = $(this);
+
+		form.parent().children()[0].innerHTML = form.children().next().val();
+		form.parent().children()[1].innerHTML = form.children().next().next().next().val();
+		$.post(
+				'../controller/ajax_link_modify.php', // Le fichier cible côté serveur.
+				{
+						adr : form.children().next().val(),
+						desc : form.children().next().next().next().val(),
+						idln : form.attr('id').slice(4, 5)
+				},
+
+				function(data){
+					cancelEdit(form.attr('id').slice(4, 5), 'l')
+					//console.log(data);
+				},
+
+				'json' // Format des données reçues.
+		);
+	});
+
 	$('#note').on('submit', function (e) {
 		// On empêche le navigateur de soumettre le formulaire
 		e.preventDefault();
@@ -64,6 +89,32 @@ $(document).ready(function(){
 					postLink = postLink + "<p>" + data["text"] + "</p>" + "\n";
 					postLink = postLink + "<a onclick=\"return supprInsp(" + data['id'] + ", " + "'n'" + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></div></li>" + "\n";
 					$('#newPost').after(postLink);
+					//console.log(data);
+				},
+
+				'json' // Format des données reçues.
+		);
+	});
+
+	$('.note').on('submit', function (e) {
+		// On empêche le navigateur de soumettre le formulaire
+		e.preventDefault();
+
+		var form = $(this);
+
+		form.parent().children()[0].innerHTML = form.children().next().val();
+		form.parent().children()[1].innerHTML = form.children().next().next().next().val();
+
+		$.post(
+				'../controller/ajax_note_modify.php', // Le fichier cible côté serveur.
+				{
+						titre : form.children().next().val(),
+						note : form.children().next().next().next().val(),
+						idln : form.attr('id').slice(4, 5)
+				},
+
+				function(data){
+					cancelEdit(form.attr('id').slice(4, 5), 'n')
 					//console.log(data);
 				},
 
@@ -110,6 +161,14 @@ $(document).ready(function(){
 		      }
 		  });
 		}
+	});
+
+	$('.pict').on('submit', function (e) {
+		// On empêche le navigateur de soumettre le formulaire
+		e.preventDefault();
+
+		var form = $(this);
+		console.log("pict");
 	});
 
 	// A change sélection de fichier

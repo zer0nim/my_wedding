@@ -720,6 +720,19 @@ class DAO {
           }
         }
 
+        function modifyNote($note) {
+          try {
+            $req = $this->db->prepare('UPDATE Note SET note_title = :note_title, note_text = :note_text WHERE note_idM = :note_idM AND note_id = :note_id');
+            $req->execute(array(':note_id' => $note->getNote_id(),
+                                ':note_idM' => $note->getNote_idM(),
+                                ':note_title' => $note->getNote_title(),
+                                ':note_text' => $note->getNote_text()));
+                              }
+          catch (PDOException $e) {
+            exit("Erreur création nouvelle photo: ".$e->getMessage());
+          }
+        }
+
     // Lien ->  link_id, link_idM, link_date, link_adress, link_descr
 
     function getLiens($idM) {
@@ -773,6 +786,19 @@ class DAO {
                           }
       catch (PDOException $e) {
         exit("Erreur création nouveau lien: ".$e->getMessage());
+      }
+    }
+
+    function modifyLien($lien) {
+      try {
+        $req = $this->db->prepare('UPDATE Lien SET link_adress = :link_adress, link_descr = :link_descr WHERE link_idM = :link_idM AND link_id = :link_id');
+        $req->execute(array(':link_id' => $lien->getLink_id(),
+                            ':link_idM' => $lien->getLink_idM(),
+                            ':link_adress' => $lien->getLink_adress(),
+                            ':link_descr' => $lien->getLink_descr()));
+                          }
+      catch (PDOException $e) {
+        exit("Erreur modification du lien: ".$e->getMessage());
       }
     }
 

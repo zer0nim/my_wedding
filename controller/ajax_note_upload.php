@@ -6,7 +6,7 @@
   $idM = $_SESSION['idM'];
 
   $n = new note();
-  $n->faux_construct(NULL, 1, NULL, $_POST['titre'], $_POST['note']);
+  $n->faux_construct(NULL, $idM, NULL, $_POST['titre'], $_POST['note']);
 
   $idDate = $dao->setNote($n);
   $n->setNote_id($idDate['id']);
