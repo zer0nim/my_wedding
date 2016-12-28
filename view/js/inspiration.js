@@ -1,13 +1,13 @@
 
 $(document).ready(function(){
+	$('.edit').hide();
+
 	$('#note').hide();
 	$('#link').hide();
 	$('#pict').hide();
 	$('#none').show();
 
 	$('#postSlctLink').bind("input", modifCreaPost);
-
-
 
 	$('#link').on('submit', function (e) {
 		// On empêche le navigateur de soumettre le formulaire
@@ -198,4 +198,16 @@ function supprInsp(idToDel, typePost) {
 				'text' // Format des données reçues.
 		);
 	});
+}
+
+function edit(idToEdit, typePost) {
+	$('#edit' + idToEdit + typePost).show();
+	$('.cnt_' + typePost + idToEdit).hide();
+
+	//cnt_l6
+}
+
+function cancelEdit(idToEdit, typePost) {
+	$('#edit' + idToEdit + typePost).hide();
+	$('.cnt_' + typePost + idToEdit).show();
 }

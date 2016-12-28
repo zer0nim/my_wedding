@@ -12,6 +12,12 @@ nav {
 	color: black;
 }
 
+.edit {
+	background-color: white;
+	padding: 5px;
+	color: black;
+}
+
 .input-group-addon:first-child {
 	border: 1px solid #ccc;
 	border-top-right-radius: 4px;
