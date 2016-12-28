@@ -1,5 +1,5 @@
 <?php include('../view/header.php') ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link rel="stylesheet" href="../view/css/page-publique.css" type="text/css" />
 </head>
 <body class="container-fluid">
 
@@ -31,6 +31,11 @@
 		</nav>
 	</header>
 
+  <div class="col-xs-12">
+    <script id="cid0020000143932317037" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
+    style="width: 100%;height: 100%;">{"handle":"myweddingchat","arch":"js","styles":{"a":"286090","b":100,"c":"FFFFFF","d":"FFFFFF","k":"286090","l":"286090","m":"286090","n":"FFFFFF","p":"10",
+    "q":"286090","r":100,"usricon":0.59,"surl":0,"cnrs":"1","fwtickm":1}}</script>
+  </div>
 
 <?php
  include('../view/scripts.php');

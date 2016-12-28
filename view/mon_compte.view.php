@@ -1,7 +1,6 @@
 <?php
   include('../view/header.php');
 ?>
-<link rel="stylesheet" href="../view/css/mon_compte.css" type="text/css" />
 </head>
 <body class="container-fluid">
 
