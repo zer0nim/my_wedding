@@ -53,11 +53,11 @@ $(document).ready(function(){
 				{
 						adr : form.children().next().val(),
 						desc : form.children().next().next().next().val(),
-						idln : form.attr('id').slice(4, 5)
+						idln : form.attr('id').slice(4, -1)
 				},
 
 				function(data){
-					cancelEdit(form.attr('id').slice(4, 5), 'l')
+					cancelEdit(form.attr('id').slice(4, -1), 'l')
 					//console.log(data);
 				},
 
@@ -110,11 +110,11 @@ $(document).ready(function(){
 				{
 						titre : form.children().next().val(),
 						note : form.children().next().next().next().val(),
-						idln : form.attr('id').slice(4, 5)
+						idln : form.attr('id').slice(4, -1)
 				},
 
 				function(data){
-					cancelEdit(form.attr('id').slice(4, 5), 'n')
+					cancelEdit(form.attr('id').slice(4, -1), 'n')
 					//console.log(data);
 				},
 
@@ -134,7 +134,7 @@ $(document).ready(function(){
 		if ($form.find('input[name="image"]')[0].files[0]['size'] > 2000000) {
 			sweetAlert("Oops...", "La taille de fichier maximal et de 2mo!", "error");
 		}
-		else if ($.inArray(name.substr((name.lastIndexOf('.') +1)), ["jpg", "jpeg", "gif", "png"]) != 0) {
+		else if ($.inArray(name.substr((name.lastIndexOf('.') +1)), ["jpg", "jpeg", "gif", "png"]) == -1) {
 			sweetAlert("Oops...", "Seuls les formats jpg, jpeg, gif et png sont acceptés!", "error");
 		}
 		else {
@@ -165,10 +165,38 @@ $(document).ready(function(){
 
 	$('.pict').on('submit', function (e) {
 		// On empêche le navigateur de soumettre le formulaire
-		e.preventDefault();
+	  e.preventDefault();
 
-		var form = $(this);
-		console.log("pict");
+	  var $form = $(this);
+	  var formdata = (window.FormData) ? new FormData($form[0]) : null;
+	  var data = (formdata !== null) ? formdata : $form.serialize();
+		var name = $form.find('input[name="image"]')[0].files[0]['name'];
+
+		data.append( 'idPict', $form.attr('id').slice(4, -1) );
+
+		if ($form.find('input[name="image"]')[0].files[0]['size'] > 2000000) {
+			sweetAlert("Oops...", "La taille de fichier maximal et de 2mo!", "error");
+		}
+		else if ($.inArray(name.substr((name.lastIndexOf('.') +1)), ["jpg", "jpeg", "gif", "png"]) == -1) {
+			sweetAlert("Oops...", "Seuls les formats jpg, jpeg, gif et png sont acceptés!", "error");
+		}
+		else {
+			$.ajax({
+		      url: '../controller/ajax_pict_modify.php',
+		      type: $form.attr('method'),
+		      contentType: false, // obligatoire pour de l'upload
+		      processData: false, // obligatoire pour de l'upload
+		      dataType: 'json', // selon le retour attendu
+		      data: data,
+		      success: function (data) {
+						$form.parent().children()[0].innerHTML = $form.children().next().val();
+						$form.parent().children()[1].innerHTML = $form.children().next().next().next().val();
+						$($form.parent().children()[2]).attr('src',data + '?dt=' + (+new Date()) ); //'?dt=' + (+new Date()) pour que l'image se recharge meme avec le meme nom
+						cancelEdit($form.attr('id').slice(4, -1), 'p')
+						//console.log(data);
+		      }
+		  });
+		}
 	});
 
 	// A change sélection de fichier

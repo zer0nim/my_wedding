@@ -664,6 +664,20 @@ class DAO {
       }
     }
 
+    function modifyPhoto($photo) {
+      try {
+        $req = $this->db->prepare('UPDATE Photo SET pict_title = :pict_title, pict_descr = :pict_descr, pict_format = :pict_format WHERE pict_idM = :pict_idM AND pict_id = :pict_id');
+        $req->execute(array(':pict_id' => $photo->getPict_id(),
+                            ':pict_idM' => $photo->getPict_idM(),
+                            ':pict_title' => $photo->getPict_title(),
+                            ':pict_format' => $photo->getPict_format(),
+                            ':pict_descr' => $photo->getPict_descr()));
+                          }
+      catch (PDOException $e) {
+        exit("Erreur création nouvelle photo: ".$e->getMessage());
+      }
+    }
+
     // Note ->  note_id, note_idM, note_date, note_title, note_text
 
         function getNotes($idM) {
