@@ -32,7 +32,42 @@
 	</header>
 
 	<div class="col-xs-12">
-		<a href="../model/forum/index.php" class="btn btn-primary">Acceder au forum</a>
+		<legend>Questions pour les organisateurs du mariage</legend>
+		<div id="scrollable" class="col-xs-12">
+			<?php
+				for ($nb=0; $nb < 100; $nb++) {
+					if ($nb <99) {?>
+						<p>un p</p><hr>
+		<?php }else{ ?>
+						<p>un p</p>
+	<?php 	}
+				}			?>
+			<script>
+				element = document.getElementById('scrollable');
+				element.scrollTop = element.scrollHeight;
+			</script>
+		</div>
+		<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
+			<div class="form-group">
+				<label for="nom" class="control-label col-sm-2">Nom/Prenom :</label>
+				<div class="col-sm-10">
+					<input id="nom" type="text" name="nom" class="form-control" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input type="text" name="question" class="form-control" placeholder="Posez votre question ici" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button class="btn btn-secondary" name="envoiQuestion">Envoyer</button>
+				</div>
+			</div>
+
+		</form>
 	</div>
 
 <?php
