@@ -56,7 +56,7 @@
         echo '<span class="input-group-addon">Description</span>' . "\n";
         echo '<textarea class="form-control" name="description" id="" name="">' . $value->getPict_descr() . '</textarea>' . "\n";
         echo '<input type="file" name="image" accept="image/*" required>' . "\n";
-        echo '<div id="image_preview" class="col-lg-10 col-lg-offset-2">' . "\n";
+        echo '<div class="image_preview col-lg-10 col-lg-offset-2">' . "\n";
         echo '<div class="thumbnail hidden">' . "\n";
         echo '<img src="http://placehold.it/5" alt="">' . "\n";
         echo '<div class="caption">' . "\n";
