@@ -6,8 +6,8 @@ work correctly.
 ******************************************************/
 
 //We log to the DataBase
-mysql_connect('host', 'username', 'password');
-mysql_select_db('database_name');
+mysql_connect('137.74.148.71', 'iut2info', 'projetweb');
+mysql_select_db('base');
 
 //Username of the Administrator
 $admin='admin';
