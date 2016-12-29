@@ -31,6 +31,9 @@
 		</nav>
 	</header>
 
+	<div class="col-xs-12">
+		<a href="../model/forum/index.php" class="btn btn-primary">Acceder au forum</a>
+	</div>
 
 <?php
  include('../view/scripts.php');
