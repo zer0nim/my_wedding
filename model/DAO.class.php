@@ -1137,6 +1137,46 @@ listTab_nbPlaces
         exit("Erreur dans la fonction createMariage: ".$e->getMessage());
       }
     }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité de creation de mariage
+    //----------------------------------------------------------------------------------------
+
+    function envoiquestion($idm,$nom,$question,$date){
+      try{
+        $req = $this->db->prepare('INSERT INTO Questions values(NULL, :idm, :nom, :question, :dat)');
+        $req=$req->execute(array(
+                            ':idm' => $idm,
+                            ':nom' => $nom,
+                            ':question' => $question,
+                            ':dat' => $date));
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction envoiquestion: ".$e->getMessage());
+      }
+    }
+
+    function getquestions($idm){
+      try{
+        $req = $this->db->prepare('SELECT quest_nom, quest_question, quest_date FROM Questions WHERE quest_idm = :idm');
+        $req->execute(array(':idm' => $idm));
+        $req=$req->fetchAll();
+        if ($req != NULL) {
+          $nb=count($req);
+          for ($i=0; $i < $nb; $i++) {
+            $req[$i]['quest_date']=explode(' ',$req[$i]['quest_date']);
+            $date=$req[$i]['quest_date'][0];
+            $heure=$req[$i]['quest_date'][1];
+            $date=explode('-',$date);
+            $date=$date[2].'-'.$date[1].'-'.$date[0];
+            $req[$i]['quest_date']=$date.' '.$heure;
+          }
+        }
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction getquestions: ".$e->getMessage());
+      }
+    }
   }
 
 ?>

@@ -35,34 +35,42 @@
 		<legend>Questions pour les organisateurs du mariage</legend>
 		<div id="scrollable" class="col-xs-12">
 			<?php
-				for ($nb=0; $nb < 100; $nb++) {
-					if ($nb <99) {?>
-						<p>un p</p><hr>
-		<?php }else{ ?>
-						<p>un p</p>
-	<?php 	}
-				}			?>
+			if ($questions==0) {
+				echo "<p>Pas de questions pour l'instant</p>\n";
+			}else{
+				$nb=count($questions);
+				for ($i=0; $i < $nb; $i++) {
+					if ($i<$nb-1) {
+						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <small>{$questions[$i]['quest_date']}</small><hr>\n";
+					}else {
+						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <small>{$questions[$i]['quest_date']}</small>\n";
+					}
+				}
+			}
+			?>
 			<script>
 				element = document.getElementById('scrollable');
 				element.scrollTop = element.scrollHeight;
 			</script>
 		</div>
-		<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
+
+		<form class="form-horizontal" action="page-publique.ctrl.php?idm=<?=$idM?>" method="post">
 			<div class="form-group">
-				<label for="nom" class="control-label col-sm-2">Nom/Prenom :</label>
-				<div class="col-sm-10">
+				<label for="nom" class="control-label col-sm-2 col-lg-1">Nom/Prenom :</label>
+				<div class="col-sm-10 col-lg-11">
 					<input id="nom" type="text" name="nom" class="form-control" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-12">
-					<input type="text" name="question" class="form-control" placeholder="Posez votre question ici" required>
+				<label for="question" class="control-label col-sm-1">Question :</label>
+				<div class="col-sm-11">
+					<input id="question" type="text" name="question" class="form-control" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-12">
+				<div class="col-xs-12">
 					<button class="btn btn-secondary" name="envoiQuestion">Envoyer</button>
 				</div>
 			</div>
