@@ -55,7 +55,7 @@
 			</script>
 		</div>
 
-		<form class="form-horizontal" action="page-publique.ctrl.php?idm=<?=$idM?>" method="post">
+		<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
 			<div class="form-group">
 				<label for="nom" class="control-label col-sm-2 col-lg-1">Nom/Prenom :</label>
 				<div class="col-sm-10 col-lg-11">
