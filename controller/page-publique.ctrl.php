@@ -1,11 +1,9 @@
 <?php
   include_once('../model/DAO.class.php');
-  session_start();
-  if (isset($_SESSION['idM'])) {
-    $idM=$_SESSION['idM'];
-  }elseif (isset($_GET['idm'])) {
-    $idM=$_GET['idm'];
-  }
+  include_once('session_create.ctrl.php');
+  
+  $idM=$_SESSION['idM'];
+
 
   if (isset($_POST['envoiQuestion'])) {
     $nom=$_POST['nom'];

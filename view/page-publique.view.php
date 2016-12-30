@@ -17,26 +17,22 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<?php if(isset($_SESSION['account'])){ ?>
 						<li><a href="accueil.ctrl.php">Accueil</a></li>
 						<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
 						<li class="active"><a href="">Page Publique</a></li>
 						<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
-					<?php }else{ ?>
 						<li class="active"><a href="">Page Publique</a></li>
-						<?php } ?>
 					</ul>
 
-					<?php if(isset($_SESSION['account'])){ ?>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="session_delete.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
 					</ul>
-					<?php } ?>
 				</div>
 			</div>
 		</nav>
 	</header>
 
+	<a href="page-publique-public.ctrl.php" class="btn btn-primary">Aperçu visiteur</a>
 	<div class="col-xs-12">
 		<legend>Questions pour les organisateurs du mariage</legend>
 		<div id="scrollable" class="col-xs-12">
