@@ -31,8 +31,19 @@
 		</nav>
 	</header>
 
-	<a href="page-publique-public.ctrl.php?idm=<?=$idM?>" class="btn btn-primary">Aperçu visiteur</a>
-	<div class="col-xs-12">
+	<nav class="nopadding col-xs-12">
+		<div class="nopadding col-xs-12 col-lg-4">
+			<a href="page-publique-public.ctrl.php?idm=<?=$idM?>" class="btn btn-default btn-block">Aperçu visiteur</a>
+		</div>
+		<div class="nopadding col-xs-12 col-lg-4">
+			<input type="submit" class="btn btn-default btn-block" value="Posts">
+		</div>
+		<div class="nopadding col-xs-12 col-lg-4">
+			<input type="submit" class="btn btn-default btn-block" value="Questions">
+		</div>
+	</nav>
+
+	<div class="questions col-xs-12">
 		<legend>Questions pour les organisateurs du mariage</legend>
 		<div id="scrollable" class="col-xs-12">
 			<?php
