@@ -349,7 +349,7 @@ function modifLink(e) {
 
 	var form = $(this);
 
-	form.parent().children()[0].innerHTML = form.children().next().val();
+	form.parent().children()[0].innerHTML = "<i class=\"fa fa-link\" aria-hidden=\"true\"></i> <a href=\"" + form.children().next().val() + "\">" + form.children().next().val() + "</a>";
 	form.parent().children()[1].innerHTML = form.children().next().next().next().val();
 	$.post(
 			'../controller/ajax_link_modify.php', // Le fichier cible côté serveur.
