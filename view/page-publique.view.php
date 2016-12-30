@@ -17,15 +17,21 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
+						<?php if(isset($_SESSION['account'])){ ?>
 						<li><a href="accueil.ctrl.php">Accueil</a></li>
 						<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
 						<li class="active"><a href="">Page Publique</a></li>
 						<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
+					<?php }else{ ?>
+						<li class="active"><a href="">Page Publique</a></li>
+						<?php } ?>
 					</ul>
 
+					<?php if(isset($_SESSION['account'])){ ?>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="session_delete.ctrl.php"><span class="glyphicon glyphicon-user"></span> Sign out</a></li>
 					</ul>
+					<?php } ?>
 				</div>
 			</div>
 		</nav>
@@ -41,9 +47,9 @@
 				$nb=count($questions);
 				for ($i=0; $i < $nb; $i++) {
 					if ($i<$nb-1) {
-						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <small>{$questions[$i]['quest_date']}</small><hr>\n";
+						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p><hr>\n";
 					}else {
-						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <small>{$questions[$i]['quest_date']}</small>\n";
+						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
 					}
 				}
 			}

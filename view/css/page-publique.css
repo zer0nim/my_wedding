@@ -2,9 +2,13 @@
   height:300px;
   overflow:auto;
   background-color: white;
+}
+
+.date{
+  text-align: right;
   display: inline-block;
 }
 
-small{
-  text-align: center;
+#scrollable p{
+  display: inline-block;
 }

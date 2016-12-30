@@ -4,7 +4,7 @@
   if (isset($_SESSION['idM'])) {
     $idM=$_SESSION['idM'];
   }elseif (isset($_GET['idm'])) {
-    $idM=$_GET['idM'];
+    $idM=$_GET['idm'];
   }
 
   if (isset($_POST['envoiQuestion'])) {
