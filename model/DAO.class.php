@@ -1051,16 +1051,18 @@ listTab_nbPlaces
     //----------------------------------------------------------------------------------------
     function connexion($email,$mdp){
       try{
-        $req = $this->db->prepare('SELECT acc_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
+        $req = $this->db->prepare('SELECT acc_id FROM Account a WHERE acc_mail = :mail and acc_mdp= :mdp');
         $req->execute(array(':mail' => $email,
                               ':mdp'=> $mdp));
         $req=$req->fetch();
+        //var_dump($req);
         $reponse[0]=$req[0];
 
         $req = $this->db->prepare('SELECT maria_id FROM Account a,Mariage m WHERE acc_mail = :mail and acc_mdp= :mdp and a.acc_id=m.maria_idAcc');
         $req->execute(array(':mail' => $email,
                               ':mdp'=> $mdp));
         $req=$req->fetch();
+        //var_dump($req);
         $reponse[1]=$req[0];
         //var_dump($reponse);
         return $reponse;
