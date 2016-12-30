@@ -6,7 +6,8 @@
     }
   }
 
+  $idM = $_SESSION['idM'];
   require_once '../model/DAO.class.php';
-  $allContacts = $dao->getContacts(1);
+  $allContacts = $dao->getContacts($idM);
   include_once('../view/contacts.view.php');
 ?>

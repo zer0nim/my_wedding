@@ -1,10 +1,11 @@
 <?php
   include_once('session_create.ctrl.php');
   require_once '../model/DAO.class.php';
+  $idM = $_SESSION['idM'];
 
-  $liens = $dao->getLiens(1);
-  $notes = $dao->getNotes(1);
-  $photos = $dao->getPhotos(1);
+  $liens = $dao->getLiens($idM);
+  $notes = $dao->getNotes($idM);
+  $photos = $dao->getPhotos($idM);
 
   foreach ($liens as $key => $value) {
     $insp[$value->getLink_date()] = $value;

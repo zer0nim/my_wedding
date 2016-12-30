@@ -54,10 +54,10 @@ function printAllTables($allTables, $allContacts) {
 <?php
   }
 }
-
+$idM = $_SESSION['idM'];
 require_once '../model/DAO.class.php';
-$allTables = $dao->getTables(1);
-$allContacts = $dao->getContacts(1);
+$allTables = $dao->getTables($idM);
+$allContacts = $dao->getContacts($idM);
 
 include_once('../view/plandetable.view.php');
 

@@ -1,8 +1,10 @@
 <?php
 require('../fpdf181/fpdf.php');
 require_once '../model/DAO.class.php';
-$allTables = $dao->getTables(1);
-$allContacts = $dao->getContacts(1);
+include_once ('session_create.ctrl.php');
+$idM = $_SESSION['idM'];
+$allTables = $dao->getTables($idM);
+$allContacts = $dao->getContacts($idM);
 
 class PDF extends FPDF
 {
