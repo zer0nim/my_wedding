@@ -21,7 +21,6 @@
 						<li><a href="creation.ctrl.php">Paramètres mariage</a></li>
 						<li class="active"><a href="">Page Publique</a></li>
 						<li><a href="mon_compte.ctrl.php">Mon compte</a></li>
-						<li class="active"><a href="">Page Publique</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
