@@ -1,5 +1,4 @@
 <?php include('../view/header.php') ?>
-<link rel="stylesheet" href="../view/css/page-publique-public.css" type="text/css" />
 </head>
 <body class="container-fluid">
 
@@ -17,16 +16,14 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="">Accueil</a></li>
+						<li><a href="page-publique-public.ctrl.php">Accueil</a></li>
 						<li><a href="public-question.ctrl.php">Questions</a></li>
-						<li><a href="public-lieu.ctrl.php">Lieu</a></li>
+						<li class="active"><a href="">Lieu</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
-
-	
 
 <?php
  include('../view/scripts.php');

@@ -1,0 +1,14 @@
+#scrollable{
+  height:300px;
+  overflow:auto;
+  background-color: white;
+}
+
+.date{
+  float: right;
+  display: inline-block;
+}
+
+#scrollable p{
+  display: inline-block;
+}
