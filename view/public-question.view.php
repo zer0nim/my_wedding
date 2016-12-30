@@ -25,7 +25,12 @@
 			</div>
 		</nav>
 	</header>
-
+	<?php if (isset($erreur)) {?>
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Message non envoyé : </strong><?=$erreur?>
+			</div>
+	<?php } ?>
 	<div class="col-xs-12">
 		<legend>Questions pour les organisateurs du mariage</legend>
 		<div id="scrollable" class="col-xs-12">
