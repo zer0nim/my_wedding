@@ -4,14 +4,15 @@
 
 <div class="col-lg-offset-2 col-lg-8 col-sm-12">
 	<!-- -v- Génerer -v- -->
-	<div class="nopadding col-xs-12 col-lg-offset-3 col-lg-6">
-		<div class="nopadding form-group">
-			<button name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
-		</div>
+	<div class="nopadding">
 		<div class="alert alert-info alert-dismissable fade in">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Info!</strong> La génération du plan de table utilise l'âge ainsi que l'entente de chaque invité modifiable dans la fonction contact.
 		</div>
+		<div class="nopadding form-group col-xs-12 col-lg-6">
+			<button name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
+		</div>
+		<a href="pdf_plandetable.ctrl.php" class="btn btn-primary btn-block">Telecharger</a>
 	</div>
 	<!-- -^- Génerer -^- -->
 
