@@ -8,7 +8,7 @@
   $ln = new lien();
   $ln->faux_construct(NULL, $idM, NULL, $_POST['adr'], $_POST['desc']);
 
-  $idDate = $dao->setLien($ln);
+  $idDate = $dao->setLien($ln, $_POST['isInsp']);
   $ln->setLink_id($idDate['id']);
   $ln->setLink_date($idDate['date']);
 

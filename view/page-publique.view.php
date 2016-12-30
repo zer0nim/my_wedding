@@ -150,7 +150,7 @@
 	        </div>
 	      </div>
 	    </li>
-			<?php printAllInsp($insp); ?>
+			<?php if (isset($insp)) { printAllInsp($insp); } ?>
 	  </ul>
 	</div>
 

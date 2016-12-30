@@ -8,7 +8,7 @@
   $n = new note();
   $n->faux_construct(NULL, $idM, NULL, $_POST['titre'], $_POST['note']);
 
-  $idDate = $dao->setNote($n);
+  $idDate = $dao->setNote($n, $_POST['isInsp']);
   $n->setNote_id($idDate['id']);
   $n->setNote_date($idDate['date']);
 

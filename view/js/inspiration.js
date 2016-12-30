@@ -19,7 +19,8 @@ $(document).ready(function(){
 				'../controller/ajax_link_upload.php', // Le fichier cible côté serveur.
 				{
 						adr : form.children().next().val(),
-						desc : form.children().next().next().next().val()
+						desc : form.children().next().next().next().val(),
+						isInsp : 1
 				},
 
 				function(data){
@@ -71,7 +72,8 @@ $(document).ready(function(){
 				'../controller/ajax_note_upload.php', // Le fichier cible côté serveur.
 				{
 						titre : form.children().next().val(),
-						note : form.children().next().next().next().val()
+						note : form.children().next().next().next().val(),
+						isInsp : 1
 				},
 
 				function(data){
@@ -123,6 +125,8 @@ $(document).ready(function(){
 	  var formdata = (window.FormData) ? new FormData($form[0]) : null;
 	  var data = (formdata !== null) ? formdata : $form.serialize();
 		var name = $form.find('input[name="image"]')[0].files[0]['name'];
+
+		data.append( 'isInsp', 1 );
 
 		if ($form.find('input[name="image"]')[0].files[0]['size'] > 2000000) {
 			sweetAlert("Oops...", "La taille de fichier maximal et de 2mo!", "error");

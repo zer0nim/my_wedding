@@ -13,7 +13,7 @@
 
       $pic = new photo();
       $pic->faux_construct(NULL, $idM, NULL, $_POST['titre'], (end((explode(".", $_FILES["image"]["name"])))), $_POST['description']);
-      $idDate = $dao->setPhoto($pic);
+      $idDate = $dao->setPhoto($pic, $_POST['isInsp']);
       $pic->setPict_id($idDate['id']);
       $pic->setPict_date($idDate['date']);
 

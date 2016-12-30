@@ -608,11 +608,15 @@ class DAO {
     //----------------------------------------------------------------------------------------
 
 // Photo -> pict_id, pict_idM, pict_date, pict_title, pict_adress, pict_descr
-
-    function getPhotos($idM) {
+/*
+AND link_isInsprtn = :link_isInsprtn
+':link_isInsprtn' => $isInsp,
+*/
+    function getPhotos($idM, $isInsp) {
       try {
-        $req = $this->db->prepare('SELECT * FROM Photo WHERE pict_idM = :idM');
-        $req->execute(array(':idM' => $idM,));
+        $req = $this->db->prepare('SELECT * FROM Photo WHERE pict_idM = :idM AND pict_isInsprtn = :pict_isInsprtn');
+        $req->execute(array(':idM' => $idM,
+                            ':pict_isInsprtn' => $isInsp,));
         $donnee = $req->fetchAll(PDO::FETCH_CLASS, "photo");
       }
       catch (PDOException $e) {
@@ -621,7 +625,7 @@ class DAO {
       return $donnee;
     }
 
-    function getPhoto($idM, $pict_id) {
+    function getPhoto($idM, $pict_id, $isInsp) {
       try {
         $req = $this->db->prepare('SELECT * FROM Photo WHERE pict_idM = :idM and pict_id = :pict_id');
         $req->execute(array(':idM' => $idM,
@@ -645,14 +649,15 @@ class DAO {
       }
     }
 
-    function setPhoto($photo) {
+    function setPhoto($photo, $isInsp) {
       try {
-        $req = $this->db->prepare('INSERT INTO Photo VALUES(:pict_id, :pict_idM,  NOW(), :pict_title, :pict_format, :pict_descr)');
+        $req = $this->db->prepare('INSERT INTO Photo VALUES(:pict_id, :pict_idM,  NOW(), :pict_title, :pict_format, :pict_descr, :pict_isInsprtn)');
         $req->execute(array(':pict_id' => $photo->getPict_id(),
                             ':pict_idM' => $photo->getPict_idM(),
                             ':pict_title' => $photo->getPict_title(),
                             ':pict_format' => $photo->getPict_format(),
-                            ':pict_descr' => $photo->getPict_descr()));
+                            ':pict_descr' => $photo->getPict_descr(),
+                            ':pict_isInsprtn' => $isInsp,));
                             $date = new DateTime();
                             $date->setTimezone(new DateTimeZone('Europe/Berlin'));
                             $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
@@ -680,10 +685,11 @@ class DAO {
 
     // Note ->  note_id, note_idM, note_date, note_title, note_text
 
-        function getNotes($idM) {
+        function getNotes($idM, $isInsp) {
           try {
-            $req = $this->db->prepare('SELECT * FROM Note WHERE note_idM = :idM');
-            $req->execute(array(':idM' => $idM,));
+            $req = $this->db->prepare('SELECT * FROM Note WHERE note_idM = :idM AND note_isInsprtn = :note_isInsprtn');
+            $req->execute(array(':idM' => $idM,
+                                ':note_isInsprtn' => $isInsp,));
             $donnee = $req->fetchAll(PDO::FETCH_CLASS, "note");
           }
           catch (PDOException $e) {
@@ -716,13 +722,14 @@ class DAO {
           }
         }
 
-        function setNote($note) {
+        function setNote($note, $isInsp) {
           try {
-            $req = $this->db->prepare('INSERT INTO Note VALUES(:note_id, :note_idM,  NOW(), :note_title, :note_text)');
+            $req = $this->db->prepare('INSERT INTO Note VALUES(:note_id, :note_idM,  NOW(), :note_title, :note_text, :note_isInsprtn)');
             $req->execute(array(':note_id' => $note->getNote_id(),
                                 ':note_idM' => $note->getNote_idM(),
                                 ':note_title' => $note->getNote_title(),
-                                ':note_text' => $note->getNote_text()));
+                                ':note_text' => $note->getNote_text(),
+                                ':note_isInsprtn' => $isInsp,));
                                 $date = new DateTime();
                                 $date->setTimezone(new DateTimeZone('Europe/Berlin'));
                                 $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
@@ -749,10 +756,11 @@ class DAO {
 
     // Lien ->  link_id, link_idM, link_date, link_adress, link_descr
 
-    function getLiens($idM) {
+    function getLiens($idM, $isInsp) {
       try {
-        $req = $this->db->prepare('SELECT * FROM Lien WHERE link_idM = :idM');
-        $req->execute(array(':idM' => $idM,));
+        $req = $this->db->prepare('SELECT * FROM Lien WHERE link_idM = :idM AND link_isInsprtn = :link_isInsprtn');
+        $req->execute(array(':idM' => $idM,
+                            ':link_isInsprtn' => $isInsp,));
         $donnee = $req->fetchAll(PDO::FETCH_CLASS, "lien");
       }
       catch (PDOException $e) {
@@ -785,13 +793,14 @@ class DAO {
       }
     }
 
-    function setLien($lien) {
+    function setLien($lien, $isInsp) {
       try {
-        $req = $this->db->prepare('INSERT INTO Lien VALUES(:link_id, :link_idM, NOW(), :link_adress, :link_descr)');
+        $req = $this->db->prepare('INSERT INTO Lien VALUES(:link_id, :link_idM, NOW(), :link_adress, :link_descr, :link_isInsprtn)');
         $req->execute(array(':link_id' => $lien->getLink_id(),
                             ':link_idM' => $lien->getLink_idM(),
                             ':link_adress' => $lien->getLink_adress(),
-                            ':link_descr' => $lien->getLink_descr()));
+                            ':link_descr' => $lien->getLink_descr(),
+                            ':link_isInsprtn' => $isInsp,));
                             $date = new DateTime();
                             $date->setTimezone(new DateTimeZone('Europe/Berlin'));
                             $idDate['id'] = $this->db->lastInsertId(); //récupére l'identifiant de l'élément ajouté
