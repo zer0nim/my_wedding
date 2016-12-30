@@ -31,7 +31,7 @@
 				<strong>Message non envoyé : </strong><?=$erreur?>
 			</div>
 	<?php } ?>
-	<div class="col-xs-12">
+	<div class="questions col-xs-12">
 		<legend>Questions pour les organisateurs du mariage</legend>
 		<div id="scrollable" class="col-xs-12">
 			<?php
