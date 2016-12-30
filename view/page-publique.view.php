@@ -41,10 +41,13 @@
 			}else{
 				$nb=count($questions);
 				for ($i=0; $i < $nb; $i++) {
-					if ($i<$nb-1) {
-						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p><hr>\n";
+					if ($questions[$i]['quest_nom']=='Organisateur') {
+						echo "<strong class=\"admin\">{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
 					}else {
 						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
+					}
+					if($i<$nb-1){
+						echo "<hr>\n";
 					}
 				}
 			}
@@ -57,14 +60,11 @@
 
 		<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
 			<div class="form-group">
-				<label for="nom" class="control-label col-sm-2 col-lg-1">Nom/Prenom :</label>
-				<div class="col-sm-10 col-lg-11">
-					<input id="nom" type="text" name="nom" class="form-control" required>
-				</div>
+				<label for="nom" class="control-label col-sm-12">Nom/Prenom : Organisateur</label>
 			</div>
 
 			<div class="form-group">
-				<label for="question" class="control-label col-sm-1">Question :</label>
+				<label for="question" class="control-label col-sm-1">Reponse :</label>
 				<div class="col-sm-11">
 					<input id="question" type="text" name="question" class="form-control" required>
 				</div>

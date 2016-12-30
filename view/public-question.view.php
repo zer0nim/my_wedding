@@ -35,10 +35,13 @@
 			}else{
 				$nb=count($questions);
 				for ($i=0; $i < $nb; $i++) {
-					if ($i<$nb-1) {
-						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p><hr>\n";
+					if ($questions[$i]['quest_nom']=='Organisateur') {
+						echo "<strong class=\"admin\">{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
 					}else {
 						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
+					}
+					if($i<$nb-1){
+						echo "<hr>\n";
 					}
 				}
 			}

@@ -12,3 +12,7 @@
 #scrollable p{
   display: inline-block;
 }
+
+.admin{
+  color: red;
+}

@@ -12,3 +12,11 @@
 #scrollable p{
   display: inline-block;
 }
+
+.admin{
+  color: red; 
+}
+
+.form-horizontal .control-label{
+  text-align: left;
+}
