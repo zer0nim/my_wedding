@@ -1,4 +1,7 @@
 <?php include('../view/header.php') ?>
+<link rel="stylesheet" type="text/css" href="../view/css/default.css" />
+<link rel="stylesheet" type="text/css" href="../view/css/component.css" />
+
 <link rel="stylesheet" href="../view/css/page-publique-public.css" type="text/css" />
 </head>
 <body class="container-fluid">
@@ -26,7 +29,11 @@
 		</nav>
 	</header>
 
-
+	<div class="main">
+		<ul class="cbp_tmtimeline">
+			<?php if (isset($insp)) { printAllInsp($insp); } ?>
+		</ul>
+	</div>
 
 <?php
  include('../view/scripts.php');
