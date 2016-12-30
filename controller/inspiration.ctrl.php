@@ -20,7 +20,10 @@
   function printAllInsp($insp) {
     foreach (array_reverse($insp) as $key => $value) {
       if (is_a($value, 'lien')) {
-        echo '<li id=\'l' . $value->getLink_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getLink_date() . '"><span>' . explode(" ", $value->getLink_date())[0] . '</span><span>' . explode(" ", $value->getLink_date())[1] . '</span></time>' . "\n";
+        $date = explode(" ", $value->getLink_date())[0];
+        $dateFR = explode("-", $date)[2] . '-' . explode("-", $date)[1] . '-' . explode("-", $date)[0];
+
+        echo '<li id=\'l' . $value->getLink_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getLink_date() . '"><span>' . $dateFR . '</span><span>' . explode(" ", $value->getLink_date())[1] . '</span></time>' . "\n";
         echo '<div class="cbp_tmicon fa fa-paint-brush"></div>' . "\n";
         echo '<div class="cbp_tmlabel">' . "\n";
         echo '<h2 class="cnt_l' . $value->getLink_id() . '"><i class="fa fa-link" aria-hidden="true"></i> <a href="' . $value->getLink_adress() . '">' . $value->getLink_adress() . '</a></h2>' . "\n";
@@ -41,7 +44,10 @@
 
       }
       elseif (is_a($value, 'photo')) {
-        echo '<li id=\'p' . $value->getPict_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getPict_date() . '"><span>' . explode(" ", $value->getPict_date())[0] . '</span><span>' . explode(" ", $value->getPict_date())[1] . '</span></time>' . "\n";
+        $date = explode(" ", $value->getPict_date())[0];
+        $dateFR = explode("-", $date)[2] . '-' . explode("-", $date)[1] . '-' . explode("-", $date)[0];
+
+        echo '<li id=\'p' . $value->getPict_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getPict_date() . '"><span>' . $dateFR . '</span><span>' . explode(" ", $value->getPict_date())[1] . '</span></time>' . "\n";
         echo '<div class="cbp_tmicon fa fa-paint-brush"></div>' . "\n";
         echo '<div class="cbp_tmlabel">' . "\n";
         echo '<h2 class="cnt_p' . $value->getPict_id() . '">' . $value->getPict_title() . '</h2>' . "\n";
@@ -73,7 +79,10 @@
         echo '</div></li>' . "\n";
       }
       elseif (is_a($value, 'note')) {
-        echo '<li id=\'n' . $value->getNote_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getNote_date() . '"><span>' . explode(" ", $value->getNote_date())[0] . '</span><span>' . explode(" ", $value->getNote_date())[1] . '</span></time>' . "\n";
+        $date = explode(" ", $value->getNote_date())[0];
+        $dateFR = explode("-", $date)[2] . '-' . explode("-", $date)[1] . '-' . explode("-", $date)[0];
+
+        echo '<li id=\'n' . $value->getNote_id() . '\'><time class="cbp_tmtime" datetime="' . $value->getNote_date() . '"><span>' . $dateFR . '</span><span>' . explode(" ", $value->getNote_date())[1] . '</span></time>' . "\n";
         echo '<div class="cbp_tmicon fa fa-paint-brush"></div>' . "\n";
         echo '<div class="cbp_tmlabel">' . "\n";
         echo '<h2 class="cnt_n' . $value->getNote_id() . '">'. $value->getNote_title() . '</h2>' . "\n";

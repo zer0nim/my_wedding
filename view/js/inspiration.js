@@ -23,12 +23,11 @@ $(document).ready(function(){
 				},
 
 				function(data){
-console.log(data['date'] + ' / ' + data['date'].split(" ")[0] + ' / ' + data['date'].split(" ")[1]);
-
+					var dateFR = data['date'].split(" ")[0].split("-")[2] + '-' + data['date'].split(" ")[0].split("-")[1] + '-' + data['date'].split(" ")[0].split("-")[0];
 					$('#postSlctLink').val('none').change();
 					modifCreaPost();
 
-					var postLink = "<li id=\'l" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					var postLink = "<li id=\'l" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + dateFR + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
@@ -76,10 +75,11 @@ console.log(data['date'] + ' / ' + data['date'].split(" ")[0] + ' / ' + data['da
 				},
 
 				function(data){
+					var dateFR = data['date'].split(" ")[0].split("-")[2] + '-' + data['date'].split(" ")[0].split("-")[1] + '-' + data['date'].split(" ")[0].split("-")[0];
 					$('#postSlctLink').val('none').change();
 					modifCreaPost();
 
-					var postLink = "<li id=\'n" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					var postLink = "<li id=\'n" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + dateFR + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
@@ -139,10 +139,11 @@ console.log(data['date'] + ' / ' + data['date'].split(" ")[0] + ' / ' + data['da
 		      dataType: 'json', // selon le retour attendu
 		      data: data,
 		      success: function (data) {
+						var dateFR = data['date'].split(" ")[0].split("-")[2] + '-' + data['date'].split(" ")[0].split("-")[1] + '-' + data['date'].split(" ")[0].split("-")[0];
 						$('#postSlctLink').val('none').change();
 						modifCreaPost();
 
-						var postLink = "<li id=\'p" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+						var postLink = "<li id=\'p" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + dateFR + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
