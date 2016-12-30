@@ -23,10 +23,12 @@ $(document).ready(function(){
 				},
 
 				function(data){
+console.log(data['date'] + ' / ' + data['date'].split(" ")[0] + ' / ' + data['date'].split(" ")[1]);
+
 					$('#postSlctLink').val('none').change();
 					modifCreaPost();
 
-					var postLink = "<li id=\'l" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					var postLink = "<li id=\'l" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
@@ -77,7 +79,7 @@ $(document).ready(function(){
 					$('#postSlctLink').val('none').change();
 					modifCreaPost();
 
-					var postLink = "<li id=\'n" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+					var postLink = "<li id=\'n" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 					postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
@@ -140,7 +142,7 @@ $(document).ready(function(){
 						$('#postSlctLink').val('none').change();
 						modifCreaPost();
 
-						var postLink = "<li id=\'p" + data['id'] + "\'" + "<time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
+						var postLink = "<li id=\'p" + data['id'] + "\'" + "><time class=\"cbp_tmtime\" datetime=\"" + data['date'] + "\"><span>" + data['date'].split(" ")[0] + "</span><span>" + data['date'].split(" ")[1] + "</span></time>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmicon fa fa-paint-brush\"></div>" + "\n";
 						postLink = postLink + "<div class=\"cbp_tmlabel\">" + "\n";
 
