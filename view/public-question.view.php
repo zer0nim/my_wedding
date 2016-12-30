@@ -12,14 +12,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
+					<a class="navbar-brand" href="page-publique.ctrl.php">My Wedding</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="page-publique-public.ctrl.php">Accueil</a></li>
-						<li><a href="">Questions</a></li>
-						<li><a href="public-lieu.ctrl.php">Lieu</a></li>
+						<li><a href="page-publique-public.ctrl.php?idm=<?=$idM?>">Accueil</a></li>
+						<li class="active"><a href="">Questions</a></li>
+						<li><a href="public-lieu.ctrl.php?idm=<?=$idM?>">Lieu</a></li>
 					</ul>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 			</script>
 		</div>
 
-		<form class="form-horizontal" action="page-publique-public.ctrl.php" method="post">
+		<form class="form-horizontal" action="public-question.ctrl.php?idm=<?=$idM?>" method="post">
 			<div class="form-group">
 				<label for="nom" class="control-label col-sm-2 col-lg-1">Nom/Prenom :</label>
 				<div class="col-sm-10 col-lg-11">

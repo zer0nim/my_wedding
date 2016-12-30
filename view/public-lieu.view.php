@@ -11,13 +11,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
+					<a class="navbar-brand" href="page-publique.ctrl.php">My Wedding</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="page-publique-public.ctrl.php">Accueil</a></li>
-						<li><a href="public-question.ctrl.php">Questions</a></li>
+						<li><a href="page-publique-public.ctrl.php?idm=<?=$idM?>">Accueil</a></li>
+						<li><a href="public-question.ctrl.php?idm=<?=$idM?>">Questions</a></li>
 						<li class="active"><a href="">Lieu</a></li>
 					</ul>
 				</div>
