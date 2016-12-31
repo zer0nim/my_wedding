@@ -24,11 +24,14 @@ if (isset($_POST['creation'])) {
     $dao->insertHash($idm); //on crée le hash par rapport à l'id du mariage
 
     //On insert dans contact les infos des organisateurs du mariage
-    /*$cnt = new contacts();
+    $cnt = new contacts();
     $info=$dao->getMariage($idacc);
     $mail=$dao->getMailAccount($idacc);
-    $cnt->faux_construct(NULL, $idm, $info['maria_nomF'], $info['maria_prenomF'], $info['maria_lieu'], $mail, $cont_age, $cont_tel);
-    $dao->setContact($cnt);*/
+    var_dump($info);
+    $cnt->faux_construct(NULL, $idm, $info['maria_nomF'], $info['maria_prenomF'], NULL, $mail, NULL, NULL);
+    $dao->setContact($cnt);
+    $cnt->faux_construct(NULL, $idm, $info['maria_nomH'], $info['maria_prenomH'], NULL, $mail, NULL, NULL);
+    $dao->setContact($cnt);
 
     $modif='Mariage créé !';
   }
