@@ -142,4 +142,8 @@ $dao->setContact($cnt);
   $dao->setContact($cnt);
 */
 //$dao->placement(1);
+
+//Test des fonctions HASH
+//$dao->insertHash(1);
+//echo $dao->getIdMariage_hash('356a192b7913b04c54574d18c28d46e6395428ab');
 ?>

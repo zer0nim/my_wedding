@@ -14,16 +14,17 @@ if (isset($_POST['creation'])) {
 
   $tabdate = explode("/", $date);
   $date=$tabdate[2].'/'.$tabdate[1].'/'.$tabdate[0];
-
-  if ($dao->getMariage($idacc) != NULL) {
+  if ($dao->getMariage($idacc)) {
     $retour=$dao->modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse);
     $modif='Informations sur le mariage modifiées !';
   }else {
     $retour=$dao->createMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse);
+    $idm=$dao->getIdMariage($idacc);
+    $dao->insertHash($idm);
     $modif='Mariage créé !';
   }
 
-  if ($retour=NULL) {
+  if ($retour==false) {
     $erreur='La creation/modification a échoué';
   }
 

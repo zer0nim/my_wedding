@@ -1100,6 +1100,17 @@ listTab_nbPlaces
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité de creation de mariage
     //----------------------------------------------------------------------------------------
+    function getIdMariage($idaccount){
+      try{
+        $req = $this->db->prepare('SELECT maria_id FROM Mariage WHERE maria_idAcc = :acc');
+        $req->execute(array(':acc' => $idaccount));
+        $req=$req->fetch()[0];
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction getIdMariage: ".$e->getMessage());
+      }
+    }
+
     function getMariage($idaccount){
       try{
         $req = $this->db->prepare('SELECT maria_date, maria_lieu, maria_nomF, maria_prenomF, maria_nomH, maria_prenomH FROM Mariage WHERE maria_idAcc = :acc');
@@ -1134,15 +1145,16 @@ listTab_nbPlaces
 
     function createMariage($idaccount,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
       try{
-        $req = $this->db->prepare('INSERT INTO Mariage values(NULL, :acc, :dat, :lieu, :nom1, :prenom1, :nom2, :prenom2)');
+        $req = $this->db->prepare('INSERT INTO Mariage values(NULL, :acc, :dat, :lieu, :nom1, :prenom1, :nom2, :prenom2,:description)');
         $req=$req->execute(array(
                             ':acc' => $idaccount,
                             ':dat' => $date,
                             ':lieu' => $adresse,
                             ':nom1' => $nom1,
-                            'prenom1' => $prenom1,
+                            ':prenom1' => $prenom1,
                             ':nom2' => $nom2,
-                            ':prenom2' => $prenom2));
+                            ':prenom2' => $prenom2,
+                            ':description' => ""));
         return $req;
       }catch(PDOException $e){
         exit("Erreur dans la fonction createMariage: ".$e->getMessage());
@@ -1150,7 +1162,7 @@ listTab_nbPlaces
     }
 
     //----------------------------------------------------------------------------------------
-    // fonction pour la fonctionnalité de creation de mariage
+    // fonction pour la fonctionnalité de question de mariage
     //----------------------------------------------------------------------------------------
 
     function envoiquestion($idm,$nom,$question,$date){
@@ -1186,6 +1198,31 @@ listTab_nbPlaces
         return $req;
       }catch(PDOException $e){
         exit("Erreur dans la fonction getquestions: ".$e->getMessage());
+      }
+    }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour recuperer l'id du mariage à partir du hash
+    //----------------------------------------------------------------------------------------
+    function getIdMariage_hash($hash){
+      try{
+        $req = $this->db->prepare('SELECT hashid_idM FROM Hashid WHERE hashid_hash=:hash');
+        $req->execute(array(':hash' => $hash));
+        $req=$req->fetch()[0];
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction getIdMariage_hash: ".$e->getMessage());
+      }
+    }
+
+    function insertHash($idM){
+      try{
+        $req = $this->db->prepare('INSERT INTO Hashid values(:idm, :hash)');
+        $req=$req->execute(array(':idm' => $idM,
+                                 ':hash' => sha1($idM)));
+        return $req;
+      }catch(PDOException $e){
+        exit("Erreur dans la fonction insertHash: ".$e->getMessage());
       }
     }
   }
