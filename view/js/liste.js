@@ -9,5 +9,9 @@ $(document).ready(function(){ // quand la page a fini de se charger
    });
    $("#sortable").disableSelection(); // on désactive la possibilité au navigateur de faire des sélections
 
-   $
+   $("#addSouhait").click(function() {
+     var souhait = $('#inputSouhait').val();
+     $.post('liste-add.php', souhait);
+     alert(souhait);
+});
 });

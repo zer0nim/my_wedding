@@ -405,6 +405,21 @@ class DAO {
         $preference++;
       }
     }
+
+    // écris un élément dans la liste de souhait d'un mariage
+    function addListeSouhait($idM, $elem) {
+      echo "test";
+      $req = $this->db->prepare('SELECT max(ListSouh_preference) FROM ListeSouhaits WHERE ListSouh_idM = :idM');
+      $req->execute(array(':id' => $idM, ));
+      $donnee = $req->fetch();
+      $preference = 1;//$donnee['ListSouh_preference'];
+
+
+      $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
+      $req->execute(array(':idM' => $idM,
+                          ':nom' => $elem,
+                          ':preference' => $preference,));
+    }
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité invitation
     //----------------------------------------------------------------------------------------

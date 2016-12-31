@@ -7,14 +7,14 @@
 		<div class="liste">
 			<ul id="sortable">
 				<?php // Affichage de la liste
-					foreach ($data as $key => $value) { echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default">' . $value['nom'] . '	<a href="#" class="supr-souh btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></li>'
+					foreach ($data as $key => $value) { echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default">' . $value['nom'] . '	<a class="supr-souh btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></li>'
 						;	}
 				?>
 			</ul>
 		</div>
 			<span class="input-group-addon">Nouveau souhait</span>
-			<input type="text" class="form-control">
-			<input type="submit" class="form-control btn btn-primary">
+			<input id="inputSouhait" name="souhait" type="text" class="form-control">
+			<input id="addSouhait" type="submit" class="form-control btn btn-primary">
 		</div>
 <?php include('../view/scripts.php') ?>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
