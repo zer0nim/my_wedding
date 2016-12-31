@@ -19,8 +19,17 @@ if (isset($_POST['creation'])) {
     $modif='Informations sur le mariage modifiées !';
   }else {
     $retour=$dao->createMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse);
-    $idm=$dao->getIdMariage($idacc);
-    $dao->insertHash($idm);
+
+    $idm=$dao->getIdMariage($idacc);//On récupère l'id du mariage que l'on vient de créer
+    $dao->insertHash($idm); //on crée le hash par rapport à l'id du mariage
+
+    //On insert dans contact les infos des organisateurs du mariage
+    /*$cnt = new contacts();
+    $info=$dao->getMariage($idacc);
+    $mail=$dao->getMailAccount($idacc);
+    $cnt->faux_construct(NULL, $idm, $info['maria_nomF'], $info['maria_prenomF'], $info['maria_lieu'], $mail, $cont_age, $cont_tel);
+    $dao->setContact($cnt);*/
+
     $modif='Mariage créé !';
   }
 
