@@ -1131,13 +1131,14 @@ listTab_nbPlaces
     function modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
       try {
         $req = $this->db->prepare('UPDATE Mariage SET maria_date=:dat, maria_lieu=:lieu, maria_nomF=:nom1, maria_prenomF=:prenom1, maria_nomH=:nom2, maria_prenomH=:prenom2 WHERE maria_idAcc = :acc');
-        $req->execute(array(':dat' => $date,
+        $req=$req->execute(array(':dat' => $date,
                             ':lieu' => $adresse,
                             ':nom1' => $nom1,
                             ':prenom1' => $prenom1,
                             ':nom2' => $nom2,
                             ':prenom2' => $prenom2,
                             ':acc' => $idacc));
+        return $req;
       }catch (PDOException $e) {
         exit("Erreur modification dans la fonction modifMariage: ".$e->getMessage());
       }
