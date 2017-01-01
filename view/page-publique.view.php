@@ -37,7 +37,7 @@
 
 	<nav class="nopadding col-xs-12">
 		<div class="nopadding col-xs-12 col-lg-4">
-			<a href="page-publique-public.ctrl.php?idm=<?=$idM?>" class="btn btn-default btn-block">Aperçu visiteur</a>
+			<a href="page-publique-public.ctrl.php?id=<?=sha1($idM)?>" class="btn btn-default btn-block">Aperçu visiteur</a>
 		</div>
 		<div class="nopadding col-xs-12 col-lg-4">
 			<input type="submit" id="posts" class="btn btn-default btn-block" value="Posts">

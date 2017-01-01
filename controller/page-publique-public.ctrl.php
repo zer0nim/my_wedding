@@ -1,8 +1,8 @@
 <?php
   include_once('../model/DAO.class.php');
   session_start();
-  if (isset($_GET['idm'])) {
-    $idM=$_GET['idm'];
+  if (isset($_GET['id'])) {
+    $idM=$dao->getIdMariage_hash($_GET['id']);
 
     $liens = $dao->getLiens($idM, 0);
     $notes = $dao->getNotes($idM, 0);

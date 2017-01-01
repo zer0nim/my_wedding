@@ -48,7 +48,7 @@
       <div class="form-group">
         <label for="message" class="col-sm-12">Message (avec balises HTML) : </label>
         <div class="col-sm-7">
-          <textarea name="message" id="message" class="form-control" rows="15" cols="200"><?=$texte."\n\n<a href=\"http://www.mywedding.gdn/controller/page-publique-public.ctrl.php?idm=$idM\">Cliquez ici pour avoir plus d'informations sur le mariage</a>"?></textarea>
+          <textarea name="message" id="message" class="form-control" rows="15" cols="200"><?=$texte."\n\n<a href=\"http://www.mywedding.gdn/controller/page-publique-public.ctrl.php?id=".sha1($idM)."\">Cliquez ici pour avoir plus d'informations sur le mariage</a>"?></textarea>
         </div>
       </div>
 

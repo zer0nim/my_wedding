@@ -21,8 +21,8 @@
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="">Accueil</a></li>
-						<li><a href="public-question.ctrl.php?idm=<?=$idM?>">Questions</a></li>
-						<li><a href="public-lieu.ctrl.php?idm=<?=$idM?>">Lieu</a></li>
+						<li><a href="public-question.ctrl.php?id=<?=sha1($idM)?>">Questions</a></li>
+						<li><a href="public-lieu.ctrl.php?id=<?=sha1($idM)?>">Lieu</a></li>
 					</ul>
 				</div>
 			</div>
