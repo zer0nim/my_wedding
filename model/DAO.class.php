@@ -1288,14 +1288,27 @@ listTab_nbPlaces
           foreach ($data as $key => $value) {
             if ($value['pref_idContact'] == $idCnt) {
               $cnt = $this->getContact($idM, $value['pref_idContact2']);
+              $idTosuppr[] = $cnt->getCont_id();
               $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
             }
             else {
               $cnt = $this->getContact($idM, $value['pref_idContact']);
+              $idTosuppr[] = $cnt->getCont_id();
               $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
             }
           }
         }
+        $allContacts = $this->getContacts($idM);
+        $idTosuppr[] = $idCnt;
+        $i = 0;
+        foreach ($allContacts as $key => $contact) {
+          if (!in_array($contact->getCont_id(), $idTosuppr)) {
+            $cntSelct[$i]['id'] = $contact->getCont_id();
+            $cntSelct[$i]['nomPrenom'] = $contact->getCont_nom() . ' ' . $contact->getCont_prenom();
+            $i++;
+          }
+        }
+        $data['cntSelct'] = $cntSelct;
         return $data;
       }
       catch (PDOException $e) {

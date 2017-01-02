@@ -25,12 +25,6 @@ $(document).ready(function(){
 	});
 });
 
-//$("#listCntTMesentente")
-//<option value="NULL">ramery paul</option>
-//
-//$("#cntTable")
-//<tr><td><p>ramery paul<a class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
-
 function selectHandler() {
 	actionSelect();
 }
@@ -115,14 +109,22 @@ function showCntInfo() {
 					$("#listCntTMesentente").removeAttr('disabled');
 
 					$("#cntTable").empty();
-					if (data['mesentente'] != null) {
-						$.each(data['mesentente'], function( index ) {
-							var newRow = "<tr><td><p>" + $(this)[0]['cnt'] + "<a class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
-							$("#cntTable").append(newRow)
+					$("#listCntTMesentente").empty();
 
-							console.log($(this)[0]['cnt']);
-						});
-					}
+						for (var key in data['mesentente']) {
+							if (key == 'cntSelct') {
+								$.each(data['mesentente'][key], function( index, value) {
+									var newOpt = "<option value=\"" + value['id'] + "\">" + value['nomPrenom'] + "</option>";
+									$("#listCntTMesentente").append(newOpt);
+								});
+								$("#listCntTMesentente").sortOptions();
+							}
+							else {
+								var newRow = "<tr><td><p>" + data['mesentente'][key]['cnt'] + "<a class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
+								$("#cntTable").append(newRow);
+								sortTable($("#cntTable"),'asc');
+							}
+						}
 				},
 
 				'json' // Format des données reçues.
@@ -346,3 +348,26 @@ function initializeAutocomplete(id) {
 google.maps.event.addDomListener(window, 'load', function() {
 	initializeAutocomplete('user_input_autocomplete_address');
 });
+
+$.fn.sortOptions = function(){
+    $(this).each(function(){
+        var op = $(this).children("option");
+        op.sort(function(a, b) {
+            return a.text > b.text ? 1 : -1;
+        })
+        return $(this).empty().append(op);
+    });
+}
+
+function sortTable(table, order) {
+    var asc   = order === 'asc',
+        tbody = table.find('tbody');
+
+    tbody.find('tr').sort(function(a, b) {
+        if (asc) {
+            return $('td:first', a).text().localeCompare($('td:first', b).text());
+        } else {
+            return $('td:first', b).text().localeCompare($('td:first', a).text());
+        }
+    }).appendTo(tbody);
+}
