@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	disableCntInfo();
-	$("#select-cnt" ).bind( "click", selectHandler);
-	$("#select-cnt" ).unbind( "click", disselectHandler);
+	$("#select-cnt" ).bind( "change", selectHandler);
+	$("#select-cnt" ).unbind( "change", disselectHandler);
 
 	$("#SaveContactInfoLink").bind("click", noDiffHandler);
 
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 
 	$('#MesententeLink').bind("click", function addMesentente() {
-		//cnt_id: ?
+		//cnt_id:
 		//cnt_idMes: $(this).parent().prev().val()
 		console.log("Hey!: " + $(this).parent().prev().val());
 	});
@@ -39,13 +39,13 @@ function disselectHandler() {
 	preventChangeSlct();
 }
 function noDiffHandler() {
-	$("#select-cnt" ).bind( "click", selectHandler);
-	$("#select-cnt" ).unbind( "click", disselectHandler);
+	$("#select-cnt" ).bind( "change", selectHandler);
+	$("#select-cnt" ).unbind( "change", disselectHandler);
 }
 function asDiffHandler() {
 	document.getElementById("SaveContactInfoLink").disabled=false;
-	$("#select-cnt" ).bind( "click", disselectHandler);
-	$("#select-cnt" ).unbind( "click", selectHandler );
+	$("#select-cnt" ).bind( "change", disselectHandler);
+	$("#select-cnt" ).unbind( "change", selectHandler );
 }
 
 function actionSelect() {
