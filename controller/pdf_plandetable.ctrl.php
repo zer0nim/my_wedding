@@ -39,7 +39,12 @@ foreach ($allTables as $key => $crntTb) {
   $pdf->SetFillColor(230,245,247);
   $pdf->Cell(130,10,utf8_decode($crntTb->getListTab_nom()),1,0,'', true);
   $pdf->SetFillColor(208,228,233);
-  $pdf->Cell(20,10,utf8_decode($crntTb->getListTab_nbPlaces() . ' paces'),1,1,'C', true);
+  if ($crntTb->getListTab_nbPlaces() > 1) {
+    $pdf->Cell(20,10,utf8_decode($crntTb->getListTab_nbPlaces() . ' places'),1,1,'C', true);
+  }
+  else {
+    $pdf->Cell(20,10,utf8_decode($crntTb->getListTab_nbPlaces() . ' place'),1,1,'C', true);
+  }
   foreach ($allContacts as $key => $crntCt) {
     if ($crntCt->getCont_idT() == $crntTb->getListTab_id()) {
       $pdf->Cell(25,10,'-', 0, 0, 'C');$pdf->Cell(165,10,utf8_decode($crntCt->getCont_nom() . ' ' . $crntCt->getCont_prenom()),0,1,'');
@@ -48,44 +53,4 @@ foreach ($allTables as $key => $crntTb) {
   $pdf->Ln(8);
 }
 $pdf->Output();
-
-
-/*
-foreach ($allTables as $key => $crntTb) {
-  $pdf->SetFont('Times','',13);
-  $pdf->SetFillColor(230,245,247);
-  $pdf->Cell(130,10,utf8_decode($crntTb->getListTab_nom()),1,0,'', true);
-  $pdf->SetFillColor(208,228,233);
-  $pdf->Cell(20,10,utf8_decode($crntTb->getListTab_nbPlaces() . ' paces'),1,1,'C', true);
-  foreach ($allContacts as $key => $crntCt) {
-    if ($crntCt->getCont_idT() == $crntTb->getListTab_id()) {
-      $pdf->Cell(25,10,'-', 0, 0, 'C');$pdf->Cell(165,10,utf8_decode($crntCt->getCont_nom() . ' ' . $crntCt->getCont_prenom()),0,1,'');
-    }
-  }
-}
-*/
-
-/*
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-
-
-$pdf->SetFont('Times','',13);
-$pdf->SetFillColor(230,245,247);
-$pdf->Cell(130,10,utf8_decode('Table Saint-Émilion'),1,0,'', true);
-$pdf->SetFillColor(208,228,233);
-$pdf->Cell(20,10,utf8_decode('3 paces'),1,1,'C', true);
-
-$pdf->Cell(25,10,'-', 0, 0, 'C');$pdf->Cell(165,10,utf8_decode('Bellefeuille Bertrand'),0,1,'');
-
-$pdf->Cell(25,10,'-', 0, 0, 'C');$pdf->Cell(165,10,utf8_decode('Charette Didier'),0,1,'');
-
-$pdf->Cell(25,10,'-', 0, 0, 'C');$pdf->Cell(165,10,utf8_decode('Masson Claudette'),0,1,'');
-
-$pdf->Ln(8);
-
-
-$pdf->Output();
-*/
 ?>
