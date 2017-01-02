@@ -69,13 +69,13 @@
 					<img class="img-circle" src="../../img/b5.png" alt="Invités" height="140" width="140">
 					<h1>Les invités</h1>
 					<BR>
-					<p>Gérer simplement les invitations, la liste des invités et le plan de table.</p>
+					<p>Gérez simplement les invitations, la liste des invités et le plan de table.</p>
 				</div>
 				<div class="col-sm-4">
 					<img class="img-circle" src="../../img/b5.png" alt="Fournisseurs" height="140" width="140">
 					<h1>Les fournisseurs</h1>
 					<BR>
-					<p>Lister et contacter aisément vos fournisseurs.</p>
+					<p>Listez et contactez aisément vos fournisseurs.</p>
 				</div>
 				<div class="col-sm-4">
 					<img class="img-circle" src="../../img/b5.png" alt="Inspirations" height="140" width="140">
