@@ -59,37 +59,38 @@
 
 			<div id="features" class="container">
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<img class="img-circle" src="../../img/b5.png" alt="Planning" height="140" width="140">
+					<i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
 					<h1>Le planning</h1>
 					<BR>
 					<p>Une aide à l'organisation temporelle de votre mariage.</p>
 				</div>
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<img class="img-circle" src="../../img/b5.png" alt="Invités" height="140" width="140">
 					<h1>Les invités</h1>
 					<BR>
 					<p>Gérer simplement les invitations, la liste des invités et le plan de table.</p>
 				</div>
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<img class="img-circle" src="../../img/b5.png" alt="Fournisseurs" height="140" width="140">
 					<h1>Les fournisseurs</h1>
 					<BR>
 					<p>Lister et contacter aisément vos fournisseurs.</p>
 				</div>
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
-					<h1>Inspiration</h1>
+					<img class="img-circle" src="../../img/b5.png" alt="Inspirations" height="140" width="140">
+					<h1>Les inspirations</h1>
 					<BR>
 					<p>Une idée ? Notez la pour ne pas l'oublier.</p>
 				</div>
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<img class="img-circle" src="../../img/b5.png" alt="Liste de mariage" height="140" width="140">
 					<h1>La liste de mariage</h1>
 					<BR>
 					<p>Vos invités n'auront plus de doutes sur vos souhaits !</p>
 				</div>
 				<div class="col-sm-4">
-					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
+					<img class="img-circle" src="../../img/b5.png" alt="Budget" height="140" width="140">
 					<h1>Le budget</h1>
 					<BR>
 					<p>Vos dépenses seront facilement visible.</p>
