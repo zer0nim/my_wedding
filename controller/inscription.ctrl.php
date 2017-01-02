@@ -5,21 +5,18 @@
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
     $info=$dao->connexion($email,$mdp);
-    if ($info != NULL) {
-      if ($info[0] != NULL) {
-        include_once('session_init.ctrl.php');
-        //var_dump($info);
-        if ($info[1] == NULL) {
-          header('location: creation.ctrl.php');
-        }else{
-          header('location:accueil.ctrl.php');
-        }
-      }else {
-        $erreur=2;
+    if ($info[0] != NULL) {
+      include_once('session_init.ctrl.php');
+      //var_dump($info);
+      if ($info[1] == NULL) {
+        header('location: creation.ctrl.php');
+      }else{
+        header('location:accueil.ctrl.php');
       }
     }else {
       $erreur=0;
     }
+
   }elseif (isset($_POST['inscription'])) {
     $email=$_POST['email'];
     $mdp=$_POST['motdepasse'];
@@ -47,6 +44,8 @@
 
       case 2:
         $messErr='Erreur dans la procédure de connexion';
+        break;
+        
       default:
         $messErr="Erreur inconnue";
         break;
