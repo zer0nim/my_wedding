@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	disableCntInfo();
-	$("#select-cnt" ).bind( "change", selectHandler);
+	$("#select-cnt" ).change(selectHandler);
 	$("#select-cnt" ).unbind( "change", disselectHandler);
 
 	$("#SaveContactInfoLink").bind("click", noDiffHandler);
@@ -39,12 +39,12 @@ function disselectHandler() {
 	preventChangeSlct();
 }
 function noDiffHandler() {
-	$("#select-cnt" ).bind( "change", selectHandler);
+	$("#select-cnt" ).change(selectHandler);
 	$("#select-cnt" ).unbind( "change", disselectHandler);
 }
 function asDiffHandler() {
 	document.getElementById("SaveContactInfoLink").disabled=false;
-	$("#select-cnt" ).bind( "change", disselectHandler);
+	$("#select-cnt" ).change(disselectHandler);
 	$("#select-cnt" ).unbind( "change", selectHandler );
 }
 
