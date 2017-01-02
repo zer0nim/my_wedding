@@ -27,6 +27,9 @@ if (isset($_POST['creation'])) {
     $cnt = new contacts();
     $info=$dao->getMariage($idacc);
     $mail=$dao->getMailAccount($idacc);
+    $_SESSION['idM'] = $info[1];
+    $req = $dao->getMariage($_SESSION['idM']);
+    $_SESSION['date'] = $req[0];
     $cnt->faux_construct(NULL, $idm, $info['maria_nomF'], $info['maria_prenomF'], NULL, $mail, NULL, NULL);
     $dao->setContact($cnt);
     $cnt->faux_construct(NULL, $idm, $info['maria_nomH'], $info['maria_prenomH'], NULL, $mail, NULL, NULL);
