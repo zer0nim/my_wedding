@@ -477,6 +477,16 @@ class DAO {
       return $donnee[0];
     }
 
+    function getMaries($idM,$nomF,$prenomF,$nomH,$prenomH) {
+      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM and cont_nom=:nomF or cont_nom=:nomH and cont_prenom=:prenomF or cont_prenom=:prenomH');
+      $req->execute(array(':idM' => $idM,
+                          ':nomF' => $nomF,
+                          ':prenomF' => $prenomF,
+                          ':nomH' => $nomH,
+                          ':prenomH' => $prenomH));
+      $donnee = $req->fetchAll(PDO::FETCH_CLASS, "contacts");
+      return $donnee;
+    }
     // supprime un Contact d'un mariage
     function delContacts($idM, $idCont) {
       $req = $this->db->prepare('DELETE FROM Contact WHERE cont_idM = :idM and cont_id = :cont_id');
