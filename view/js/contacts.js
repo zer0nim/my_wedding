@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	disableCntInfo();
-	$("#select-cnt" ).bind( "input", selectHandler);
-	$("#select-cnt" ).unbind( "input", disselectHandler);
+	$("#select-cnt" ).bind( "click", selectHandler);
+	$("#select-cnt" ).unbind( "click", disselectHandler);
 
 	$("#SaveContactInfoLink").bind("click", noDiffHandler);
 
@@ -23,6 +23,13 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+
+
+	$('#MesententeLink').bind("click", function addMesentente() {
+		//cnt_id: ?
+		//cnt_idMes: $(this).parent().prev().val()
+		console.log("Hey!: " + $(this).parent().prev().val());
+	});
 });
 
 function selectHandler() {
@@ -32,13 +39,13 @@ function disselectHandler() {
 	preventChangeSlct();
 }
 function noDiffHandler() {
-	$("#select-cnt" ).bind( "input", selectHandler);
-	$("#select-cnt" ).unbind( "input", disselectHandler);
+	$("#select-cnt" ).bind( "click", selectHandler);
+	$("#select-cnt" ).unbind( "click", disselectHandler);
 }
 function asDiffHandler() {
 	document.getElementById("SaveContactInfoLink").disabled=false;
-	$("#select-cnt" ).bind( "input", disselectHandler);
-	$("#select-cnt" ).unbind( "input", selectHandler );
+	$("#select-cnt" ).bind( "click", disselectHandler);
+	$("#select-cnt" ).unbind( "click", selectHandler );
 }
 
 function actionSelect() {
