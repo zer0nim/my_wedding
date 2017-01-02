@@ -16,46 +16,46 @@
 		<header>
 				<div>
 					<div class="col-sm-6">
-						<h1>MyWedding:</h1>
+						<h1>MyWedding</h1>
 						<h2>Le meilleur moyen d'organiser votre mariage</h2>
 					</div>
 				</div>
 		</header>
 
 		<main>
-		<?php if (isset($messErr)) {?>
-				<div class="alert alert-danger">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<strong>Erreur : </strong><?=$messErr?>
-				</div>
-		<?php } ?>
-		<div id="sign">
-			<form class="form-signin" action="inscription.ctrl.php" method="post">
-				<h2 class="form-signin-heading">Connexion</h2>
+			<?php if (isset($messErr)) {?>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Erreur : </strong><?=$messErr?>
+					</div>
+			<?php } ?>
+			<div id="sign">
+				<form class="form-signin" action="inscription.ctrl.php" method="post">
+					<h2 class="form-signin-heading">Connexion</h2>
 
-				<label for="inputEmail" class="sr-only">Adresse mail</label>
-				<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
-				<label for="inputPassword" class="sr-only">Mot de passe</label>
-				<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-				<button class="btn btn-lg btn-primary btn-block" name="connexion" type="submit">Se connecter</button>
-			</form>
+					<button class="btn btn-lg btn-primary btn-block" name="connexion" type="submit">Se connecter</button>
+				</form>
 
 
-			<form class="form-signin" action="inscription.ctrl.php" method="post">
-				<h2 class="form-signin-heading">Inscription</h2>
+				<form class="form-signin" action="inscription.ctrl.php" method="post">
+					<h2 class="form-signin-heading">Inscription</h2>
 
-				<label for="inputEmail" class="sr-only">Adresse mail</label>
-				<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
+					<label for="inputEmail" class="sr-only">Adresse mail</label>
+					<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required>
 
-				<label for="inputPassword" class="sr-only">Mot de passe</label>
-				<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+					<label for="inputPassword" class="sr-only">Mot de passe</label>
+					<input type="password" name="motdepasse" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-				<button class="btn btn-lg btn-primary btn-block" name="inscription" type="submit">S'inscrire</button>
-			</form>
-		</div>
-	</main>
+					<button class="btn btn-lg btn-primary btn-block" name="inscription" type="submit">S'inscrire</button>
+				</form>
+			</div>
+		</main>
 
 			<div id="features" class="container">
 				<div class="col-sm-4">
@@ -86,7 +86,7 @@
 
 
 		<footer>
-			<p class="col-sm-6">Addresse: qwfqwfqwf</p>
+			<p class="col-sm-6">Adresse: qwfqwfqwf</p>
 			<p class="col-sm-6">Mentions légales: qwfqwfqwfqwf</p>
 		</footer>
 

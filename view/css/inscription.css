@@ -1,21 +1,9 @@
 body {
 	margin: 0px;
 }
-/*barre de nav*/
-.navbar {
-	margin-bottom: 0;
-}
-
-.navbar-default .navbar-nav > li > a {
-	padding: 0.4em 0.8em;
-	color: white;
-}
-.navbar-default .navbar-nav > li > .btn-default {
-	color: black;
-}
 /*Cadre première image*/
 header {
-	height: 100vh;
+	height: 80vh;
 	background-image: url("../../img/2.jpg");
 	background-size: cover;
 }
