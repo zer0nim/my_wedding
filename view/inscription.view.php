@@ -29,7 +29,6 @@
 						<strong>Erreur : </strong><?=$messErr?>
 					</div>
 			<?php } ?>
-			<main>
 			<div id="sign">
 				<form class="form-signin" action="inscription.ctrl.php" method="post">
 					<h2 class="form-signin-heading">Connexion</h2>
@@ -56,7 +55,6 @@
 					<button class="btn btn-lg btn-primary btn-block" name="inscription" type="submit">S'inscrire</button>
 				</form>
 			</div>
-			</main>
 		</header>
 
 			<div id="features" class="container">

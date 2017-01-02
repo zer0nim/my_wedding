@@ -79,7 +79,7 @@ header > div h2 {
 	border-top-right-radius: 0;
 }
 
-main #sign {
+#sign {
 
 	display: flex;
 	justify-content: space-around;
