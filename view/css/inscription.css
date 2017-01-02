@@ -55,7 +55,6 @@ header > div h2 {
 	text-align: center;
 }
 
-
 .form-signin .form-control	{
 	position: relative;
 	height: auto;
@@ -79,8 +78,7 @@ header > div h2 {
 	border-top-right-radius: 0;
 }
 
-#sign {
-
+main #sign {
 	display: flex;
 	justify-content: space-around;
 	flex-flow: row wrap;
