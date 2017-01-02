@@ -7,8 +7,10 @@
   include_once('../view/liste.view.php');
 
   function print_list($list) {
-    foreach ($list as $key => $value) {
-      echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default">' . $value['nom'] . '	<a class="supr-souh btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></li>';
+    if (isset($list)) {
+      foreach ($list as $key => $value) {
+        echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default">' . $value['nom'] . '	<a class="supr-souh btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></li>';
+      }
     }
   }
 ?>

@@ -378,6 +378,7 @@ class DAO {
 
     // recupere tout la liste d'un mariage
     function getListeSouhait($idM) {
+      $data = NULL;
       $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idM = :idM ORDER BY ListSouh_preference');
       $req->execute(array(':idM' => $idM,));
       while ($donnee = $req->fetch()) {
@@ -419,7 +420,17 @@ class DAO {
       $req->execute(array(':idM' => $idM, ));
       $donnee = $req->fetch();
 
-      $preference = $donnee['ListSouh_preference'] + 1;
+      if (!$donnee['ListSouh_preference']) {
+        $preference = 1;
+      }
+      else {
+        $preference = $donnee['ListSouh_preference'] + 1;
+      }
+
+      //return 'pref: ' . $preference . ' idM: ' . $idM . ' elem: ' . $elem;
+
+
+
 
       $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
       $req->execute(array(':idM' => $idM,
