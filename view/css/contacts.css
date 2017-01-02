@@ -21,21 +21,9 @@ select[multiple], select[size] {
 	font-size: 1em;
 }
 
-#EntenteLink, #EntenteChoiceLink, #MesententeLink {
-		height: 42.5vh;
-}
-@media (max-width: 768px) {
-	#EntenteLink, #EntenteChoiceLink, #MesententeLink {
-			height: 25vh;
-	}
-}
-
 @media (max-width: 1200px) {
 	.margin-b-form {
 			margin-bottom: 15px;
-	}
-	#EntenteLink, #EntenteChoiceLink, #MesententeLink {
-			height: 35vh;
 	}
 }
 
@@ -63,6 +51,30 @@ select[multiple], select[size] {
 	margin-left: 20px;
 	margin-right: 20px;
 }
+
+
+
+
+
+
+table {
+	background-color: white;
+}
+
+#singlebutton {
+	margin-bottom: 5px;
+}
+
+.supprCntLink {
+	float: right;
+}
+
+.nopadding {
+	padding: 0;
+}
+
+
+
 
 /* v---navBar---v*/
 

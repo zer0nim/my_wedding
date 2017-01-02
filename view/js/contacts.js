@@ -102,11 +102,7 @@ function showCntInfo() {
 					document.getElementById("AgeLink").value = data['cont_age'];
 					document.getElementById("AgeLink").disabled=false;
 
-					document.getElementById("EntenteLink").disabled=false;
-					document.getElementById("EntenteChoiceLink").disabled=false;
 					document.getElementById("MesententeLink").disabled=false;
-					document.getElementById("LikeLink").disabled=false;
-					document.getElementById("dislikeLink").disabled=false;
 
 					document.getElementById("SaveContactInfoLink").disabled=true;
 					$('#info').removeClass('disabledInf');
@@ -135,11 +131,7 @@ function disableCntInfo() {
 	document.getElementById("AgeLink").value = "";
 	document.getElementById("AgeLink").disabled=true;
 
-	document.getElementById("EntenteLink").disabled=true;
-	document.getElementById("EntenteChoiceLink").disabled=true;
 	document.getElementById("MesententeLink").disabled=true;
-	document.getElementById("LikeLink").disabled=true;
-	document.getElementById("dislikeLink").disabled=true;
 
 	document.getElementById("SaveContactInfoLink").disabled=true;
 }
@@ -158,11 +150,7 @@ function initCntInfo() {
 	document.getElementById("AgeLink").value = "";
 	document.getElementById("AgeLink").disabled=false;
 
-	document.getElementById("EntenteLink").disabled=false;
-	document.getElementById("EntenteChoiceLink").disabled=false;
 	document.getElementById("MesententeLink").disabled=false;
-	document.getElementById("LikeLink").disabled=false;
-	document.getElementById("dislikeLink").disabled=false;
 
 	asDiffHandler();
 	$('#info').removeClass('disabledInf');
