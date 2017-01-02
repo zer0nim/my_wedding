@@ -1268,6 +1268,54 @@ listTab_nbPlaces
         exit("Erreur dans la fonction insertHash: ".$e->getMessage());
       }
     }
+
+    //----------------------------------------------------------------------------------------
+    // fonction pour la fonctionnalité mésentente de contacts
+    //----------------------------------------------------------------------------------------
+
+    function getMesententeCnt($idM, $idCnt) {
+      try {
+        $data = NULL;
+        $req = $this->db->prepare('SELECT * FROM Preferences WHERE pref_idM = :idM AND pref_aime = :pref_aime AND (pref_idContact = :cntId OR pref_idContact2 = :cntId)');
+        $req->execute(array(':idM' => $idM,
+                            ':cntId' => $idCnt,
+                            ':pref_aime' => 'non',));
+        while ($donnee = $req->fetch()) {
+          $data[] = array('pref_idContact' => $donnee['pref_idContact'],
+                          'pref_idContact2' => $donnee['pref_idContact2'],);
+        }
+        if (isset($data)) {
+          foreach ($data as $key => $value) {
+            if ($value['pref_idContact'] == $idCnt) {
+              $cnt = $this->getContact($idM, $value['pref_idContact2']);
+              $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
+            }
+            else {
+              $cnt = $this->getContact($idM, $value['pref_idContact']);
+              $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
+            }
+          }
+        }
+        return $data;
+      }
+      catch (PDOException $e) {
+        exit("Erreur récupération mésentente contacts: ".$e->getMessage());
+      }
+    }
+
+    function setMesententeCnt($idM, $idCnt1, $idCnt2) {
+      try {
+        $req = $this->db->prepare('INSERT INTO Preferences VALUES(:pref_idM, :pref_idContact, :pref_idContact2, :pref_aime)');
+        $req->execute(array(':pref_idM' => $idM,
+                            ':pref_idContact' => $idCnt1,
+                            ':pref_idContact2' => $idCnt2,
+                            ':pref_aime' => 'non',));
+      }
+      catch (PDOException $e) {
+        exit("Erreur création nouvelle mésentente: ".$e->getMessage());
+      }
+    }
+
   }
 
 ?>

@@ -25,6 +25,12 @@ $(document).ready(function(){
 	});
 });
 
+//$("#listCntTMesentente")
+//<option value="NULL">ramery paul</option>
+//
+//$("#cntTable")
+//<tr><td><p>ramery paul<a class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
+
 function selectHandler() {
 	actionSelect();
 }
@@ -106,6 +112,17 @@ function showCntInfo() {
 
 					document.getElementById("SaveContactInfoLink").disabled=true;
 					$('#info').removeClass('disabledInf');
+					$("#listCntTMesentente").removeAttr('disabled');
+
+					$("#cntTable").empty();
+					if (data['mesentente'] != null) {
+						$.each(data['mesentente'], function( index ) {
+							var newRow = "<tr><td><p>" + $(this)[0]['cnt'] + "<a class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
+							$("#cntTable").append(newRow)
+
+							console.log($(this)[0]['cnt']);
+						});
+					}
 				},
 
 				'json' // Format des données reçues.
@@ -134,6 +151,10 @@ function disableCntInfo() {
 	document.getElementById("MesententeLink").disabled=true;
 
 	document.getElementById("SaveContactInfoLink").disabled=true;
+
+	$("#cntTable").empty();
+	$("#listCntTMesentente").empty();
+	$("#listCntTMesentente").attr('disabled', 'disabled');
 }
 
 function initCntInfo() {
@@ -151,6 +172,10 @@ function initCntInfo() {
 	document.getElementById("AgeLink").disabled=false;
 
 	document.getElementById("MesententeLink").disabled=false;
+
+	$("#cntTable").empty();
+	$("#listCntTMesentente").empty();
+	$("#listCntTMesentente").attr('disabled', 'disabled');
 
 	asDiffHandler();
 	$('#info').removeClass('disabledInf');

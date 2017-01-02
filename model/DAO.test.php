@@ -4,6 +4,14 @@
 require_once('DAO.class.php');
 
 /*
+//$dao->setMesententeCnt(1, 4, 5);
+//$dao->setMesententeCnt(1, 4, 6);
+//$dao->setMesententeCnt(1, 7, 4);
+
+*/
+var_dump($dao->getMesententeCnt(1, 4));
+
+/*
 $ln = new lien();
 
 $ln->faux_construct(NULL, 1, '2017/01/13', 'http://google.fr', 'google');

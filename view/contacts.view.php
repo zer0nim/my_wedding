@@ -84,7 +84,7 @@
 
 
 					<div class="input-group">
-							<select class="listCntToAddlink form-control">
+							<select id="listCntTMesentente" class="form-control">
 								<option value="NULL">ramery paul</option>
 							</select>
 						<span class="input-group-btn">
@@ -92,7 +92,7 @@
 						</span>
 					</div>
 					<table class="table table-bordered table-striped table-hover table-responsive">
-						<tbody class="cntTable">
+						<tbody id="cntTable">
 							<tr><td><p>ramery paul<a class="supprCntLink btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></p></td></tr>
 						</tbody>
 					</table>
