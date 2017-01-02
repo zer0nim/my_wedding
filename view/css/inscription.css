@@ -75,6 +75,10 @@ main #sign {
 .form-signin {
 	flex-basis: 500px;
 }
+#sign {
+	background-image: url("../../img/b5.jpg");
+}
+
 /*Zone des fonctionnalités*/
 #features {
 	display: block;
