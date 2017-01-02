@@ -16,6 +16,17 @@ if (isset($_POST['creation'])) {
   $date=$tabdate[2].'/'.$tabdate[1].'/'.$tabdate[0];
   if ($dao->getMariage($idacc)) {
     $retour=$dao->modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse);
+    $idm=$dao->getIdMariage($idacc);//On récupère l'id du mariage
+    //On modifie les infos des contacts et de la session
+    $cnt = new contacts();
+    $info=$dao->getMariage($idacc);//Infos sur le mariage qu'on vient de modifier
+    $mail=$dao->getMailAccount($idacc);
+    $_SESSION['date'] = $info[0];
+    $cnt->faux_construct(NULL, $idm, $info['maria_nomF'], $info['maria_prenomF'], NULL, $mail, NULL, NULL);
+    $dao->updateContactInfo($cnt);
+    $cnt->faux_construct(NULL, $idm, $info['maria_nomH'], $info['maria_prenomH'], NULL, $mail, NULL, NULL);
+    $dao->updateContactInfo($cnt);
+
     $modif='Informations sur le mariage modifiées !';
   }else {
     $retour=$dao->createMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse);
