@@ -9,7 +9,7 @@ require_once('DAO.class.php');
 //$dao->setMesententeCnt(1, 7, 4);
 
 */
-var_dump($dao->getMesententeCnt(1, 4));
+//var_dump($dao->getMesententeCnt(1, 4));
 
 /*
 $ln = new lien();

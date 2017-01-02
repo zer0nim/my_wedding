@@ -1290,11 +1290,13 @@ listTab_nbPlaces
               $cnt = $this->getContact($idM, $value['pref_idContact2']);
               $idTosuppr[] = $cnt->getCont_id();
               $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
+              $data[$key]['id'] = $cnt->getCont_id();
             }
             else {
               $cnt = $this->getContact($idM, $value['pref_idContact']);
               $idTosuppr[] = $cnt->getCont_id();
               $data[$key]['cnt'] = $cnt->getCont_nom() . ' ' . $cnt->getCont_prenom();
+              $data[$key]['id'] = $cnt->getCont_id();
             }
           }
         }
@@ -1329,6 +1331,17 @@ listTab_nbPlaces
       }
     }
 
+    function supprMesententeCnt($idM, $idCnt1, $idCnt2) {
+      try {
+        $req = $this->db->prepare('DELETE FROM Preferences WHERE pref_idM = :pref_idM AND pref_aime = :pref_aime AND ((pref_idContact = :pref_idContact AND pref_idContact2 = :pref_idContact2) OR (pref_idContact = :pref_idContact2 AND pref_idContact2 = :pref_idContact))');
+        $req->execute(array(':pref_idM' => $idM,
+                            ':pref_idContact' => $idCnt1,
+                            ':pref_idContact2' => $idCnt2,
+                            ':pref_aime' => 'non',));
+      }
+      catch (PDOException $e) {
+        exit("Erreur création nouvelle mésentente: ".$e->getMessage());
+      }
   }
-
+}
 ?>

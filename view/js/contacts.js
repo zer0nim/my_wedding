@@ -26,9 +26,27 @@ $(document).ready(function(){
 
 
 	$('#MesententeLink').bind("click", function addMesentente() {
-		//cnt_id:
-		//cnt_idMes: $(this).parent().prev().val()
-		console.log("Hey!: " + $(this).parent().prev().val());
+		var id1 = $("#select-cnt").val();
+		var thisMes = $(this);
+		var selected = $("option:selected", thisMes.parent().prev()).text();
+
+		$.post(
+				'../controller/ajax_modify_mesentente.php', // Le fichier cible côté serveur.
+				{
+						idCnt1 : id1,
+						idCnt2 : thisMes.parent().prev().val()
+				},
+
+				function(data){
+					//console.log(data);
+					var newRow = "<tr id=\"messT_" + thisMes.parent().prev().val() + "\"><td><p>" + selected + "<a onclick=\"return supprMesentente(" + id1[0] + ", " + thisMes.parent().prev().val() + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
+					$("#cntTable").append(newRow);
+					sortTable($("#cntTable"),'asc');
+					$("option:selected", thisMes.parent().prev()).remove();
+				},
+
+				'text' // Format des données reçues.
+		);
 	});
 });
 
@@ -127,7 +145,7 @@ function showCntInfo() {
 								$("#listCntTMesentente").sortOptions();
 							}
 							else {
-								var newRow = "<tr><td><p>" + data['mesentente'][key]['cnt'] + "<a class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
+								var newRow = "<tr id=\"messT_" + data['mesentente'][key]['id'] + "\"><td><p>" + data['mesentente'][key]['cnt'] + "<a onclick=\"return supprMesentente(" + $('#select-cnt').val() + ", " + data['mesentente'][key]['id'] + ");\" class=\"supprCntLink btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></a></p></td></tr>";
 								$("#cntTable").append(newRow);
 								sortTable($("#cntTable"),'asc');
 							}
@@ -377,4 +395,21 @@ function sortTable(table, order) {
             return $('td:first', b).text().localeCompare($('td:first', a).text());
         }
     }).appendTo(tbody);
+}
+
+supprMesentente = function(cntId1, cntId2) {
+	$.post(
+			'../controller/ajax_remove_mesentente.php', // Le fichier cible côté serveur.
+			{
+					idCnt1 : cntId1,
+					idCnt2 : cntId2
+			},
+
+			function(data){
+				$("#messT_" + cntId2).remove();
+			},
+
+			'text' // Format des données reçues.
+	);
+	return false;
 }
