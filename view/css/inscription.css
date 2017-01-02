@@ -88,6 +88,10 @@ main #sign {
 	display: block;
 	margin: 1em auto;
 }
+#features h1, #features p {
+	text-align: center;
+	color: blue;
+}
 
 /*Bas de page*/
 footer {
