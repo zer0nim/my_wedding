@@ -378,12 +378,20 @@ class DAO {
 
     // recupere tout la liste d'un mariage
     function getListeSouhait($idM) {
-      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idM = :id ORDER BY ListSouh_preference');
-      $req->execute(array(':id' => $idM,));
+      $req = $this->db->prepare('SELECT * FROM ListeSouhaits WHERE ListSouh_idM = :idM ORDER BY ListSouh_preference');
+      $req->execute(array(':idM' => $idM,));
       while ($donnee = $req->fetch()) {
-        $data[] = array('nom' => $donnee['ListSouh_nom'], 'preference' => $donnee['ListSouh_preference'],);
+        $data[] = array('nom' => $donnee['ListSouh_nom'],
+                        'preference' => $donnee['ListSouh_preference'],);
       }
       return $data;
+    }
+
+    // supprime les souhait d'un mariage
+    function delListeSouhait($idM, $nom) {
+      $req = $this->db->prepare('DELETE FROM ListeSouhaits WHERE ListSouh_idM = :idM AND ListSouh_nom = :ListSouh_nom');
+      $req->execute(array(':idM' => $idM,
+                          ':ListSouh_nom' => $nom,));
     }
 
     // supprime les souhait d'un mariage
@@ -396,7 +404,6 @@ class DAO {
     function setListeSouhait($idM, $liste) {
       $preference = 1;
       foreach ($liste as $key => $value) {
-        echo "test";
         var_dump($liste);
         $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
         $req->execute(array(':idM' => $idM,
@@ -408,12 +415,11 @@ class DAO {
 
     // écris un élément dans la liste de souhait d'un mariage
     function addListeSouhait($idM, $elem) {
-      echo "test";
-      $req = $this->db->prepare('SELECT max(ListSouh_preference) FROM ListeSouhaits WHERE ListSouh_idM = :idM');
-      $req->execute(array(':id' => $idM, ));
+      $req = $this->db->prepare('SELECT max(ListSouh_preference) AS ListSouh_preference FROM ListeSouhaits WHERE ListSouh_idM = :idM');
+      $req->execute(array(':idM' => $idM, ));
       $donnee = $req->fetch();
-      $preference = 1;//$donnee['ListSouh_preference'];
 
+      $preference = $donnee['ListSouh_preference'] + 1;
 
       $req = $this->db->prepare('INSERT INTO ListeSouhaits VALUES(:idM, :nom, :preference)');
       $req->execute(array(':idM' => $idM,

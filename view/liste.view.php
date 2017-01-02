@@ -6,10 +6,7 @@
 	<div class="box col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
 		<div class="liste">
 			<ul id="sortable">
-				<?php // Affichage de la liste
-					foreach ($data as $key => $value) { echo '<li id="list_' . $value['nom'] . '" class="list-group-item ui-state-default">' . $value['nom'] . '	<a class="supr-souh btn btn-danger btn-xs" role="button"><i class="fa fa-times" aria-hidden="true"></i></a></li>'
-						;	}
-				?>
+				<?php print_list($list); ?>
 			</ul>
 		</div>
 			<span class="input-group-addon">Nouveau souhait</span>
