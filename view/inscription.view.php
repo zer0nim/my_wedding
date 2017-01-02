@@ -92,7 +92,7 @@
 					<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" height="140" width="140">
 					<h1>Le budget</h1>
 					<BR>
-					<p>La dépense de votre argent sera facilement visible.</p>
+					<p>Vos dépenses seront facilement visible.</p>
 				</div>
 			</div>
 
