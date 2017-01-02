@@ -3,7 +3,7 @@ body {
 }
 /*Cadre première image*/
 header {
-	height: 80vh;
+	height: 70vh;
 	background-image: url("../../img/2.jpg");
 	background-size: cover;
 }
