@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	TrouverAdresse();
-	var geocoder;
+	var geocoder = new google.maps.Geocoder();
 	var map;
+
 	// initialisation de la carte Google Map de départ
 	function initialiserCarte() {
 		geocoder = new google.maps.Geocoder();
@@ -14,6 +14,7 @@ $(document).ready(function(){
 		}
 		// map-canvas est le conteneur HTML de la carte Google Map
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		TrouverAdresse();
 	}
 
 	function TrouverAdresse() {
@@ -35,6 +36,8 @@ $(document).ready(function(){
 							strposition=strposition.replace(')', '');
 							// Affichage des coordonnées dans le <span>
 							document.getElementById('text_latlng').innerHTML='Coordonnées : '+strposition;
+							//
+							$('#text_adresse').text(data.substring(1,data.length-1));
 							// Création du marqueur du lieu (épingle)
 							var marker = new google.maps.Marker({
 								map: map,

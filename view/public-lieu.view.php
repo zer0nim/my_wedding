@@ -1,4 +1,6 @@
 <?php include('../view/header.php') ?>
+<link rel="stylesheet" href="../view/css/public-lieu.css" type="text/css" />
+
 </head>
 <body class="container-fluid">
 
@@ -24,9 +26,12 @@
 			</div>
 		</nav>
 	</header>
-	<span id="text_latlng"></span>
-	<div id="map-canvas" style="width: 500px;height: 500px;"></div>
 
+	<div class="col-lg-offset-3 col-lg-6">
+		<span id="text_latlng"></span>
+		<div id="map-canvas" style="width: 500px;height: 500px;"></div>
+		<h2 id="text_adresse"></h2>
+	</div>
 	<?php include('../view/scripts.php'); ?>
 	<script src="../view/js/public-lieu.js"></script>
 	<?php include('../view/footer.php'); ?>
