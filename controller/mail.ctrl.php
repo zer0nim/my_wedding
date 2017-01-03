@@ -22,8 +22,8 @@ if (isset($_POST['actSend'])) {
     //==========
 
     //=====Création de la boundary.
-    $boundary = "-----=".sha1(rand());
-    $boundary_alt = "-----=".sha1(rand());
+    $boundary = "-----=".md5(rand());
+    $boundary_alt = "-----=".md5(rand());
     //==========
 
     //=====Définition du sujet.

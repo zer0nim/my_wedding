@@ -9,7 +9,7 @@
 ?>
 		<div class="alert alert-success">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Mail envoyé !</strong>
+			<strong>Mails envoyés !</strong>
 		</div>
 <?php }else{
 ?>
@@ -55,7 +55,7 @@
       </div>
 
       <div class="row">
-        <button class="col-sm-7 btn btn-primary" name="actSend">Envoyer</button>
+        <button class="col-sm-7 btn btn-primary" name="actSend">Envoyer à vos contacts</button>
       </div>
     </div>
 
