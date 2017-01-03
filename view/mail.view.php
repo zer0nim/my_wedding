@@ -15,7 +15,7 @@
 ?>
 		<div class="alert alert-danger">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  <strong>Erreur:</strong> Email non envoyé
+		  <strong>Erreur:</strong> Un ou plusieurs emails n'ont pas été envoyés
 		</div>
 <?php }
 }
