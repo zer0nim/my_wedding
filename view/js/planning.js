@@ -37,21 +37,21 @@ objet event :
 function afficheModifieEvenement(evenement){
 	// evenement == null : ajout d'un nouvel evenement
 	
-    if (evenement == null){
-		id = -1;
-		description = "";
-		date = new Date();
-		jourdebut = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate(); heuredebut = "00:00";
-		jourfin = ""; heurefin = "";
-		
-    }else{
+	var id = -1;
+	var description = "";
+	var jourdebut = "";
+	var heuredebut = "";
+	var jourfin = "";
+	var heurefin = "";
+	
+    if (evenement != null){
 		id = evenement.id;
 		description = evenement.title;
-		start = evenement.start.format().replace("T", " ");
+		var start = evenement.start.format().replace("T", " ");
 		
 		jourdebut = start.substring(0, 10); heuredebut = start.substring(11, 16);
 		if (evenement.end != null){
-			end = evenement.end.format().replace("T", " ");
+			var end = evenement.end.format().replace("T", " ");
 			jourfin = end.substring(0, 10); heurefin = end.substring(11, 16);
 		}else{
 			jourfin = jourdebut; heurefin = heuredebut;
@@ -60,7 +60,7 @@ function afficheModifieEvenement(evenement){
     }
     
     // créér une popup de modification
-	popup = 'Evènement'
+	var popup = 'Evènement'
 		+'<div class="champ input-group">'
 			+'<span class="libelle input-group-addon">Description</span>'
 			+'<textarea class="form-control" id="description" value="'+description+'">'+description+'</textarea>'
@@ -82,19 +82,18 @@ function afficheModifieEvenement(evenement){
 	if (id >= 0){
 		popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
 	}
-	
+
 	popup += '<button class="btn-popup btn-md btn-primary" onClick="cacher()">Annuler</button>'
 			+'<button class="btn-popup btn-md btn-primary" onClick="modifEvenement(null, '+id+')">Enregistrer</button>'
 		+'</div>';
-	
+
 	$('#popup').html(popup);
 	resizepopup();
-    
+
 	// Effet de transition     
 	$('#fond-popup').fadeTo("",0.6);
 	$('#popup').fadeIn(400);
-	
-	
+
 }
 
 $(window).resize(function () {
@@ -120,6 +119,7 @@ function resizepopup(){
 	popup = $('#popup');
 	popup.css('top', winH/2 - popup.height()/2);
 	popup.css('left', winW/2 - popup.width()/2);
+
 }
 
 // fonction pour caché la popup
@@ -160,6 +160,7 @@ function delEvenement(id){
 			xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhttp.send("action=delevenement&id="+id);
 		});
+
 }
 
 // fonction pour enregister les modifications d'un evenement dans la bd
@@ -169,6 +170,11 @@ function modifEvenement(evenement, idchamp){ // eventobject
 	// evenement != null : planning modifié via le js du planning
 	// id < 0 : nouvelle evenement
 	// id >+ 0 / evenement modifié 
+	
+	var id;
+	var description;
+	var start;
+	var end;
 	
 	if (evenement == null){
 		// recuperer les champs de description
@@ -191,7 +197,7 @@ function modifEvenement(evenement, idchamp){ // eventobject
 		}
 
 		start = document.getElementById('jourdebut').value;
-		if (document.getElementById('jourdebut').value != ""){
+		if (document.getElementById('heuredebut').value != ""){
 			start += " "+document.getElementById('heuredebut').value+":00"
 		}else{
 			start += " 00:00:00";
@@ -205,7 +211,11 @@ function modifEvenement(evenement, idchamp){ // eventobject
 		if (document.getElementById('heurefin').value != ""){
 			end += " "+document.getElementById('heurefin').value+":00";
 		}else{
-			end += " "+document.getElementById('heuredebut').value+":00";
+			if (document.getElementById('heuredebut').value != ""){
+				end += " "+document.getElementById('heuredebut').value+":00"
+			}else{
+				end += " 00:00:00";
+			}
 		}
 				
 	}else{
