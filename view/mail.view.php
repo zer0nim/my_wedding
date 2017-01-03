@@ -21,7 +21,7 @@
 }
 ?>
 
-  <form class="" action="mail.ctrl.php" method="post">
+  <form action="mail.ctrl.php" method="post">
 
     <div class="form-horizontal col-sm-offset-3">
       <div class="form-group">
@@ -31,12 +31,14 @@
         </div>
       </div>
 
+			<!--
       <div class="form-group">
         <label for="for" class="col-sm-1">Pour : </label>
         <div class="col-sm-6">
           <input type="email" id="for" name="for" class="form-control" placeholder="exemple@mail.com" required>
         </div>
       </div>
+			-->
 
 			<div class="form-group">
         <label for="obj" class="col-sm-1">Objet : </label>
