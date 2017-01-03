@@ -1,16 +1,18 @@
 <?php
-  require_once('session_create.ctrl.php');
-  require_once('../model/DAO.class.php');
+require_once('session_create.ctrl.php');
+require_once('../model/DAO.class.php');
 
-  $idM = $_SESSION['idM'];
-  if (isset($_POST['actSend'])) {
-    $nom=$_POST['from'];
-    $mailfrom="www.mywedding.gdn";
-    
+$idM = $_SESSION['idM'];
+if (isset($_POST['actSend'])) {
+  $nom=$_POST['from'];
+  $mailfrom="www.mywedding.gdn";
+  $contacts=$dao->getContacts($idM);//récupère les contacts de la liste
+  foreach ($contacts as $key => $cont) {
+    $mailfor=$contacts[$key]->getCont_mail(); //recupère le mail du contact
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
-    	$passage_ligne = "\r\n";
+      $passage_ligne = "\r\n";
     }else{
-    	$passage_ligne = "\n";
+      $passage_ligne = "\n";
     }
     //=====Déclaration des messages au format HTML.
     $message_html = $_POST['message'];
@@ -49,16 +51,14 @@
 
     //$message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
-    $contacts=$dao->getContacts($idM);//récupère les contacts de la liste
-    foreach ($contacts as $key => $cont) {
-      $mailfor=$contacts[$key]->getCont_mail(); //recupère le mail du contact
-      $valRetour=mail($mailfor,$sujet,$message,$header);
-      if (!$valRetour) {
-        $accepte=false;
-      }
+    $valRetour=mail($mailfor,$sujet,$message,$header);
+    if (!$valRetour) {
+      $accepte=false;
     }
     //==========
   }
 
-  include_once("../view/mail.view.php");
+}
+
+include_once("../view/mail.view.php");
 ?>
