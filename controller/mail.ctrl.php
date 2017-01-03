@@ -5,7 +5,7 @@ require_once('../model/DAO.class.php');
 $idM = $_SESSION['idM'];
 if (isset($_POST['actSend'])) {
   $nom=$_POST['from'];
-  $mailfrom="www.mywedding.gdn";
+  $mailfrom="www.mywedding.gdn@localhost.localdomain";
   //$mailfor = $_POST['for']; // Déclaration de l'adresse de destination.
   $contacts=$dao->getContacts($idM);//récupère les contacts de la liste
   //var_dump($contacts);
@@ -52,7 +52,7 @@ if (isset($_POST['actSend'])) {
     $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
     //==========
 
-    $message.= $passage_ligne."--".$boundary.$passage_ligne;
+    //$message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
 
     $valRetour[]=mail($mailfor,$sujet,$message,$header);
