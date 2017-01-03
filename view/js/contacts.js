@@ -3,8 +3,6 @@ $(document).ready(function(){
 	$("#select-cnt" ).change(selectHandler);
 	$("#select-cnt" ).unbind( "change", disselectHandler);
 
-	$("#SaveContactInfoLink").bind("click", noDiffHandler);
-
 	$("#NomLink").bind("input", asDiffHandler);
 	$("#PrenomLink").bind("input", asDiffHandler);
 	$("#user_input_autocomplete_address").bind("input", asDiffHandler);
@@ -210,6 +208,9 @@ function initCntInfo() {
 
 // fonction pour sauvergarder les infos d'un contact existant
 function modifContact() {
+var cnt = $('#select-cnt :selected');
+var cntNomPrenom = $("#NomLink").val() + " " + $("#PrenomLink").val();
+
 	//enregistrement dans la base
 	$.post(
 			'../controller/ajax_modify_cnt.php', // Le fichier cible côté serveur.
@@ -224,12 +225,14 @@ function modifContact() {
 			},
 
 			function(data){
+				console.log(data);
 				swal("Contact enregistré!", "", "success");
 				noDiffHandler();
+				cnt.text(cntNomPrenom);
 				document.getElementById("SaveContactInfoLink").disabled=true;
 			},
 
-			'text' // Format des données reçues.
+			'json' // Format des données reçues.
 	);
 }
 
@@ -325,11 +328,11 @@ function confirmation() {
 }
 
 function	nouveauContact() {
-	if (document.getElementById("SaveContactInfoLink").disabled) {
-		initCntInfo();
+	if ($("#SaveContactInfoLink").is(':disabled')) {
 		$('#select-cnt').append(new Option("Nouveau contact","newC"));
 		$('#select-cnt').val([]);
 		$('#select-cnt').val("newC").change();
+		initCntInfo();
 	}
 	else {
 		if ($("#select-cnt option[value='newC']").length <= 0) {

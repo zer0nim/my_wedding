@@ -102,7 +102,6 @@
 
 		<div class="form-group	col-xs-12">
 			<input id="SaveContactInfoLink" type="submit" class="btn btn-default" value="Enregistrer">
-		<!--	<button id="SaveContactInfoLink" class="btn btn-primary" onClick="saveContact()">enregistrer</button>-->
 		</div>
 	</div>
 </div>
