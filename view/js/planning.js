@@ -36,76 +36,82 @@ objet event :
 // fonction pour afficher le planning modifiable
 function afficheModifieEvenement(evenement){
 	// evenement == null : ajout d'un nouvel evenement
-	
-	var id = -1;
-	var description = "";
-	var jourdebut = "";
-	var heuredebut = "";
-	var jourfin = "";
-	var heurefin = "";
-	
-    if (evenement != null){
-		id = evenement.id;
-		description = evenement.title;
-		var start = evenement.start.format().replace("T", " ");
-		
-		jourdebut = start.substring(0, 10); heuredebut = start.substring(11, 16);
-		if (evenement.end != null){
-			var end = evenement.end.format().replace("T", " ");
-			jourfin = end.substring(0, 10); heurefin = end.substring(11, 16);
-		}else{
-			jourfin = jourdebut; heurefin = heuredebut;
+
+	jQuery.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js")
+		.done(function() {
+			jQuery.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js")
+				.done(function() {
+
+		var id = -1;
+		var description = "";
+		var jourdebut = "";
+		var heuredebut = "";
+		var jourfin = "";
+		var heurefin = "";
+
+	    if (evenement != null){
+			id = evenement.id;
+			description = evenement.title;
+			var start = evenement.start.format().replace("T", " ");
+
+			jourdebut = start.substring(0, 10); heuredebut = start.substring(11, 16);
+			if (evenement.end != null){
+				var end = evenement.end.format().replace("T", " ");
+				jourfin = end.substring(0, 10); heurefin = end.substring(11, 16);
+			}else{
+				jourfin = jourdebut; heurefin = heuredebut;
+			}
+
+	    }
+
+	    // créér une popup de modification
+		var popup = 'Evènement'
+			+'<div class="champ input-group">'
+				+'<span class="libelle input-group-addon">Description</span>'
+				+'<textarea class="form-control" id="description" value="'+description+'">'+description+'</textarea>'
+			+'</div>'
+			+'<div class="champ input-group">'
+				+'<span class="libelle input-group-addon">Jour de début</span>'
+				+'<input type="date" id="jourdebut" class="form-control" value="'+jourdebut+'" required>'
+				+'<span class="libelle input-group-addon">Heure de début</span>'
+				+'<input type="time" id="heuredebut" class="form-control" value="'+heuredebut+'">'
+			+'</div>'
+			+'<div class="champ input-group">'
+				+'<span class="libelle input-group-addon">Jour de fin</span>'
+				+'<input class="form-control" id="jourfin" name="date" placeholder="JJ/MM/AAAA" type="text" required/>' //+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
+				+'<span class="libelle input-group-addon">Heure de fin</span>'
+				+'<input type="time" id="heurefin" class="form-control" value="'+heurefin+'">'
+			+'</div>'
+			+'<div id="divbouton" class="row">';
+
+		if (id >= 0){
+			popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
 		}
-		
-    }
-    
-    // créér une popup de modification
-	var popup = 'Evènement'
-		+'<div class="champ input-group">'
-			+'<span class="libelle input-group-addon">Description</span>'
-			+'<textarea class="form-control" id="description" value="'+description+'">'+description+'</textarea>'
-		+'</div>'
-		+'<div class="champ input-group">'
-			+'<span class="libelle input-group-addon">Jour de début</span>'
-			+'<input type="date" id="jourdebut" class="form-control" value="'+jourdebut+'" required>'
-			+'<span class="libelle input-group-addon">Heure de début</span>'
-			+'<input type="time" id="heuredebut" class="form-control" value="'+heuredebut+'">'
-		+'</div>'
-		+'<div class="champ input-group">'
-			+'<span class="libelle input-group-addon">Jour de fin</span>'
-			+'<input class="form-control" id="jourfin" name="date" placeholder="JJ/MM/AAAA" type="text" required/>' //+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
-			+'<span class="libelle input-group-addon">Heure de fin</span>'
-			+'<input type="time" id="heurefin" class="form-control" value="'+heurefin+'">'
-		+'</div>'
-		+'<div id="divbouton" class="row">';
-			
-	if (id >= 0){
-		popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
-	}
 
-	popup += '<button class="btn-popup btn-md btn-primary" onClick="cacher()">Annuler</button>'
-			+'<button class="btn-popup btn-md btn-primary" onClick="modifEvenement(null, '+id+')">Enregistrer</button>'
-		+'</div>';
+		popup += '<button class="btn-popup btn-md btn-primary" onClick="cacher()">Annuler</button>'
+				+'<button class="btn-popup btn-md btn-primary" onClick="modifEvenement(null, '+id+')">Enregistrer</button>'
+			+'</div>';
 
-	$('#popup').html(popup);
-	resizepopup();
+		$('#popup').html(popup);
+		resizepopup();
 
-	// Effet de transition     
-	$('#fond-popup').fadeTo("",0.6);
-	$('#popup').fadeIn(400);
-	
-	var date_input=$('#jourfin');
-	var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-	var options={
-		language: "fr-FR",
-		startDate: '+1d',
-		format: 'dd/mm/yyyy',
-		container: container,
-		todayHighlight: true,
-		autoclose: true,
-	};
-	date_input.datepicker(options);
+		// Effet de transition
+		$('#fond-popup').fadeTo("",0.6);
+		$('#popup').fadeIn(400);
 
+			var date_input=$('#jourfin');
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			var options={
+				language: "fr-FR",
+				startDate: '+1d',
+				format: 'dd/mm/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			};
+			date_input.datepicker(options);
+		});
+	});
 }
 
 $(window).resize(function () {
@@ -126,7 +132,7 @@ function resizepopup(){
 
 	// On récupère la largeur de l'écran
 	var winH = $(window).height();
-	
+
 	// On met la fenêtre modale au centre de l'écran
 	popup = $('#popup');
 	popup.css('top', winH/2 - popup.height()/2);
@@ -141,19 +147,19 @@ function cacher(){
 		$('#fond-popup, #popup').hide();
 		$('#popup').html('');
 	});
-    
+
 }
 
 // fonction pour supprimer un evenement de la bd
 function delEvenement(id){
-	
+
 	swal({
-		title: "Supression",   
-		text: "Etes-vous sûr de vouloir supprimer cet évènement ?\nToutes les données seront perdues !",   
-		type: "warning",   
-		showCancelButton: true,   
-		confirmButtonColor: "#DD6B55",   
-		confirmButtonText: "Supprimer", 
+		title: "Supression",
+		text: "Etes-vous sûr de vouloir supprimer cet évènement ?\nToutes les données seront perdues !",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",
+		confirmButtonText: "Supprimer",
 		cancelButtonText: "Annuler"
 		},  function(){
 			var xhttp = new XMLHttpRequest();
@@ -181,13 +187,13 @@ function modifEvenement(evenement, idchamp){ // eventobject
 	// evenement == null : planning modifier via les champs de modifications
 	// evenement != null : planning modifié via le js du planning
 	// id < 0 : nouvelle evenement
-	// id >+ 0 / evenement modifié 
-	
+	// id >+ 0 / evenement modifié
+
 	var id;
 	var description;
 	var start;
 	var end;
-	
+
 	if (evenement == null){
 		// recuperer les champs de description
 		id = idchamp;
@@ -229,7 +235,7 @@ function modifEvenement(evenement, idchamp){ // eventobject
 				end += " 00:00:00";
 			}
 		}
-				
+
 	}else{
 		id = evenement.id;
 		description = evenement.title;
@@ -287,11 +293,11 @@ function modifEvenement(evenement, idchamp){ // eventobject
 // (les requettes ne sont pas recus)
 function serverLost(){
     swal({
-		title: "Erreur",   
-		text: "La connexion au serveur à été perdue !\nLes données ne peuvent pas être enregistrées ...",   
-		type: "warning",   
-		showCancelButton: false,   
-		confirmButtonColor: "#DD6B55",   
+		title: "Erreur",
+		text: "La connexion au serveur à été perdue !\nLes données ne peuvent pas être enregistrées ...",
+		type: "warning",
+		showCancelButton: false,
+		confirmButtonColor: "#DD6B55",
 		confirmButtonText: "Ok"
 		},  function(){
 		// ne rien faire
