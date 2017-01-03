@@ -11,6 +11,10 @@ div{
 	text-align: center;
 }
 
+.margin-bot {
+	margin-bottom: 15px;
+}
+
 /* v---navBar---v*/
 
 .test-center .invitations{

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../view/css/plandetable.css" type="text/css" />
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
-<div class="col-lg-offset-2 col-lg-8 col-sm-12">
+<div class="margin-bot col-lg-offset-2 col-lg-8 col-sm-12">
 	<!-- -v- Génerer -v- -->
 	<div class="nopadding">
 		<div class="alert alert-info alert-dismissable fade in">

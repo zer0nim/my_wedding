@@ -23,6 +23,10 @@ table {
 	padding: 0;
 }
 
+.margin-bot {
+	margin-bottom: 15px;
+}
+
 /* v---navBar---v*/
 
 .test-center .plandetable{

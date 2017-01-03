@@ -19,7 +19,7 @@
 				<?=$texte?>
 			</textarea>
 		</div>
-		<div class="row">
+		<div class="row margin-bot">
 				<button class="col-sm-2 col-sm-offset-3 btn btn-primary" name="actSave">Enregistrer</button>
 				<button class="col-sm-2 col-sm-offset-2 btn btn-primary" name="actMail">Envoyer par mail</button>
 		</div>

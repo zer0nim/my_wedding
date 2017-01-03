@@ -9,3 +9,12 @@ body {
 nav {
 	margin: 5px;
 }
+
+.formBg {
+	background-color: white;
+}
+
+.formTitle {
+	background-color: #e6e6e6;
+	margin-bottom: 0;
+}

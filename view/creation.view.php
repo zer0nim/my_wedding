@@ -1,5 +1,6 @@
 <?php include('../view/header.php') ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link rel="stylesheet" href="../view/css/creation.css" type="text/css" />
 </head>
 <body class="container-fluid">
 
@@ -43,8 +44,8 @@
 		</div>
 	<?php }
 	if ($dao->getMariage($idacc) == NULL) { ?>
-	<legend class="col-xs-12">Création de l'événement</legend>
-	<form class="col-xs-12" method="post">
+	<legend class="formTitle col-xs-12">Création de l'événement</legend>
+	<form class="formBg col-xs-12" method="post">
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
 			<legend class="col-xs-12">Mariage de</legend>
@@ -97,8 +98,8 @@
 	</form>
 
 <?php }else { $data=$dao->getMariage($idacc); // formulaire avec les données deja existantes?>
-	<legend class="col-xs-12">Modification de l'événement</legend>
-	<form class="col-xs-12" method="post">
+	<legend class="formTitle col-xs-12">Modification de l'événement</legend>
+	<form class="formBg col-xs-12" method="post">
 		<!--Première personne-->
 		<div class="form-group col-xs-12	col-sm-6">
 			<legend class="col-xs-12">Mariage de</legend>
@@ -151,6 +152,7 @@
 
 
 	</form>
+
 <?php } ?>
 <?php include('../view/scripts.php') ?>
 <script src="../view/js/creation.js"></script>
