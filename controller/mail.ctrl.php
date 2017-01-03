@@ -13,7 +13,7 @@ if (isset($_POST['actSend'])) {
     $mailfor=$cont->getCont_mail(); //recupère le mail du contact
     //var_dump($mailfor);
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
-      $passage_ligne = "\n";
+      $passage_ligne = "\r\n";
     }else{
       $passage_ligne = "\n";
     }
