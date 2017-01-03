@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="../view/css/planning.css" type="text/css" />
 <link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
@@ -15,17 +16,17 @@
 
 <?php include('../view/scripts.php') ?>
 
-<script src='../fullcalendar/lib/moment.min.js'></script>
-<script src='../fullcalendar/lib/jquery.min.js'></script>
-<script src='../fullcalendar/fullcalendar.min.js'></script>
-<script src='../fullcalendar/fullcalendar.js'></script>
-<!-- <script src='../fullcalendar/locale-all.js'></script> -->
-<script src='../fullcalendar/locale/fr.js'></script>
+<!-- Script du fullcalendar -->
+<script type="text/javascript" src='../fullcalendar/lib/moment.min.js'></script>
+<script type="text/javascript" src='../fullcalendar/fullcalendar.min.js'></script>
+<script type="text/javascript" src='../fullcalendar/locale/fr.js'></script>
 
-<script src='../view/js/planning.js'></script>
+<!-- timepiker <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script> -->
+
+<script type="text/javascript" src='../view/js/planning.js'></script>
 
 <!-- C'est le script qui gère de mettre la view -->
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
 
 		$('#calendar').fullCalendar({

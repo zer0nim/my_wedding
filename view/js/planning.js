@@ -37,85 +37,107 @@ objet event :
 function afficheModifieEvenement(evenement){
 	// evenement == null : ajout d'un nouvel evenement
 
-	jQuery.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js")
-		.done(function() {
-			jQuery.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/locales/bootstrap-datepicker.fr.min.js")
-				.done(function() {
+	var id = -1;
+	var description = "";
+	var jourdebut = "";
+	var heuredebut = "";
+	var jourfin = "";
+	var heurefin = "";
 
-		var id = -1;
-		var description = "";
-		var jourdebut = "";
-		var heuredebut = "";
-		var jourfin = "";
-		var heurefin = "";
+	if (evenement != null){
+		id = evenement.id;
+		description = evenement.title;
+		var start = evenement.start.format().replace("T", " ");
 
-	    if (evenement != null){
-			id = evenement.id;
-			description = evenement.title;
-			var start = evenement.start.format().replace("T", " ");
-
-			jourdebut = start.substring(0, 10); heuredebut = start.substring(11, 16);
-			if (evenement.end != null){
-				var end = evenement.end.format().replace("T", " ");
-				jourfin = end.substring(0, 10); heurefin = end.substring(11, 16);
-			}else{
-				jourfin = jourdebut; heurefin = heuredebut;
-			}
-
-	    }
-
-	    // créér une popup de modification
-		var popup = 'Evènement'
-			+'<div class="champ input-group">'
-				+'<span class="libelle input-group-addon">Description</span>'
-				+'<textarea class="form-control" id="description" value="'+description+'">'+description+'</textarea>'
-			+'</div>'
-			+'<div class="champ input-group">'
-				+'<span class="libelle input-group-addon">Jour de début</span>'
-				+'<input type="date" id="jourdebut" class="form-control" value="'+jourdebut+'" required>'
-				+'<span class="libelle input-group-addon">Heure de début</span>'
-				+'<input type="time" id="heuredebut" class="form-control" value="'+heuredebut+'">'
-			+'</div>'
-			+'<div class="champ input-group">'
-				+'<span class="libelle input-group-addon">Jour de fin</span>'
-				+'<input class="form-control" id="jourfin" name="date" placeholder="JJ/MM/AAAA" type="text" required/>' //+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
-				+'<span class="libelle input-group-addon">Heure de fin</span>'
-				+'<input type="time" id="heurefin" class="form-control" value="'+heurefin+'">'
-			+'</div>'
-			+'<div id="divbouton" class="row">';
-
-		if (id >= 0){
-			popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
+		jourdebut = start.substring(0, 10); 
+		var tabdate = jourdebut.split("-"); jourdebut = tabdate[2] +"/"+ tabdate[1] +"/"+ tabdate[0];
+		heuredebut = start.substring(11, 16);
+		if (evenement.end != null){
+			var end = evenement.end.format().replace("T", " ");
+			jourfin = end.substring(0, 10); 
+			tabdate = jourfin.split("-"); jourfin = tabdate[2] +"/"+ tabdate[1] +"/"+ tabdate[0];
+			heurefin = end.substring(11, 16);
 		}
+	}
 
-		popup += '<button class="btn-popup btn-md btn-primary" onClick="cacher()">Annuler</button>'
-				+'<button class="btn-popup btn-md btn-primary" onClick="modifEvenement(null, '+id+')">Enregistrer</button>'
-			+'</div>';
+	// créér une popup de modification
+	var popup = 'Evènement'
+		+'<div class="champ input-group">'
+			+'<span class="libelle input-group-addon">Description</span>'
+			+'<textarea class="form-control" id="description" value="'+description+'">'+description+'</textarea>'
+		+'</div>'
+		+'<div class="champ input-group">'
+			+'<span class="libelle input-group-addon">Jour de début</span>'
+			+'<input class="form-control" id="jourdebut" name="date" placeholder="JJ/MM/AAAA" type="text" value="'+jourdebut+'" required/>' //+'<input type="date" id="jourdebut" class="form-control" value="'+jourdebut+'" required>'
+			+'<span class="libelle input-group-addon">Heure de début</span>'
+			+'<input type="time" id="heuredebut" class="form-control" value="'+heuredebut+'">'
+		+'</div>'
+		+'<div class="champ input-group">'
+			+'<span class="libelle input-group-addon">Jour de fin</span>'
+			+'<input class="form-control" id="jourfin" name="date" placeholder="JJ/MM/AAAA" type="text" value="'+jourfin+'"/>' //+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
+			+'<span class="libelle input-group-addon">Heure de fin</span>'
+			+'<input type="time" id="heurefin" class="form-control" value="'+heurefin+'">'
+		+'</div>'
+		+'<div id="divbouton" class="row">';
 
-		$('#popup').html(popup);
-		resizepopup();
+	if (id >= 0){
+		popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
+	}
 
-		// Effet de transition
-		$('#fond-popup').fadeTo("",0.6);
-		$('#popup').fadeIn(400);
+	popup += '<button class="btn-popup btn-md btn-primary" onClick="cacher()">Annuler</button>'
+			+'<button class="btn-popup btn-md btn-primary" onClick="modifEvenement(null, '+id+')">Enregistrer</button>'
+		+'</div>';
 
-			var date_input=$('#jourfin');
-			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-			var options={
-				language: "fr-FR",
-				startDate: '+1d',
-				format: 'dd/mm/yyyy',
-				container: container,
-				todayHighlight: true,
-				autoclose: true,
-			};
-			date_input.datepicker(options);
-		});
-	});
+	$('#popup').html(popup);
+	resizepopup();
+
+	// Effet de transition
+	$('#fond-popup').fadeTo("",0.6);
+	$('#popup').fadeIn(400);
+
+	var date_input1 = $('#jourdebut');
+	var date_input2 = $('#jourfin');
+	var container = $('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+
+	var options1 = {
+		language: "fr-FR",
+		format: 'dd/mm/yyyy',
+		container: container,
+		todayHighlight: true,
+		autoclose: true
+	};
+
+	var options2 = {
+		language: "fr-FR",
+		startDate: document.getElementById('jourdebut').value,
+		format: 'dd/mm/yyyy',
+		container: container,
+		todayHighlight: true,
+		autoclose: true
+	};
+
+	date_input2.datepicker(options2);
+	date_input1.datepicker(options1).on("changeDate", function(e) {
+        date_input2.datepicker('setStartDate', e.date);
+    });;
+
+}
+
+// fonction pour cacher la fenetre de selection si la fenetre est modifié
+function hideDatePicker(){
+	$('#jourdebut').datepicker('hide');
+	$('#jourdebut').blur();
+	$('#jourfin').datepicker('hide');
+	$('#jourfin').blur();
 }
 
 $(window).resize(function () {
     resizepopup();
+	hideDatePicker();
+});
+
+$(window).scroll(function () {
+	hideDatePicker();
 });
 
 // pour changer la taille du popup et du fond en fontion de la taille de la fenetre
@@ -214,7 +236,8 @@ function modifEvenement(evenement, idchamp){ // eventobject
 			return null;
 		}
 
-		start = document.getElementById('jourdebut').value;
+		var tabdate = document.getElementById('jourdebut').value.split("/");
+		start = tabdate[2] +"-"+ tabdate[1] +"-"+ tabdate[0];
 		if (document.getElementById('heuredebut').value != ""){
 			start += " "+document.getElementById('heuredebut').value+":00"
 		}else{
@@ -222,9 +245,10 @@ function modifEvenement(evenement, idchamp){ // eventobject
 		}
 
 		if (document.getElementById('jourfin').value != ""){
-			end = document.getElementById('jourfin').value;
+			tabdate = document.getElementById('jourfin').value.split("/");
+			end = tabdate[2] +"-"+ tabdate[1] +"-"+ tabdate[0];
 		}else{
-			end = document.getElementById('jourdebut').value;
+			end = tabdate[2] +"-"+ tabdate[1] +"-"+ tabdate[0];
 		}
 		if (document.getElementById('heurefin').value != ""){
 			end += " "+document.getElementById('heurefin').value+":00";

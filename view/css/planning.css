@@ -28,8 +28,13 @@ body {
 }
 
 #calendar {    
-    max-width: 900px;
+    max-width: 900px;   
     margin: 0 auto;
+    
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .div-principal{
