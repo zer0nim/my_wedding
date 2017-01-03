@@ -33,13 +33,8 @@ if (isset($_POST['actSend'])) {
     //=====Création du header de l'e-mail.
     $header = 'MIME-Version: 1.0'.$passage_ligne; // Version MIME
     $header.= "Content-Type: multipart/mixed; boundary=\"$boundary\"".$passage_ligne;
-    $header.= 'Reply-To: '.$mailfrom.$passage_ligne; // Mail de reponse
-    $header.= "From: \"$nom\"<'.$mailfrom.'>".$passage_ligne; // Expediteur
+    $header.= "From: \"$nom\"<$mailfrom>".$passage_ligne; // Expediteur
     $header.= "To: <$mailfor>".$passage_ligne;
-    //$header.= "From: \"$nom\"<$mailfrom>".$passage_ligne;
-
-    //$header.= "MIME-Version: 1.0".$passage_ligne;
-
     //==========
 
     //=====Création du message.
