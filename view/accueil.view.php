@@ -39,28 +39,28 @@
 	</ul>
 
 	<nav class="text-center">
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="planning.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Planning</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="contacts.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-address-book fa-2x" aria-hidden="true"></i><br>Contacts</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="invitations.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i><br>Invitations</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="plandetable.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-th fa-2x" aria-hidden="true"></i><br>Plan de table</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="fournisseurs.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-truck fa-2x" aria-hidden="true"></i><br>Fournisseurs</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="inspiration.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><br>Inspiration</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="liste.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-gift fa-2x" aria-hidden="true"></i><br>Liste</a>
 		</div>
-		<div class="modifpadding col-btn col-xs-12 col-sm-6 col-lg-3">
+		<div class="modifpadding col-btn col-sm-12 col-md-6 col-lg-3">
 		<a href="budget.ctrl.php" class="btn btn-block btn-lg btn-primary"><i class="fa fa-eur fa-2x" aria-hidden="true"></i><br>Budget</a>
 		</div>
 	</nav>
