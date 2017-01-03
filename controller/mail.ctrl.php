@@ -6,9 +6,12 @@ $idM = $_SESSION['idM'];
 if (isset($_POST['actSend'])) {
   $nom=$_POST['from'];
   $mailfrom="www.mywedding.gdn";
+  //$mailfor = $_POST['for']; // Déclaration de l'adresse de destination.
   $contacts=$dao->getContacts($idM);//récupère les contacts de la liste
+  var_dump($contacts);
   foreach ($contacts as $key => $cont) {
     $mailfor=$contacts[$key]->getCont_mail(); //recupère le mail du contact
+    $var_dump($mailfor);
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
       $passage_ligne = "\r\n";
     }else{
@@ -51,13 +54,14 @@ if (isset($_POST['actSend'])) {
 
     //$message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
+
     $valRetour=mail($mailfor,$sujet,$message,$header);
     if (!$valRetour) {
       $accepte=false;
     }
-    //==========
   }
-
+  //$accepte=mail($mailfor,$sujet,$message,$header);
+  //==========
 }
 
 include_once("../view/mail.view.php");
