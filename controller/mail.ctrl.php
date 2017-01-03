@@ -35,9 +35,9 @@ if (isset($_POST['actSend'])) {
     $header.= "Content-Type: multipart/mixed; boundary=\"$boundary\"".$passage_ligne;
     $header.= 'Reply-To: '.$mailfrom.$passage_ligne; // Mail de reponse
     $header.= "From: \"$nom\"<'.$mailfrom.'>".$passage_ligne; // Expediteur
-    $header.= 'Delivered-to: '.$mailfor.$passage_ligne; // Destinataire
+    $header.= "To: <$mailfor>".$passage_ligne;
     //$header.= "From: \"$nom\"<$mailfrom>".$passage_ligne;
-    //$header.= "To: <$mailfor>".$passage_ligne;
+
     //$header.= "MIME-Version: 1.0".$passage_ligne;
 
     //==========
@@ -57,7 +57,7 @@ if (isset($_POST['actSend'])) {
     $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
     //==========
 
-    //$message.= $passage_ligne."--".$boundary.$passage_ligne;
+    $message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
 
     $valRetour[]=mail($mailfor,$sujet,$message,$header);
