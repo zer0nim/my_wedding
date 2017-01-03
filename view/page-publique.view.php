@@ -1,8 +1,8 @@
 <?php include('../view/header.php') ?>
-<link rel="stylesheet" href="../view/css/page-publique.css" type="text/css" />
-
 <link rel="stylesheet" type="text/css" href="../view/css/default.css" />
 <link rel="stylesheet" type="text/css" href="../view/css/component.css" />
+
+<link rel="stylesheet" href="../view/css/page-publique.css" type="text/css" />
 
 </head>
 <body class="container-fluid">
