@@ -22,7 +22,7 @@
 }
 
 /* Styles pour les tablettes */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.test-center a {
 		width: 10%;
 		display: inline-block;
