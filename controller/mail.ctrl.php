@@ -56,7 +56,7 @@ if (isset($_POST['actSend'])) {
     //=====Envoi de l'e-mail.
 
     $valRetour[]=mail($mailfor,$sujet,$message,$header);
-    var_dump($valRetour);
+    //var_dump($valRetour);
     $accepte=true;
     foreach ($valRetour as $value) {
       if ($value == false) {
