@@ -8,10 +8,10 @@ if (isset($_POST['actSend'])) {
   $mailfrom="www.mywedding.gdn";
   //$mailfor = $_POST['for']; // Déclaration de l'adresse de destination.
   $contacts=$dao->getContacts($idM);//récupère les contacts de la liste
-  var_dump($contacts);
+  //var_dump($contacts);
   foreach ($contacts as $key => $cont) {
-    $mailfor=$contacts[$key]->getCont_mail(); //recupère le mail du contact
-    $var_dump($mailfor);
+    $mailfor=$cont->getCont_mail(); //recupère le mail du contact
+    //var_dump($mailfor);
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
       $passage_ligne = "\r\n";
     }else{
