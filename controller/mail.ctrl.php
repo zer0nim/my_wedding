@@ -12,7 +12,7 @@ if (isset($_POST['actSend'])) {
   foreach ($contacts as $key => $cont) {
     $mailfor=$cont->getCont_mail(); //recupère le mail du contact
     //var_dump($mailfor);
-    if (!preg_match("#^[a-z0-9._-]+@(hotmail|outlook|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
+    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mailfor)){ // On filtre les serveurs qui présentent des bogues.
       $passage_ligne = "\r\n";
     }else{
       $passage_ligne = "\n";
@@ -52,7 +52,7 @@ if (isset($_POST['actSend'])) {
     $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
     //==========
 
-    //$message.= $passage_ligne."--".$boundary.$passage_ligne;
+    $message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
 
     $valRetour[]=mail($mailfor,$sujet,$message,$header);
