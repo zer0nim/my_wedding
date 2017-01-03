@@ -22,8 +22,8 @@ if (isset($_POST['actSend'])) {
     //==========
 
     //=====Création de la boundary.
-    $boundary = "-----=".md5(rand());
-    $boundary_alt = "-----=".md5(rand());
+    $boundary = "-----=".sha1(rand());
+    $boundary_alt = "-----=".sha1(rand());
     //==========
 
     //=====Définition du sujet.
@@ -31,10 +31,15 @@ if (isset($_POST['actSend'])) {
     //=========
 
     //=====Création du header de l'e-mail.
-    $header = "From: \"$nom\"<$mailfrom>".$passage_ligne;
-    $header.= "To: <$mailfor>".$passage_ligne;
-    $header.= "MIME-Version: 1.0".$passage_ligne;
-    $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+    $header = 'MIME-Version: 1.0'.$passage_ligne; // Version MIME
+    $header.= "Content-Type: multipart/mixed; boundary=\"$boundary\"".$passage_ligne;
+    $header.= 'Reply-To: '.$mailfrom.$passage_ligne; // Mail de reponse
+    $header.= "From: \"$nom\"<'.$mailfrom.'>".$passage_ligne; // Expediteur
+    $header.= 'Delivered-to: '.$mailfor.$passage_ligne; // Destinataire
+    //$header.= "From: \"$nom\"<$mailfrom>".$passage_ligne;
+    //$header.= "To: <$mailfor>".$passage_ligne;
+    //$header.= "MIME-Version: 1.0".$passage_ligne;
+
     //==========
 
     //=====Création du message.
