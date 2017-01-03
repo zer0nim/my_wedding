@@ -29,7 +29,7 @@
 
 	<div class="col-lg-offset-3 col-lg-6">
 		<span id="text_latlng"></span>
-		<div id="map-canvas" style="width: 500px;height: 500px;"></div>
+		<div id="map-canvas" style="width: 100%;height: 500px;"></div>
 		<h2 id="text_adresse"></h2>
 	</div>
 	<?php include('../view/scripts.php'); ?>
