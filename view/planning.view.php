@@ -27,7 +27,7 @@
 <!-- C'est le script qui gère de mettre la view -->
 <script>	
 	$(document).ready(function() {
-		
+				
 		$('#calendar').fullCalendar({
 		    				    
 			header: {

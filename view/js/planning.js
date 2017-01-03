@@ -73,7 +73,7 @@ function afficheModifieEvenement(evenement){
 		+'</div>'
 		+'<div class="champ input-group">'
 			+'<span class="libelle input-group-addon">Jour de fin</span>'
-			+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
+			+'<input class="form-control" id="jourfin" name="date" placeholder="JJ/MM/AAAA" type="text" required/>' //+'<input type="date" id="jourfin" class="form-control" value="'+jourfin+'">'
 			+'<span class="libelle input-group-addon">Heure de fin</span>'
 			+'<input type="time" id="heurefin" class="form-control" value="'+heurefin+'">'
 		+'</div>'
@@ -93,6 +93,18 @@ function afficheModifieEvenement(evenement){
 	// Effet de transition     
 	$('#fond-popup').fadeTo("",0.6);
 	$('#popup').fadeIn(400);
+	
+	var date_input=$('#jourfin');
+	var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+	var options={
+		language: "fr-FR",
+		startDate: '+1d',
+		format: 'dd/mm/yyyy',
+		container: container,
+		todayHighlight: true,
+		autoclose: true,
+	};
+	date_input.datepicker(options);
 
 }
 
