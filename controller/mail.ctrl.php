@@ -55,10 +55,11 @@ if (isset($_POST['actSend'])) {
     //$message.= $passage_ligne."--".$boundary.$passage_ligne;
     //=====Envoi de l'e-mail.
 
-    $valRetour=mail($mailfor,$sujet,$message,$header);
-    if (!$valRetour) {
+    $valRetour[]=mail($mailfor,$sujet,$message,$header);
+    var_dump($valRetour);
+    /*if (!$valRetour) {
       $accepte=false;
-    }
+    }*/
   }
   //$accepte=mail($mailfor,$sujet,$message,$header);
   //==========
