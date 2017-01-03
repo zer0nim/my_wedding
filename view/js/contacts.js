@@ -10,6 +10,9 @@ $(document).ready(function(){
 	$("#TelLink").bind("input", asDiffHandler);
 	$("#AgeLink").bind("input", asDiffHandler);
 
+	$("#select-cnt").sortOptions();
+
+
 	$('#contInfoform').submit(function () {
 		if ($('#select-cnt').val() == "newC") {
 		//si Création nouveau contact non inscrit dans la bdd
@@ -225,11 +228,12 @@ var cntNomPrenom = $("#NomLink").val() + " " + $("#PrenomLink").val();
 			},
 
 			function(data){
-				console.log(data);
+				//console.log(data);
 				swal("Contact enregistré!", "", "success");
 				noDiffHandler();
 				cnt.text(cntNomPrenom);
 				document.getElementById("SaveContactInfoLink").disabled=true;
+				$("#select-cnt").sortOptions();
 			},
 
 			'json' // Format des données reçues.
@@ -256,6 +260,7 @@ function saveContact() {
 				swal("Contact enregistré!", "", "success");
 				noDiffHandler();
 				document.getElementById("SaveContactInfoLink").disabled=true;
+				$("#select-cnt").sortOptions();
 				//location.reload();
 			},
 
@@ -381,7 +386,7 @@ $.fn.sortOptions = function(){
     $(this).each(function(){
         var op = $(this).children("option");
         op.sort(function(a, b) {
-            return a.text > b.text ? 1 : -1;
+            return a.text.toLowerCase() > b.text.toLowerCase() ? 1 : -1;
         })
         return $(this).empty().append(op);
     });
