@@ -4,14 +4,16 @@
 <?php require_once '../view/baseMenuFnct.php'; ?>
 
 	<div class="box col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
-		<div class="jumbotron">
-			<label> Les plus importants </label>
-			<div class="liste">
-				<ul id="sortable">
-					<?php print_list($list); ?>
-				</ul>
-			</div>
-				<label> Les moins importants </label>
+		<div class="panel panel-default">
+			<div class="panel-heading">Le plus important</div>
+  		<div class="panel-body">
+				<div class="liste">
+					<ul id="sortable">
+						<?php print_list($list); ?>
+					</ul>
+				</div>
+  		</div>
+  		<div class="panel-footer">Le moins important</div>
 		</div>
 		<span class="input-group-addon">Nouveau souhait</span>
 		<input id="inputSouhait" name="souhait" type="text" class="form-control">
