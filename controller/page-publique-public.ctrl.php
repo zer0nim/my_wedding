@@ -21,8 +21,12 @@
       ksort($insp);
     }
 
+    //Récupération nom, prenom des mariés et description de l'événement
+    $InfoM = $dao->getMariageidm($idM);
+
     include_once('../view/page-publique-public.view.php');
-  }else {
+  }
+  else {
     echo "Page inaccessible";
   }
 

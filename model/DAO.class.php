@@ -1170,9 +1170,9 @@ listTab_nbPlaces
       }
     }
 
-    function getMariageidm($idm){
+    function getMariageidm($idm) {
       try{
-        $req = $this->db->prepare('SELECT maria_date, maria_lieu, maria_nomF, maria_prenomF, maria_nomH, maria_prenomH FROM Mariage WHERE maria_id = :idm');
+        $req = $this->db->prepare('SELECT maria_date, maria_lieu, maria_nomF, maria_prenomF, maria_nomH, maria_prenomH, maria_desc FROM Mariage WHERE maria_id = :idm');
         $req->execute(array(':idm' => $idm));
         $req=$req->fetch();
         if ($req != NULL) {

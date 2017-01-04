@@ -19,6 +19,10 @@ if (isset($_GET['id'])) {
   if ($questions==NULL) {
     $questions=0;
   }
+
+  //Récupération nom, prenom des mariés et description de l'événement
+  $InfoM = $dao->getMariageidm($idM);
+
   include_once('../view/public-question.view.php');
 }else {
   echo "Page inaccessible";

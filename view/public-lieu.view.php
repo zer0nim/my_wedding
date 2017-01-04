@@ -5,6 +5,8 @@
 <body class="container-fluid">
 
 	<header>
+		<h1>Mariage de <?= $InfoM['maria_prenomH']?> et <?= $InfoM['maria_prenomF']?></h1>
+		<div class="infDate"><?= $InfoM['maria_date']?></div>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -20,7 +22,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="page-publique-public.ctrl.php?id=<?=sha1($idM)?>">Accueil</a></li>
 						<li><a href="public-question.ctrl.php?id=<?=sha1($idM)?>">Questions</a></li>
-						<li class="active"><a href="">Lieu</a></li>
+						<li class="active"><a href="public-lieu.ctrl.php?id=<?=sha1($idM)?>">Lieu</a></li>
 					</ul>
 				</div>
 			</div>
