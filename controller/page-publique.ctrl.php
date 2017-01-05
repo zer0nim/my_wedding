@@ -33,6 +33,15 @@
     ksort($insp);
   }
 
+  $InfoM = $dao->getMariageidm($idM);
+
+  if (isset($InfoM['maria_desc']) && $InfoM['maria_desc'] != "") {
+    $descr = $InfoM['maria_desc'];
+  }
+  else {
+    $descr = "Texte de présentation du mariage visible par les invités.";
+  }
+
   function printAllInsp($insp) {
     if (isset($insp)) {
       foreach (array_reverse($insp) as $key => $value) {

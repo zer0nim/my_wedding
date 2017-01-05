@@ -470,6 +470,13 @@ class DAO {
       return $donnee;
     }
 
+    function getNbContacts($idM) {
+      $req = $this->db->prepare('SELECT count(*) AS nbC FROM Contact WHERE cont_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $data=$req->fetch();
+      return $data['nbC'];
+    }
+
     function getContactsIndiceParId($idM) {
       $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM');
       $req->execute(array(':idM' => $idM,));
@@ -559,91 +566,6 @@ class DAO {
         exit("Erreur d'attribution d'une table à un contact: ".$e->getMessage());
       }
     }
-    //----------------------------------------------------------------------------------------
-
-    function placement($idMariage) {
-      try {
-        $tabPasEnsemble = $this->db->prepare('Select pref_idContact, pref_idContact2 From Preferences Where pref_idM = :idMariage and pref_aime = \'non\'');
-        $tabPasEnsemble->execute(array(':idMariage' => $idMariage));
-        //$tabPasEnsemble[0] contient idContact et $tabPasEnsemble[1] contient idContact2
-      }
-      catch (PDOException $e) {
-        exit("Erreur de req sql placement -> Pas ensemble : ".$e->getMessage());
-      }
-
-      try {
-        $tabEnsemble = $this->db->prepare('Select pref_idContact, pref_idContact2 From Preferences Where pref_idM = :idMariage and pref_aime = \'oui\'');
-        $tabEnsemble->execute(array(':idMariage' => $idMariage));
-        //$tabEnsemble[0] contient idContact et $tabEnsemble[1] contient idContact2
-      }
-      catch (PDOException $e) {
-        exit("Erreur de req sql placement -> Ensemble : ".$e->getMessage());
-      }
-
-      try {
-        $nbPlace = $this->db->prepare('Select numplace From V_NbPlaceParMariage Where idM = :idMariage');
-        $nbPlace->execute(array(':idMariage' => $idMariage));
-        $nbPlace = $nbPlace->fetch();
-        $nbPlace = $nbPlace[0];
-        //$nbPlace contient le nombre de place disponible pour ce mariage
-      }
-      catch (PDOException $e) {
-        exit("Erreur de req sql placement -> nbPlace : ".$e->getMessage());
-      }
-
-      try {
-        $req = $this->db->prepare('
-        Select listTab_id, listTab_nbPlaces - (Select count(*)
-                                   From Contact
-                                   Where cont_idT = L.listTab_id) as nbPlaceRestante
-        From ListeTables L
-        Where listTab_idM = :idMariage');
-
-        $req->execute(array(':idMariage' => $idMariage));
-        $donnees = $req->fetchAll();
-        foreach ($donnees as $donnee) {
-          $nbPlaceRestante[$donnee[0]] = $donnee[1];
-        }
-        //$nbPlaceRestante contient le nombre de place restante par table
-      }
-      catch (PDOException $e) {
-        exit("Erreur de req sql placement -> nbPlaceRestante : ".$e->getMessage());
-      }
-
-      $contacts = $this->getContactsIndiceParId($idMariage);
-      //$contacts contient la liste des invités du mariage
-      $tables = $this->getTablesIndiceParId($idMariage);
-      //$tables contient la liste des tables du mariage
-
-      if ($nbPlace < count($contacts)) {
-        echo "Pas assez de place disponible...<BR>";
-        echo "Il manque ".(count($contacts)-$nbPlace)." places.<BR>";
-        echo "Pensez à rajouter des tables !<BR>";
-      }
-      else {
-
-        //$this->setTableToContact($table, $contact);
-        foreach ($tables as $table) {
-          echo $table->getListTab_id()." ".$table->getListTab_nom()."<BR>";
-          $suiv = current($tables);
-          if ($suiv !== false) {
-            echo "Prochaine table : ".$suiv->getListTab_id()."<BR>";
-            $suiv = next($tables);
-          }
-          else {
-            echo "Dernière table !<BR>";
-          }
-        }
-        foreach ($tabPasEnsemble as $pasEnsemble) {
-          echo $contacts[$pasEnsemble[0]]->getCont_nom()." ".$contacts[$pasEnsemble[0]]->getCont_prenom()." et ".$contacts[$pasEnsemble[1]]->getCont_nom()." ".$contacts[$pasEnsemble[1]]->getCont_prenom()." ne s'aiment pas !<BR>";
-        }
-        echo "<BR>";
-        foreach ($tabEnsemble as $ensemble) {
-          echo $contacts[$ensemble[0]]->getCont_nom()." ".$contacts[$ensemble[0]]->getCont_prenom()." et ".$contacts[$ensemble[1]]->getCont_nom()." ".$contacts[$ensemble[1]]->getCont_prenom()." s'aiment !<BR>";
-        }
-      }
-    }
-
 
     //----------------------------------------------------------------------------------------
     // fonction pour la fonctionnalité inspiration
@@ -886,6 +808,13 @@ listTab_nbPlaces
         $listTables[$donnee->getListTab_id()] = $donnee;
       }
       return $listTables;
+    }
+
+    function getNbPlacesTables($idM) {
+      $req = $this->db->prepare('SELECT sum(listTab_nbPlaces) AS nbPlacesT FROM ListeTables WHERE listTab_idM = :idM');
+      $req->execute(array(':idM' => $idM,));
+      $data=$req->fetch();
+      return $data['nbPlacesT'];
     }
 
     function getTables($idM) {
@@ -1186,6 +1115,18 @@ listTab_nbPlaces
         exit("Erreur dans la fonction getMariageidm: ".$e->getMessage());
       }
     }
+
+    function modifyDescrM($idm, $descrM) {
+      try{
+        $req = $this->db->prepare('UPDATE Mariage SET maria_desc=:maria_desc WHERE maria_id = :idm');
+        $req->execute(array(':idm' => $idm,
+                            ':maria_desc' => $descrM,));
+      }
+      catch(PDOException $e){
+        exit("Erreur dans la fonction modifyDescrM: ".$e->getMessage());
+      }
+    }
+
     function modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
       try {
         $req = $this->db->prepare('UPDATE Mariage SET maria_date=:dat, maria_lieu=:lieu, maria_nomF=:nom1, maria_prenomF=:prenom1, maria_nomH=:nom2, maria_prenomH=:prenom2 WHERE maria_idAcc = :acc');

@@ -16,7 +16,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="accueil.ctrl.php">My Wedding</a>
+					<a class="navbar-brand" href="accueil.ctrl.php">MyWedding</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
@@ -46,6 +46,12 @@
 			<input type="submit" id="quests" class="btn btn-default btn-block" value="Questions">
 		</div>
 	</nav>
+
+	<div class="infDescr">
+		<span class="input-group-addon">Description</span>
+		<textarea class="form-control" name="description" id="descrLink" name=""><?= $descr ?></textarea>
+		<input type="submit" class="btn btn-default btn-block" id="modifDescrLink" value="Modifier">
+	</div>
 
 	<div class="col-lg-offset-2 col-lg-8">
 		<div class="questions col-xs-12">
@@ -112,7 +118,7 @@
 	        <div id="newpost" class="panel-body">
 
 	          <form id="link" method="post" >
-	            <label class="control-label" for="textinput">Adresse</label>
+	            <label class="input-group-addon" for="textinput">Adresse</label>
 	            <input type="text" name="adresse" class="form-control" aria-describedby="basic-addon1" required>
 	            <span class="input-group-addon">Description</span>
 	            <textarea class="form-control" name="description" id="" name=""></textarea>
@@ -120,7 +126,7 @@
 	          </form>
 
 	          <form id="note" method="post" >
-	            <label class="control-label" for="textinput">Titre</label>
+	            <label class="input-group-addon" for="textinput">Titre</label>
 	            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>
 	            <span class="input-group-addon">Note</span>
 	            <textarea class="form-control" name="description" id="" name="" required></textarea>
@@ -128,7 +134,7 @@
 	          </form>
 
 	          <form id="pict" method="post" enctype="multipart/form-data">
-	            <label class="control-label" for="textinput" required>Titre</label>
+	            <label class="input-group-addon" for="textinput" required>Titre</label>
 	            <input type="text" name="titre" class="form-control" aria-describedby="basic-addon1" required>
 	            <span class="input-group-addon">Description</span>
 	            <textarea class="form-control" name="description" id="" name=""></textarea>

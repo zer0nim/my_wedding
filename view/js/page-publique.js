@@ -10,13 +10,31 @@ $(document).ready(function(){
 	$('#pict').hide();
 	$('#none').show();
 
-$('#posts').bind("click", function functionName() {
+$('#posts').bind("click", function() {
 	$('.main').show();
 	$('.questions').hide();
 });
-$('#quests').bind("click", function functionName() {
+$('#quests').bind("click", function() {
 	$('.main').hide();
 	$('.questions').show();
+});
+
+$('#modifDescrLink').bind("click", function() {
+	var descr = $('#descrLink').val();
+	$.post(
+			'../controller/ajax_descr_update.php', // Le fichier cible côté serveur.
+			{
+					descrM : descr,
+			},
+
+			function(data){
+				swal("réussite!", "La description est bien modifiée.", "success")
+				//console.log(data);
+			},
+
+			'text' // Format des données reçues.
+	);
+
 });
 
 
