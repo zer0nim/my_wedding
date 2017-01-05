@@ -1,18 +1,34 @@
 $(document).ready(function(){
 //$("#myTable > tbody > tr").length
 	$("#placement-auto").bind('click', function() {
+
 		$.post(
-				'../controller/ajax_plcmnt_auto.php', // Le fichier cible côté serveur.
+				'../controller/ajax_plcmnt_possible.php', // Le fichier cible côté serveur.
 				{
 				},
 				function(data) {
-					if (data == 'OK') {
-						location.reload();
-					} else console.log(data);
-				},
-				'text' // Format des données reçues.
+					if ( parseInt(data["nbCnts"]) > parseInt(data["nbPlaces"]) ) {
+						sweetAlert("Oops...", "Ajoutez suffisamment de tables avant de lancer l'algorithme! (Actuellement " + data["nbPlaces"] + " places pour " + data["nbCnts"] + " contacts)", "error");
+					}
+					else {
+						$.post(
+						'../controller/ajax_plcmnt_auto.php', // Le fichier cible côté serveur.
+						{
+						},
+						function(data) {
+							if (data == 'OK') {
+								location.reload();
+							}
+							else console.log(data);
+						},
+						'text' // Format des données reçues.
+					);
+				}
+			},
+			'json' // Format des données reçues.
 		);
 	});
+
 	$(".cntTable").each(function() {
 		if (($(this).find('td').length >= $(this).parent().parent().prev().children().val())) {
 			$("#cntTableAdding_" + $(this).parent().parent().parent().attr('id')).hide();
