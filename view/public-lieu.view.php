@@ -28,7 +28,6 @@
 			</div>
 		</nav>
 	</header>
-
 	<div class="col-lg-offset-3 col-lg-6">
 		<span id="text_latlng"></span>
 		<div id="map-canvas" style="width: 100%;height: 500px;"></div>

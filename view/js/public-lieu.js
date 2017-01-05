@@ -44,7 +44,8 @@ $(document).ready(function(){
 							});
 						}
 						else {
-							alert('Adresse introuvable: ' + status);
+              $('#text_latlng').remove();
+              $('#map-canvas').remove();
 						}
 						$('#text_adresse').text(data);
 					});
