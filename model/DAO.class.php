@@ -39,7 +39,7 @@ class DAO {
     }
 
     // fonction pour récuperer ou creer la valeur du budget global
-    // l'id de ce budget à une valeur négative = -idmariage
+    // l'id de ce budget est zero
     function getBudgetGlobal($idmariage){
         try{
             $req = $this->db->prepare('select bud_valeur from Budget where bud_id = 0 and bud_idM = :idmariage');

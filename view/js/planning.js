@@ -47,17 +47,15 @@ function afficheModifieEvenement(evenement){
 	if (evenement != null){
 		id = evenement.id;
 		description = evenement.title;
-		var start = evenement.start.format().replace("T", " ");
 
-		jourdebut = start.substring(0, 10); 
-		var tabdate = jourdebut.split("-"); jourdebut = tabdate[2] +"/"+ tabdate[1] +"/"+ tabdate[0];
-		heuredebut = start.substring(11, 16);
+		jourdebut = evenement.start.format('DD/MM/YYYY');
+		heuredebut = evenement.start.format('HH:mm');
+
 		if (evenement.end != null){
-			var end = evenement.end.format().replace("T", " ");
-			jourfin = end.substring(0, 10); 
-			tabdate = jourfin.split("-"); jourfin = tabdate[2] +"/"+ tabdate[1] +"/"+ tabdate[0];
-			heurefin = end.substring(11, 16);
+			jourfin = evenement.end.format('DD/MM/YYYY');
+			heurefin = evenement.end.format('HH:mm');
 		}
+
 	}
 
 	// créér une popup de modification
@@ -88,6 +86,7 @@ function afficheModifieEvenement(evenement){
 		+'</div>'
 		+'<div>';
 
+	// si c'est un évenement deja crée, on ajoute un bouton supprimer
 	if (id >= 0){
 		popup += '<button class="btn-popup btn-md btn-primary" onClick="delEvenement('+id+')">Supprimer</button>';
 	}
@@ -103,6 +102,7 @@ function afficheModifieEvenement(evenement){
 	$('#fond-popup').fadeTo("",0.6);
 	$('#popup').fadeIn(400);
 
+	// initialisation des datepicker
 	var date_input1 = $('#jourdebut');
 	var date_input2 = $('#jourfin');
 	var container = $('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
@@ -244,6 +244,7 @@ function modifEvenement(evenement, idchamp){ // eventobject
 			return null;
 		}
 
+		// creation des dates au format 'Y-m-d H:i:s'
 		var tabdate = document.getElementById('jourdebut').value.split("/");
 		start = tabdate[2] +"-"+ tabdate[1] +"-"+ tabdate[0];
 		if (document.getElementById('heuredebut').value != ""){
@@ -279,6 +280,7 @@ function modifEvenement(evenement, idchamp){ // eventobject
 		}
 	}
 
+	// modification de la vue apres réponse du serveur
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 	    if(xhttp.readyState === XMLHttpRequest.DONE){
