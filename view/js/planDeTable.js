@@ -1,6 +1,18 @@
 $(document).ready(function(){
 //$("#myTable > tbody > tr").length
-
+	$("#placement-auto").bind('click', function() {
+		$.post(
+				'../controller/ajax_plcmnt_auto.php', // Le fichier cible côté serveur.
+				{
+				},
+				function(data) {
+					if (data == 'OK') {
+						location.reload();
+					} else console.log(data);
+				},
+				'text' // Format des données reçues.
+		);
+	});
 	$(".cntTable").each(function() {
 		if (($(this).find('td').length >= $(this).parent().parent().prev().children().val())) {
 			$("#cntTableAdding_" + $(this).parent().parent().parent().attr('id')).hide();

@@ -10,7 +10,7 @@
 			<strong>Info!</strong> La génération du plan de table utilise l'âge ainsi que l'entente de chaque invité modifiable dans la fonction contact.
 		</div>
 		<div class="nopadding form-group col-xs-12 col-lg-6">
-			<button name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
+			<button id="placement-auto" name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
 		</div>
 		<div class="nopadding form-group col-xs-12 col-lg-6">
 			<a href="pdf_plandetable.ctrl.php" class="btn btn-primary btn-block">Telecharger</a>
