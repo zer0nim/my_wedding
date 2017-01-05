@@ -7,7 +7,7 @@
 	<div class="nopadding">
 		<div class="alert alert-info alert-dismissable fade in">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Info!</strong> La génération du plan de table utilise l'âge ainsi que l'entente de chaque invité modifiable dans la fonction contact.
+			<strong>Info!</strong> La génération du plan de table utilise l'entente de chaque invité modifiable dans la fonction contact.
 		</div>
 		<div class="nopadding form-group col-xs-12 col-lg-6">
 			<button id="placement-auto" name="singlebutton" class="btn btn-primary btn-block">Placement automatique</button>
