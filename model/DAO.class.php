@@ -1186,6 +1186,18 @@ listTab_nbPlaces
         exit("Erreur dans la fonction getMariageidm: ".$e->getMessage());
       }
     }
+
+    function modifyDescrM($idm, $descrM) {
+      try{
+        $req = $this->db->prepare('UPDATE Mariage SET maria_desc=:maria_desc WHERE maria_id = :idm');
+        $req->execute(array(':idm' => $idm,
+                            ':maria_desc' => $descrM,));
+      }
+      catch(PDOException $e){
+        exit("Erreur dans la fonction modifyDescrM: ".$e->getMessage());
+      }
+    }
+
     function modifMariage($idacc,$nom1,$prenom1,$nom2,$prenom2,$date,$adresse){
       try {
         $req = $this->db->prepare('UPDATE Mariage SET maria_date=:dat, maria_lieu=:lieu, maria_nomF=:nom1, maria_prenomF=:prenom1, maria_nomH=:nom2, maria_prenomH=:prenom2 WHERE maria_idAcc = :acc');

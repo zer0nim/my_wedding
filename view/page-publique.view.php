@@ -47,6 +47,12 @@
 		</div>
 	</nav>
 
+	<div class="infDescr">
+		<span class="input-group-addon">Description</span>
+		<textarea class="form-control" name="description" id="descrLink" name=""><?= $descr ?></textarea>
+		<input type="submit" class="btn btn-default btn-block" id="modifDescrLink" value="Modifier">
+	</div>
+
 	<div class="col-lg-offset-2 col-lg-8">
 		<div class="questions col-xs-12">
 			<legend>Questions pour les organisateurs du mariage</legend>

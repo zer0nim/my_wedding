@@ -34,7 +34,7 @@
 
 	<?php
 	if (isset($InfoM['maria_desc']) && $InfoM['maria_desc'] != "") {
-			echo '<section><div class="infDescr"><p>' . $InfoM['maria_desc'] . '></p></div></section>';
+			echo '<section><div class="infDescr"><p>' . $InfoM['maria_desc'] . '</p></div></section>';
 		}
 	?>
 
