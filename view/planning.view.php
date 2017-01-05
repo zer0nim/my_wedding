@@ -34,14 +34,16 @@
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,listWeek,listDay'
+				right: 'month,agendaWeek,listDay'
 			},
 
 			views: {
 				listDay: { buttonText: 'jour' },
-				listWeek: { buttonText: 'semaine' }
+				agendaWeek: { buttonText: 'semaine',
+							  allDaySlot: false}
 			},
-
+			
+			nextDayThreshold: '05:00:00',
 			defaultView: 'month',
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,

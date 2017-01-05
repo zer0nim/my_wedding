@@ -55,33 +55,32 @@ body {
 
 #popup{
     text-align: center;
-    width: 70vw;
+    width: 85vw;
+    max-width: 800px;
     position:fixed;
     display:none;
     z-index:9001;
-    padding:20px;
+    padding:15px;
     border-radius: 10px;
     background-color: white;
     border: 1px solid grey;
 }
 
-#divbouton{
-    margin-bottom: 5px;
-    margin-top: 20px;
-}
-
 .champ{
     margin: 7px 0px;
+    padding: 0px 4px;
 }
 
 .libelle{
-    min-width: 140px;
+    min-width: 125px;
 }
 
 textarea{
     resize: none;
+    min-height: 75px;
 }
 
 .btn-popup{
-    margin: 0px 5px;
+    margin: 8px 5px;
+    width: 100px;
 }
