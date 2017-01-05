@@ -28,6 +28,7 @@ nav {
 
 ul li {
 	text-align: center;
+	cursor: move;
 }
 
 ul {

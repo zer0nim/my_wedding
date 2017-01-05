@@ -34,7 +34,7 @@
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,listDay'
+				right: 'month,agendaWeek,listDay' // agenda/list/basic
 			},
 
 			views: {
@@ -46,16 +46,16 @@
 			nextDayThreshold: '05:00:00',
 			defaultView: 'month',
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
-			eventLimit: true, // allow "more" link when too many events
+			editable: true, // planning modifiable
+			eventLimit: true, // pas de nombre limit d'évenement affichable
 
 			events: [
 				<?php
 					/* format
 						id: nombre,
 						title: '',
-						start: ,
-						end:
+						start: 'Y-m-d H:i:s',
+						end: 'Y-m-d H:i:s'
 					*/
 
 					if (isset($evenements)){

@@ -147,8 +147,14 @@ $dao->setContact($cnt);
   $cnt->faux_construct(NULL, 1, "Petitjean", "lisa", "square Aimé-Boussange", "lisa@gmail.com", 33, "0689110214");
   $dao->setContact($cnt);
   $cnt->faux_construct(NULL, 1, "Petitjean", "Yves", "route de Brest", "Yves25@hotmail.fr", 31, "0600114441");
-  $dao->setContact($cnt);
-*/
+  $dao->setContact($cnt);*/
+
+  /*  $cnt = new contacts();
+  $cnt->faux_construct(NULL, 1, "testnom1", "testprenom1", "square Aimé-Boussange", "lisa@gmail.com", 33, "0689110214");
+  $donnee=$dao->setContact($cnt);
+/*  $cnt->faux_construct(NULL, 1, "testnom2", "testprenom2", "route de Brest", "Yves25@hotmail.fr", 31, "0600114441");
+  $donnee=$dao->setContact($cnt);
+var_dump($donnee);*/
 //$dao->placement(1);
 
 //Test des fonctions HASH

@@ -45,7 +45,7 @@ for (c1, c2, aime) in cur:
 g.remove_node
 
 
-for table in tables.get_tables(db, 1):
+for table in tables.get_tables(db, wedd_id):
 	while not table.full() and g.number_of_nodes() != 0:
 		try:
 			for p_id in nx.maximal_independent_set(g):
@@ -53,6 +53,23 @@ for table in tables.get_tables(db, 1):
 				g.remove_node(p_id)
 		except tables.FullException:
 			pass
+
+	if len(table.ppl) != 0:
+		req = (
+			"UPDATE Contact "
+			"SET cont_idT = %s "
+		)
+		for i, pers_id in enumerate(table.ppl):
+			if i == 0:
+				req += "WHERE cont_id = " + str(pers_id)
+			else:
+				req += " OR cont_id = " + str(pers_id)
+
+		cur = db.cursor(buffered=True)
+		cur.execute(req, (table.id,))
+		db.commit()
+		cur.close()
+		print(table.id, req)
 
 
 db.close()

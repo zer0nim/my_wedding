@@ -18,13 +18,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="page-publique.ctrl.php">My Wedding</a>
+					<a class="navbar-brand" href="page-publique.ctrl.php">MyWedding</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="">Accueil</a></li>
+						<li class="active"><a href="">Posts</a></li>
 						<li><a href="public-question.ctrl.php?id=<?=sha1($idM)?>">Questions</a></li>
+						<li><a href="public-liste.ctrl.php?id=<?=sha1($idM)?>">Liste de mariage</a></li>
 						<li><a href="public-lieu.ctrl.php?id=<?=sha1($idM)?>">Lieu</a></li>
 					</ul>
 				</div>
