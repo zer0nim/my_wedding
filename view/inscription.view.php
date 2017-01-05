@@ -115,8 +115,8 @@
 			</div>
 
 
-		<footer>
-			<p>Réalisation du site: IUT Grenoble Alpes - S3 groupe 11 - 2016/2017</p>
+		<footer>			
+			<p class="col-xs-12">Réalisation du site: IUT Grenoble Alpes - S3 groupe 11 - 2016/2017</p>
 		</footer>
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
