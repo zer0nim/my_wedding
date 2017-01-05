@@ -25,12 +25,15 @@ if (isset($_POST['creation'])) {
     //On les recupere dans la bdd
     $elem=$dao->getMaries($idm,$nomF,$prenomF,$nomH,$prenomH);
     //On les modifie avec les nouveaux noms et prenoms
+    $mail=$dao->getMailAccount($idacc);
     $elem[0]->setCont_nom($nom1);
     $elem[0]->setCont_prenom($prenom1);
+    $elem[0]->setCont_mail($mail);
     $dao->updateContactInfo($elem[0]);
 
     $elem[1]->setCont_nom($nom2);
     $elem[1]->setCont_prenom($prenom2);
+    $elem[1]->setCont_mail($mail);
     $dao->updateContactInfo($elem[1]);
 
     //On met à jour la table mariage avec les nouvelles infos
