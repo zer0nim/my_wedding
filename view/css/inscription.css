@@ -3,7 +3,7 @@ body {
 }
 /*Cadre première image*/
 header {
-	height: 70vh;
+	height: 75vh;
 	background-image: url("../../img/2.jpg");
 	background-size: cover;
 }
@@ -79,7 +79,7 @@ main #sign {
 /*Zone des fonctionnalités*/
 #features {
 	display: block;
-	background-image: url("../../img/6.jpg");
+	background-color: #b6c1cb;
 	width: auto;
 }
 #features > div {
@@ -100,9 +100,16 @@ footer {
 }
 
 footer p {
-	padding: 0.5em 0;
 	margin: 0;
+	padding: 0.5em 0;
+	text-align: center;
 }
-footer p:last-child {
-	text-align: right;
+
+.alert {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	bottom: 21vh;
 }

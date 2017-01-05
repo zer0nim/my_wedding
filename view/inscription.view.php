@@ -104,8 +104,7 @@
 
 
 		<footer>
-			<p class="col-sm-6">Adresse: qwfqwfqwf</p>
-			<p class="col-sm-6">Mentions légales: bah yen a pas....</p>
+			<p>Réalisation du site: IUT Grenoble Alpes - S3 groupe 11 - 2016/2017</p>
 		</footer>
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
