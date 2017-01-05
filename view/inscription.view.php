@@ -12,7 +12,7 @@
 
 	</head>
 
-	<body>
+	<body class="container-fluid">
 		<header>
 				<div>
 					<div class="col-sm-6">
@@ -58,44 +58,56 @@
 		</main>
 
 			<div id="features" class="container">
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Planning" height="140" width="140">
-					<!--<i class="fa fa-calendar fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>Le planning</h1>
 					<BR>
 					<p>Une aide à l'organisation temporelle de votre mariage.</p>
 				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Invités" height="140" width="140">
-					<!--<i class="fa fa-user-o fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>Les invités</h1>
 					<BR>
 					<p>Gérez simplement les invitations, la liste des invités et le plan de table.</p>
 				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Fournisseurs" height="140" width="140">
-					<!--<i class="fa fa-truck fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-truck fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>Les fournisseurs</h1>
 					<BR>
 					<p>Listez et contactez aisément vos fournisseurs.</p>
 				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Inspirations" height="140" width="140">
-					<!--<i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-paint-brush fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>Les inspirations</h1>
 					<BR>
 					<p>Une idée ? Notez la pour ne pas l'oublier.</p>
 				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Liste de mariage" height="140" width="140">
-					<!--<i class="fa fa-gift fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-bullhorn fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>La page publique</h1>
 					<BR>
 					<p>Vos invités seront au courant de toutes les informations nécessaires !</p>
 				</div>
-				<div class="col-sm-4">
-					<img class="img-circle" src="../../img/b5.png" alt="Budget" height="140" width="140">
-					<!--<i class="fa fa-eur fa-2x" aria-hidden="true"></i>-->
+				<div class="fnctFrame col-sm-4">
+					<span class="fa-stack fa-5x">
+					  <i class="fa fa-circle fa-stack-2x"></i>
+					  <i class="fa fa-eur fa-stack-1x fa-inverse"></i>
+					</span>
 					<h1>Le budget</h1>
 					<BR>
 					<p>Vos dépenses seront facilement visible.</p>
