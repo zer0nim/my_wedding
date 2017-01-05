@@ -104,7 +104,7 @@ class DAO {
 
             // recuperation des depenses
             try{
-                $req = $this->db->prepare('select * from Depense where dep_idbudget = :idbudget and dep_idM = :idmariage order by dep_valeur desc');
+                $req = $this->db->prepare('select * from Depense where dep_idbudget = :idbudget and dep_idM = :idmariage');
                 $req->execute(array(':idbudget' => $idbudget, ':idmariage' => $idmariage));
             }catch (PDOException $e){
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());
@@ -148,7 +148,7 @@ class DAO {
 
             // recuperation de toutes les depenses de tout les budgets
             try{
-                $req = $this->db->prepare('select * from Depense where dep_idM = :idmariage order by dep_valeur desc');
+                $req = $this->db->prepare('select * from Depense where dep_idM = :idmariage');
                 $req->execute(array(':idmariage' => $idmariage));
             }catch (PDOException $e){
                 exit("Erreur de req sql getDepenses : ".$e->getMessage());

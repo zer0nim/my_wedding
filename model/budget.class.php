@@ -1,6 +1,14 @@
 <?php
 require_once '../model/depense.class.php';
 
+function cmp($a, $b) {
+	if ($a->getValue() <= $b->getValue()) {
+		return 1;
+	}else {
+		return -1;
+	}
+}
+
 class budget {
     private $id;
     private $description;
@@ -11,7 +19,10 @@ class budget {
         $this->id = $id;
         $this->description = $description;
         $this->value = $value;
-        $this->tabdepense = $tabdepense;
+		if ($tabdepense != null){
+			usort($tabdepense, "cmp");
+		}
+		$this->tabdepense = $tabdepense;
     }
 
     function setId($id) {
