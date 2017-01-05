@@ -46,11 +46,11 @@ $(document).ready(function(){
 						else {
 							alert('Adresse introuvable: ' + status);
 						}
-						$('#text_adresse').text(data.substring(1,data.length-1));
+						$('#text_adresse').text(data);
 					});
 				},
 
-				'text' // Format des données reçues.
+				'json' // Format des données reçues.
 		);
 	}
 	// Lancement de la construction de la carte google map
