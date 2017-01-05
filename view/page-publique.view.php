@@ -47,51 +47,53 @@
 		</div>
 	</nav>
 
-	<div class="questions col-xs-12">
-		<legend>Questions pour les organisateurs du mariage</legend>
-		<div id="scrollable" class="col-xs-12">
-			<?php
-			if ($questions==0) {
-				echo "<p>Pas de questions pour l'instant</p>\n";
-			}else{
-				$nb=count($questions);
-				for ($i=0; $i < $nb; $i++) {
-					if ($questions[$i]['quest_nom']=='Organisateur') {
-						echo "<strong class=\"admin\">{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
-					}else {
-						echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
-					}
-					if($i<$nb-1){
-						echo "<hr>\n";
+	<div class="col-lg-offset-2 col-lg-8">
+		<div class="questions col-xs-12">
+			<legend>Questions pour les organisateurs du mariage</legend>
+			<div id="scrollable" class="col-xs-12">
+				<?php
+				if ($questions==0) {
+					echo "<p>Pas de questions pour l'instant</p>\n";
+				}else{
+					$nb=count($questions);
+					for ($i=0; $i < $nb; $i++) {
+						if ($questions[$i]['quest_nom']=='Organisateur') {
+							echo "<strong class=\"admin\">{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
+						}else {
+							echo "<strong>{$questions[$i]['quest_nom']}: </strong><p>{$questions[$i]['quest_question']}</p> <p class='date'>{$questions[$i]['quest_date']}</p>\n";
+						}
+						if($i<$nb-1){
+							echo "<hr>\n";
+						}
 					}
 				}
-			}
-			?>
-			<script>
-				element = document.getElementById('scrollable');
-				element.scrollTop = element.scrollHeight;
-			</script>
+				?>
+				<script>
+					element = document.getElementById('scrollable');
+					element.scrollTop = element.scrollHeight;
+				</script>
+			</div>
+
+			<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
+				<div class="form-group">
+					<label for="nom" class="control-label col-xs-12">Nom/Prenom :<p id="orga">Organisateur<p></label>
+				</div>
+
+				<div class="form-group">
+					<label for="question" class="control-label col-xs-12">Reponse :</label>
+					<div class="col-xs-12">
+						<input id="question" type="text" name="question" class="form-control" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-12">
+						<button class="btn btn-secondary" name="envoiQuestion">Envoyer</button>
+					</div>
+				</div>
+
+			</form>
 		</div>
-
-		<form class="form-horizontal" action="page-publique.ctrl.php" method="post">
-			<div class="form-group">
-				<label for="nom" class="control-label col-sm-12">Nom/Prenom : Organisateur</label>
-			</div>
-
-			<div class="form-group">
-				<label for="question" class="control-label col-sm-1">Reponse :</label>
-				<div class="col-sm-11">
-					<input id="question" type="text" name="question" class="form-control" required>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-xs-12">
-					<button class="btn btn-secondary" name="envoiQuestion">Envoyer</button>
-				</div>
-			</div>
-
-		</form>
 	</div>
 
 	<div class="main">

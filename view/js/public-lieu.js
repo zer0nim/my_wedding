@@ -37,19 +37,21 @@ $(document).ready(function(){
 							// Affichage des coordonnées dans le <span>
 							document.getElementById('text_latlng').innerHTML='Coordonnées : '+strposition;
 							//
-							$('#text_adresse').text(data.substring(1,data.length-1));
 							// Création du marqueur du lieu (épingle)
 							var marker = new google.maps.Marker({
 								map: map,
 								position: results[0].geometry.location
 							});
-						} else {
-							alert('Adresse introuvable: ' + status);
 						}
+						else {
+              $('#text_latlng').remove();
+              $('#map-canvas').remove();
+						}
+						$('#text_adresse').text(data);
 					});
 				},
 
-				'text' // Format des données reçues.
+				'json' // Format des données reçues.
 		);
 	}
 	// Lancement de la construction de la carte google map

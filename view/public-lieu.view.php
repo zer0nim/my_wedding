@@ -1,5 +1,6 @@
 <?php include('../view/header.php') ?>
 <link rel="stylesheet" href="../view/css/public-lieu.css" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'><!-- Pour polices-->
 
 </head>
 <body class="container-fluid">
@@ -28,7 +29,6 @@
 			</div>
 		</nav>
 	</header>
-
 	<div class="col-lg-offset-3 col-lg-6">
 		<span id="text_latlng"></span>
 		<div id="map-canvas" style="width: 100%;height: 500px;"></div>
