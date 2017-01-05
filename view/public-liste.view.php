@@ -1,9 +1,7 @@
 <?php include('../view/header.php') ?>
-<link rel="stylesheet" type="text/css" href="../view/css/default.css" />
-<link rel="stylesheet" type="text/css" href="../view/css/component.css" />
-
-<link rel="stylesheet" href="../view/css/page-publique-public.css" type="text/css" />
+<link rel="stylesheet" href="../view/css/public-liste.css" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'><!-- Pour polices-->
+
 </head>
 <body class="container-fluid">
 
@@ -23,9 +21,9 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="">Accueil</a></li>
+						<li><a href="page-publique-public.ctrl.php?id=<?=sha1($idM)?>">Accueil</a></li>
 						<li><a href="public-question.ctrl.php?id=<?=sha1($idM)?>">Questions</a></li>
-						<li><a href="public-liste.ctrl.php?id=<?=sha1($idM)?>">liste de mariage</a></li>
+						<li class="active"><a href="public-liste.ctrl.php?id=<?=sha1($idM)?>">liste de mariage</a></li>
 						<li><a href="public-lieu.ctrl.php?id=<?=sha1($idM)?>">Lieu</a></li>
 					</ul>
 				</div>
@@ -33,19 +31,10 @@
 		</nav>
 	</header>
 
-	<?php
-	if (isset($InfoM['maria_desc']) && $InfoM['maria_desc'] != "") {
-			echo '<section><div class="infDescr"><p>' . $InfoM['maria_desc'] . '</p></div></section>';
-		}
-	?>
-
-	<div class="main">
-		<ul class="cbp_tmtimeline">
-			<?php if (isset($insp)) { printAllInsp($insp); } ?>
-		</ul>
+	<div class="beautiful_Li col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+		<h2>Notre Liste de Mariage</h2>
+		<?php printList($listSouh); ?>
 	</div>
 
-<?php
- include('../view/scripts.php');
- include('../view/footer.php');
-?>
+	<?php include('../view/scripts.php'); ?>
+	<?php include('../view/footer.php'); ?>
