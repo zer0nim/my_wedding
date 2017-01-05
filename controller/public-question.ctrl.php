@@ -26,6 +26,5 @@ if (isset($_GET["id"])) {
 }
 else {
   echo "Page inaccessible";
-  var_dump($_GET);
 }
  ?>
