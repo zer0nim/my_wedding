@@ -115,7 +115,7 @@
 			</div>
 
 
-		<footer>			
+		<footer>
 			<p class="col-xs-12">Réalisation du site: IUT Grenoble Alpes - S3 groupe 11 - 2016/2017</p>
 		</footer>
 
@@ -123,4 +123,6 @@
 		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script><!-- c'est quoi ce truc ? -->
 
 <?php include('../view/scripts.php') ?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script src="../view/js/inscription.js"></script>
 <?php include('../view/footer.php') ?>
