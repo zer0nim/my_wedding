@@ -18,7 +18,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="page-publique.ctrl.php">My Wedding</a>
+					<a class="navbar-brand" href="page-publique.ctrl.php">MyWedding</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
