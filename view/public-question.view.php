@@ -1,5 +1,6 @@
 <?php include('../view/header.php') ?>
 <link rel="stylesheet" href="../view/css/public-question.css" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'><!-- Pour polices-->
 
 </head>
 <body class="container-fluid">
