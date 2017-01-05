@@ -64,7 +64,7 @@
 				</script>
 			</div>
 
-			<form class="form-horizontal" action="public-question.ctrl.php?idm=<?=$idM?>" method="post">
+			<form class="form-horizontal" action="public-question.ctrl.php?id=<?=sha1($idM)?>" method="post">
 				<div class="form-group">
 					<label for="nom" class="control-label col-xs-12">Nom/Prenom :</label>
 					<div class="col-xs-12">
