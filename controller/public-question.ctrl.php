@@ -1,6 +1,7 @@
 <?php
 include_once('../model/DAO.class.php');
 session_start();
+<<<<<<< HEAD
 if (isset($_GET['id'])) {
   $idM=$dao->getIdMariage_hash($_GET['id']);
   if (isset($_POST['envoiQuestion'])) {
@@ -26,5 +27,6 @@ if (isset($_GET['id'])) {
   include_once('../view/public-question.view.php');
 }else {
   echo "Page inaccessible";
+  var_dump($_GET);
 }
  ?>
