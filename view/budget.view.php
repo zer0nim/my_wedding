@@ -17,14 +17,6 @@
     </div>
 
     <?php
-    function cmp($a, $b) {
-      if ($a->getValue() <= $b->getValue()) {
-        return 1;
-      }
-      else {
-        return -1;
-      }
-    }
     if ($tabbudget != null){
         foreach ($tabbudget as $idbudget => $budget) {
             ?>
@@ -36,7 +28,6 @@
                     <tr class="row"><th class="champ-description-depense col-md-12 text-center">Description</th><th class="col-md-12 champ-description-depense">Prix</th></tr>
                     <?php
                     $tabdepense = $budget->getTabdepense();
-                    usort($tabdepense, "cmp");
                     if ($tabdepense != null){
                         foreach ($tabdepense as $depense) {
                             ?>

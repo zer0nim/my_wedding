@@ -56,6 +56,16 @@ if (!isset($_SESSION['idM'])){
                         $tabdepense[$id] = new depense($id, $depense['depdescription'], $depense['depvalue']);
                     }
                 }
+				
+				// trie par ordre décoissant
+				function cmp($a, $b) {
+					if ($a->getValue() <= $b->getValue()) {
+						return 1;
+					}else {
+						return -1;
+					}
+				}
+				usort($tabdepense, "cmp");
                 
                 $budget = new budget($idbudget, $_POST['description'], $_POST['value'], $tabdepense);
                 
