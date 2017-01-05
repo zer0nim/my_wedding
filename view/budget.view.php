@@ -4,19 +4,27 @@
 <link rel="stylesheet" href="../view/css/budget.css" type="text/css" />
 
 <div class="text-center">
-    
+
     <div id="divboutonajouter" class="row border col-md-4 col-md-offset-4">
 	<div class="row budgetglobal">
         <button id="boutonmodifierbudgetglobal" class="btn-xs btn-primary" onClick="modifierbudgetglobal()">Modifier</button>
 	    <p class="row no-margin">Budget global : <b id="champbudgetglobale"><?= $budgetglobale ?></b> €</p>
-	    
+
 	    <p class="row no-margin">Budget global dépensé : <b id="budgetglobaledepense"><?= $budgetglobaledepense ?></b> €</p>
 	    <p class="row no-margin">Budget global restant : <b id="budgetglobalerestant"><?= $budgetglobalerestant ?></b> €</p>
 	</div>
         <button class="btn btn-primary" onClick="ajouter()">Ajouter un budget</button>
     </div>
-    
+
     <?php
+    function cmp($a, $b) {
+      if ($a->getValue() <= $b->getValue()) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    }
     if ($tabbudget != null){
         foreach ($tabbudget as $idbudget => $budget) {
             ?>
@@ -28,6 +36,7 @@
                     <tr class="row"><th class="champ-description-depense col-md-12 text-center">Description</th><th class="col-md-12 champ-description-depense">Prix</th></tr>
                     <?php
                     $tabdepense = $budget->getTabdepense();
+                    usort($tabdepense, "cmp");
                     if ($tabdepense != null){
                         foreach ($tabdepense as $depense) {
                             ?>
