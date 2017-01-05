@@ -496,7 +496,7 @@ class DAO {
     }
 
     function getMaries($idM,$nomF,$prenomF,$nomH,$prenomH) {
-      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM and cont_nom=:nomF or cont_nom=:nomH and cont_prenom=:prenomF or cont_prenom=:prenomH');
+      $req = $this->db->prepare('SELECT * FROM Contact WHERE cont_idM = :idM and (cont_nom=:nomF and cont_prenom=:prenomF) or (cont_nom=:nomH and cont_prenom=:prenomH)');
       $req->execute(array(':idM' => $idM,
                           ':nomF' => $nomF,
                           ':prenomF' => $prenomF,
