@@ -5,6 +5,6 @@
   //Recup id du mariage
   $idM = $_SESSION['idM'];
 
-  echo json_encode(array("nbCnts" => $dao->getNbContacts(1),
-                          "nbPlaces" => $dao->getNbPlacesTables(1),));
+  echo json_encode(array("nbCnts" => $dao->getNbContacts($idM),
+                          "nbPlaces" => $dao->getNbPlacesTables($idM),));
 ?>
