@@ -2,13 +2,14 @@
 
 import mysql.connector
 import networkx as nx
+import sys
 
 import tables
 
 db = mysql.connector.connect(host="mywedding.gdn", db="base", user="iut2info", passwd="projetweb")
 
 
-wedd_id = 1
+wedd_id = int(sys.argv[1])
 
 g = nx.Graph()
 
