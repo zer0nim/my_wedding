@@ -1,5 +1,5 @@
 # University _ MyWedding
-> Grenoble University Institute of Technology in IT<br>11/2016 - 01/2017, Five-person Group project
+> Grenoble France, IT University<br>11/2016 - 01/2017, Five-person Group project
 
 ### Wedding planning web application
 
